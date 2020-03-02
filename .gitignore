@@ -1,0 +1,13 @@
+# Ren'Py
+*.rpy[bc]
+*.rpym[bc]
+*.py[co]
+*.bak
+/errors.txt
+/project.json
+/game/saves
+log.txt
+traceback.txt
+
+# Sublime Text
+*.sublime-workspace
