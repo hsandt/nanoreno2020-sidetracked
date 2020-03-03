@@ -752,7 +752,10 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("Authorization")
-                    textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked'), ShowMenu('screen_captcha')]
+                    if persistent.unlocked:
+                        textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked')]
+                    else:
+                        textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked'), ShowMenu('screen_captcha')]
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
