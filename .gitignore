@@ -3,6 +3,7 @@
 *.rpym[bc]
 *.py[co]
 *.bak
+*.psd
 /errors.txt
 /project.json
 /game/saves

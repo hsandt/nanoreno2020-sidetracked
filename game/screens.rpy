@@ -749,6 +749,11 @@ screen preferences():
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
+                vbox:
+                    style_prefix "check"
+                    label _("Authorization")
+                    textbutton _("Unlock Game") action [ShowMenu('screen_captcha')]
+
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
@@ -1516,3 +1521,31 @@ style slider_pref_vbox:
 style slider_pref_slider:
     variant "small"
     xsize 900
+    
+    
+## Captcha screen #######################################################
+##
+
+screen screen_captcha():
+    add "gui/captcha/captcha_menu_base.png"
+    #modal True
+    tag menu
+    # Include the navigation.
+    imagemap:
+        auto "gui/captcha/captcha_menu_ducks_%s.png" alpha False         
+        #145 - 255 \  315 - 490 \ 990 - 1140      
+        #280 - 305 - 330 \ 340 - 360 - 380
+        hotspot (418, 227, 140, 140)  action ToggleVariable("captcha_other1", "True") # baby
+        hotspot (570, 227, 140, 140)  action ToggleVariable("captcha_other2", "True") # mallard
+        hotspot (721, 227, 140, 140)  action ToggleVariable("captcha_rubber", "True") # rubber        
+        hotspot (418, 372, 140, 140)  action ToggleVariable("captcha_other3", "True") # white
+        hotspot (570, 372, 140, 140)  action ToggleVariable("captcha_other4", "True") # daffy
+        hotspot (721, 372, 140, 140)  action ToggleVariable("captcha_other5", "True") # swan
+        
+        if captcha_rubber and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4 and not captcha_other5:
+            hotspot (700, 545, 156, 46)  action [ToggleField(persistent,'unlocked'), Return()] #Verify - Success
+        else:
+            hotspot (700, 545, 156, 46)  action SetVariable("invalid_captcha", "True")  #Verify - Fail
+            
+    if invalid_captcha:
+        text "{size=24}Selection invalid.{/size}" xpos 428 ypos 555 color "#000000"
