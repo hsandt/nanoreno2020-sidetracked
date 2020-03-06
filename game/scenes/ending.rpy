@@ -1,0 +1,2 @@
+label end:
+    "[ENDING]"
