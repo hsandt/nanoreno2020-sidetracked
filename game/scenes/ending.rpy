@@ -1,2 +1,2 @@
 label end:
-    "[ENDING]"
+    "[ENDING CREDITS]"
