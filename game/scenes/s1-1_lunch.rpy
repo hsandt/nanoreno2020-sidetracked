@@ -4,6 +4,7 @@ label s1_1:
 
 label .intro:
     scene bg woman_apartment
+    show woman casual
     # play music routine
     "(Woman wants to have lunch in her apartment, but notices her chair is broken.)"
     menu repair_chair:

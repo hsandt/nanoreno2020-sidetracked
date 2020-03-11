@@ -15,7 +15,9 @@ image bg woman_apartment = im.Scale("images/bg/woman_apartment.jpg", 1920, 1080)
 
 ## Characters
 
-image woman regular = "images/char/woman_reg.png"
+image woman casual = "images/char/fmc_cas_reg.png"
+image woman out = "images/char/fmc_out_reg.png"
+image woman regular = "images/char/fmc_reg.png"
 
 
 # Audio
