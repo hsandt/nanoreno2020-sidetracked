@@ -3,8 +3,8 @@ label s1_1:
     jump .intro
 
 label .intro:
-    scene bg woman_apartment
-    show woman casual
+    scene bg apartment
+    show woman casual regular at left
     # play music routine
     "(Woman wants to have lunch in her apartment, but notices her chair is broken.)"
     menu repair_chair:

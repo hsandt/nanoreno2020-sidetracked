@@ -6,8 +6,7 @@ image overlay black = Solid("#000000")
 
 ## Backgrounds (1080p)
 
-# Upscale until we get image at 1080p
-image bg woman_apartment = im.Scale("images/bg/woman_apartment.jpg", 1920, 1080)
+image bg apartment = "images/bg/apartment.jpg"
 
 ## Props
 
@@ -15,9 +14,9 @@ image bg woman_apartment = im.Scale("images/bg/woman_apartment.jpg", 1920, 1080)
 
 ## Characters
 
-image woman casual = "images/char/fmc_cas_reg.png"
-image woman out = "images/char/fmc_out_reg.png"
-image woman regular = "images/char/fmc_reg.png"
+image woman casual regular = "images/char/mc_cas_reg.png"
+image woman outside regular = "images/char/mc_out_reg.png"
+image woman regular = "images/char/mc_reg.png"
 
 
 # Audio
