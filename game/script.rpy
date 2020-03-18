@@ -1,4 +1,3 @@
-﻿
 init:
     #Defining persistent variables
 
