@@ -54,4 +54,6 @@ label .shot3b:
 label .shot4:
     mc "OK, let’s go now."
     "The store is not too far, I should be back in no time."
+    show overlay black with dissolve
+    
     jump s3_4

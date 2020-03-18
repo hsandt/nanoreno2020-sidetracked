@@ -29,7 +29,19 @@ define config.version = "1.0"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p("""
+define gui.about = _p("""This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020 Visual Novel game jam{/a}.
+
+{b}Copyright{/b}
+
+Original backgrounds: copyright of respective authors
+
+Other backgrounds:
+
+- Bus stop (bus_stop.jpg) adapted from `bus stop noon.jpg` by Uncle Mugen (free usage, see this {a=https://lemmasoft.renai.us/forums/viewtopic.php?p=226871}thread{/a})
+
+- Store (store.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG}Tokyu_Hands_in_Taipei_Breeze_Centre_201608{/a} by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
+
+Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
 
 
