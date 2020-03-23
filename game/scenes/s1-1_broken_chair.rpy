@@ -31,7 +31,7 @@ label .shot2:
 
     show mc casual regular left at right with dissolve
     mc "Nope. No such thing."
-    mc "Guess I need to go to the DIY store."
+    mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
     pause 0.5
 
     mc "I should take a measurement of the screw hole before I leave."
@@ -55,5 +55,5 @@ label .shot4:
     mc "OK, let’s go now."
     "The store is not too far, I should be back in no time."
     show overlay black with dissolve
-    
+
     jump s3_4
