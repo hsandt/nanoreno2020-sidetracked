@@ -9,7 +9,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 * Background Art: JW Jones
 * Character Sprites: Maxenau
 * Item Sprites: komehara
-* Sound Effects: Fabian Fabro, komehara
+* Sound Effects: Fabian Fabro (FirahFabe), komehara
 
 # License
 
