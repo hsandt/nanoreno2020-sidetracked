@@ -399,7 +399,10 @@ style main_menu_vbox:
     yoffset -30
 
 style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+    # compared to default template, set accent to False
+    # to avoid overriding color with gui.accent_color
+    properties gui.text_properties("main_menu", accent=False)
+    color gui.title_color
 
 style main_menu_title:
     properties gui.text_properties("title")
@@ -1524,8 +1527,8 @@ style slider_pref_vbox:
 style slider_pref_slider:
     variant "small"
     xsize 900
-    
-    
+
+
 ## Captcha screen #######################################################
 ##
 
@@ -1537,20 +1540,20 @@ screen screen_captcha():
     imagemap:
         xalign 0.5
         yalign 0.5
-        auto "gui/captcha/captcha_menu_ducks_%s.png" alpha False         
-        #145 - 255 \  315 - 490 \ 990 - 1140      
+        auto "gui/captcha/captcha_menu_ducks_%s.png" alpha False
+        #145 - 255 \  315 - 490 \ 990 - 1140
         #280 - 305 - 330 \ 340 - 360 - 380
         hotspot (418, 227, 140, 140)  action ToggleVariable("captcha_other1", "True") # baby
         hotspot (570, 227, 140, 140)  action ToggleVariable("captcha_other2", "True") # mallard
-        hotspot (721, 227, 140, 140)  action ToggleVariable("captcha_rubber", "True") # rubber        
+        hotspot (721, 227, 140, 140)  action ToggleVariable("captcha_rubber", "True") # rubber
         hotspot (418, 372, 140, 140)  action ToggleVariable("captcha_other3", "True") # white
         hotspot (570, 372, 140, 140)  action ToggleVariable("captcha_other4", "True") # daffy
         hotspot (721, 372, 140, 140)  action ToggleVariable("captcha_other5", "True") # swan
-        
+
         if captcha_rubber and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4 and not captcha_other5:
             hotspot (700, 545, 156, 46)  action [Return()] #Verify - Success
         else:
             hotspot (700, 545, 156, 46)  action SetVariable("invalid_captcha", "True")  #Verify - Fail
-            
+
     if invalid_captcha:
         text "{size=24}Selection invalid.{/size}" xpos 765 ypos 735 color "#000000"

@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -24,6 +24,10 @@ init python:
 
 ## An accent color used throughout the interface to label and highlight text.
 define gui.accent_color = '#f4cfe5'
+
+## A custom color added in this project to distinguish title color
+## from accent color, as we needed a darker title on the light background.
+define gui.title_color = '#744675'
 
 ## The color used for a text button when it is neither selected nor hovered.
 define gui.idle_color = '#9e649f'
@@ -469,6 +473,3 @@ init python:
 
         gui.nvl_button_width = 1860
         gui.nvl_button_xpos = 30
-
-
-
