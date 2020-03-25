@@ -16,9 +16,11 @@ image bg apartment = "images/bg/apartment.jpg"
 image bg bus_stop = "images/bg/bus_stop.jpg"
 image bg store = "images/bg/store.jpg"
 
-## Props
+## Items
 
-# ...
+image item hex_key = "images/item/hex_key.png"
+image item screw_loose = "images/item/screw_loose.png"
+image item screw_tight = "images/item/screw_tight.png"
 
 ## Characters
 
@@ -36,4 +38,11 @@ image mc regular = "images/char/mc_reg.png"
 # define audio.routine = "audio/bgm/routine.ogg"
 
 ## SFX
-# define audio.screwdriver = "audio/sfx/screwdriver.ogg"
+define audio.coins_drop = "audio/sfx/coins_drop.ogg"
+define audio.door_open_close = "audio/sfx/door_open_close.ogg"
+define audio.inspect_chair = "audio/sfx/inspect_chair.ogg"
+define audio.printer = "audio/sfx/printer.ogg"
+define audio.screw_tighten = "audio/sfx/screw_tighten.ogg"
+define audio.searching_drawer = "audio/sfx/searching_drawer.ogg"
+define audio.smartphone_camera = "audio/sfx/smartphone_camera.ogg"
+define audio.step_on_chair = "audio/sfx/step_on_chair.ogg"

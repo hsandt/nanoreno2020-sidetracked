@@ -1,3 +1,7 @@
+transform item_left:
+    xpos 0.25
+    ypos 0.3
+
 init:
     #Defining persistent variables
 
