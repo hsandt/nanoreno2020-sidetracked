@@ -6,15 +6,16 @@ label .shot1:
 
     scene bg store with dissolve
     # play music store
-    show mc regular at left with dissolve
+    show mc regular at character_left with dissolve
     "Thanks to the store’s efficient sorting system, it took me ages to find the right screwdriver."
     "I’ve also been standing in the queue for 15 minutes now, so I’m nervously tapping my leg with the tool’s package."
     mc "Good afternoon."
-    # show item screwdriver
+    show item hex_key at item_right with dissolve
+    mc "This one, please."
     cashier "That’ll be six euros ninety-nine."
     mc "OK."
-    # play sound cash
-    # hide item
+    play sound coins_drop
+    hide item with dissolve
     pause 0.5
 
     cashier "Thank you."

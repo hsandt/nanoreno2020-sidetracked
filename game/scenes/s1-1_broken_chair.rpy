@@ -12,7 +12,7 @@ label .shot1:
 
 label .shot2:
     scene bg apartment
-    show mc casual regular left at right
+    show mc casual regular left at character_right
     with Dissolve(1.0)
     mc "This chair is not stable at all!"
     pause 0.5
@@ -23,7 +23,7 @@ label .shot2:
     pause 1.5
 
     show item screw_loose at item_left
-    show mc casual regular left at right
+    show mc casual regular left at character_right
     with dissolve
     mc "Looks like that screw is a bit loose."
     mc "Hex type, uh? Let’s see if I got a matching screwdriver."
@@ -32,7 +32,7 @@ label .shot2:
     play sound searching_drawer
     pause 4.0
 
-    show mc casual regular left at right with dissolve
+    show mc casual regular left at character_right with dissolve
     mc "Nope. No such thing."
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
     pause 0.5
@@ -71,8 +71,7 @@ label .shot3b:
 
 label .shot4:
     "The store is not too far, I should be back in no time."
-    play sound door_open_close
-
-label .shot5:
     show overlay black with dissolve
+    play sound door_open_close
+    pause 1.5
     jump s3_4

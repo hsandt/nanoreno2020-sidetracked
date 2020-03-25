@@ -1,6 +1,18 @@
+transform character_left:
+    xalign 0.2
+    yalign 1.0
+
+transform character_right:
+    xalign 0.8
+    yalign 1.0
+
 transform item_left:
-    xpos 0.25
-    ypos 0.3
+    xalign 0.3
+    yalign 0.4
+
+transform item_right:
+    xalign 0.7
+    yalign 0.4
 
 init:
     #Defining persistent variables
