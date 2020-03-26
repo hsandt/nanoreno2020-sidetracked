@@ -1,5 +1,4 @@
 label s3_4:
-    "[Scene 3.4: Buy tool]"
 
 label .shot1:
     "{i}One hour later...{/i}"

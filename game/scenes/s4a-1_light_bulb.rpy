@@ -1,5 +1,4 @@
 label s4a_1:
-    "[Scene 4a.1: Light bulb]"
 
 label .shot1:
     # should be bg apartment_night, but we only have one
@@ -24,7 +23,8 @@ label .shot1:
     "I get onto the chair and slowly stand up, as I make sure it won’t make me roll all over the floor."
     mc "Stable."
     mc "Now I can change this light bulb!"
-    "I start removing the dead bulb, but then realize I don’t have any replacement. Wait, do I need to go back to the DIY store?"
+    "As I'm about to remove the dead bulb, I suddenly realize I don’t have any replacement."
+    "Wait, do I need to go back to the DIY store?"
     play sound step_on_chair
     show mc regular left at character_right with Dissolve(0.1)
     "I step off the chair and I check my watch. 19:30."

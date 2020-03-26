@@ -1,5 +1,4 @@
 label s1_1:
-    "[Scene 1.1: Broken Chair]"
 
 label .shot1:
     show overlay black
