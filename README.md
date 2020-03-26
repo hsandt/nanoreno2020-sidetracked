@@ -4,18 +4,25 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 
 # Credits
 
+## Core team
+
 * Writing, Programming: komehara
 * UI Programming: Marionette
-* Background Art: JW Jones
+* Original Background Art: JW Jones
 * Character Sprites: Maxenau
 * Item Sprites: komehara
 * Sound Effects: Fabian Fabro (FirahFabe), komehara
+
+## Free assets
+
+* Free Background Art: Uncle Mugen, Wpcpey
+* Free BGM: 柔らかな嘘
 
 # License
 
 Original backgrounds: copyright JW Jones
 
-Other backgrounds:
+Free backgrounds:
 * Bus stop (`bus_stop.jpg`) adapted from `bus stop noon.jpg` by Uncle Mugen, distributed for free usage on [this thread](https://lemmasoft.renai.us/forums/viewtopic.php?p=226871))
 * Store (`store.jpg`) adapted from [Tokyu_Hands_in_Taipei_Breeze_Centre_201608](https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG) by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
@@ -23,5 +30,9 @@ Character sprites: copyright Maxenau
 
 Item sprites: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
 
+Free BGM:
+
+* 緑茶でも一杯 from [SLOS V 7.1](http://slos.biz/) by [background](http://back-ground.biz/) under [custom license](http://slos.biz/#x:_rule) (allows free usage with appropriate credit and )
+* 柔らかな嘘 by [MusMus](http://musmus.main.jp) under [custom license](musmus.main.jp/info.html) (allows free usage as BGM with appropriate credit and notification)
 
 For code, see [LICENSE](LICENSE).

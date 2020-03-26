@@ -13,6 +13,7 @@ label .shot2:
     scene bg apartment
     show mc casual regular left at character_right
     with Dissolve(1.0)
+    play music apartment
     mc "This chair is not stable at all!"
     pause 0.5
 
@@ -75,6 +76,7 @@ label .shot3b:
 label .shot4:
     "The store is not too far, I should be back in no time."
     show overlay black with dissolve
+    stop music fadeout 2.0
     play sound door_open_close
     pause 1.5
     jump s3_4

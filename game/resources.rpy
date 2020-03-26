@@ -36,7 +36,8 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 ## BGM
 
 # define audio.title_screen = "audio/bgm/title_screen.ogg"
-# define audio.routine = "audio/bgm/routine.ogg"
+define audio.apartment = "audio/bgm/i71002_ryokucha.mp3"
+define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
 
 ## SFX
 define audio.coins_drop = "audio/sfx/coins_drop.ogg"
