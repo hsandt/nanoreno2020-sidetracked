@@ -23,7 +23,8 @@ label .shot1:
     "I get onto the chair and slowly stand up, as I make sure it won’t make me roll all over the floor."
     mc "Stable."
     mc "Now I can change this light bulb!"
-    "As I'm about to remove the dead bulb, I suddenly realize I don’t have any replacement."
+    "That's right, I forgot to mention that if I needed a stable chair, it was to change my broken light bulb."
+    "I start removing the dead bulb, but realize I don’t have any replacement."
     "Wait, do I need to go back to the DIY store?"
     play sound step_on_chair
     show mc regular left at character_right with Dissolve(0.1)
@@ -38,7 +39,7 @@ label .shot1:
             jump .shot2b
 
 label .shot2a:
-    mc "OK, I still have time to go."
+    mc "I think I still have time to go."
     "The store is not too far, I should be back in no time."
     play sound door_open_close
     show overlay black with dissolve
