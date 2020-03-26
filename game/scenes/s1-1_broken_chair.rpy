@@ -29,6 +29,8 @@ label .shot2:
     hide item
     hide mc with dissolve
     play sound searching_drawer
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: searching drawer")
     pause 4.0
 
     show mc casual regular left at character_right with dissolve
