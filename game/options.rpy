@@ -31,15 +31,33 @@ define config.version = "1.0"
 
 define gui.about = _p("""This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020 Visual Novel game jam{/a}.
 
+{b}Credits{/b}
+
+- Writing, Programming: komehara
+
+- UI Programming: Marionette
+
+- Background Art: JW Jones
+
+- Character Sprites: Maxenau
+
+- Item Sprites: komehara
+
+- Sound Effects: Fabian Fabro (FirahFabe), komehara
+
 {b}Copyright{/b}
 
-Original backgrounds: copyright of respective authors
+Original backgrounds: copyright JW Jones
 
 Other backgrounds:
 
-- Bus stop (bus_stop.jpg) adapted from `bus stop noon.jpg` by Uncle Mugen (free usage, see this {a=https://lemmasoft.renai.us/forums/viewtopic.php?p=226871}thread{/a})
+- Bus stop (bus_stop.jpg) adapted from `bus stop noon.jpg` by Uncle Mugen, distributed for free usage on {a=https://lemmasoft.renai.us/forums/viewtopic.php?p=226871}this thread{/a})
 
 - Store (store.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG}Tokyu_Hands_in_Taipei_Breeze_Centre_201608{/a} by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
+
+Character sprites: copyright Maxenau
+
+Item sprites: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)

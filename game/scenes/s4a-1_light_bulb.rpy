@@ -42,20 +42,10 @@ label .shot2a:
     "The store is not too far, I should be back in no time."
     play sound door_open_close
     show overlay black with dissolve
-    jump .end2
+    jump ending2
 
 label .shot2b:
     show overlay black with dissolve
     "After that, I made myself a soup, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
-    jump .end1
-
-label .end1:
-    pause 1.0
-    "Sidetracked{w=1.4} - END{w=1.7} - Deserved rest"
-    jump end
-
-label .end2:
-    pause 1.0
-    "Sidetracked{w=1.4} - END{w=1.7} - Just one more time"
-    jump end
+    jump ending1
