@@ -20,7 +20,11 @@ label .shot2:
     "I crouch and inspect the chair to see where the issue comes from."
     hide mc with dissolve
     play sound inspect_chair
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: inspect chair")
     pause 1.5
+    # in case player skips sound, stop it now to avoid sound leaking
+    stop sound
 
     show item screw_loose at item_left
     show mc casual regular left at character_right
@@ -77,6 +81,7 @@ label .shot4:
     "The store is not too far, I should be back in no time."
     show overlay black with dissolve
     stop music fadeout 2.0
+    pause 1.0
     play sound door_open_close
     pause 1.5
     jump s3_4
