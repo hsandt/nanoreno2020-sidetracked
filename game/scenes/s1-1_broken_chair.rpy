@@ -61,7 +61,7 @@ label .shot3a:
     menu:
         "Should take care of this right now?"
         "Free space on the smartphone":
-            call s_a
+            call s_a from _call_s_a
             "OK, time to go."
             jump .shot4
         "Ignore the notification":
