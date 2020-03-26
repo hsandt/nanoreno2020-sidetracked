@@ -32,6 +32,8 @@ label .shot2:
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: searching drawer")
     pause 4.0
+    # in case player skips sound, stop it now to avoid sound leaking
+    stop sound
 
     show mc casual regular left at character_right with dissolve
     mc "Nope. No such thing."
