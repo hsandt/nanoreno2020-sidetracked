@@ -147,6 +147,7 @@ style namebox:
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
+    outlines [ (absolute(2), "#fff", absolute(2), absolute(2)) ]
 
 style say_label:
     properties gui.text_properties("name", accent=True)
@@ -247,20 +248,22 @@ screen quick_menu():
 
     if quick_menu:
 
-        hbox:
-            style_prefix "quick"
-
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+        #hbox:
+        #    style_prefix "quick"
+        #
+        #    xalign 0.5
+        #    yalign 1.0
+        #
+        #    textbutton _("Back") action Rollback()
+        #    textbutton _("History") action ShowMenu('history')
+        #    textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+        #    textbutton _("Auto") action Preference("auto-forward", "toggle")
+        #    textbutton _("Save") action ShowMenu('save')
+        #    textbutton _("Q.Save") action QuickSave()
+        #    textbutton _("Q.Load") action QuickLoad()
+        #    textbutton _("Prefs") action ShowMenu('preferences')
+        imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
+        imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -295,45 +298,79 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        yalign 0.1
 
         spacing gui.navigation_spacing
 
         if main_menu:
-
-            textbutton _("Start") action Start()
+            #button:
+            #  action Start()
+            #  add "gui/button/button_idle.png"
+            #  text _("Start") style "navigation_button_text"
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action Start()
+                text _("Start") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action ShowMenu("history")
+                text _("History") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            #textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action ShowMenu("save")
+                text _("Save") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            #textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        hbox:
+            imagebutton auto "gui/button/button_%s.png"  action ShowMenu("load")
+            text _("Load") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+        #textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        #hbox:
+            #imagebutton auto "gui/button/optionsbutton_%s.png"  action ShowMenu("preferences")
+            #text _("Preferences") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+        #textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action EndReplay(confirm=True)
+                text _("End Replay") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            #textbutton _("End Replay") action EndReplay(confirm=True)
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action MainMenu()
+                text _("Main Menu") style "navigation_button_text" color gui.idle_color xpos -124 yalign 0.5 xalign 0.5
+            #textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        hbox:
+            imagebutton auto "gui/button/button_%s.png"  action ShowMenu("about")
+
+            text _("About") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+        #textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action ShowMenu("help")
+                text _("Help") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            #textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
+            hbox:
+                imagebutton auto "gui/button/button_%s.png"  action Quit(confirm=not main_menu)
+                text _("Quit") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            #textbutton _("Quit") action Quit(confirm=not main_menu)
 
+    imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -344,7 +381,6 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
-
 
 ## Main Menu screen ############################################################
 ##
@@ -369,14 +405,14 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
-
-        vbox:
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    #if gui.show_name:
+    #
+    #    vbox:
+    #        text "[config.name!t]":
+    #            style "main_menu_title"
+    #
+    #        text "[config.version]":
+    #            style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -475,13 +511,18 @@ screen game_menu(title, scroll=None, yinitial=0.0):
                     transclude
 
     use navigation
+    hbox:
+        yalign 0.9
+        xalign 0.039
+        imagebutton auto "gui/button/button_%s.png"  action Return()
+        text _("Return") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
 
-    textbutton _("Return"):
-        style "return_button"
+    #textbutton _("Return"):
+    #    style "return_button"
+    #
+    #    action Return()
 
-        action Return()
-
-    label title
+    label title xalign 0.9
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
@@ -501,8 +542,8 @@ style return_button is navigation_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
+    bottom_padding 145
+    top_padding 220
 
     background "gui/overlay/game_menu.png"
 
@@ -517,6 +558,7 @@ style game_menu_content_frame:
 
 style game_menu_viewport:
     xsize 1380
+    ysize 680
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
@@ -1446,6 +1488,7 @@ screen quick_menu():
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()
+
 
 
 style window:
