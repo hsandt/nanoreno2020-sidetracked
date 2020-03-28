@@ -62,18 +62,11 @@ label .shot3a:
     play sound smartphone_camera
     pause 1.0
     hide item with dissolve
-    "As I’m checking that the photo is good enough, a notification pops up on the phone: {i}\"Storage space running out\"{/i}"
-    "That may quickly become problematic. But I got the picture I wanted, so I can go to the store now if I want."
+    "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
+    call sa_1
 
-    menu:
-        "Should take care of this right now?"
-        "Free space on the smartphone":
-            call s_a from _call_s_a
-            "OK, time to go."
-            jump .shot4
-        "Ignore the notification":
-            "I’d better hurry and go to the store while it’s open."
-            jump .shot4
+    "OK, I’d better hurry now and go to the store while it’s open."
+    jump .shot4
 
 label .shot3b:
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
@@ -86,5 +79,5 @@ label .shot4:
     stop music fadeout 2.0
     pause 1.0
     play sound door_open_close
-    pause 1.5
-    jump s3_4
+    pause 2.0
+    jump s2_1
