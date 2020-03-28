@@ -27,7 +27,7 @@ Free backgrounds:
 * Bus stop (`bus_stop.jpg`) adapted from `bus stop noon.jpg` by Uncle Mugen, distributed for free usage on [this thread](https://lemmasoft.renai.us/forums/viewtopic.php?p=226871))
 * Store (`store.jpg`) adapted from [Tokyu_Hands_in_Taipei_Breeze_Centre_201608](https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG) by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
-Free UI sprites: Dating Sim UI Pack by Lynda Mc Donald, distributed under [custom license](License Dating Sim UI Pack.jpg) (allows free usage with appropriate credit)
+Free UI sprites: [Dating Sim UI Pack](https://loudeyes.itch.io/dating-sim-ui-pack) by Lynda Mc Donald, distributed under [custom license](License%20Dating%20Sim%20UI%20Pack.jpg) (allows free usage with appropriate credit)
 
 Character sprites: copyright Maxenau
 
