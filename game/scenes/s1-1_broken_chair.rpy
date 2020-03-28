@@ -1,4 +1,7 @@
 label s1_1:
+    # hide dialogue box initially so it doesn't stick to the HUD
+    # from here on, dialogue box will automatically disappear during pauses between dialogues
+    window hide
 
 label .shot1:
     show overlay black
