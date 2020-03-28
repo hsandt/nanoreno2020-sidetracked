@@ -55,9 +55,17 @@ Other backgrounds:
 
 - Store (store.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG}Tokyu_Hands_in_Taipei_Breeze_Centre_201608{/a} by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
+Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
+
 Character sprites: copyright Maxenau
 
-Item sprites: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
+Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
+
+Free BGM:
+
+- 緑茶でも一杯 from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
+
+- 柔らかな嘘 by {a=http://musmus.main.jp}MusMus{/a} under {a=musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
