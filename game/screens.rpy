@@ -210,8 +210,11 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            textbutton i.caption action i.action at choice_transform
 
+transform choice_transform:
+    alpha 0.0
+    ease 0.5 alpha 1.0
 
 ## When this is true, menu captions will be spoken by the narrator. When false,
 ## menu captions will be displayed as empty buttons.
