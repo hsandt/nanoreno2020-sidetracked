@@ -14,8 +14,18 @@ transform item_right:
     xalign 0.7
     yalign 0.4
 
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+define mc = Character("MC", color="#BD8CBE")
+define driver = Character("Driver", color="#b87639")
+define cashier = Character("Cashier", color="#CCCCCC")
+
+# Story event flags
+define has_updated_apps = False
+define has_freed_space = False
+
 init:
-    #Defining persistent variables
+    # Defining persistent variables
 
     if persistent.unlocked is None:
       $persistent.unlocked = False
@@ -23,9 +33,7 @@ init:
       $persistent.captcha = False
       # The script of the game goes in this file.
 
-    # Declare characters used by this game. The color argument colorizes the
-    # name of the character.
-
+    # Captcha variables
     $ captcha_rubber = False
     $ captcha_other1 = False
     $ captcha_other2 = False
@@ -34,14 +42,12 @@ init:
     $ captcha_other5 = False
     $ invalid_captcha = False
 
-    define e = Character("Eileen")
-
 
 # The game starts here.
-
 label start:
     if not persistent.unlocked:
-        "this game has been made by an unauthorised author \"komehara\" and cannot be started unless safe mode is disabled in the options"
+        "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
+        "It cannot be started unless Safe mode is disabled in the options."
         return
 
 label lbl_realstart:

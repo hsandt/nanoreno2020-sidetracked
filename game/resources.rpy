@@ -1,10 +1,3 @@
-# Characters
-
-define mc = Character("MC", color="#BD8CBE")
-define driver = Character("Driver", color="#b87639")
-define cashier = Character("Cashier", color="#CCCCCC")
-
-
 # Images
 
 ## Overlay
