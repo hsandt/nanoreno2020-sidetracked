@@ -1,6 +1,7 @@
 # Characters
 
 define mc = Character("MC", color="#BD8CBE")
+define driver = Character("Driver", color="#b87639")
 define cashier = Character("Cashier", color="#CCCCCC")
 
 
@@ -21,6 +22,8 @@ image bg store = "images/bg/store.jpg"
 image item hex_key = "images/item/hex_key.png"
 image item screw_loose = "images/item/screw_loose.png"
 image item screw_tight = "images/item/screw_tight.png"
+image item coins = "images/item/coins.png"
+image item purchase_permit = "images/item/purchase_permit.png"
 
 ## Characters
 
