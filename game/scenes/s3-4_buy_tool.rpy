@@ -1,19 +1,16 @@
 label s3_4:
 
 label .shot1:
-    "{i}One hour later...{/i}"
-
-    scene bg store with dissolve
-    play music store
-    show mc regular at character_left with dissolve
-    "Thanks to the store’s efficient sorting system, it took me ages to find the right screwdriver."
+    pause 2.0
     "I’ve also been standing in the queue for 15 minutes now, so I’m nervously tapping my leg with the tool’s package."
     mc "Good afternoon."
     show item hex_key at item_right with dissolve
     mc "This one, please."
     cashier "That’ll be six euros ninety-nine."
     mc "OK."
+    show item coins at item_right with dissolve
     play sound coins_drop
+    pause 0.5
     hide item with dissolve
     pause 0.5
 

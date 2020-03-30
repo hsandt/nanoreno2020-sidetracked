@@ -57,6 +57,8 @@ label .shot2:
             jump .shot3b
 
 label .shot3a:
+    $ screw_measurement_method = "photo"
+
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show item screw_loose at item_left
     play sound smartphone_camera
@@ -69,6 +71,8 @@ label .shot3a:
     jump .shot4
 
 label .shot3b:
+    $ screw_measurement_method = "meter"
+
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     mc "OK, let’s go!"
     jump .shot4

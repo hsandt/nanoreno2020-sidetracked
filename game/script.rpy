@@ -23,6 +23,8 @@ define cashier = Character("Cashier", color="#CCCCCC")
 # Story event flags
 define has_updated_apps = False
 define has_freed_space = False
+define has_explored_screwdrivers = False
+define has_explored_power_screwdrivers = False
 
 init:
     # Defining persistent variables
