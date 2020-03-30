@@ -57,7 +57,7 @@ label .shot3:
     return
 
 label .shot4:
-    $ has_tried_dict = True
+    $ has_tried_game = True
 
     if play_context == "free space":
         "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."

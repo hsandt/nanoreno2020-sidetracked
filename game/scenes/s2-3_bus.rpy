@@ -67,7 +67,7 @@ label .shot4:
     "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
     "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
     "To do so, I scan another QR code on another sticker. It takes a moment..."
-    $ store.free_space -= 50
+    $ change_free_space(-50)
 
     # play sound stop_button
     # SFX accessibility (inspired by Renpy Accessibility Add-On)

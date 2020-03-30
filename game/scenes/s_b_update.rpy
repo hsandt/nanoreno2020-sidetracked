@@ -5,8 +5,8 @@ label s_b:
     "Hopefully that will help reduce my data usage while also saving some space."
     "After the fourth manual update, I get impatient and just touch \"Update all\"."
 
-    $ has_updated_apps = True
-    $ free_space -= 100
+    $ store.has_updated_apps = True
+    $ change_free_space(-100)
 
     if has_wifi:
         "Fortunately, it downloads pretty fast on Wi-Fi."
