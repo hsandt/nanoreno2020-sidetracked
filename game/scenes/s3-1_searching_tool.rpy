@@ -59,5 +59,6 @@ label .shot3:
     hide item with dissolve
 
     "I grab it and rush to the cash register."
+    hide mc with dissolve
 
-    jump s3_4
+    jump s3_2

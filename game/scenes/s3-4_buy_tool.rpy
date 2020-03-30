@@ -2,11 +2,21 @@ label s3_4:
 
 label .shot1:
     pause 2.0
-    "I’ve also been standing in the queue for 15 minutes now, so I’m nervously tapping my leg with the tool’s package."
-    mc "Good afternoon."
-    show item hex_key at item_right with dissolve
-    mc "This one, please."
-    cashier "That’ll be six euros ninety-nine."
+    show mc regular at character_left with dissolve
+
+    "Back at the register, I realize I’ve lost my place in the queue so I need to do it again."
+    # for v2.2: Call Scene F: Kill time
+    "After ten more minutes, I show the tool again, together with the permit."
+    show item purchase_permit at item_right
+    pause 1.0
+    hide item
+    pause 0.5
+    show item hex_key at item_right
+    pause 1.0
+    # if you have 2 different transforms, show both at the same time
+    cashier "Six euros ninety-nine."
+    hide item
+
     mc "OK."
     show item coins at item_right with dissolve
     play sound coins_drop

@@ -18,7 +18,8 @@ transform item_right:
 # name of the character.
 define mc = Character("MC", color="#BD8CBE")
 define driver = Character("Driver", color="#b87639")
-define cashier = Character("Cashier", color="#CCCCCC")
+define cashier = Character("Cashier", color="#49b976")
+define printer = Character("Printer", color="#CCCCCC")
 
 # Story event flags
 define has_updated_apps = False
