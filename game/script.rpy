@@ -24,6 +24,9 @@ define printer = Character("Printer", color="#CCCCCC")
 # Story event flags
 define has_wifi = False
 define has_seen_notifications = False
+define has_seen_sister_request = False
+define has_given_fake_translation = False
+define has_given_silence = False
 define has_updated_apps = False
 define has_deleted_small_apps = False
 define has_tried_dict = False
@@ -34,11 +37,8 @@ define has_explored_screwdrivers = False
 define has_explored_power_screwdrivers = False
 define free_space = 400
 define sister_request_phase = 0
-
-python:
-    def has_outstanding_notifications():
-        return not store.has_updated_apps or not has_freed_space or \
-            sister_request_phase >= 1 and sister_request_phase <= 2
+define update_context = None
+define play_context = None
 
 init:
     # Defining persistent variables

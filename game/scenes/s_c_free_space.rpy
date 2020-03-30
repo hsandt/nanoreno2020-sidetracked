@@ -50,5 +50,5 @@ label .shot3:
 
     $ free_space += 1500
     $ has_deleted_game = True
-    $ has_freed_game = True  # actually a synonym for has_deleted_game in this case, but clearer
+    $ has_freed_space = True  # actually a synonym for has_deleted_game in this case, but clearer
     return

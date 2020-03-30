@@ -33,7 +33,7 @@ label .shot2b:
     "I realize those tools may be a bit too much for what I want to do. I’ll let grease elbow do the job this time."
     $ store.has_explored_power_screwdrivers = True
 
-    if has_explored_screwdrivers and store.has_explored_power_screwdrivers:
+    if has_explored_screwdrivers and has_explored_power_screwdrivers:
         jump .shot3
 
     "Where should I go next?"
@@ -60,5 +60,6 @@ label .shot3:
 
     "I grab it and rush to the cash register."
     hide mc with dissolve
+    pause 1.0
 
     jump s3_2

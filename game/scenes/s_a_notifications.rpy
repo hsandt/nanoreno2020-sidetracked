@@ -17,7 +17,7 @@ label s_a:
             "I still have a bunch of apps to update."
         if not has_freed_space:
             $ found_interesting_notification = True
-            "I still have only [free_space] MB of space left."
+            "I have only [free_space] MB of space left."
         if sister_request_phase == 1:
             $ found_interesting_notification = True
             if not has_seen_sister_request:
