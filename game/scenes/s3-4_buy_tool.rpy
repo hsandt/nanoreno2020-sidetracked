@@ -7,7 +7,7 @@ label .shot1:
     "Back at the register, I realize I’ve lost my place in the queue so I need to do it again."
     "Once more, I pull out my smartphone as I've got nothing to do. Actually, maybe I should stop doing that."
     "Nah, it's not like I'm gonna lose myself while queuing in a shop or anything."
-    call s_f
+    call s_f from _call_s_f_2
     "As I finish my business with the phone, I realize I've reached the register."
     "This time, I show the tool together with the permit."
     show item purchase_permit at item_right

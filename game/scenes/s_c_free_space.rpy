@@ -53,6 +53,6 @@ label .shot3:
     $ store.has_freed_space = True  # actually a synonym for has_deleted_game in this case, but clearer
 
     "I check if there are any other notifications left."
-    call s_a
+    call s_a from _call_s_a_5
 
     return

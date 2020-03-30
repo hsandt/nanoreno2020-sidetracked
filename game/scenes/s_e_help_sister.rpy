@@ -16,7 +16,7 @@ label .shot1:
         call .shot3 from _call_s_e_shot3
 
     "I check if there are any other notifications left."
-    call s_a
+    call s_a from _call_s_a_6
 
     return
 
