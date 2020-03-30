@@ -3,7 +3,7 @@ label s2_1:
 # MC receives notification
 label .shot1:
     scene bus_stop with dissolve
-    "Right, I forget buses only come every 20 minutes on Sunday."
+    "Right, I forgot buses only come every 20 minutes on Sunday."
     "...{p}I might as well check my phone."
     "I pull out my phone and swipes through notifications."
     call sa_1
