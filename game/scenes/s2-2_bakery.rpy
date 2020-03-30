@@ -18,5 +18,6 @@ label .shot1:
 
     "I check the item’s price, but realize my bill will cover much more than that. Even with one bus return ticket, I would have many coins left."
     mc "One croissant, one pain au chocolat and one cream puff, please."
+    "I get the items and go back to the bus stop."
 
-jump s2_3
+    jump s2_3

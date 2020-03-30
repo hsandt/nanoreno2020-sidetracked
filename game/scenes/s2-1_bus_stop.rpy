@@ -17,7 +17,4 @@ label .shot2:
     "I search in my wallet, but there are not enough to buy a ticket."
     "The last remnants of my momentum lost, I get off and decide to turn my bill into coins in some local store."
 
-    # Skip for v1.1
-    # jump s2_2
-    "Once that's done, I get on the next bus with a return ticket."
-    jump s2_3
+    jump s2_2
