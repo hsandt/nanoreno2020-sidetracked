@@ -2,7 +2,7 @@ label s1_1:
     # hide dialogue box initially so it doesn't stick to the HUD
     # from here on, dialogue box will automatically disappear during pauses between dialogues
     window hide
-    $ has_wifi = True
+    $ store.has_wifi = True
 
 label .shot1:
     show overlay black
@@ -58,7 +58,7 @@ label .shot2:
             jump .shot3b
 
 label .shot3a:
-    $ screw_measurement_method = "photo"
+    $ store.screw_measurement_method = "photo"
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
@@ -72,7 +72,7 @@ label .shot3a:
     jump .shot4
 
 label .shot3b:
-    $ screw_measurement_method = "meter"
+    $ store.screw_measurement_method = "meter"
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     mc "OK, let’s go!"
@@ -88,6 +88,6 @@ label .shot4:
     pause 2.0
 
     # No Wi-Fi outside
-    $ has_wifi = False
+    $ store.has_wifi = False
     $ quick_menu = True
     jump s2_1

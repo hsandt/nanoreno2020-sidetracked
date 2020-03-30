@@ -11,13 +11,15 @@ label .shot1:
     "Fortunately, I got a scan of my ID card on my smartphone. This would never work on an airport-gateway-level device, but on this one it should."
     "I draw my smartphone to open the picture of the scan."
 
-    if has_outstanding_notifications():
-        "I notice some notifications."
+    $ has_notifications = has_outstanding_notifications()
+    if has_notifications:
+        "But I can't help peeking at the notifications."
         menu:
             "Should I check them out?"
             "Yes, check notifications":
                 "Let's have a look."
                 call s_a from _call_s_a_4
+                "Now that's done, let's get back on track."
             "No, ignore them":
                 "I should focus on my current task."
 
@@ -27,7 +29,7 @@ label .shot1:
         jump .shot3
 
 label .shot2:
-    "I try to navigate to the file I need, but it’s very slow."
+    "I try to navigate to the ID scan, but it’s very slow."
     "I guess shouldn't have ignored that notification about running out of storage space. I'll take care of this now."
     call s_c from _call_s_c
     "With space being freed, I resume searching for my ID scan."

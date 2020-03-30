@@ -35,31 +35,31 @@ label .shot2:
 
 # From scratch
 label .shot3:
-    "I go to the form to create an account from scratch."
-    "I need to find a cool username and a tricky password."
+    "I go to the form to create an account from scratch. I need to find a cool username and a tricky password."
 
-    "In general, I build my passwords from funny sentences that are easy to remember, that I turn into a series of related words or emojis."
+    "Username is no problem, but passwords are a bit more complex."
+    "In general, I build them from funny sentences that are easy to remember, that I turn into a series of related words or emojis."
 
     menu:
         "What should I use this time?"
         "Capharnaum in the square marketplace":
-            "\"Capharnaum in the square marketplace\""
-        "OK, so that will make... \"K-far# >x< ZA \[_\]$<->$\""
+            "\"Capharnaum in the square marketplace\"
+            {p=1.0}OK, so that will make... \"K-far# >x< ZA \[_\]$<->$\""
         "Sixty-six zebras ate a watermelon salad":
-            "\"Sixty-six zebras ate a watermelon salad\""
-            "Fine, that should turn into... \"6T6//// *nom*nom* 1~~~mLnsLd\""
+            "\"Sixty-six zebras ate a watermelon salad\"
+            {p=1.0}Fine, that should turn into... \"6T6//// *nom*nom* 1~~~mLnsLd\""
         "The principal broke into the hair salon riding a motorbike":
-            "\"The principal broke into the hair salon riding a motorbike\""
-            "I can change it for... \"Ma1n NO$->//II\\\\ >8 o<o\""
+            "\"The principal broke into the hair salon riding a motorbike\"
+            {p=1.0}I can change it for... \"Ma1n NO$->//II\\\\ >8 o<o\""
 
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
     "I create my account using that password, and start playing."
     return
 
 label .shot4:
-    $ has_tried_dict = True
+    $ has_tried_game = True
 
-    if play_context == free_space:
+    if play_context == "free space":
         "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."
         "But if it's so long, I might as well take my time and play it later (if some competitor hasn't showed up in the meantime). So I think I can safely delete it for now."
     elif not has_tried_game:

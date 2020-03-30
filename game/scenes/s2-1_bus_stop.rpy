@@ -14,7 +14,7 @@ label .shot2:
     $ renpy.notify("SFX: bus arrives")
     pause 1.0
 
-    "I raise my head from the phone as the bus finally arrives."
+    "I raise my head from the phone as the bus finally arrives, and makes a sign to the driver so he stops."
     "I get on the bus and give a bill to the driver, who makes an apologetic face."
     driver "Sorry, coins only."
     "I search in my wallet, but there are not enough to buy a ticket."
