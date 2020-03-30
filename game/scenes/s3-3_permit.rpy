@@ -11,22 +11,26 @@ label .shot1:
     "Fortunately, I got a scan of my ID card on my smartphone. This would never work on an airport-gateway-level device, but on this one it should."
     "I draw my smartphone to open the picture of the scan."
 
-    if not has_freed_space:
+    if has_outstanding_notifications():
+        "I notice some notifications."
         menu:
-            "But the phone notifies me that there is very little space left."
-            "Free space now":
-                call sa_2 from _call_sa_2_1
-                "With space being freed, I resume searching for my ID scan."
-                jump .shot3
-            "Ignore":
-                jump .shot2
+            "Should I check them out?"
+            "Yes, check notifications":
+                "Let's have a look."
+                call s_a from _call_s_a_4
+            "No, ignore them":
+                "I should focus on my current task."
+
+    if not has_freed_space:
+        jump .shot2
     else:
         jump .shot3
 
 label .shot2:
-    "I try to navigate to the file I need, but it’s very slow. I guess I really need to free space now."
-    call sa_2 from _call_sa_2_2
-    "That should be enough. I search the scan picture again."
+    "I try to navigate to the file I need, but it’s very slow."
+    "I guess shouldn't have ignored that notification about running out of storage space. I'll take care of this now."
+    call s_c from _call_s_c
+    "With space being freed, I resume searching for my ID scan."
 
 label .shot3:
     "I find the scan of my ID card, and show it to the scanner. Hopefully it doesn’t care about watermark or whatever."

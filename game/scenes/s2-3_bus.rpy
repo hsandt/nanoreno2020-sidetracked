@@ -3,13 +3,20 @@ label s2_3:
 # Get on bus
 label .shot1:
     # if added BG for bakery, revert to BG for bus stop here
-    "Back at the bus stop, I wait for the next bus while tasting some viennoiseries."
+    "There, I wait for the next bus while tasting some viennoiseries."
 
     # play sound bus_arrives
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: bus arrives")
 
-    "When it arrives, I get on and buy a return ticket."
+    "When the bus arrives, I get on and buy a return ticket."
+    "While I'm paying, I sense a vibration in my pocket. I'll check this later."
+    # play sound smartphone_vibration
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: smartphone vibration")
+
+    # Sister has sent request, it will affect Scene F: Kill time > Scene A: Notifications
+    $ sister_request_phase = 1
 
 # Inside bus
 label .shot2:
@@ -18,9 +25,8 @@ label .shot2:
     play sound step_on_chair  # SFX reuse
     pause 1.0
 
-    "I pull out my phone to kill time."
-    # for v2.2
-    # Call Scene F: Kill time
+    "I pull out my phone, see what I can do until I arrive."
+    call s_f from _call_s_f_1
 
     "As the bus approaches the store, I push the stop button on my left. It does nothing, though. Probably broken."
     "I guess I’ll have to use another one, or let somebody else do it for me."

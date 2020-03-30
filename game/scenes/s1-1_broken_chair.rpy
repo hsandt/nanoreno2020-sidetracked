@@ -2,6 +2,7 @@ label s1_1:
     # hide dialogue box initially so it doesn't stick to the HUD
     # from here on, dialogue box will automatically disappear during pauses between dialogues
     window hide
+    $ has_wifi = True
 
 label .shot1:
     show overlay black
@@ -65,7 +66,7 @@ label .shot3a:
     pause 1.0
     hide item with dissolve
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
-    call sa_1 from _call_sa_1_2
+    call s_a from _call_s_a_2
 
     "OK, I’d better hurry now and go to the store while it’s open."
     jump .shot4
@@ -84,4 +85,7 @@ label .shot4:
     pause 1.0
     play sound door_open_close
     pause 2.0
+
+    # No Wi-Fi outside
+    $ has_wifi = False
     jump s2_1

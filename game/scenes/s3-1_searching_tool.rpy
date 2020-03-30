@@ -46,7 +46,7 @@ label .shot3:
     if screw_measurement_method == "photo":
         "I check the photo of the loose screw on my phone to make sure I pick the right key."
         "While I'm at it, I glance at the notifications on my phone."
-        call sa_1 from _call_sa_1
+        call s_a from _call_s_a
         "Where was I? Oh yeah, the screw."
     else:
         "I check the loose screw’s dimensions in my notepad to make sure I pick the right key."

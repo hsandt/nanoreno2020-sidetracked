@@ -1,4 +1,6 @@
 label s4a_1:
+    # probably no smartphone usage at the end of the game, but just in case
+    $ has_wifi = True
 
 label .shot1:
     # should be bg apartment_night, but we only have one
