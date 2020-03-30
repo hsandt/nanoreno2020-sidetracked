@@ -26,6 +26,7 @@ define has_updated_apps = False
 define has_freed_space = False
 define has_explored_screwdrivers = False
 define has_explored_power_screwdrivers = False
+define free_space = 400
 
 init:
     # Defining persistent variables

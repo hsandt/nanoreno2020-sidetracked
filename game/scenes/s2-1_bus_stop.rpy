@@ -12,6 +12,8 @@ label .shot1:
 label .shot2:
     "The phone keeps me busy until the bus arrives."
     # play sound bus_arrives
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: bus arrives")
     "I get on the bus and give a bill to the driver, who makes an apologetic face."
     driver "Sorry, coins only."
     "I search in my wallet, but there are not enough to buy a ticket."
