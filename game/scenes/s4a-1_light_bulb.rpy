@@ -8,17 +8,18 @@ label .shot1:
 
     show mc regular left at character_right
     "Back in my apartment, I hastily remove my shoes and open the tool’s package."
-    show item hex_key at item_left with dissolve
+    show screen screen_item("hex_key", "left") with dissolve
     mc "OK, let’s try this now."
-    hide item with dissolve
-    show item screw_loose at item_left with dissolve
+    hide screen screen_item with dissolve
+    show screen screen_item("screw_loose", "left") with dissolve
     "I use the key to tighten the screw on the chair."
     play sound screw_tighten
     pause 0.5
-    show item screw_tight with dissolve
+    hide screen screen_item 
+    show screen screen_item("screw_tight", "left") with dissolve
     pause 0.5
     mc "A-ha! Can I stand on it now?"
-    hide item
+    hide screen screen_item
     hide mc
     with Dissolve(0.1)
     play sound step_on_chair

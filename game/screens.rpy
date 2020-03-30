@@ -1603,3 +1603,44 @@ screen screen_captcha():
 
     if invalid_captcha:
         text "{size=24}Selection invalid.{/size}" xpos 765 ypos 735 color "#000000"
+
+
+
+## Item display screen #######################################################
+##
+
+#-----------------------------------------------
+init python:
+    # [ NAME, DESCRIPTION, IMAGE_PATH ]
+    item_unknown = ["unknown", "unknown", "images/item/unknown.png"]
+    itemList = [["coins", "Coins", "images/item/coins.png"],
+                ["hex_key", "Hex Key", "images/item/hex_key.png"],
+                ["purchase_permit", "Purchase Permit", "images/item/purchase_permit.png"],
+                ["screw_loose", "Screw", "images/item/screw_loose.png"],
+                ["screw_tight", "Screw", "images/item/screw_tight.png"]]
+                
+    def GetItemByName(_item): 
+        Item = item_unknown
+        for itm in itemList:
+          if (itm[0] == _item):
+            Item = itm
+        return Item
+                
+#-----------------------------------------------
+screen screen_item(itemName, displaySide="left"):
+    $newxpos = 400
+    $newypos = 200
+    if displaySide == "right":
+        $newxpos = 1100
+        $newypos = 200
+        
+    $item = GetItemByName(itemName)
+    frame: 
+        background None
+        xpos newxpos
+        ypos newypos
+        add "gui/ItemBox.png"
+        
+        add item[2] xpos 18 ypos 17
+        label item[1] xpos 50 ypos 355
+    

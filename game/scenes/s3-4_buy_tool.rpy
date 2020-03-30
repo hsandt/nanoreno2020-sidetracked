@@ -7,21 +7,21 @@ label .shot1:
     "Back at the register, I realize I’ve lost my place in the queue so I need to do it again."
     # for v2.2: Call Scene F: Kill time
     "After ten more minutes, I show the tool again, together with the permit."
-    show item purchase_permit at item_right
+    show screen screen_item("purchase_permit", "right")
     pause 1.0
-    hide item
+    hide screen screen_item
     pause 0.5
-    show item hex_key at item_right
+    show screen screen_item("screw_loose", "right")
     pause 1.0
     # if you have 2 different transforms, show both at the same time
     cashier "Six euros ninety-nine."
-    hide item
+    hide screen screen_item
 
     mc "OK."
-    show item coins at item_right with dissolve
+    show screen screen_item("screw_loose", "right") with dissolve
     play sound coins_drop
     pause 0.5
-    hide item with dissolve
+    hide screen screen_item with dissolve
     pause 0.5
 
     cashier "Thank you."

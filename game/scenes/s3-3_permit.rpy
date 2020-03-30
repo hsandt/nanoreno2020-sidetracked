@@ -46,12 +46,12 @@ label .shot3:
     $ renpy.notify("SFX: printer")
     pause 3.0
 
-    show item purchase_permit at item_right with dissolve
+    show screen screen_item("purchase_permit", "right") with dissolve
     pause 1.0
 
     "I pick the permit, and go back to the register."
     stop sound
-    hide item with dissolve
+    hide screen screen_item with dissolve
 
     hide mc with dissolve
 

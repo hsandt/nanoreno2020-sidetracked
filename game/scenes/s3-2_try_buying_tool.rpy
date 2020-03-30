@@ -3,9 +3,9 @@ label s3_2:
 label .shot1:
     show mc regular at character_left with dissolve
     mc "Hi."
-    show item hex_key at item_right with dissolve
+    show screen screen_item("hex_key", "right") with dissolve
     "I show the hex key to the cashier. She scans it, then stop for a moment."
-    hide item with dissolve
+    hide screen screen_item with dissolve
     
     cashier "Thank you. Can I see your purchase permit?"
     mc "Sorry?"

@@ -30,12 +30,12 @@ label .shot2:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show item screw_loose at item_left
+    show screen screen_item("screw_loose", "left")
     show mc casual regular left at character_right
     with dissolve
     mc "Looks like that screw is a bit loose."
     mc "Hex type, uh? Let’s see if I got a matching screwdriver."
-    hide item
+    hide screen screen_item
     hide mc with dissolve
     play sound searching_drawer
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
@@ -61,10 +61,10 @@ label .shot3a:
     $ screw_measurement_method = "photo"
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
-    show item screw_loose at item_left
+    show screen screen_item("screw_loose", "left")
     play sound smartphone_camera
     pause 1.0
-    hide item with dissolve
+    hide screen screen_item with dissolve
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
     call s_a from _call_s_a_2
 

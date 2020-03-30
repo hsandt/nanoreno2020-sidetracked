@@ -54,9 +54,10 @@ label .shot3:
     play sound searching_drawer
     pause 1.0
 
-    show item hex_key at item_right with dissolve
+    show screen screen_item("hex_key", "right") with dissolve
     "I find the right key in the middle of the mess."
-    hide item with dissolve
+    hide screen screen_item with dissolve
+    hide item
 
     "I grab it and rush to the cash register."
     hide mc with dissolve
