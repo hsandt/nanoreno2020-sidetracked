@@ -44,11 +44,15 @@ label .shot2a:
     mc "I think I still have time to go."
     "The store is not too far, I should be back in no time."
     play sound door_open_close
+    $ quick_menu = False
     show overlay black with dissolve
+    $ quick_menu = True
     jump ending2
 
 label .shot2b:
+    $ quick_menu = False
     show overlay black with dissolve
+    $ quick_menu = True
     "After that, I made myself a soup, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
     jump ending1

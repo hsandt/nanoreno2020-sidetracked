@@ -80,6 +80,7 @@ label .shot3b:
 
 label .shot4:
     "The store is not too far, I should be back in no time."
+    $ quick_menu = False
     show overlay black with dissolve
     stop music fadeout 2.0
     pause 1.0
@@ -88,4 +89,5 @@ label .shot4:
 
     # No Wi-Fi outside
     $ has_wifi = False
+    $ quick_menu = True
     jump s2_1

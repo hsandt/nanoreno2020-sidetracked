@@ -26,7 +26,9 @@ label .shot1:
 
     cashier "Thank you."
     mc "Goodbye! {i}(Finally.){/i}"
+    $ quick_menu = False
     show overlay black with dissolve
     stop music fadeout 2.0
+    $ quick_menu = True
 
     jump s4a_1
