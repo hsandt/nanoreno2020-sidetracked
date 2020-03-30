@@ -15,7 +15,7 @@ label .shot1:
         menu:
             "But the phone notifies me that there is very little space left."
             "Free space now":
-                call sa_2
+                call sa_2 from _call_sa_2_1
                 "With space being freed, I resume searching for my ID scan."
                 jump .shot3
             "Ignore":
@@ -25,7 +25,7 @@ label .shot1:
 
 label .shot2:
     "I try to navigate to the file I need, but it’s very slow. I guess I really need to free space now."
-    call sa_2
+    call sa_2 from _call_sa_2_2
     "That should be enough. I search the scan picture again."
 
 label .shot3:
