@@ -1,7 +1,7 @@
 # call, not jump to this label, so you can come back
 label s_a:
-    if not has_seen_notifications:
-        $ has_seen_notifications = True
+    if not has_seen_base_notifications:
+        $ has_seen_base_notifications = True
 
         "New album released today, professional translators meetup tomorrow..."
         "But my main concern is that bunch of app updates I have been delaying for two weeks."
@@ -17,7 +17,11 @@ label s_a:
             "I still have a bunch of apps to update."
         if not has_freed_space:
             $ found_interesting_notification = True
-            "I have only [free_space] MB of space left."
+            if not has_seen_space_left_since_last_change:
+                $ has_seen_space_left_since_last_change = True
+                "I have only [free_space] MB of space left."
+            else:
+                "I have only [free_space] MB of space left."
         if sister_request_phase == 1:
             $ found_interesting_notification = True
             if not has_seen_sister_request:

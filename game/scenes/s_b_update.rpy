@@ -5,6 +5,9 @@ label s_b:
     "Hopefully that will help reduce my data usage while also saving some space."
     "After the fourth manual update, I get impatient and just touch \"Update all\"."
 
+    $ has_updated_apps = True
+    $ free_space -= 100
+
     if has_wifi:
         "Fortunately, it downloads pretty fast on Wi-Fi."
         if not has_freed_space:
@@ -15,9 +18,6 @@ label s_b:
             "It's very slow, but I take on myself and wait. When the update is over, I finally run the game again."
         else:
             "It's very slow… I'll let that happen in the background."
-
-    $ has_updated_apps = True
-    $ free_space -= 100
 
     if update_context == "play game":
         return

@@ -23,7 +23,8 @@ define printer = Character("Printer", color="#CCCCCC")
 
 # Story event flags
 define has_wifi = False
-define has_seen_notifications = False
+define has_seen_base_notifications = False
+define has_seen_space_left_since_last_change = False
 define has_seen_sister_request = False
 define has_given_fake_translation = False
 define has_given_silence = False

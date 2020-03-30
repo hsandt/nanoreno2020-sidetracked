@@ -59,7 +59,7 @@ label .shot3:
 label .shot4:
     $ has_tried_dict = True
 
-    if play_context == free_space:
+    if play_context == "free space":
         "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."
         "But if it's so long, I might as well take my time and play it later (if some competitor hasn't showed up in the meantime). So I think I can safely delete it for now."
     elif not has_tried_game:
