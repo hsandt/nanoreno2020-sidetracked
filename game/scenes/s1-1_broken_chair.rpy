@@ -65,7 +65,7 @@ label .shot3a:
     pause 1.0
     hide item with dissolve
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
-    call sa_1
+    call sa_1 from _call_sa_1_2
 
     "OK, I’d better hurry now and go to the store while it’s open."
     jump .shot4

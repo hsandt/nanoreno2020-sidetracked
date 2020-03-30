@@ -16,7 +16,7 @@ label sa_1:
     menu:
         "What should I do?"
         "Free space on the smartphone":
-            call sa_2
+            call sa_2 from _call_sa_2
         "Ignore the notification":
             "I can take care of this later."
 

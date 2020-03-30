@@ -6,7 +6,7 @@ label .shot1:
     "Right, I forgot buses only come every 20 minutes on Sunday."
     "...{p}I might as well check my phone."
     "I pull out my phone and swipes through notifications."
-    call sa_1
+    call sa_1 from _call_sa_1_1
 
 # MC enters bus, but doesn’t have coins
 label .shot2:
