@@ -3,6 +3,10 @@ label s_a:
     if not has_seen_base_notifications:
         $ store.has_seen_base_notifications = True
 
+        show overlay smartphone_backlayer
+        show sub smartphone
+        with dissolve
+
         "New album released today, professional translators meetup tomorrow..."
         "But my main concern is that bunch of app updates I have been delaying for two weeks."
         "That, and the fact that I'm running out of storage space, with only [free_space] MB left."
@@ -34,7 +38,8 @@ label s_a:
             "My sister has sent me another message."
 
         if not found_interesting_notification:
-            "Nothing in particular catches my attention."
+            "Nothing in particular catches my attention, so I put my phone back in my pocket."
+            call .exit
             return
 
     menu:
@@ -48,6 +53,13 @@ label s_a:
         "Check sister reply" if sister_request_phase == 2:
             jump s_e
         "Ignore notifications":
-            "I can take care of this later."
+            "I ignore the notifications and put my phone back in my pocket."
 
+    call .exit
+    return
+
+label .exit:
+    hide overlay
+    hide sub
+    with dissolve
     return
