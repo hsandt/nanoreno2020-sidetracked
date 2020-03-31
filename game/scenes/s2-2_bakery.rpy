@@ -2,6 +2,8 @@ label s2_2:
 
 # MC enters bakery and buys everything
 label .shot1:
+    $ store.time = "17:30"
+
     "My sense of smell finds a bakery nearby, so I walk in. My eyes agree with my nose, only problem is I don’t know what to choose."
 
     "The shining buttery croissant has a decent volume, but there is a chance it's empty inside."

@@ -3,6 +3,7 @@ label s2_1:
 # MC receives notification
 label .shot1:
     scene bus_stop with dissolve
+    $ store.time = "17:15"
     "Right, I forgot buses only come every 20 minutes on Sunday."
     "Looks like I have some time on my hands. But my smartphone can keep me busy."
     call s_f from _call_s_f

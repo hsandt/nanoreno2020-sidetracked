@@ -2,6 +2,8 @@ label s2_3:
 
 # Get on bus
 label .shot1:
+    $ store.time = "17:45"
+
     # if added BG for bakery, revert to BG for bus stop here
     "There, I wait for the next bus while tasting some viennoiseries."
 

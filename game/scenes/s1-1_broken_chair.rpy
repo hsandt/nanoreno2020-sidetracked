@@ -3,6 +3,7 @@ label s1_1:
     # from here on, dialogue box will automatically disappear during pauses between dialogues
     window hide
     $ store.has_wifi = True
+    $ store.time = "17:00"
 
 label .shot1:
     show overlay black

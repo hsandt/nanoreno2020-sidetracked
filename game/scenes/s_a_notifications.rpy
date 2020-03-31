@@ -1,11 +1,10 @@
 # call, not jump to this label, so you can come back
 label s_a:
+    show screen smartphone("notifications") with dissolve
+    $ store.is_showing_smartphone = True
+
     if not has_seen_base_notifications:
         $ store.has_seen_base_notifications = True
-
-        show overlay smartphone_backlayer
-        show sub smartphone
-        with dissolve
 
         "New album released today, professional translators meetup tomorrow..."
         "But my main concern is that bunch of app updates I have been delaying for two weeks."
@@ -59,7 +58,6 @@ label s_a:
     return
 
 label .exit:
-    hide overlay
-    hide sub
-    with dissolve
+    hide screen smartphone with dissolve
+    $ store.is_showing_smartphone = False
     return

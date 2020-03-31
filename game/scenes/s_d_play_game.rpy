@@ -3,6 +3,9 @@ label s_d:
 
 # Start
 label .shot1:
+    show screen smartphone("notifications") with dissolve
+    $ store.is_showing_smartphone = True
+
     if not has_updated_apps:
         "As soon as I launch the game, an update pop-up requests me to download the latest patch."
         if play_context == "free space":
@@ -59,12 +62,20 @@ label .shot3:
 label .shot4:
     $ store.has_tried_game = True
 
+    show screen smartphone("game") with dissolve
+    $ store.is_showing_smartphone = True
+
     if play_context == "free space":
         "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."
         "But if it's so long, I might as well take my time and play it later (if some competitor hasn't showed up in the meantime). So I think I can safely delete it for now."
+        show screen smartphone("notifications") with dissolve
     elif not has_tried_game:
         "The game is... okay. There is a lot to do, so I guess I can continue playing a bit later."
+        hide screen smartphone with dissolve
+        $ store.is_showing_smartphone = False
     else:
         "I resume my session where I left it, and go over a few missions. Is it normal that I'm at level 3 and I'm dealing, like, 6,187 damage every attack?"
         "Well, I guess that's just a number, but it's a bit hard for me to understand how really strong it is so early in the game."
+        hide screen smartphone with dissolve
+        $ store.is_showing_smartphone = False
     return

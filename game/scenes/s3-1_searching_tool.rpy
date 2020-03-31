@@ -1,6 +1,8 @@
 label s3_1:
 
 label .shot1:
+    $ store.time = "18:00"
+
     scene bg store with dissolve
     play music store
     show mc regular at character_left with dissolve

@@ -1,6 +1,8 @@
 label s3_3:
 
 label .shot1:
+    $ store.time = "18:30"
+
     pause 1.0
 
     show mc regular at character_left with dissolve

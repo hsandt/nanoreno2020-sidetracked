@@ -29,7 +29,7 @@ style hyperlink_text:
 style gui_text:
     properties gui.text_properties("interface")
     selected_idle_outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
-    
+
 style button:
     properties gui.button_properties("button")
 
@@ -115,7 +115,10 @@ screen say(who, what):
                 text who id "who"
 
         text what id "what"
-
+        if is_showing_smartphone:
+            yalign 0.01
+        else:
+            yalign 0.85
 
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.
@@ -139,7 +142,7 @@ style namebox_label is say_label
 style window:
     xalign 0.5
     xfill True
-    yalign gui.textbox_yalign
+    yalign gui.textbox_yalign  # will be overridden in screen say
     ysize gui.textbox_height
 
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
@@ -215,6 +218,11 @@ screen choice(items):
     style_prefix "choice"
 
     vbox:
+        if is_showing_smartphone:
+            ypos 505
+        else:
+            ypos 405
+
         for i in items:
             textbutton i.caption action i.action at choice_transform
 
@@ -233,7 +241,7 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    # ypos 405
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -1624,14 +1632,14 @@ init python:
                 ["purchase_permit", "Purchase Permit", "images/item/purchase_permit.png"],
                 ["screw_loose", "Screw", "images/item/screw_loose.png"],
                 ["screw_tight", "Screw", "images/item/screw_tight.png"]]
-                
-    def GetItemByName(_item): 
+
+    def GetItemByName(_item):
         Item = item_unknown
         for itm in itemList:
           if (itm[0] == _item):
             Item = itm
         return Item
-                
+
 #-----------------------------------------------
 screen screen_item(itemName, displaySide="left"):
     $newxpos = 400
@@ -1639,14 +1647,66 @@ screen screen_item(itemName, displaySide="left"):
     if displaySide == "right":
         $newxpos = 1100
         $newypos = 200
-        
+
     $item = GetItemByName(itemName)
-    frame: 
+    frame:
         background None
         xpos newxpos
         ypos newypos
         add "gui/ItemBox.png"
-        
+
         add item[2] xpos 18 ypos 17
         label item[1] xpos 50 ypos 355
-    
+
+style smartphone_time_text:
+    xpos 770
+    ypos 335
+    size 10  # ignored??
+
+screen smartphone(app_name):
+    add Solid("#ffffff80")
+
+    if app_name == "notifications":
+        add "images/bg/sub/smartphone_home_notifications.png":
+            xalign 0.5
+            yalign 1.0
+        # FIXME: never refreshed!
+        label time style "smartphone_time_text" text_color "#ffffff"
+        if has_wifi:
+            add "images/bg/sub/wifi.png" xpos 1050 ypos 338
+        else:
+            add "images/bg/sub/4g.png" xpos 1032 ypos 341
+    elif app_name == "dictionary":
+        add "images/bg/sub/smartphone_dict_app.png":
+            xalign 0.5
+            yalign 1.0
+        add "images/bg/sub/smartphone_top_bar.png":
+            xalign 0.5
+            yalign 1.0
+        label time style "smartphone_time_text" text_color "#ffffff"
+    elif app_name == "message":
+        add "images/bg/sub/smartphone_message_app.png":
+            xalign 0.5
+            yalign 1.0
+        add "images/bg/sub/smartphone_top_bar.png":
+            xalign 0.5
+            yalign 1.0
+        label time style "smartphone_time_text" text_color "#ffffff"
+    elif app_name == "game":
+        add "images/bg/sub/smartphone_game.png":
+            xalign 0.5
+            yalign 1.0
+
+    add "images/bg/sub/smartphone_body.png":
+        xalign 0.5
+        yalign 1.0
+
+
+    # $item = GetItemByName(itemName)
+    # frame:
+    #     background None
+    #     xpos newxpos
+    #     ypos newypos
+    #
+    #     add item[2] xpos 18 ypos 17
+    #     label item[1] xpos 50 ypos 355

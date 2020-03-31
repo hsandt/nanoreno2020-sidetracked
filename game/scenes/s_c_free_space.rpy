@@ -35,6 +35,8 @@ label s_c:
 
 # Dictionary app
 label .shot2:
+    show screen smartphone("dictionary") with dissolve
+
     "I open the dictionary app and try a few words. Example sentences are incredible."
     "I already have 4 dictionary apps, but good examples are killer feature, so I'll keep this one as well."
 

@@ -3,6 +3,8 @@ label s_e:
 
 # Check
 label .shot1:
+    show screen smartphone("message") with dissolve
+
     if sister_request_phase == 1:
         "I check my sister's message:"
         "\"hey sis could you translate that for me? Thx\" followed by a short, ambiguous Japanese sentence."
@@ -17,6 +19,9 @@ label .shot1:
 
     "I check if there are any other notifications left."
     call s_a from _call_s_a_6
+
+    hide screen smartphone with dissolve
+    $ store.is_showing_smartphone = False
 
     return
 

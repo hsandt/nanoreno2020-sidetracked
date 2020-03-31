@@ -41,6 +41,10 @@ define sister_request_phase = 0
 define update_context = None
 define play_context = None
 
+# UI variables
+define is_showing_smartphone = False
+define time = "17:00"
+
 init:
     # Defining persistent variables
 
