@@ -38,7 +38,7 @@ label s_a:
 
         if not found_interesting_notification:
             "Nothing in particular catches my attention, so I put my phone back in my pocket."
-            call .exit
+            call .exit from _call_s_a_exit
             return
 
     menu:
@@ -54,7 +54,7 @@ label s_a:
         "Ignore notifications":
             "I ignore the notifications and put my phone back in my pocket."
 
-    call .exit
+    call .exit from _call_s_a_exit_1
     return
 
 label .exit:
