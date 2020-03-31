@@ -29,9 +29,11 @@ define config.version = "2.2"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p("""This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020 Visual Novel game jam{/a}.
+define gui.about = _p("""
+This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020 Visual Novel game jam{/a}.
 
-{b}Credits{/b}
+
+{u}Credits{/u}
 
 - Writing, Programming: komehara
 
@@ -45,7 +47,8 @@ define gui.about = _p("""This game was developed for the {a=https://itch.io/jam/
 
 - Sound Effects: Fabian Fabro (FirahFabe), komehara
 
-{b}Copyright{/b}
+
+{u}Copyright{/u}
 
 Original backgrounds: copyright JW Jones
 

@@ -20,11 +20,16 @@ style input:
 style hyperlink_text:
     properties gui.text_properties("hyperlink", accent=True)
     hover_underline True
+    font gui.name_text_font
+    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    hover_outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    idle_color "#744675"
+    hover_color "#f4cfe5"
 
 style gui_text:
     properties gui.text_properties("interface")
-
-
+    selected_idle_outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    
 style button:
     properties gui.button_properties("button")
 
@@ -35,6 +40,7 @@ style button_text is gui_text:
 
 style label_text is gui_text:
     properties gui.text_properties("label", accent=True)
+    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
 
 style prompt_text is gui_text:
     properties gui.text_properties("prompt")
@@ -147,12 +153,12 @@ style namebox:
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
-    outlines [ (absolute(2), "#fff", absolute(2), absolute(2)) ]
 
 style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
     yalign 0.5
+    drop_shadow (2,2)
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
