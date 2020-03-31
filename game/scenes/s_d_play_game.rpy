@@ -8,9 +8,9 @@ label .shot1:
         if play_context == "free space":
             "That's 100 MB. So I must lose space in order to free space? Neat."
         "Anyway, I can't do that from the game though, so I go to the application store."
-        $ update_context = "play game"
+        $ store.update_context = "play game"
         call s_b from _call_s_b  # Update
-        $ update_context = None
+        $ store.update_context = None
     else:
          "I've already updated all the apps earlier, so I can play the latest patch of the game."
 
@@ -57,7 +57,7 @@ label .shot3:
     return
 
 label .shot4:
-    $ has_tried_game = True
+    $ store.has_tried_game = True
 
     if play_context == "free space":
         "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."

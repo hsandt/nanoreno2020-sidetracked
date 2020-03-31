@@ -3,12 +3,17 @@
 ## Overlay
 
 image overlay black = Solid("#000000")
+image overlay smartphone_backlayer = Solid("#ffffff80")
 
 ## Backgrounds (1080p)
 
 image bg apartment = "images/bg/apartment.jpg"
 image bg bus_stop = "images/bg/bus_stop.jpg"
 image bg store = "images/bg/store.jpg"
+
+## Sub-backgrounds (smartphone)
+
+image sub smartphone = "images/bg/sub/smartphone_body.png"
 
 ## Items
 
