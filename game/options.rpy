@@ -60,7 +60,7 @@ Other backgrounds:
 
 - Bus outside (bus_outside.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Rennes_-_Bluebus_20180316-02.jpg}Rennes_-_Bluebus_20180316-02.jpg{/a} by Pymouss under CC-BY-4.0 on Wikimedia Commons
 
-- Bus inside (bus_inside.jpg) adapted from {a=http://unyokan2.ninja-web.net/haikei2/bass/bass007.jpg}bass007.jpg{/a} distributed by うにょ＠ on {a=http://unyokan.ojaru.jp/framepage2.html}this page{/a} under custom license (allows free use with optional crediting)
+- Bus inside (bus_inside.jpg) adapted from {a=http://unyokan2.ninja-web.net/haikei2/bass/bass007.jpg}bass007.jpg{/a} distributed by Unyo@ on {a=http://unyokan.ojaru.jp/framepage2.html}this page{/a} under custom license (allows free use with optional crediting)
 
 - Bakery (bakery.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Typical_French_bakery_pastries.jpg}Typical_French_bakery_pastries.jpg{/a} by Andre.o.mob under CC-BY-SA-4.0 on Wikimedia Commons
 
@@ -78,9 +78,11 @@ Ambient BGM:
 
 Free BGM:
 
-- 緑茶でも一杯 from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
+- Ryokucha demo Ippai from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
 
-- 柔らかな嘘 by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
+- Yawarakana Uso by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
+
+- Game BGM (bgm_maoudamashii_fantasy03_short.ogg) cropped from Fantasy 03 by {a=https://maoudamashii.jokersounds.com}Maoudamashii{/a} distributed on {a=https://maoudamashii.jokersounds.com/list/bgm10.html}this page{/a} under {a=https://maoudamashii.jokersounds.com/music_rule.html}custom license{/a} (allows free usage with appropriate credit whenever possible)
 
 Original SFX: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara, everything else is copyright Fabian Fabro (FirahFabe)
 

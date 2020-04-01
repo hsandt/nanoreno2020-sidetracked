@@ -1,6 +1,7 @@
 label s1_1:
     $ store.has_wifi = True
     $ store.currentTime = "17:00"
+    $ store.wrapping_scene = "broken_chair"
 
 label .shot1:
     #Reset all tasks to Not Started so they dont show up

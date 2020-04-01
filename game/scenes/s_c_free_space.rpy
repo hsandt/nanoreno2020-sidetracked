@@ -48,7 +48,7 @@ label .shot2:
 
 # Delete game
 label .shot3:
-    "I delete the game, and gain 1.5 GB. Wow, that should be enough!"
+    "I delete the game, which gives me 1.5 GB extra space. Wow, that should be enough!"
 
     $ change_free_space(+1500)
     $ store.has_deleted_game = True

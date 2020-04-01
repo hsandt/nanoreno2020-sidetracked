@@ -39,6 +39,7 @@ init:
     define has_explored_power_screwdrivers = False
     define free_space = 400
     define sister_request_phase = 0
+    define wrapping_scene = None  # high context scene, used to restore correct BGM
     define update_context = None
     define play_context = None
 
@@ -46,7 +47,6 @@ init:
     define is_showing_smartphone = False
     define currentTime = "17:00"
 
-init:
     # Defining persistent variables
 
     if persistent.unlocked is None:

@@ -43,6 +43,7 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 # define audio.title_screen = "audio/bgm/title_screen.ogg"
 define audio.apartment = "audio/bgm/i71002_ryokucha.mp3"
 define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
+define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
 # for memo, but never used directly as we must loop with full file path
 # define audio.street = "audio/bgm/ambient_street.ogg"
 

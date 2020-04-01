@@ -63,20 +63,52 @@ label .shot4:
     show screen smartphone("game") with dissolve
     $ store.is_showing_smartphone = True
 
+    play music game fadein 0.5
+    pause 2.0
+
     if play_context == "free space":
-        "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."
-        "But if it's so long, I might as well take my time and play it later (if some competitor hasn't showed up in the meantime). So I think I can safely delete it for now."
+        "The game is... actually quite interesting. But there is a lot to do, so it's hard for me to tell if it's worth going on or not."
+        "If I try to see more of it, I may never be able to delete it. Maybe I should delete it now, and re-install it later."
+        "My account should preserve my save until next time I play..."
+        "Assuming that in the meantime, servers are not shut down, with some competitor making all of it obsolete -_-'"
+        stop music fadeout 1.5
+        "After a few more minutes, I end my session."
         show screen smartphone("notifications") with dissolve
     elif not has_tried_game:
-        "The game is... okay. There is a lot to do, so I guess I can continue playing a bit later."
+        "The game is... actually quite interesting. Placing your characters the right way helps you finish the fights much more quickly."
+        "But I don't feel in danger enough, so I don't feel the need to improve. Even after many mistakes I still have plenty of health."
+        "Also, numbers are a bit mind blowing. Is it normal that I'm still at level 3 and yet dealing 6,187 damage in one attack?"
+        "Well, I guess it's all relative..."
+        pause 1.0
+        stop music fadeout 1.5
+        "After a few more fights, I end my session."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
     else:
-        "I resume my session where I left it, and go over a few missions. Is it normal that I'm at level 3 and I'm dealing, like, 6,187 damage every attack?"
-        "Well, I guess that's just a number, but it's a bit hard for me to understand how really strong it is so early in the game."
+        "I resume my session where I left it, and go over a few missions."
+        "Hmm... There are really, many, many characters. I'm glad I don't have to name every of them."
+        pause 2.0
+        stop music fadeout 1.5
+        "After a few missions, I end my session."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
 
     $ store.has_tried_game = True
 
+    call .restore_bgm
+
     return
+
+label .restore_bgm:
+    if wrapping_scene == "broken_chair":
+        play music apartment
+    elif wrapping_scene == "bus_stop":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "bakery":
+        play music store
+    elif wrapping_scene == "bus":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "store":
+        play music store
+    elif wrapping_scene == "light_bulb":
+        pass
