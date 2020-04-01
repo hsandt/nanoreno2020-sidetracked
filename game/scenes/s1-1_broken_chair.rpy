@@ -1,15 +1,17 @@
 label s1_1:
-    # hide dialogue box initially so it doesn't stick to the HUD
-    # from here on, dialogue box will automatically disappear during pauses between dialogues
-    window hide
     $ store.has_wifi = True
     $ store.time = "17:00"
 
 label .shot1:
     show overlay black
+    pause 1.0
+    # the show/hide at the beginning of each scene is only to show textbox with quick dissolve
+    # then hide it when no text is shown (without having to manually "window hide" every time)
+    window show
     "They say I'm easily distracted."
     "That's not true."
     "I'm not jumping from topic to topic without reason. It's just that problems keep popping up in my face."
+    window hide None # no transition except on scene start/end
     pause 0.5
 
     "Like that one time."
@@ -80,7 +82,11 @@ label .shot3b:
     jump .shot4
 
 label .shot4:
+    # the window show None / hide at the end of each scene is just to have a clean
+    # textbox dissolve at the end
+    window show None
     "The store is not too far, I should be back in no time."
+    window hide
     $ quick_menu = False
     show overlay black with dissolve
     stop music fadeout 2.0

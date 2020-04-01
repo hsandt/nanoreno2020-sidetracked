@@ -30,7 +30,11 @@ label .shot1:
     pause 0.5
 
     cashier "Thank you."
+    
+    window show None
     mc "Goodbye! {i}(Finally.){/i}"
+    window hide
+
     $ quick_menu = False
     show overlay black with dissolve
     stop music fadeout 2.0

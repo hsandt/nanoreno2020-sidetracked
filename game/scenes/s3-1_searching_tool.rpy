@@ -3,13 +3,14 @@ label s3_1:
 label .shot1:
     $ store.time = "18:00"
 
-    scene bg store with dissolve
+    scene bg store with Dissolve(1.0)
     play music store
     show mc regular at character_left with dissolve
 
-    "I enter the DIY store, welcomed by a wide range of shelves full of probably useful items, most of them I couldn’t name."
+    window show
     "As I walk past the aisles, I glance at the signs: \"Hammers & Mallets\", \"Keys & Locks\", \"Painting\"..."
     "Eventually, I see two categories that seem fit: \"Screwdrivers & Nut Drivers\", and \"Power Screwdrivers\". Where should I go first?"
+    window hide None
 
     menu choose_category:
         "Screwdrivers & Nut Drivers" if not has_explored_screwdrivers:

@@ -8,8 +8,9 @@ label .shot1:
     pause 1.0
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
 
-    # if added BG for bakery, revert to BG for bus stop here
+    window show
     "There, I wait for the next bus while tasting some viennoiseries."
+    window hide None
 
     # play sound bus_arrives
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
@@ -117,7 +118,10 @@ label .shot7:
 
 # Get off
 label .shot8:
+    window show None
     "The bus stops near the DIY store, I get off and walk in."
+    window hide
+    
     # play sound automatic_door_open_close
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: automatic door opens and closes")
