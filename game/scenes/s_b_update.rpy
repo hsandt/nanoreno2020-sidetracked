@@ -22,6 +22,4 @@ label s_b:
     if update_context == "play game":
         return
 
-    "I check if there are any other notifications left."
-    call s_a from _call_s_a_1
     return
