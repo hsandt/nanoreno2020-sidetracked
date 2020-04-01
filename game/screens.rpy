@@ -1629,7 +1629,7 @@ init python:
     item_unknown = ["unknown", "unknown", "images/item/unknown.png"]
     itemList = [["coins", "Coins", "images/item/coins.png"],
                 ["hex_key", "Hex Key", "images/item/hex_key.png"],
-                ["purchase_permit", "Purchase Permit", "images/item/purchase_permit.png"],
+                ["purchase_permit", "{size=-5}Purchase Permit{/size}", "images/item/purchase_permit.png"],
                 ["screw_loose", "Screw", "images/item/screw_loose.png"],
                 ["screw_tight", "Screw", "images/item/screw_tight.png"]]
 
@@ -1656,8 +1656,7 @@ screen screen_item(itemName, displaySide="left"):
         add "gui/ItemBox.png"
 
         add item[2] xpos 18 ypos 17
-        label item[1] xpos 50 ypos 355
-
+        label item[1] xpos 38 ypos 355
 style smartphone_time_text:
     xpos 770
     ypos 335
