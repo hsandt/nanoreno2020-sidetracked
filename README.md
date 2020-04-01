@@ -12,7 +12,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 * Character Sprites: Maxenau
 * Item Sprites: komehara
 * Ambient BGM: komehara
-* Sound Effects: Fabian Fabro (FirahFabe), komehara
+* SFX: Fabian Fabro (FirahFabe), komehara
 
 ## Free assets
 
@@ -37,13 +37,19 @@ Character sprites: copyright Maxenau
 
 Item sprites: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
 
-Ambient BGM (ambient_street.ogg): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
+Ambient BGM:
+
+* ambient_street.ogg: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
 
 Free BGM:
 
 * 緑茶でも一杯 from [SLOS V 7.1](http://slos.biz/) by [background](http://back-ground.biz/) under [custom license](http://slos.biz/#x:_rule) (allows free usage with appropriate credit and notification)
 * 柔らかな嘘 by [MusMus](http://musmus.main.jp) under [custom license](http://musmus.main.jp/info.html) (allows free usage as BGM with appropriate credit)
 
-Sound Effects: inspect_chair.ogg is [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara, everything else is copyright Fabian Fabro (FirahFabe)
+Original SFX: inspect_chair.ogg is [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara, everything else is copyright Fabian Fabro (FirahFabe)
+
+Free SFX:
+
+* smartphone notification (notification_unconvinced.ogg)(https://notificationsounds.com/notification-sounds/unconvinced-569) by [Notification Sounds](https://notificationsounds.com) under CC BY 4.0
 
 For code, see [LICENSE](LICENSE).

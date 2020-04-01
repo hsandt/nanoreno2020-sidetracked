@@ -18,10 +18,11 @@ label .shot1:
     scene bus_outside with dissolve
 
     "When the bus arrives, I get on and buy a return ticket."
-    "While I'm paying, I sense a vibration in my pocket. I'll check this later."
-    # play sound smartphone_vibration
+    play sound smartphone_notification
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: smartphone vibration")
+    $ renpy.notify("SFX: smartphone notification")
+
+    "While I'm paying, my phone vibrates and notifies my of a new message. I'll check this later."
 
     # Sister has sent request, it will affect Scene F: Kill time > Scene A: Notifications
     $ sister_request_phase = 1
@@ -121,7 +122,7 @@ label .shot8:
     window show None
     "The bus stops near the DIY store, I get off and walk in."
     window hide
-    
+
     # play sound automatic_door_open_close
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: automatic door opens and closes")

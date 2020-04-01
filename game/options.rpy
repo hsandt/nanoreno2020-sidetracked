@@ -72,7 +72,9 @@ Character sprites: copyright Maxenau
 
 Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
-Ambient BGM (ambient_street.ogg): {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
+Ambient BGM:
+
+- ambient_street.ogg: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
 Free BGM:
 
@@ -80,7 +82,11 @@ Free BGM:
 
 - 柔らかな嘘 by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
 
-Sound Effects: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara, everything else is copyright Fabian Fabro (FirahFabe)
+Original SFX: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara, everything else is copyright Fabian Fabro (FirahFabe)
+
+Free SFX:
+
+- smartphone notification {a=https://notificationsounds.com/notification-sounds/unconvinced-569}notification_unconvinced.ogg{/a} by {a=https://notificationsounds.com}Notification Sounds{/a} under CC BY 4.0
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
