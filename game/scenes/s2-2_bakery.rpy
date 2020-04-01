@@ -7,6 +7,7 @@ label .shot1:
     "My sense of smell finds a bakery nearby, so I walk in."
 
     scene bakery with dissolve
+    play music store
 
     "My eyes agree with my nose, only problem is I don’t know what to choose."
     "The shining buttery croissant has a decent volume, but there is a chance it's empty inside."
@@ -23,6 +24,8 @@ label .shot1:
 
     "I check the items' prices, and all are quite cheap. I'm sure I could get a few with a single bill and still have coins left for the bus."
     mc "One croissant, one pain au chocolat and one cream puff, please."
-    "I get the items and go back to the bus stop."    
+    "I get the items and go back to the bus stop."
+
+    stop music fadeout 2.0
 
     jump s2_3
