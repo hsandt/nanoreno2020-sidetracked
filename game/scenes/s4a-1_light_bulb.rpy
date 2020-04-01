@@ -3,7 +3,7 @@ label s4a_1:
     $ store.has_wifi = True
 
 label .shot1:
-    $ store.time = "19:10"
+    $ store.currentTime = "19:10"
 
     # should be bg apartment_night, but we only have one
     scene bg apartment with dissolve

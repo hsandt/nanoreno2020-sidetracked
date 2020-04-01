@@ -1629,7 +1629,7 @@ init python:
     item_unknown = ["unknown", "unknown", "images/item/unknown.png"]
     itemList = [["coins", "Coins", "images/item/coins.png"],
                 ["hex_key", "Hex Key", "images/item/hex_key.png"],
-                ["purchase_permit", "{size=-5}Purchase Permit{/size}", "images/item/purchase_permit.png"],
+                ["purchase_permit", "Purchase Permit", "images/item/purchase_permit.png"],
                 ["screw_loose", "Screw", "images/item/screw_loose.png"],
                 ["screw_tight", "Screw", "images/item/screw_tight.png"]]
 
@@ -1650,19 +1650,30 @@ screen screen_item(itemName, displaySide="left"):
 
     $item = GetItemByName(itemName)
     frame:
+        
         background None
         xpos newxpos
         ypos newypos
         add "gui/ItemBox.png"
 
         add item[2] xpos 18 ypos 17
-        label item[1] xpos 38 ypos 355
-style smartphone_time_text:
+        text item[1] xpos 166 style_prefix "item"
+        
+style item_text is gui_text:
+    xalign 0.5
+    yalign 0.345
+    color "#000000"
+    outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
+        
+style smartphone_time_text is gui_text:
     xpos 770
     ypos 335
-    size 10  # ignored??
+    size 40  # ignored?? 
+    color "#ffffff"
+    outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
 
 screen smartphone(app_name):
+    $currentTime = store.currentTime
     add Solid("#ffffff80")
 
     if app_name == "notifications":
@@ -1670,7 +1681,7 @@ screen smartphone(app_name):
             xalign 0.5
             yalign 1.0
         # FIXME: never refreshed!
-        label time style "smartphone_time_text" text_color "#ffffff"
+        text currentTime style_prefix "smartphone_time"
         if has_wifi:
             add "images/bg/sub/wifi.png" xpos 1050 ypos 338
         else:
@@ -1682,7 +1693,7 @@ screen smartphone(app_name):
         add "images/bg/sub/smartphone_top_bar.png":
             xalign 0.5
             yalign 1.0
-        label time style "smartphone_time_text" text_color "#ffffff"
+        text currentTime style_prefix "smartphone_time"
     elif app_name == "message":
         add "images/bg/sub/smartphone_message_app.png":
             xalign 0.5
@@ -1690,7 +1701,7 @@ screen smartphone(app_name):
         add "images/bg/sub/smartphone_top_bar.png":
             xalign 0.5
             yalign 1.0
-        label time style "smartphone_time_text" text_color "#ffffff"
+        text currentTime style_prefix "smartphone_time"
     elif app_name == "game":
         add "images/bg/sub/smartphone_game.png":
             xalign 0.5

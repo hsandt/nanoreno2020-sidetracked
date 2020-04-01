@@ -1,6 +1,6 @@
 label s1_1:
     $ store.has_wifi = True
-    $ store.time = "17:00"
+    $ store.currentTime = "17:00"
 
 label .shot1:
     show overlay black
@@ -34,6 +34,8 @@ label .shot2:
     stop sound
 
     show screen screen_item("screw_loose", "left")
+    "..."
+    show screen screen_item("purchase_permit", "right")
     show mc casual regular left at character_right
     with dissolve
     mc "Looks like that screw is a bit loose."

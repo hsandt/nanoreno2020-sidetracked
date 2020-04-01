@@ -1,7 +1,7 @@
 label s3_1:
 
 label .shot1:
-    $ store.time = "18:00"
+    $ store.currentTime = "18:00"
 
     scene bg store with Dissolve(1.0)
     play music store

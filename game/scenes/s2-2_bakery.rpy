@@ -2,7 +2,7 @@ label s2_2:
 
 # MC enters bakery and buys everything
 label .shot1:
-    $ store.time = "17:30"
+    $ store.currentTime = "17:30"
 
     play music store fadeout 1.0
     pause 1.0
