@@ -3,6 +3,8 @@ label s1_1:
     $ store.currentTime = "17:00"
 
 label .shot1:
+    #Reset all tasks to Not Started so they dont show up
+    $ResetAllTasks()
     show overlay black
     pause 1.0
     # the show/hide at the beginning of each scene is only to show textbox with quick dissolve
@@ -21,7 +23,11 @@ label .shot2:
     show mc casual regular left at character_right
     with Dissolve(1.0)
     play music apartment
+    #Call to start Lightbulb task so it shows up in the task tree
+    $StartTask(task_Lightbulb)
     mc "This chair is not stable at all!"
+    #Call to start Chair task 
+    $StartTask(task_Chair)
     pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
