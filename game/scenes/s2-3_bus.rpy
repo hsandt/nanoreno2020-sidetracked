@@ -10,6 +10,7 @@ label .shot1:
     # play sound bus_arrives
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: bus arrives")
+    scene bus_outside with dissolve
 
     "When the bus arrives, I get on and buy a return ticket."
     "While I'm paying, I sense a vibration in my pocket. I'll check this later."
@@ -22,7 +23,8 @@ label .shot1:
 
 # Inside bus
 label .shot2:
-    # TODO: scene bus with dissolve (need bus BG)
+    scene bus_inside with dissolve
+    "The inside surprisingly looks Japanese."
     "I sit in the back, where I usually feel better to do my stuff without people looking."
     play sound step_on_chair  # SFX reuse
     pause 1.0

@@ -9,6 +9,8 @@ image overlay smartphone_backlayer = Solid("#ffffff80")
 
 image bg apartment = "images/bg/apartment.jpg"
 image bg bus_stop = "images/bg/bus_stop.jpg"
+image bg bus_outside = "images/bg/bus_outside.jpg"
+image bg bus_inside = "images/bg/bus_inside.jpg"
 image bg store = "images/bg/store.jpg"
 
 ## Sub-backgrounds (smartphone)

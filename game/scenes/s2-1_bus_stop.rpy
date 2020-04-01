@@ -16,6 +16,9 @@ label .shot2:
     pause 1.0
 
     "I raise my head from the phone as the bus finally arrives, and wave it down."
+
+    scene bus_outside with dissolve
+    
     "I get on the bus and give a bill to the driver, who makes an apologetic face."
     driver "Sorry, coins only."
     "I search in my wallet, but there are not enough to buy a ticket."

@@ -56,6 +56,10 @@ Other backgrounds:
 
 - Bus stop (bus_stop.jpg) adapted from `bus stop noon.jpg` by Uncle Mugen, distributed for free usage on {a=https://lemmasoft.renai.us/forums/viewtopic.php?p=226871}this thread{/a})
 
+- Bus outside (bus_outside.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Rennes_-_Bluebus_20180316-02.jpg}Rennes_-_Bluebus_20180316-02.jpg{/a} by Pymouss under CC-BY-4.0 on Wikimedia Commons
+
+- Bus inside (bus_inside.jpg) adapted from {a=http://unyokan2.ninja-web.net/haikei2/bass/bass007.jpg}bass007.jpg{/a} distributed by うにょ＠ on {a=http://unyokan.ojaru.jp/framepage2.html}this page{/a} under custom license (allows free use with optional crediting)
+
 - Store (store.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG}Tokyu_Hands_in_Taipei_Breeze_Centre_201608{/a} by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
 Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
@@ -68,7 +72,7 @@ Free BGM:
 
 - 緑茶でも一杯 from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
 
-- 柔らかな嘘 by {a=http://musmus.main.jp}MusMus{/a} under {a=musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
+- 柔らかな嘘 by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
