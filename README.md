@@ -15,7 +15,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 
 ## Free assets
 
-* Background: Uncle Mugen, Wpcpey, うにょ＠
+* Background: Uncle Mugen, Pymouss, うにょ＠, Andre.o.mob, Wpcpey
 * UI: Lynda Mc Donald
 * BGM: 柔らかな嘘
 
@@ -27,6 +27,7 @@ Free backgrounds:
 * Bus stop (bus_stop.jpg) adapted from [bus stop noon.jpg](https://lemmasoft.renai.us/forums/download/file.php?id=47244&mode=view) by Uncle Mugen, distributed for free usage on [this thread](https://lemmasoft.renai.us/forums/viewtopic.php?p=226871))
 * Bus outside (bus_outside.jpg) adapted from [Rennes_-_Bluebus_20180316-02.jpg](https://commons.wikimedia.org/wiki/File:Rennes_-_Bluebus_20180316-02.jpg) by Pymouss under CC-BY-4.0 on Wikimedia Commons
 * Bus inside (bus_inside.jpg) adapted from [bass007.jpg](http://unyokan2.ninja-web.net/haikei2/bass/bass007.jpg) distributed by うにょ＠ on [this page](http://unyokan.ojaru.jp/framepage2.html) under custom license (allows free use with optional crediting)
+* Bakery (bakery.jpg) adapted from [Typical_French_bakery_pastries.jpg](https://commons.wikimedia.org/wiki/File:Typical_French_bakery_pastries.jpg) by Andre.o.mob under CC-BY-SA-4.0 on Wikimedia Commons
 * Store (store.jpg) adapted from [Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG](https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG) by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
 Free UI sprites: [Dating Sim UI Pack](https://loudeyes.itch.io/dating-sim-ui-pack) by Lynda Mc Donald, distributed under [custom license](License%20Dating%20Sim%20UI%20Pack.jpg) (allows free usage with appropriate credit)

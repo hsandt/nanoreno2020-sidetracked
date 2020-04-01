@@ -60,6 +60,8 @@ Other backgrounds:
 
 - Bus inside (bus_inside.jpg) adapted from {a=http://unyokan2.ninja-web.net/haikei2/bass/bass007.jpg}bass007.jpg{/a} distributed by うにょ＠ on {a=http://unyokan.ojaru.jp/framepage2.html}this page{/a} under custom license (allows free use with optional crediting)
 
+- Bakery (bakery.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Typical_French_bakery_pastries.jpg}Typical_French_bakery_pastries.jpg{/a} by Andre.o.mob under CC-BY-SA-4.0 on Wikimedia Commons
+
 - Store (store.jpg) adapted from {a=https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG}Tokyu_Hands_in_Taipei_Breeze_Centre_201608{/a} by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
 Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
