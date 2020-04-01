@@ -23,7 +23,7 @@ label .shot1:
                 call s_a from _call_s_a_4
                 "Now that's done, let's get back on track."
             "No, ignore them":
-                "I should focus on my current task."
+                "Yeah, I should focus on my current task."
 
     if not has_freed_space:
         jump .shot2
