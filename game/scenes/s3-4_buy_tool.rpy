@@ -16,14 +16,14 @@ label .shot1:
     pause 1.0
     hide screen screen_item
     pause 0.5
-    show screen screen_item("screw_loose", "right")
+    show screen screen_item("hex_key", "right")
     pause 1.0
     # if you have 2 different transforms, show both at the same time
     cashier "Six euros ninety-nine."
     hide screen screen_item
 
     mc "OK."
-    show screen screen_item("screw_loose", "right") with dissolve
+    show screen screen_item("coins", "right") with dissolve
     play sound coins_drop
     pause 0.5
     hide screen screen_item with dissolve
