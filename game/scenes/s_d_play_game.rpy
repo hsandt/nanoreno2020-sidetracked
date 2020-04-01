@@ -60,8 +60,6 @@ label .shot3:
     return
 
 label .shot4:
-    $ store.has_tried_game = True
-
     show screen smartphone("game") with dissolve
     $ store.is_showing_smartphone = True
 
@@ -78,4 +76,7 @@ label .shot4:
         "Well, I guess that's just a number, but it's a bit hard for me to understand how really strong it is so early in the game."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
+
+    $ store.has_tried_game = True
+
     return
