@@ -20,6 +20,7 @@ image sub smartphone = "images/bg/sub/smartphone_body.png"
 
 ## Items
 
+# for memo, but never used directly as we use the screen_item with item identifier
 image item hex_key = "images/item/hex_key.png"
 image item screw_loose = "images/item/screw_loose.png"
 image item screw_tight = "images/item/screw_tight.png"
@@ -42,6 +43,8 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 # define audio.title_screen = "audio/bgm/title_screen.ogg"
 define audio.apartment = "audio/bgm/i71002_ryokucha.mp3"
 define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
+# for memo, but never used directly as we must loop with full file path
+# define audio.street = "audio/bgm/ambient_street.ogg"
 
 ## SFX
 define audio.coins_drop = "audio/sfx/coins_drop.ogg"

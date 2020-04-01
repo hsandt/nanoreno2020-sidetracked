@@ -4,7 +4,9 @@ label s2_3:
 label .shot1:
     $ store.time = "17:45"
 
-    scene bus_stop with dissolve
+    scene bus_stop with wipedown
+    pause 1.0
+    play music "<loop 19.287>audio/bgm/ambient_street.ogg"
 
     # if added BG for bakery, revert to BG for bus stop here
     "There, I wait for the next bus while tasting some viennoiseries."
@@ -119,5 +121,7 @@ label .shot8:
     # play sound automatic_door_open_close
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: automatic door opens and closes")
+
+    stop music fadeout 1.0
 
     jump s3_1

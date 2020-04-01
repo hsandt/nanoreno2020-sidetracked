@@ -3,7 +3,9 @@ label s2_1:
 # MC receives notification
 label .shot1:
     scene bus_stop with dissolve
+    play music "<loop 19.287>audio/bgm/ambient_street.ogg"
     $ store.time = "17:15"
+
     "Right, I forgot buses only come every 20 minutes on Sunday."
     "Looks like I have some time on my hands. But my smartphone can keep me busy."
     call s_f from _call_s_f
@@ -18,7 +20,7 @@ label .shot2:
     "I raise my head from the phone as the bus finally arrives, and wave it down."
 
     scene bus_outside with dissolve
-    
+
     "I get on the bus and give a bill to the driver, who makes an apologetic face."
     driver "Sorry, coins only."
     "I search in my wallet, but there are not enough to buy a ticket."
