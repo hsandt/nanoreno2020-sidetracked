@@ -4,6 +4,7 @@ label s4a_1:
 
 label .shot1:
     $ store.time = "19:10"
+    $ store.wrapping_scene = "light_bulb"
 
     # should be bg apartment_night, but we only have one
     scene bg apartment with dissolve

@@ -1,6 +1,7 @@
 label s1_1:
     $ store.has_wifi = True
     $ store.time = "17:00"
+    $ store.wrapping_scene = "broken_chair"
 
 label .shot1:
     show overlay black

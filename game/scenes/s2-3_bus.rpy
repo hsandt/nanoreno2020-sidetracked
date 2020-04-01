@@ -3,6 +3,7 @@ label s2_3:
 # Get on bus
 label .shot1:
     $ store.time = "17:45"
+    $ store.wrapping_scene = "bus"
 
     scene bus_stop with wipedown
     pause 1.0
@@ -36,7 +37,7 @@ label .shot2:
     pause 1.0
 
     "I pull out my phone, see what I can do until I arrive."
-    call s_f from _call_s_f_1
+    call s_f from _call_s_f_1  # Kill time
 
     "As the bus approaches the store, I push the stop button on my left. It does nothing, though. Probably broken."
     "I guess I’ll have to use another one, or let somebody else do it for me."

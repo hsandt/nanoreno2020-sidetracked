@@ -5,6 +5,7 @@ label .shot1:
     scene bus_stop with dissolve
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
     $ store.time = "17:15"
+    $ store.wrapping_scene = "bus_stop"
 
     window show
     "Right, I forgot buses only come every 20 minutes on Sunday."

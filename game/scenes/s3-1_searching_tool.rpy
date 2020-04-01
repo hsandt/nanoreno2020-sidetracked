@@ -2,6 +2,7 @@ label s3_1:
 
 label .shot1:
     $ store.time = "18:00"
+    $ store.wrapping_scene = "store"
 
     scene bg store with Dissolve(1.0)
     play music store
