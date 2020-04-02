@@ -3,8 +3,6 @@ label s1_1:
     $ store.currentTime = "17:00"
 
 label .shot1:
-    #Reset all tasks to Not Started so they dont show up
-    $ResetAllTasks()
     show overlay black
     pause 1.0
     # the show/hide at the beginning of each scene is only to show textbox with quick dissolve

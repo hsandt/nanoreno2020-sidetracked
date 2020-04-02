@@ -280,6 +280,7 @@ screen quick_menu():
         #    textbutton _("Q.Load") action QuickLoad()
         #    textbutton _("Prefs") action ShowMenu('preferences')
         imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
+        imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
 
 
@@ -340,10 +341,10 @@ screen navigation():
                 text _("Save") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
             #textbutton _("Save") action ShowMenu("save")
 
-            hbox:
-                imagebutton auto "gui/button/button_%s.png"  action ShowMenu("tasktree")
-
-                text _("Task Tree") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            #hbox:
+            #    imagebutton auto "gui/button/button_%s.png"  action ShowMenu("tasktree")
+            #
+            #    text _("Task Tree") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
 
         hbox:
             imagebutton auto "gui/button/button_%s.png"  action ShowMenu("load")
@@ -393,6 +394,8 @@ screen navigation():
             #textbutton _("Quit") action Quit(confirm=not main_menu)
 
     imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
+    if not main_menu:
+        imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
