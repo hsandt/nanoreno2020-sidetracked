@@ -4,8 +4,6 @@ label s1_1:
     $ store.wrapping_scene = "broken_chair"
 
 label .shot1:
-    #Reset all tasks to Not Started so they dont show up
-    $ResetAllTasks()
     show overlay black
     pause 1.0
     # the show/hide at the beginning of each scene is only to show textbox with quick dissolve
@@ -24,11 +22,11 @@ label .shot2:
     show mc casual regular left at character_right
     with Dissolve(1.0)
     play music apartment
-    #Call to start Lightbulb task so it shows up in the task tree
-    $StartTask(task_Lightbulb)
+    # Call to start Lightbulb task so it shows up in the task tree
+    $ StartTask(task_Lightbulb)
     mc "This chair is not stable at all!"
-    #Call to start Chair task 
-    $StartTask(task_Chair)
+    # Call to start Chair task
+    $ StartTask(task_Chair)
     pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
@@ -41,8 +39,7 @@ label .shot2:
     stop sound
 
     show screen screen_item("screw_loose", "left")
-    "..."
-    show screen screen_item("purchase_permit", "right")
+    mc "..."
     show mc casual regular left at character_right
     with dissolve
     mc "Looks like that screw is a bit loose."

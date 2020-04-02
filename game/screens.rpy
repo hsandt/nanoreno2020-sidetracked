@@ -1655,7 +1655,7 @@ screen screen_item(itemName, displaySide="left"):
 
     $item = GetItemByName(itemName)
     frame:
-        
+
         background None
         xpos newxpos
         ypos newypos
@@ -1663,20 +1663,20 @@ screen screen_item(itemName, displaySide="left"):
 
         add item[2] xpos 18 ypos 17
         text item[1] xpos 166 style_prefix "item"
-        
+
 style item_text is gui_text:
     xalign 0.5
     yalign 0.345
     color "#000000"
     outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
-   
+
 ## Phone display screen #######################################################
 ##
-     
+
 style smartphone_time_text is gui_text:
     xpos 770
     ypos 335
-    size 40  # ignored?? 
+    size 40  # ignored??
     color "#ffffff"
     outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
 
@@ -1736,7 +1736,7 @@ screen smartphone(app_name):
 init python:
     # [ TASKNAME, LEVEL, STATUS]
     task_unknown = ["unknown", 0, "Not Started"]
-    
+
     #Task Status
     status_NotStarted = "Not Started"
     status_InProgress = "In Progress"
@@ -1745,13 +1745,15 @@ init python:
 
     #Task Names
     task_unknown = "Unknown"
-    task_Lightbulb = "Fix the Lightbulb"
+    task_Lightbulb = "???"
     task_Chair = "Fix the Chair"
     task_Phone = "Fix the Phone"
-    
+
     # [ TASKNAME, LEVEL, STATUS]
     task_unknown = [task_unknown, 0, status_InProgress]
-    taskList = [[task_Lightbulb, 0, status_InProgress],
+    # initial task list has stuff in progress just to test GUI when
+    # commenting out the initial ResetAllTasks
+    initial_task_list = [[task_Lightbulb, 0, status_InProgress],
                 [task_Chair, 1, status_InProgress],
                 [task_Phone, 2, "Not Started"],
                 ["Sub Task1", 2, "In Progress"],
@@ -1764,33 +1766,31 @@ init python:
                 ["Sub Task8", 1, "In Progress"],
                 ["Sub Task9", 1, "Not Started"],
                 ["Sub Task10", 1, "Not Started"]]
-                
+
 #-----------------------------------------------
     def ResetAllTasks():
-        global taskList
-        for task in taskList:
-            task[2] = "Not Started"            
+        for task in store.task_list:
+            task[2] = "Not Started"
         return
-        
+
     def SetTaskStatus(_taskName, _status):
-        global taskList
-        for task in taskList:
+        for task in store.task_list:
           if (task[0] == _taskName):
-            task[2] = _status            
-        return        
+            task[2] = _status
+        return
 
     def StartTask(_taskName):
-        SetTaskStatus(_taskName, status_InProgress)            
+        SetTaskStatus(_taskName, status_InProgress)
         return
 
     def CompleteTask(_taskName):
-        SetTaskStatus(_taskName, status_Complete)            
+        SetTaskStatus(_taskName, status_Complete)
         return
 
     def FailTask(_taskName):
-        SetTaskStatus(_taskName, status_Failed)            
+        SetTaskStatus(_taskName, status_Failed)
         return
-        
+
 #-----------------------------------------------
 screen tasktree():
     tag menu
@@ -1802,22 +1802,21 @@ screen tasktree():
 
         style_prefix "about"
 
-        vbox:
-    
-            for task in taskList:
-                $taskLevel = task[1]
-                if task[1] == 0:
-                    $taskName = "{size=+20}" + str(task[0]) + "{/size}"
-                else:
-                    $taskName = "|_ " + str(task[0])
-                if task[2] == status_InProgress:                    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel
-                elif  task[2] == status_Complete:    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#5ceb34"
-                elif  task[2] == status_Failed:    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#d92118"
-                elif  task[2] == status_NotStarted:    
-                    #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
-                    pass #Do not show unstarted tasks
-
-     
+        # optional safety check, since task_list should be initialized on game start
+        if task_list is not None:
+            vbox:
+                for task in store.task_list:
+                    $taskLevel = task[1]
+                    if task[1] == 0:
+                        $taskName = "{size=+20}" + str(task[0]) + "{/size}"
+                    else:
+                        $taskName = "|_ " + str(task[0])
+                    if task[2] == status_InProgress:
+                        text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel
+                    elif  task[2] == status_Complete:
+                        text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#5ceb34"
+                    elif  task[2] == status_Failed:
+                        text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#d92118"
+                    elif  task[2] == status_NotStarted:
+                        #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
+                        pass #Do not show unstarted tasks

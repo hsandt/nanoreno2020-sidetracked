@@ -43,6 +43,8 @@ init:
     define update_context = None
     define play_context = None
 
+    define task_list = None
+
     # UI variables
     define is_showing_smartphone = False
     define currentTime = "17:00"
@@ -71,6 +73,13 @@ label start:
         "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
         "It cannot be started unless Safe mode is disabled in the options."
         return
+
+    $ from copy import deepcopy
+    $ task_list = deepcopy(initial_task_list)
+    # Reset all tasks to Not Started so they dont show up
+    # Comment out to check GUI appearance
+    $ ResetAllTasks()
+
 
 label lbl_realstart:
     jump s1_1
