@@ -1,6 +1,6 @@
 # call, not jump to this label, so you can come back
 label s_b:
-    "I check the app updates. There are 14 of them."
+    "On the update screen, I see 14 pending."
     "I carefully select which apps to update based on how much I use them."
     "Hopefully that will help reduce my data usage while also saving some space."
     "After the fourth manual update, I get impatient and just touch \"Update all\"."
@@ -18,8 +18,5 @@ label s_b:
             "It's very slow, but I take on myself and wait. When the update is over, I finally run the game again."
         else:
             "It's very slow… I'll let that happen in the background."
-
-    if update_context == "play game":
-        return
 
     return

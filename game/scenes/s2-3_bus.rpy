@@ -19,6 +19,13 @@ label .shot1:
     scene bus_outside with dissolve
 
     "When the bus arrives, I get on and buy a return ticket."
+
+    show screen screen_item("coins", "center") with dissolve
+    play sound coins_drop
+    pause 0.5
+    hide screen screen_item with dissolve
+    pause 0.5
+
     play sound smartphone_notification
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: smartphone notification")
