@@ -11,9 +11,15 @@ label .shot1:
     $ RevealTask(task_Stop)
 
     window show
+    "Let's sum-up: I go to the DIY store by bus, find a hex screwdriver or key, buy it and come back to fix the chair."
+    "I write this on my {i}to do list{/i}, also detailing sub-tasks required for each task as I go. I call it a {i}task tree{/i}."
+    "I can access it at any time by clicking on the notepad icon at the bottom-right, or by pressing the T key."
+    window hide None
+
+    pause 1.0
+
     "Right, I forgot buses only come every 20 minutes on Sunday."
     "Looks like I have some time on my hands. But my smartphone can keep me busy."
-    window hide None
 
     call s_f from _call_s_f
 

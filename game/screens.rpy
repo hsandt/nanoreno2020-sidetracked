@@ -1099,6 +1099,14 @@ screen keyboard_help():
         text _("Accesses the game menu.")
 
     hbox:
+        label _("O / P")
+        text _("Opens the Preferences.")
+
+    hbox:
+        label _("T")
+        text _("Opens the Task Tree (in-game only).")
+
+    hbox:
         label _("Ctrl")
         text _("Skips dialogue while held down.")
 
@@ -1652,8 +1660,6 @@ init python:
 screen screen_item(itemName, displaySide="left"):
     $ newxpos = 0
     $ newypos = 0
-
-    $ print(displaySide)
 
     if displaySide == "left":
         $ newxpos = 400
