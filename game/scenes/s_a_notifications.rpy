@@ -46,7 +46,9 @@ label s_a:
         "Update apps" if not has_updated_apps:
             call s_b
         "Free storage space" if not has_freed_space:
+            $ free_space_context = "notifications"
             call s_c
+            $ free_space_context = None
         "Check sister message" if sister_request_phase == 1:
             call s_e
         "Check sister reply" if sister_request_phase == 2:

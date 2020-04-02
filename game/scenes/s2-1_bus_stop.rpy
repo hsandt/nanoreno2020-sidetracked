@@ -6,6 +6,9 @@ label .shot1:
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
     $ store.currentTime = "17:15"
     $ store.wrapping_scene = "bus_stop"
+    $ StartTask(task_Bus)
+    $ RevealTask(task_Ticket)
+    $ RevealTask(task_Stop)
 
     window show
     "Right, I forgot buses only come every 20 minutes on Sunday."
@@ -22,13 +25,16 @@ label .shot2:
     pause 1.0
 
     "I raise my head from the phone as the bus finally arrives, and wave it down."
+    $ StartTask(task_Ticket)
 
     scene bus_outside with dissolve
 
     "I get on the bus and give a bill to the driver, who makes an apologetic face."
     driver "Sorry, coins only."
+    $ StartTask(task_Coins)
     "I search in my wallet, but there are not enough to buy a ticket."
     "I apologize in return, quickly get off and decide to turn my bill into coins in some local store."
+    $ StartTask(task_BuyFood)
 
     window show None
     "My sense of smell finds a bakery nearby, so I walk in."

@@ -30,7 +30,9 @@ label .shot1:
     pause 0.5
 
     cashier "Thank you."
-    
+    $ CompleteTask(task_BuyHexKey)
+    $ CompleteTask(task_HexKeyStore)
+
     window show None
     mc "Goodbye! {i}(Finally.){/i}"
     window hide

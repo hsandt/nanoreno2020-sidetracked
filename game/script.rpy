@@ -7,8 +7,13 @@ init:
         xalign 0.8
         yalign 1.0
 
+    # not used anymore, we use pixel placement in screen_item
     transform item_left:
         xalign 0.3
+        yalign 0.4
+
+    transform item_center:
+        xalign 0.5
         yalign 0.4
 
     transform item_right:
@@ -41,6 +46,7 @@ init:
     define sister_request_phase = 0
     define wrapping_scene = None  # high context scene, used to restore correct BGM
     define update_context = None
+    define free_space_context = None
     define play_context = None
 
     define task_list = None

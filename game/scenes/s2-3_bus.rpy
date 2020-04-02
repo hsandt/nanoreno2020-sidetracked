@@ -26,6 +26,8 @@ label .shot1:
     hide screen screen_item with dissolve
     pause 0.5
 
+    $ CompleteTask(task_Ticket)
+
     play sound smartphone_notification
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: smartphone notification")
@@ -43,10 +45,14 @@ label .shot2:
     play sound step_on_chair  # SFX reuse
     pause 1.0
 
+    $ StartTask(task_PushClosestStop)
+
     "I pull out my phone, see what I can do until I arrive."
     call s_f from _call_s_f_1  # Kill time
 
     "As the bus approaches the store, I push the stop button on my left. It does nothing, though. Probably broken."
+    $ FailTask(task_PushClosestStop)
+
     "I guess I’ll have to use another one, or let somebody else do it for me."
     "Oh, there’s also that new app, “Stop, Please!” that allow people to send a “stop” signal to the bus they are in."
     "If I scan the QR code on the ad stuck in the bus, I should be able to install it."
@@ -73,15 +79,18 @@ label .shot2:
 label .shot3:
     $ has_stood_up = True
 
+    $ StartTask(task_StandUp)
     "I stand up and walk toward another stop button in the central alley."
     "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
     "I fall back to my seat, unwilling to try again."
+    $ FailTask(task_StandUp)
     jump stop_button
 
 # App
 label .shot4:
     $ has_installed_app = True
 
+    $ StartTask(task_InstallStopApp)
     "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
     "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
     "To do so, I scan another QR code on another sticker. It takes a moment..."
@@ -92,20 +101,25 @@ label .shot4:
     $ renpy.notify("SFX: stop button")
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
+    $ CompleteTask(task_InstallStopApp)
+    $ CompleteTask(task_WaitStop)
     jump .shot8
 
 # Ask
 label .shot5:
     $ has_asked_passenger = True
 
+    $ StartTask(task_AskPassenger)
     "I call the passenger sitting in front of me, but he doesn't answer."
     "He's wearing headphones, so maybe they are just too good at insulating sound. I think I need the same, but for notifications."
+    $ FailTask(task_AskPassenger)
     jump stop_button
 
 # Wait 1
 label .shot6:
     $ wait_count += 1
 
+    $ StartTask(task_WaitStop)
     "I wait, hoping somebody else will push a working stop button."
     "It doesn't happen."
     "We're getting closer to the store."
@@ -123,6 +137,7 @@ label .shot7:
     $ renpy.notify("SFX: stop button")
 
     "Somebody finally calls for the stop."
+    $ CompleteTask(task_WaitStop)
     jump .shot8
 
 # Get off
@@ -130,6 +145,10 @@ label .shot8:
     window show None
     "The bus stops near the DIY store, I get off and walk in."
     window hide
+
+    $ CompleteTask(task_Stop)
+    $ CompleteTask(task_Bus)
+    $ CompleteTask(task_Store)
 
     # play sound automatic_door_open_close
     # SFX accessibility (inspired by Renpy Accessibility Add-On)

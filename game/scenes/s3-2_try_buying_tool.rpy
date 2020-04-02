@@ -4,6 +4,8 @@ label .shot1:
     $ store.currentTime = "18:15"
     $ store.wrapping_scene = "store"
 
+    $ StartTask(task_BuyHexKey)
+
     show mc regular at character_left with dissolve
     mc "Hi."
     show screen screen_item("hex_key", "right") with dissolve
@@ -15,6 +17,8 @@ label .shot1:
     cashier "You need a purchase permit to buy a tool of category C. You can print one on the machine over there."
     "The cashier points at a huge device in the corner. Four people are queuing in front of it."
     mc "I see."
+
+    $ StartTask(task_Permit)
 
     hide mc with dissolve
 
