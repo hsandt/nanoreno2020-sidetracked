@@ -76,8 +76,6 @@ init:
 
 # The game starts here.
 label start:
-    #Reset all tasks to Not Started so they dont show up
-    $ResetAllTasks()
     if not persistent.unlocked:
         "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
         "It cannot be started unless Safe mode is disabled in the options."
