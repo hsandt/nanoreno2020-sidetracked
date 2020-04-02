@@ -66,7 +66,6 @@ label .shot2:
 label .shot3:
     # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
     $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
-    $ StartTask(task_DeleteGame + task_suffix)
 
     "I delete the game, which gives me 1.5 GB extra space. Wow, that should be enough!"
 

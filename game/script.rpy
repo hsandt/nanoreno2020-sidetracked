@@ -50,6 +50,7 @@ init:
     define play_context = None
 
     define task_list = None
+    define active_tasks_stack = None
 
     # UI variables
     define is_showing_smartphone = False
@@ -83,7 +84,8 @@ label start:
         return
 
     $ from copy import deepcopy
-    $ task_list = deepcopy(initial_task_list)
+    $ store.task_list = deepcopy(initial_task_list)
+    $ store.active_tasks_stack = []  # will be cleared by ResetAllTasks, but need to initialize
     # Reset all tasks to Not Started so they dont show up
     # Comment out to check GUI appearance
     $ ResetAllTasks()

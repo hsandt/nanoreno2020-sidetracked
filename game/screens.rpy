@@ -1844,6 +1844,8 @@ init python:
     def ResetAllTasks():
         for task in store.task_list:
             task[2] = status_Hidden
+
+        active_tasks_stack.clear()
         return
 
     def SetTaskStatus(_taskName, _status):
@@ -1858,15 +1860,31 @@ init python:
 
     def StartTask(_taskName):
         SetTaskStatus(_taskName, status_InProgress)
+
+        # push to stack, the last task is the active one
+        if _taskName not in store.active_tasks_stack:
+            store.active_tasks_stack.append(_taskName)
+        else:
+            print("WARNING in StartTask: %s already added to active_tasks_stack" % _taskName)
         return
 
     def CompleteTask(_taskName):
         SetTaskStatus(_taskName, status_Complete)
+        RemoveFromActiveTasks(_taskName)
         return
 
     def FailTask(_taskName):
         SetTaskStatus(_taskName, status_Failed)
+        RemoveFromActiveTasks(_taskName)
         return
+
+    def RemoveFromActiveTasks(_taskName):
+        for i, active_task_name in enumerate(store.active_tasks_stack):
+            if active_task_name == _taskName:
+                del store.active_tasks_stack[i]
+                return
+
+        print("WARNING in RemoveFromActiveTasks: %s not found in active_tasks_stack" % _taskName)
 
 #-----------------------------------------------
 screen tasktree():
@@ -1879,8 +1897,10 @@ screen tasktree():
 
         style_prefix "about"
 
-        # optional safety check, since task_list should be initialized on game start
-        if task_list is not None:
+        # optional safety check (should be init on start)
+        # note that "store." is mandatory for task_list to avoid NoneType error,
+        # although we are not in Python code
+        if store.task_list:
             vbox:
                 for task in store.task_list:
                     $taskLevel = task[1]
@@ -1890,8 +1910,12 @@ screen tasktree():
                         $taskName = "|_ " + str(task[0])
                     if task[2] == status_NotStarted:
                         text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3b3b3b"
-                    if task[2] == status_InProgress:
-                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel
+                    elif task[2] == status_InProgress:
+                        # the current task (last of active ones) has a brighter color and "current" hint
+                        if len(store.active_tasks_stack) > 0 and task[0] == store.active_tasks_stack[-1]:
+                            text taskName + ": {size=-5}" + task[2] + " (Current){/size}" xpos 50*taskLevel color "#cb78e4"
+                        else:
+                            text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel
                     elif  task[2] == status_Complete:
                         text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3c9c21"
                     elif  task[2] == status_Failed:

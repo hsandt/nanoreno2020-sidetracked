@@ -40,6 +40,7 @@ label .shot1:
 
     # Reveal light bulb's task true name (not very clean to use readable names as key, but anyway)
     $ task_list[0][0] = task_LightBulbRevealed
+    $ active_tasks_stack[0] = task_LightBulbRevealed
 
     "I start removing the dead bulb, but realize I don’t have any replacement."
     "Wait, do I need to go back to the DIY store?"
