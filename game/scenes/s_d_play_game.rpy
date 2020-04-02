@@ -123,7 +123,7 @@ label .shot4:
 
     $ store.has_tried_game = True
 
-    call .restore_bgm
+    call .restore_bgm from _call_s_d_restore_bgm
 
     return
 
