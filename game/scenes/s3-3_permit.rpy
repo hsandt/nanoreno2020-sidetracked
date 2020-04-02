@@ -9,6 +9,9 @@ label .shot1:
     "After 20 minutes in the queue, I finally reach the permit printer. It’s a kind of Frankenstein’s monster assembled from a scanner, a camera, a speaker and a printer."
     "I select Purchase permit C on the touch screen."
     printer "Please show a proof of age: ID card or passport."
+
+    $ StartTask(task_ID)
+
     "I search for my ID card and realize I left it at home. But there’s no way I come back empty-handed."
     "Fortunately, I got a scan of my ID card on my smartphone. This would never work on an airport-gateway-level device, but on this one it should."
     "I draw my smartphone to open the picture of the scan."
@@ -32,13 +35,23 @@ label .shot1:
 
 label .shot2:
     "I try to navigate to the ID scan, but it’s very slow."
-    "I guess shouldn't have ignored that notification about running out of storage space. I'll take care of this now."
+    if has_seen_base_notifications:
+        "I guess shouldn't have ignored that notification about running out of storage space. I'll take care of this now."
+    else:
+        "A quick look at the notification panel, and I understand the smartphone is running out of storage space. I need to free some now."
+
+    $ free_space_context = "access ID"
     call s_c from _call_s_c
+    $ free_space_context = None
+
     "With space being freed, I resume searching for my ID scan."
 
 label .shot3:
     "I find the scan of my ID card, and show it to the scanner. Hopefully it doesn’t care about watermark or whatever."
     printer "...{w=1.0} ...{w=1.0} ...{w=1.0} Thank you."
+
+    $ CompleteTask(task_ID)
+
     printer "Please face the camera and remove your glasses."
     "I follow the instructions."
     printer " ...{w=1.0} ...{w=1.0} Error. Face does not match photograph on proof of age."
@@ -54,6 +67,8 @@ label .shot3:
     pause 1.0
 
     "I pick the permit, and go back to the register."
+    $ CompleteTask(task_Permit)
+
     stop sound
     hide screen screen_item with dissolve
 

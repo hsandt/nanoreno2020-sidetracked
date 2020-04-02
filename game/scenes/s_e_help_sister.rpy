@@ -17,12 +17,6 @@ label .shot1:
     else:
         call .shot3 from _call_s_e_shot3
 
-    "I check if there are any other notifications left."
-    call s_a from _call_s_a_6
-
-    hide screen smartphone with dissolve
-    $ store.is_showing_smartphone = False
-
     return
 
 # Reply

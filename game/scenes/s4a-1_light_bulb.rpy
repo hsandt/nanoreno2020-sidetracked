@@ -4,6 +4,7 @@ label s4a_1:
 
 label .shot1:
     $ store.currentTime = "19:10"
+    $ store.wrapping_scene = "light_bulb"
 
     # should be bg apartment_night, but we only have one
     scene bg apartment with dissolve
@@ -31,10 +32,20 @@ label .shot1:
     play sound step_on_chair
     "I get onto the chair and slowly stand up, as I make sure it won’t make me roll all over the floor."
     mc "Stable."
+
+    $ CompleteTask(task_Chair)
+
     mc "Now I can change this light bulb!"
     "That's right, I forgot to mention that if I needed a stable chair, it was to change my broken light bulb."
+
+    # Reveal light bulb's task true name (not very clean to use readable names as key, but anyway)
+    $ task_list[0][0] = task_LightBulbRevealed
+
     "I start removing the dead bulb, but realize I don’t have any replacement."
     "Wait, do I need to go back to the DIY store?"
+
+    $ RevealTask(task_BuyLightBulb)
+
     play sound step_on_chair
     show mc regular left at character_right with Dissolve(0.1)
     "I step off the chair and I check my watch. 19:30."
@@ -48,6 +59,8 @@ label .shot1:
             jump .shot2b
 
 label .shot2a:
+    $ StartTask(task_BuyLightBulb)
+
     mc "I think I still have time to go."
     "The store is not too far, I should be back in no time."
     play sound door_open_close
@@ -57,6 +70,11 @@ label .shot2a:
     jump ending2
 
 label .shot2b:
+    "No, I don't want to."
+
+    $ FailTask(task_BuyLightBulb)
+    $ FailTask(task_LightBulbRevealed)  # important to identify light bulb with new name
+
     $ quick_menu = False
     show overlay black with dissolve
     $ quick_menu = True

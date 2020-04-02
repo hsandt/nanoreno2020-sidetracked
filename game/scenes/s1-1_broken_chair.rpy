@@ -1,6 +1,7 @@
 label s1_1:
     $ store.has_wifi = True
     $ store.currentTime = "17:00"
+    $ store.wrapping_scene = "broken_chair"
 
 label .shot1:
     show overlay black
@@ -21,11 +22,11 @@ label .shot2:
     show mc casual regular left at character_right
     with Dissolve(1.0)
     play music apartment
-    #Call to start Lightbulb task so it shows up in the task tree
-    $StartTask(task_Lightbulb)
+    # Call to start Lightbulb task so it shows up in the task tree
+    $ StartTask(task_LightBulb)
     mc "This chair is not stable at all!"
-    #Call to start Chair task 
-    $StartTask(task_Chair)
+    # Call to start Chair task
+    $ StartTask(task_Chair)
     pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
@@ -38,12 +39,13 @@ label .shot2:
     stop sound
 
     show screen screen_item("screw_loose", "left")
-    "..."
-    show screen screen_item("purchase_permit", "right")
+    mc "..."
     show mc casual regular left at character_right
     with dissolve
     mc "Looks like that screw is a bit loose."
     mc "Hex type, uh? Let’s see if I got a matching screwdriver."
+    $ StartTask(task_HexKeyApartment)
+
     hide screen screen_item
     hide mc with dissolve
     play sound searching_drawer
@@ -55,10 +57,18 @@ label .shot2:
 
     show mc casual regular left at character_right with dissolve
     mc "Nope. No such thing."
+    $ FailTask(task_HexKeyApartment)
+
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
+    $ StartTask(task_HexKeyStore)
+
     pause 0.5
 
     mc "I should take a measurement of the screw hole before I leave."
+    $ StartTask(task_ScrewSize)
+    $ RevealTask(task_Store)
+    $ RevealTask(task_FindHexKey)
+    $ RevealTask(task_BuyHexKey)
 
     menu:
         "Take a photo of the screw with a scale reference":
@@ -68,6 +78,7 @@ label .shot2:
 
 label .shot3a:
     $ store.screw_measurement_method = "photo"
+    $ StartTask(task_ScrewPhoto)
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
@@ -76,18 +87,28 @@ label .shot3a:
     hide screen screen_item with dissolve
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
     call s_a from _call_s_a_2
+    $ CompleteTask(task_ScrewPhoto)
 
     "OK, I’d better hurry now and go to the store while it’s open."
     jump .shot4
 
 label .shot3b:
     $ store.screw_measurement_method = "meter"
+    $ StartTask(task_ScrewMeter)
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
+    $ CompleteTask(task_ScrewMeter)
+
     mc "OK, let’s go!"
     jump .shot4
 
 label .shot4:
+    $ CompleteTask(task_ScrewSize)
+    
+    $ StartTask(task_Store)
+    $ RevealTask(task_FindHexKey)
+    $ RevealTask(task_BuyHexKey)
+
     # the window show None / hide at the end of each scene is just to have a clean
     # textbox dissolve at the end
     window show None

@@ -1650,36 +1650,46 @@ init python:
 
 #-----------------------------------------------
 screen screen_item(itemName, displaySide="left"):
-    $newxpos = 400
-    $newypos = 200
-    if displaySide == "right":
-        $newxpos = 1100
-        $newypos = 200
+    $ newxpos = 0
+    $ newypos = 0
 
-    $item = GetItemByName(itemName)
+    $ print(displaySide)
+
+    if displaySide == "left":
+        $ newxpos = 400
+        $ newypos = 200
+    elif displaySide == "right":
+        $ newxpos = 1100
+        $ newypos = 200
+    else:  # center
+        $ newxpos = 800
+        $ newypos = 200
+
+    $ item = GetItemByName(itemName)
+
     frame:
-        
         background None
         xpos newxpos
         ypos newypos
+
         add "gui/ItemBox.png"
 
         add item[2] xpos 18 ypos 17
         text item[1] xpos 166 style_prefix "item"
-        
+
 style item_text is gui_text:
     xalign 0.5
     yalign 0.345
     color "#000000"
     outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
-   
+
 ## Phone display screen #######################################################
 ##
-     
+
 style smartphone_time_text is gui_text:
     xpos 770
     ypos 335
-    size 40  # ignored?? 
+    size 40  # ignored??
     color "#ffffff"
     outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
 
@@ -1737,63 +1747,127 @@ screen smartphone(app_name):
 
 #-----------------------------------------------
 init python:
-    # [ TASKNAME, LEVEL, STATUS]
-    task_unknown = ["unknown", 0, "Not Started"]
-    
     #Task Status
+    status_Hidden = "Hidden"  # you should not see this at all!
     status_NotStarted = "Not Started"
     status_InProgress = "In Progress"
     status_Complete = "Complete"
     status_Failed = "Failed"
 
     #Task Names
-    task_unknown = "Unknown"
-    task_Lightbulb = "Fix the Lightbulb"
-    task_Chair = "Fix the Chair"
-    task_Phone = "Fix the Phone"
-    
+    task_LightBulb = "???"
+    task_LightBulbRevealed = "Change the light bulb"
+    task_Chair = "Fix the chair"
+    task_HexKeyApartment = "Find hex key in apartment"
+    task_HexKeyStore = "Buy new hex key"
+    task_ScrewSize = "Get size of hex screw"
+    task_ScrewPhoto = "Take photo of screw"
+    task_ScrewMeter = "Measure screw"
+    task_Store = "Go to DIY store"
+    task_Bus = "Take the bus"
+    task_Ticket = "Buy ticket and get on"
+    task_Coins = "Get coins"
+    task_BuyFood = "Buy some food with a bill"
+    task_Stop = "Stop near DIY store and get off"
+    task_PushClosestStop = "Push nearest stop button"
+    task_StandUp = "Stand up and push second nearest stop button"
+    task_InstallStopApp = "Install app to send stop signal"
+    task_AskPassenger = "Ask another passenger to push stop button"
+    task_WaitStop = "Wait for another passenger to push stop button"
+    task_FindHexKey = "Find hex key"
+    task_CheckScrewdrivers = "In the screwdriver shelves"
+    task_CheckOthers = "In other shelves"
+    task_BuyHexKey = "Buy hex key"
+    task_Permit = "Get purchase permit"
+    task_ID = "Get ID card scan"
+    task_FreeSpace = "Free space on smartphone"
+    task_DeleteDict = "Delete dictionary app"
+    task_DeleteGame = "Delete game"
+    task_PlayGame = "Play game"
+    task_CreateAccount = "Create account"
+    task_InventPassword = "Invent complex password"
+    task_UpdateApps = "Update apps"
+    task_BuyLightBulb = "Buy new light bulb"
+
+    # to ditinguish freeing space to get ID (sub-tree) or just like that,
+    # after reading notifications (separate tree)
+    access_id_suffix = " (for ID)"
+
     # [ TASKNAME, LEVEL, STATUS]
-    task_unknown = [task_unknown, 0, status_InProgress]
-    taskList = [[task_Lightbulb, 0, status_InProgress],
-                [task_Chair, 1, status_InProgress],
-                [task_Phone, 2, "Not Started"],
-                ["Sub Task1", 2, "In Progress"],
-                ["Sub Task2", 3, "In Progress"],
-                ["Sub Task3", 4, "Complete"],
-                ["Sub Task4", 4, "In Progress"],
-                ["Sub Task5", 3, "In Progress"],
-                ["Sub Task6", 2, "Failed"],
-                ["Sub Task7", 2, "In Progress"],
-                ["Sub Task8", 1, "In Progress"],
-                ["Sub Task9", 1, "Not Started"],
-                ["Sub Task10", 1, "Not Started"]]
-                
+    task_unknown = ["Unknown", 0, status_InProgress]
+
+    # initial task list has everything not hidden just to test GUI when
+    # commenting out the initial ResetAllTasks
+    initial_task_list = [
+        [task_LightBulb, 0, status_InProgress],
+        [task_Chair, 1, status_InProgress],
+        [task_HexKeyApartment, 2, status_InProgress],
+        [task_HexKeyStore, 2, status_InProgress],
+        [task_ScrewSize, 3, status_InProgress],
+        [task_ScrewPhoto, 4, status_InProgress],
+        [task_ScrewMeter, 4, status_InProgress],
+        [task_Store, 3, status_InProgress],
+        [task_Bus, 4, status_InProgress],
+        [task_Ticket, 5, status_NotStarted],
+        [task_Coins, 6, status_NotStarted],
+        [task_BuyFood, 7, status_Complete],
+        [task_Stop, 5, status_Complete],
+        [task_PushClosestStop, 6, status_Complete],
+        [task_StandUp, 6, status_Complete],
+        [task_InstallStopApp, 6, status_Complete],
+        [task_AskPassenger, 6, status_Complete],
+        [task_WaitStop, 6, status_Complete],
+        [task_FindHexKey, 3, status_NotStarted],
+        [task_CheckScrewdrivers, 4, status_NotStarted],
+        [task_CheckOthers, 4, status_InProgress],
+        [task_BuyHexKey, 3, status_InProgress],
+        [task_Permit, 4, status_Failed],
+        [task_ID, 5, status_InProgress],
+        [task_FreeSpace + access_id_suffix, 6, status_InProgress],
+        [task_DeleteDict + access_id_suffix, 7, status_NotStarted],
+        [task_DeleteGame + access_id_suffix, 7, status_NotStarted],
+        [task_PlayGame + access_id_suffix, 8, status_InProgress],
+        [task_UpdateApps + access_id_suffix, 9, status_NotStarted],
+        [task_CreateAccount + access_id_suffix, 9, status_InProgress],
+        [task_InventPassword + access_id_suffix, 10, status_InProgress],
+        [task_BuyLightBulb, 1, status_InProgress],
+        [task_FreeSpace, 0, status_InProgress],
+        [task_DeleteDict, 1, status_NotStarted],
+        [task_DeleteGame, 1, status_NotStarted],
+        [task_PlayGame, 2, status_InProgress],
+        [task_UpdateApps, 3, status_NotStarted],
+        [task_CreateAccount, 3, status_InProgress],
+        [task_InventPassword, 4, status_InProgress]
+    ]
+
 #-----------------------------------------------
     def ResetAllTasks():
-        global taskList
-        for task in taskList:
-            task[2] = "Not Started"            
+        for task in store.task_list:
+            task[2] = status_Hidden
         return
-        
+
     def SetTaskStatus(_taskName, _status):
-        global taskList
-        for task in taskList:
-          if (task[0] == _taskName):
-            task[2] = _status            
-        return        
+        for task in store.task_list:
+          if task[0] == _taskName:
+            task[2] = _status
+        return
+
+    def RevealTask(_taskName):
+        SetTaskStatus(_taskName, status_NotStarted)
+        return
 
     def StartTask(_taskName):
-        SetTaskStatus(_taskName, status_InProgress)            
+        SetTaskStatus(_taskName, status_InProgress)
         return
 
     def CompleteTask(_taskName):
-        SetTaskStatus(_taskName, status_Complete)            
+        SetTaskStatus(_taskName, status_Complete)
         return
 
     def FailTask(_taskName):
-        SetTaskStatus(_taskName, status_Failed)            
+        SetTaskStatus(_taskName, status_Failed)
         return
-        
+
 #-----------------------------------------------
 screen tasktree():
     tag menu
@@ -1805,22 +1879,23 @@ screen tasktree():
 
         style_prefix "about"
 
-        vbox:
-    
-            for task in taskList:
-                $taskLevel = task[1]
-                if task[1] == 0:
-                    $taskName = "{size=+20}" + str(task[0]) + "{/size}"
-                else:
-                    $taskName = "|_ " + str(task[0])
-                if task[2] == status_InProgress:                    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel
-                elif  task[2] == status_Complete:    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#5ceb34"
-                elif  task[2] == status_Failed:    
-                    text taskName + " : {size=-10}" + task[2] + "{/size}" xpos 50*taskLevel color "#d92118"
-                elif  task[2] == status_NotStarted:    
-                    #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
-                    pass #Do not show unstarted tasks
-
-     
+        # optional safety check, since task_list should be initialized on game start
+        if task_list is not None:
+            vbox:
+                for task in store.task_list:
+                    $taskLevel = task[1]
+                    if task[1] == 0:
+                        $taskName = "{size=+10}" + str(task[0]) + "{/size}"
+                    else:
+                        $taskName = "|_ " + str(task[0])
+                    if task[2] == status_NotStarted:
+                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3b3b3b"
+                    if task[2] == status_InProgress:
+                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel
+                    elif  task[2] == status_Complete:
+                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3c9c21"
+                    elif  task[2] == status_Failed:
+                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#d92118"
+                    elif  task[2] == status_Hidden:
+                        #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
+                        pass #Do not show unstarted tasks

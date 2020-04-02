@@ -8,17 +8,33 @@ label .shot1:
 
     if not has_updated_apps:
         "As soon as I launch the game, an update pop-up requests me to download the latest patch."
+
+        # only show task tree / sub task tree for UpdateApps if freeing space
+        # else, when we really want to free space, just skip any task already done
+        if play_context == "free space":
+            $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+            $ StartTask(task_UpdateApps + task_suffix)
+
         if play_context == "free space":
             "That's 100 MB. So I must lose space in order to free space? Neat."
-        "Anyway, I can't do that from the game though, so I go to the application store."
+        "Anyway, I can't do that from the game though, so let's go to the update screen."
         $ store.update_context = "play game"
         call s_b from _call_s_b  # Update
         $ store.update_context = None
+
+        if play_context == "free space":
+            $ CompleteTask(task_UpdateApps + task_suffix)
     else:
          "I've already updated all the apps earlier, so I can play the latest patch of the game."
 
     if not has_tried_game:
         "I'm welcomed by a login window, which asks me to create an account, with password and all. I guess it's because it's fundamentally an online game."
+
+        # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
+        if play_context == "free space":
+            $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+            $ StartTask(task_CreateAccount + task_suffix)
+
         "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies and SNS..."
 
         menu:
@@ -27,6 +43,9 @@ label .shot1:
                 call .shot2 from _call_s_d_shot2
             "Be a rebel and create an account from scratch":
                 call .shot3 from _call_s_d_shot3
+
+        if play_context == "free space":
+            $ CompleteTask(task_CreateAccount + task_suffix)
 
     call .shot4 from _call_s_d_shot4
     return
@@ -39,6 +58,11 @@ label .shot2:
 # From scratch
 label .shot3:
     "I go to the form to create an account from scratch. I need to find a cool username and a tricky password."
+
+    # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
+    if play_context == "free space":
+        $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+        $ StartTask(task_InventPassword + task_suffix)
 
     "Username is no problem, but passwords are a bit more complex."
     "In general, I build them from funny sentences that are easy to remember, that I turn into a series of related words or emojis."
@@ -55,28 +79,64 @@ label .shot3:
             "\"The principal broke into the hair salon riding a motorbike\"
             {p=1.0}I can change it for... \"Ma1n NO$->//II\\\\ >8 o<o\""
 
+    if play_context == "free space":
+        $ CompleteTask(task_InventPassword + task_suffix)
+
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
     "I create my account using that password, and start playing."
+
     return
 
 label .shot4:
     show screen smartphone("game") with dissolve
     $ store.is_showing_smartphone = True
 
+    play music game fadein 0.5
+    pause 2.0
+
     if play_context == "free space":
-        "The game is... okay. There is a lot to do, so it's hard for me to tell if it's worth going on or not."
-        "But if it's so long, I might as well take my time and play it later (if some competitor hasn't showed up in the meantime). So I think I can safely delete it for now."
+        "The game is... actually quite interesting. But there is a lot to do, so it's hard for me to tell if it's worth going on or not."
+        "If I try to see more of it, I may never be able to delete it. Maybe I should delete it now, and re-install it later."
+        "My account should preserve my save until next time I play..."
+        "Assuming that in the meantime, servers are not shut down, with some competitor making all of it obsolete -_-'"
+        stop music fadeout 1.5
+        "After a few more minutes, I end my session."
         show screen smartphone("notifications") with dissolve
     elif not has_tried_game:
-        "The game is... okay. There is a lot to do, so I guess I can continue playing a bit later."
+        "The game is... actually quite interesting. Placing your characters the right way helps you finish the fights much more quickly."
+        "But I don't feel in danger enough, so I don't feel the need to improve. Even after many mistakes I still have plenty of health."
+        "Also, numbers are a bit mind blowing. Is it normal that I'm still at level 3 and yet dealing 6,187 damage in one attack?"
+        "Well, I guess it's all relative..."
+        pause 1.0
+        stop music fadeout 1.5
+        "After a few more fights, I end my session."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
     else:
-        "I resume my session where I left it, and go over a few missions. Is it normal that I'm at level 3 and I'm dealing, like, 6,187 damage every attack?"
-        "Well, I guess that's just a number, but it's a bit hard for me to understand how really strong it is so early in the game."
+        "I resume my session where I left it, and go over a few missions."
+        "Hmm... There are really, many, many characters. I'm glad I don't have to name every of them."
+        pause 2.0
+        stop music fadeout 1.5
+        "After a few missions, I end my session."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
 
     $ store.has_tried_game = True
 
+    call .restore_bgm
+
     return
+
+label .restore_bgm:
+    if wrapping_scene == "broken_chair":
+        play music apartment
+    elif wrapping_scene == "bus_stop":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "bakery":
+        play music store
+    elif wrapping_scene == "bus":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "store":
+        play music store
+    elif wrapping_scene == "light_bulb":
+        pass

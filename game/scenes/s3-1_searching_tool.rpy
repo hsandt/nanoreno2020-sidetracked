@@ -2,15 +2,20 @@ label s3_1:
 
 label .shot1:
     $ store.currentTime = "18:00"
+    $ store.wrapping_scene = "store"
 
     scene bg store with Dissolve(1.0)
     play music store
     show mc regular at character_left with dissolve
 
+    $ StartTask(task_FindHexKey)
+
     window show
     "As I walk past the aisles, I glance at the signs: \"Hammers & Mallets\", \"Keys & Locks\", \"Painting\"..."
     "Eventually, I see two categories that seem fit: \"Screwdrivers & Nut Drivers\", and \"Power Screwdrivers\". Where should I go first?"
     window hide None
+
+    $ StartTask(task_CheckScrewdrivers)
 
     menu choose_category:
         "Screwdrivers & Nut Drivers" if not has_explored_screwdrivers:
@@ -43,11 +48,20 @@ label .shot2b:
     jump choose_category
 
 label .shot3:
+    $ FailTask(task_CheckScrewdrivers)
+
     "Unable to find the right tool in the most meaningful places, I start wandering around."
+
+    $ StartTask(task_CheckOthers)
+
     "After some time I reach the \"Keys & Locks\" area, where they put digit padlocks, padlocks with keys... and of course, hex keys. Logical."
 
     if screw_measurement_method == "photo":
         "I check the photo of the loose screw on my phone to make sure I pick the right key."
+        if not has_freed_space:
+            "I notice that navigating in my pictures is a bit slow."
+            if has_seen_base_notifications:
+                "I guess it's because I'm lacking free space."
         "While I'm at it, I glance at the notifications on my phone."
         call s_a from _call_s_a
         "Where was I? Oh yeah, the screw."
@@ -63,6 +77,9 @@ label .shot3:
     hide item
 
     "I grab it and rush to the cash register."
+    $ CompleteTask(task_CheckOthers)
+    $ CompleteTask(task_FindHexKey)
+
     hide mc with dissolve
     pause 1.0
 

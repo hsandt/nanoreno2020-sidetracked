@@ -7,8 +7,13 @@ init:
         xalign 0.8
         yalign 1.0
 
+    # not used anymore, we use pixel placement in screen_item
     transform item_left:
         xalign 0.3
+        yalign 0.4
+
+    transform item_center:
+        xalign 0.5
         yalign 0.4
 
     transform item_right:
@@ -39,14 +44,17 @@ init:
     define has_explored_power_screwdrivers = False
     define free_space = 400
     define sister_request_phase = 0
+    define wrapping_scene = None  # high context scene, used to restore correct BGM
     define update_context = None
+    define free_space_context = None
     define play_context = None
+
+    define task_list = None
 
     # UI variables
     define is_showing_smartphone = False
     define currentTime = "17:00"
 
-init:
     # Defining persistent variables
 
     if persistent.unlocked is None:
@@ -73,6 +81,13 @@ label start:
         "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
         "It cannot be started unless Safe mode is disabled in the options."
         return
+
+    $ from copy import deepcopy
+    $ task_list = deepcopy(initial_task_list)
+    # Reset all tasks to Not Started so they dont show up
+    # Comment out to check GUI appearance
+    $ ResetAllTasks()
+
 
 label lbl_realstart:
     jump s1_1
