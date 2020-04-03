@@ -68,6 +68,8 @@ Other backgrounds:
 
 Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
 
+Fonts: The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
+
 Character sprites: copyright Maxenau
 
 Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara

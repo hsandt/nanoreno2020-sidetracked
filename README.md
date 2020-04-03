@@ -18,6 +18,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 
 * Background: Uncle Mugen, Pymouss, うにょ＠, Andre.o.mob, Wpcpey
 * UI: Lynda Mc Donald
+* Font: Sven Pels
 * BGM: 柔らかな嘘
 
 # License
@@ -32,6 +33,8 @@ Free backgrounds:
 * Store (store.jpg) adapted from [Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG](https://commons.wikimedia.org/wiki/File:Tokyu_Hands_in_Taipei_Breeze_Centre_201608.JPG) by Wpcpey under CC-BY-SA-4.0 on Wikimedia Commons
 
 Free UI sprites: [Dating Sim UI Pack](https://loudeyes.itch.io/dating-sim-ui-pack) by Lynda Mc Donald, distributed under [custom license](License%20Dating%20Sim%20UI%20Pack.jpg) (allows free usage with appropriate credit)
+
+Fonts: The Bold Font by [Sven Pels](http://svenpels.com/), distributed for free usage on [dafont.com](https://www.dafont.com/the-bold-font.font)
 
 Character sprites: copyright Maxenau
 
