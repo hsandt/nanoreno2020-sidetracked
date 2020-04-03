@@ -11,6 +11,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 * Original Background Art: JW Jones
 * Character Sprites: Maxenau
 * Item Sprites: komehara
+* BGM: Fabian Fabro (FirahFabe)
 * Ambient BGM: komehara
 * SFX: Fabian Fabro (FirahFabe), komehara
 
@@ -19,7 +20,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 * Background: Uncle Mugen, Pymouss, うにょ＠, Andre.o.mob, Wpcpey
 * UI: Lynda Mc Donald
 * Font: Sven Pels
-* BGM: 柔らかな嘘
+* BGM: MusMus
 
 # License
 
@@ -46,7 +47,6 @@ Ambient BGM:
 
 Free BGM:
 
-* 緑茶でも一杯 (Ryokucha demo Ippai) from [SLOS V 7.1](http://slos.biz/) by [background](http://back-ground.biz/) under [custom license](http://slos.biz/#x:_rule) (allows free usage with appropriate credit and notification)
 * 柔らかな嘘 (Yawarakana Uso) by [MusMus](http://musmus.main.jp) under [custom license](http://musmus.main.jp/info.html) (allows free usage as BGM with appropriate credit)
 * Game BGM (bgm_maoudamashii_fantasy03_short.ogg) cropped from ファンタジー03 (Fantasy 03) by [魔王魂 (Maoudamashii)](https://maoudamashii.jokersounds.com) distributed on [this page](https://maoudamashii.jokersounds.com/list/bgm10.html) under [custom license](https://maoudamashii.jokersounds.com/music_rule.html) (allows free usage with appropriate credit whenever possible)
 

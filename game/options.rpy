@@ -45,6 +45,8 @@ This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 20
 
 - Item Sprites: komehara
 
+- BGM: Fabian Fabro (FirahFabe)
+
 - Ambient BGM: komehara
 
 - Sound Effects: Fabian Fabro (FirahFabe), komehara
@@ -74,13 +76,13 @@ Character sprites: copyright Maxenau
 
 Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
+BGM: copyright Fabian Fabro (FirahFabe)
+
 Ambient BGM:
 
 - ambient_street.ogg: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
 Free BGM:
-
-- Ryokucha demo Ippai from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
 
 - Yawarakana Uso by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
 
