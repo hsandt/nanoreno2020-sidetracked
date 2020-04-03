@@ -22,7 +22,7 @@ init:
 
     # Declare characters used by this game. The color argument colorizes the
     # name of the character.
-    define mc = Character("MC", color="#BD8CBE")
+    define mc = Character("Katell", color="#BD8CBE")
     define driver = Character("Driver", color="#b87639")
     define cashier = Character("Cashier", color="#49b976")
     define printer = Character("Printer", color="#CCCCCC")

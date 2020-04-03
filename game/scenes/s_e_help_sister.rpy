@@ -7,7 +7,7 @@ label .shot1:
 
     if sister_request_phase == 1:
         "I check my sister's message:"
-        "\"hey sis could you translate that for me? Thx\" followed by a short, ambiguous Japanese sentence."
+        "\"hey kat could you translate that for me? Thx\" followed by a short, ambiguous Japanese sentence."
         # for me: the sentence is これ以上わかっても知らないよ
         # seems hard to read for the player, so keeping it for me for now:
         # It could mean "if he learns more about this, it's not my problem" or "if she understands, I won't take care of this anymore" or "I have no idea even if I know more about this"
