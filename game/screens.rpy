@@ -1757,8 +1757,6 @@ screen smartphone(app_name):
 
 #-----------------------------------------------
 init python:
-    #New Task Indicator
-    indicator_newTask = True
     
     #Task Status
     status_Hidden = "Hidden"  # you should not see this at all!
@@ -1908,7 +1906,7 @@ screen tasktree():
     tag menu
     
     #Reset newTask indicator
-    $indicator_newTask = False
+    on "show" action ToggleVariable('indicator_newTask')
 
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
@@ -1920,7 +1918,7 @@ screen tasktree():
         # optional safety check (should be init on start)
         # note that "store." is mandatory for task_list to avoid NoneType error,
         # although we are not in Python code
-        if store.task_list:
+        if store.task_list:    
             vbox:
                 for task in store.task_list:
                     $taskLevel = task[1]
