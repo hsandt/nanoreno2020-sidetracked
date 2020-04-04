@@ -30,7 +30,7 @@ define config.version = "3.1"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
-This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020 Visual Novel game jam{/a}.
+This game was developed for {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020{/a}.
 
 
 {u}Credits{/u}

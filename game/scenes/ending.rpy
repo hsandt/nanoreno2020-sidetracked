@@ -13,4 +13,8 @@ label ending2:
     jump end
 
 label end:
+    pause 0.5
+    $ quick_menu = False
+    show overlay black with dissolve
+    pause 1.0
     jump credits
