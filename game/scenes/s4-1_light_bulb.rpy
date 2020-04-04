@@ -6,7 +6,7 @@ label .shot1:
     $ store.currentTime = "19:00"
     $ store.wrapping_scene = "light_bulb"
 
-    scene bg apartment with dissolve
+    scene bg apartment with Dissolve(1.0)
     play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
 
     show mc regular left at character_right with dissolve

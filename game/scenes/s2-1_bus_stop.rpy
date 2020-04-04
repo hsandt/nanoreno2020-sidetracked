@@ -25,21 +25,36 @@ label .shot1:
 
 # MC enters bus, but doesn’t have coins
 label .shot2:
-    # play sound bus_arrives
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus arrives")
-    pause 1.0
+    pause 0.5
 
     "I raise my head from the phone as the bus finally arrives, and wave it down."
+    pause 0.3
+
     $ StartTask(task_Ticket)
 
     scene bus_outside with dissolve
 
-    "I get on the bus and give a bill to the driver, who makes an apologetic face."
+    play sound bus_stop_and_open
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: bus stops and opens doors with hissing")
+    pause 2.5
+
+    queue sound ["<silence 0.8>", topping_bus_card, "<silence 1.8>", topping_bus_card, "<silence 1.5>", topping_bus_card]
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: bus card top-up")
+
+    "The passengers before me top up their smart cards as they get on the bus."
+    "I don't have one, so I try to buy a ticket."
+    "I give a bill to the driver, who says with a stoic face:"
     driver "Sorry, coins only."
     $ StartTask(task_Coins)
     "I search in my wallet, but there are not enough to buy a ticket."
-    "I apologize in return, quickly get off and decide to turn my bill into coins in some local store."
+
+    play sound bus_close
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: bus doors close")
+
+    "I apologize, quickly get off and decide to turn my bill into coins in some local store."
     $ StartTask(task_BuyFood)
 
     window show None

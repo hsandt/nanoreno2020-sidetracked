@@ -4,9 +4,21 @@ label .shot1:
     $ store.currentTime = "16:00"
     $ store.wrapping_scene = "store"
 
+    scene overlay black with Dissolve(1.0)
+
+    play sound store_door_open
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: automatic door opens")
+
+    pause 1.0
+
     scene bg store with Dissolve(1.0)
     play music store
     show mc regular at character_left with dissolve
+
+    play sound store_door_close
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: automatic door closes")
 
     $ StartTask(task_FindHexKey)
 
