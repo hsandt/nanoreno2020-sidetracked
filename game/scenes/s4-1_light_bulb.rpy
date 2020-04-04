@@ -1,4 +1,4 @@
-label s4a_1:
+label s4_1:
     # probably no smartphone usage at the end of the game, but just in case
     $ store.has_wifi = True
 

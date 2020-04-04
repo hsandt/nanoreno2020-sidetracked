@@ -42,4 +42,4 @@ label .shot1:
     stop music fadeout 2.0
     $ quick_menu = True
 
-    jump s4a_1
+    jump s4_1

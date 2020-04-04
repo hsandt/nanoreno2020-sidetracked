@@ -2,7 +2,10 @@
 label s_b:
     "On the update screen, I see 14 pending."
     "I carefully select which apps to update based on how much I use them."
-    "Hopefully that will help reduce my data usage while also saving some space."
+    if has_wifi:
+        "Hopefully that will help download faster while also saving some space."
+    else:
+        "Hopefully that will help reduce my data usage while also saving some space."
     "After the fourth manual update, I get impatient and just touch \"Update all\"."
 
     $ store.has_updated_apps = True
