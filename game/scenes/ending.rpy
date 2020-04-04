@@ -13,3 +13,4 @@ label ending2:
     jump end
 
 label end:
+    jump credits

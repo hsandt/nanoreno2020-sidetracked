@@ -54,7 +54,7 @@ This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 20
 
 {u}Copyright{/u}
 
-Original backgrounds: copyright JW Jones
+Original backgrounds: copyright JW Jones 2020
 
 Other backgrounds:
 
@@ -72,11 +72,11 @@ Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pa
 
 Fonts: The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
 
-Character sprites: copyright Maxenau
+Character sprites: copyright Maxenau 2020
 
 Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
-BGM: copyright Fabian Fabro (FirahFabe)
+BGM: copyright Fabian Fabro 2020
 
 Ambient BGM:
 
@@ -88,7 +88,7 @@ Free BGM:
 
 - Game BGM (bgm_maoudamashii_fantasy03_short.ogg) cropped from Fantasy 03 by {a=https://maoudamashii.jokersounds.com}Maoudamashii{/a} distributed on {a=https://maoudamashii.jokersounds.com/list/bgm10.html}this page{/a} under {a=https://maoudamashii.jokersounds.com/music_rule.html}custom license{/a} (allows free usage with appropriate credit whenever possible)
 
-Original SFX: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara, everything else is copyright Fabian Fabro (FirahFabe)
+Original SFX: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara, everything else is copyright Fabian Fabro 2020
 
 Free SFX:
 
@@ -97,6 +97,82 @@ Free SFX:
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
 
+define gui.credits = _("""
+{size=+10}{b}Team{/b}{/size}
+
+
+{b}Writing & Programming{/b}
+
+komehara
+
+
+{b}UI Programming{/b}
+
+Marionette
+
+
+{b}Background Art{/b}
+
+JW Jones
+
+
+{b}Item Art{/b}
+
+komehara
+
+
+{b}Character Art{/b}
+
+Maxenau
+
+
+{b}Music{/b}
+
+Fabian Fabro
+
+
+{b}Sound Design{/b}
+
+Fabian Fabro
+komehara
+
+
+
+{size=+10}{b}Free assets{/b}{/size}
+
+{b}Backgrounds{/b}
+
+Uncle Mugen
+Pymouss
+Unyokan
+Andre.o.mob
+Wpcpey
+
+
+{b}Dating Sim UI Pack{/b}
+
+Lynda Mc Donald
+
+
+{b}The Bold Font{/b}
+
+Sven Pels
+
+
+{b}BGM{/b}
+
+MusMus
+Maoudamashii
+
+
+{b}SFX{/b}
+
+Notification Sounds
+
+
+
+Developed for NaNoRenO 2020 with Ren'Py
+""")
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
