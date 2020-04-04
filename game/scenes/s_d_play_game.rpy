@@ -35,7 +35,7 @@ label .shot1:
             $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
             $ StartTask(task_CreateAccount + task_suffix)
 
-        "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies and SNS..."
+        "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies..."
 
         menu:
             "How do I sign up?"
