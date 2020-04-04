@@ -116,7 +116,7 @@ screen say(who, what):
 
         text what id "what"
         if is_showing_smartphone or is_character_sitting:
-            yalign 0.01
+            yalign 0.05
         else:
             yalign 0.85
 
@@ -1668,6 +1668,9 @@ screen screen_item(itemName, displaySide="left"):
     if displaySide == "left":
         $ newxpos = 400
         $ newypos = 200
+    elif displaySide == "bottom_left":
+        $ newxpos = 400
+        $ newypos = 400
     elif displaySide == "right":
         $ newxpos = 1100
         $ newypos = 200

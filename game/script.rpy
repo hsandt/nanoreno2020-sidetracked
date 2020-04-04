@@ -10,8 +10,8 @@ init:
         xalign 0.8
         yalign 1.0
 
-    transform character_move_right:
-        ease 1.0 xalign 0.8
+    transform character_move_right(duration=1.0):
+        ease duration xalign 0.8
         yalign 1.0
 
     transform character_move_right_farther:
@@ -31,13 +31,6 @@ init:
         ease 0.2 xalign 0.81
         repeat
         ypos 1.2
-
-    transform character_crouch:
-        easein 0.5 ypos 1.5
-
-    transform character_left_crouch:
-        xalign 0.2
-        ypos 1.5
 
     # not used anymore, we use pixel placement in screen_item
     transform item_left:
