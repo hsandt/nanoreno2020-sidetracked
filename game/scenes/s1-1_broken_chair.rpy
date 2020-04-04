@@ -26,14 +26,14 @@ label .shot2:
     # Call to start HaveLunch task so it shows up in the task tree
     $ StartTask(task_HaveLunch)
 
-    mc "Hmm... Nothing like the smell of a handmade lunch.{w} That is not burnt."
+    mc "Hmm... Nothing like the smell of roasted vegetables.{w} That are not burnt."
 
     show mc at character_right_sit_down
     pause 0.5
     play sound step_on_chair
     $ store.is_character_sitting = True
 
-    "I sit at my table to taste the carefully crafted meal. My palate is ready, but my bottom disagrees."
+    "I sit at my table to taste the carefully crafted lunch. My palate is ready, but my bottom disagrees."
 
     pause 0.2
     show mc at character_right_sit_shake

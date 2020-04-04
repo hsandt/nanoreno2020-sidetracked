@@ -37,10 +37,10 @@ label .shot1:
     $ CompleteTask(task_Chair)
 
     mc "Time for lunch!"
-    "I have a bite. It's cold."
+    "I take a mouthful of zucchini. It's cold."
     "I look around me and realize it's pretty dark. I glance at my watch, which shows 7pm."
     "Looks like my lunch has turned into a dinner. A cold dinner."
-    "All of this makes me look like a vampire, so I push the light switch. But nothing happens."
+    "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
     $ StartTask(task_LightBulb)
@@ -53,7 +53,11 @@ label .shot1:
     $ RevealTask(task_BuyLightBulb)
 
     play sound step_on_chair
-    show mc regular left at character_right with Dissolve(0.1)
+    show mc at character_stand_up
+    $ store.is_character_sitting = False
+
+    pause 0.5
+
     "I step off the chair and I check my watch. [currentTime]."
     mc "..."
 
