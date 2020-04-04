@@ -72,27 +72,53 @@ label .shot2a:
     $ StartTask(task_BuyLightBulb)
 
     mc "I think I can go there once more before it closes, but I need to go now."
-    # TODO ANIM: MC turns back to look at meal
-    "The meal is cold already, it cannot get colder."
-    # TODO ANIM: MC turns back toward door (right) again
+
+    show mc regular at character_move_right_farther
     pause 1.0
+    show mc regular left
+    pause 0.5
+
+    "... Nah, it's fine. The meal is cold already, it cannot get colder."
+
+    show mc regular
+    pause 0.5
+
+    window show None
     "And the store is not too far, I should be back in no time."
-    play sound door_open_close
+    window hide
+
+    show mc regular at character_move_right_exit
+    pause 0.2
+
     $ quick_menu = False
     show overlay black with dissolve
-    $ quick_menu = True
-    jump ending2
+    pause 0.3
+
+    play sound door_open_close
+    pause 2.4
+
+    jump credits
 
 label .shot2b:
+    window show None
     "No, I don't want to."
+    window hide
 
     $ FailTask(task_BuyLightBulb)
     $ FailTask(task_LightBulb)
     $ CompleteTask(task_HaveLunch)
 
-    $ quick_menu = False
-    show overlay black with dissolve
-    $ quick_menu = True
+    scene overlay black with dissolve
+    pause 0.5
+
+    window show
     "After that, I finished my cold meal, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
-    jump ending1
+    window hide
+
+    pause 0.5
+    $ quick_menu = False
+    show overlay black with dissolve
+    pause 1.3
+
+    jump credits
