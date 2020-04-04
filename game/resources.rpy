@@ -47,6 +47,8 @@ define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
 define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
 # for memo, but never used directly as we must loop with full file path
 # define audio.street = "audio/bgm/ambient_street.ogg"
+# define audio.apartment_night = "audio/bgm/apartment_theme_night.ogg"
+# define audio.apartment_night_sad = "audio/bgm/apartment_theme_night_sad.ogg"
 
 ## SFX
 define audio.coins_drop = "audio/sfx/coins_drop.ogg"

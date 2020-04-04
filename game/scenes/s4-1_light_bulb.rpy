@@ -6,10 +6,10 @@ label .shot1:
     $ store.currentTime = "19:00"
     $ store.wrapping_scene = "light_bulb"
 
-    # should be bg apartment_night, but we only have one
     scene bg apartment with dissolve
+    play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
 
-    show mc regular left at character_right
+    show mc regular left at character_right with dissolve
 
     window show
     "By the time I get back in my apartment, night has already fallen. I hastily remove my shoes and open the tool’s package."
@@ -90,6 +90,8 @@ label .shot2a:
     show mc regular at character_move_right_exit
     pause 0.2
 
+    stop music fadeout 2.0
+
     $ quick_menu = False
     show overlay black with dissolve
     pause 0.3
@@ -115,6 +117,8 @@ label .shot2b:
     "After that, I finished my cold meal, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
     window hide
+
+    stop music fadeout 2.0
 
     pause 0.5
     $ quick_menu = False
