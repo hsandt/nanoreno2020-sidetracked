@@ -3,9 +3,41 @@ init:
         xalign 0.2
         yalign 1.0
 
+    transform character_stand_up:
+        easein 0.5 yalign 1.0
+
     transform character_right:
         xalign 0.8
         yalign 1.0
+
+    transform character_move_right:
+        ease 1.0 xalign 0.8
+        yalign 1.0
+
+    transform character_move_right_farther:
+        easeout 0.2 xalign 0.85
+        yalign 1.0
+
+    transform character_move_right_exit:
+        easeout 0.8 xpos 1.5
+        yalign 1.0
+
+    transform character_right_sit_down:
+        ease 0.2 xalign 0.8
+        easein 0.5 ypos 1.2
+
+    transform character_right_sit_shake:
+        ease 0.2 xalign 0.79
+        ease 0.2 xalign 0.81
+        repeat
+        ypos 1.2
+
+    transform character_crouch:
+        easein 0.5 ypos 1.5
+
+    transform character_left_crouch:
+        xalign 0.2
+        ypos 1.5
 
     # not used anymore, we use pixel placement in screen_item
     transform item_left:
@@ -53,6 +85,7 @@ init:
     define active_tasks_stack = None
 
     # UI variables
+    define is_character_sitting = False
     define is_showing_smartphone = False
     define currentTime = "17:00"
 

@@ -115,7 +115,7 @@ screen say(who, what):
                 text who id "who"
 
         text what id "what"
-        if is_showing_smartphone:
+        if is_showing_smartphone or is_character_sitting:
             yalign 0.01
         else:
             yalign 0.85
@@ -1761,8 +1761,7 @@ init python:
     status_Failed = "Failed"
 
     #Task Names
-    task_LightBulb = "???"
-    task_LightBulbRevealed = "Change the light bulb"
+    task_HaveLunch = "Have Lunch"
     task_Chair = "Fix the chair"
     task_HexKeyApartment = "Find hex key in apartment"
     task_HexKeyStore = "Buy new hex key"
@@ -1793,6 +1792,7 @@ init python:
     task_CreateAccount = "Create account"
     task_InventPassword = "Invent complex password"
     task_UpdateApps = "Update apps"
+    task_LightBulb = "Change the light bulb"
     task_BuyLightBulb = "Buy new light bulb"
 
     # to ditinguish freeing space to get ID (sub-tree) or just like that,
@@ -1805,7 +1805,10 @@ init python:
     # initial task list has everything not hidden just to test GUI when
     # commenting out the initial ResetAllTasks
     initial_task_list = [
+        # light bulb at top just so player can see it immediately near game end
         [task_LightBulb, 0, status_InProgress],
+        [task_BuyLightBulb, 1, status_InProgress],
+        [task_HaveLunch, 0, status_InProgress],
         [task_Chair, 1, status_InProgress],
         [task_HexKeyApartment, 2, status_InProgress],
         [task_HexKeyStore, 2, status_InProgress],
@@ -1836,7 +1839,6 @@ init python:
         [task_UpdateApps + access_id_suffix, 9, status_NotStarted],
         [task_CreateAccount + access_id_suffix, 9, status_InProgress],
         [task_InventPassword + access_id_suffix, 10, status_InProgress],
-        [task_BuyLightBulb, 1, status_InProgress],
         [task_FreeSpace, 0, status_InProgress],
         [task_DeleteDict, 1, status_NotStarted],
         [task_DeleteGame, 1, status_NotStarted],

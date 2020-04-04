@@ -1,7 +1,7 @@
 label s3_2:
 
 label .shot1:
-    $ store.currentTime = "18:15"
+    $ store.currentTime = "16:30"
     $ store.wrapping_scene = "store"
 
     $ StartTask(task_BuyHexKey)

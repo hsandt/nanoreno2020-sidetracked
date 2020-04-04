@@ -4,7 +4,7 @@ label s2_1:
 label .shot1:
     scene bus_stop with dissolve
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
-    $ store.currentTime = "17:15"
+    $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
     $ StartTask(task_Bus)
     $ RevealTask(task_Ticket)

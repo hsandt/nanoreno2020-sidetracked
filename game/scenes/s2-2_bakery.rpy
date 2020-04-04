@@ -2,7 +2,7 @@ label s2_2:
 
 # MC enters bakery and buys everything
 label .shot1:
-    $ store.currentTime = "17:30"
+    $ store.currentTime = "14:30"
     $ store.wrapping_scene = "bakery"
 
     play music store fadeout 1.0

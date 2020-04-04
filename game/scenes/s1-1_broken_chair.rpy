@@ -1,6 +1,6 @@
 label s1_1:
     $ store.has_wifi = True
-    $ store.currentTime = "17:00"
+    $ store.currentTime = "13:30"
     $ store.wrapping_scene = "broken_chair"
 
 label .shot1:
@@ -22,15 +22,34 @@ label .shot2:
     show mc casual regular left at character_right
     with Dissolve(1.0)
     play music apartment
-    # Call to start Lightbulb task so it shows up in the task tree
-    $ StartTask(task_LightBulb)
+
+    # Call to start HaveLunch task so it shows up in the task tree
+    $ StartTask(task_HaveLunch)
+
+    mc "Hmm... Nothing like the smell of a handmade lunch.{w} That is not burnt."
+
+    show mc at character_right_sit_down
+    pause 0.5
+    play sound step_on_chair
+    $ store.is_character_sitting = True
+
+    "I sit at my table to taste the carefully crafted meal. My palate is ready, but my bottom disagrees."
+
+    pause 0.2
+    show mc at character_right_sit_shake
+    pause 1.0
+
     mc "This chair is not stable at all!"
+
+    show mc at character_right_sit_down
+    pause 1.0
+    show mc casual regular at character_left_crouch with dissolve
+
     # Call to start Chair task
     $ StartTask(task_Chair)
     pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
-    hide mc with dissolve
     play sound inspect_chair
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: inspect chair")
@@ -38,16 +57,23 @@ label .shot2:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show screen screen_item("screw_loose", "left")
-    mc "..."
-    show mc casual regular left at character_right
-    with dissolve
+    show screen screen_item("screw_loose", "left") with dissolve
+    pause 0.5
+
     mc "Looks like that screw is a bit loose."
     mc "Hex type, uh? Let’s see if I got a matching screwdriver."
-    $ StartTask(task_HexKeyApartment)
 
     hide screen screen_item
-    hide mc with dissolve
+
+    show mc at character_stand_up
+    pause 1.0
+    show mc at character_move_right
+    pause 1.2
+
+    $ store.is_character_sitting = False
+
+    $ StartTask(task_HexKeyApartment)
+
     play sound searching_drawer
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: searching drawer")
@@ -55,16 +81,20 @@ label .shot2:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show mc casual regular left at character_right with dissolve
+    show mc casual regular left at character_right
     mc "Nope. No such thing."
     $ FailTask(task_HexKeyApartment)
 
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
     $ StartTask(task_HexKeyStore)
 
+    show mc casual regular at character_move_right_farther
+    pause 1.0
+    show mc casual regular left
     pause 0.5
 
     mc "I should take a measurement of the screw hole before I leave."
+
     $ StartTask(task_ScrewSize)
     $ RevealTask(task_Store)
     $ RevealTask(task_FindHexKey)
@@ -80,11 +110,19 @@ label .shot3a:
     $ store.screw_measurement_method = "photo"
     $ StartTask(task_ScrewPhoto)
 
+    pause 0.5
+    show mc at character_crouch
+    $ store.is_character_sitting = True
+
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
     play sound smartphone_camera
     pause 1.0
     hide screen screen_item with dissolve
+
+    show mc at character_stand_up
+    $ store.is_character_sitting = False
+
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
     call s_a from _call_s_a_2
     $ CompleteTask(task_ScrewPhoto)
@@ -96,15 +134,22 @@ label .shot3b:
     $ store.screw_measurement_method = "meter"
     $ StartTask(task_ScrewMeter)
 
+    pause 0.5
+    show mc at character_crouch
+    $ store.is_character_sitting = True
+
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     $ CompleteTask(task_ScrewMeter)
+
+    show mc at character_stand_up
+    $ store.is_character_sitting = False
 
     mc "OK, let’s go!"
     jump .shot4
 
 label .shot4:
     $ CompleteTask(task_ScrewSize)
-    
+
     $ StartTask(task_Store)
     $ RevealTask(task_FindHexKey)
     $ RevealTask(task_BuyHexKey)
@@ -114,10 +159,15 @@ label .shot4:
     window show None
     "The store is not too far, I should be back in no time."
     window hide
+
+    stop music fadeout 2.0
+    pause 0.5
+    show mc casual regular at character_move_right_exit
+
+    # hide Back, Task tree and Preferences button so they don't show above the overlay
     $ quick_menu = False
     show overlay black with dissolve
-    stop music fadeout 2.0
-    pause 1.0
+    pause 0.5
     play sound door_open_close
     pause 2.0
 

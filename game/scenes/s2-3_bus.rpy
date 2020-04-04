@@ -2,7 +2,7 @@ label s2_3:
 
 # Get on bus
 label .shot1:
-    $ store.currentTime = "17:45"
+    $ store.currentTime = "15:00"
     $ store.wrapping_scene = "bus"
 
     scene bus_stop with wipedown

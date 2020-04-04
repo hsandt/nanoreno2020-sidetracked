@@ -3,7 +3,7 @@ label s4a_1:
     $ store.has_wifi = True
 
 label .shot1:
-    $ store.currentTime = "19:10"
+    $ store.currentTime = "19:00"
     $ store.wrapping_scene = "light_bulb"
 
     # should be bg apartment_night, but we only have one
@@ -12,35 +12,40 @@ label .shot1:
     show mc regular left at character_right
 
     window show
-    "Back in my apartment, I hastily remove my shoes and open the tool’s package."
+    "By the time I get back in my apartment, night has already fallen. I hastily remove my shoes and open the tool’s package."
     window hide None
 
     show screen screen_item("hex_key", "left") with dissolve
     mc "OK, let’s try this now."
     hide screen screen_item with dissolve
     show screen screen_item("screw_loose", "left") with dissolve
-    "I use the key to tighten the screw on the chair."
+    "I use the key to tighten the screw on the chair in the living room."
     play sound screw_tighten
     pause 0.5
-    hide screen screen_item
     show screen screen_item("screw_tight", "left") with dissolve
     pause 0.5
-    mc "A-ha! Can I stand on it now?"
+    mc "A-ha! Is it stable now?"
     hide screen screen_item
-    hide mc
-    with Dissolve(0.1)
+
+    show mc at character_right_sit_down
+    pause 0.5
     play sound step_on_chair
-    "I get onto the chair and slowly stand up, as I make sure it won’t make me roll all over the floor."
-    mc "Stable."
+    $ store.is_character_sitting = True
+
+    "I sit down. The seat is not moving anymore."
 
     $ CompleteTask(task_Chair)
 
-    mc "Now I can change this light bulb!"
-    "That's right, I forgot to mention that if I needed a stable chair, it was to change my broken light bulb."
+    mc "Time for lunch!"
+    "I have a bite. It's cold."
+    "I look around me and realize it's pretty dark. I glance at my watch, which shows 7pm."
+    "Looks like my lunch has turned into a dinner. A cold dinner."
+    "All of this makes me look like a vampire, so I push the light switch. But nothing happens."
+    "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
-    # Reveal light bulb's task true name (not very clean to use readable names as key, but anyway)
-    $ task_list[0][0] = task_LightBulbRevealed
-    $ active_tasks_stack[0] = task_LightBulbRevealed
+    $ StartTask(task_LightBulb)
+
+    # TODO Animation: MC searches for light bulb as in first scene with screwdriver
 
     "I start removing the dead bulb, but realize I don’t have any replacement."
     "Wait, do I need to go back to the DIY store?"
@@ -49,7 +54,7 @@ label .shot1:
 
     play sound step_on_chair
     show mc regular left at character_right with Dissolve(0.1)
-    "I step off the chair and I check my watch. 19:30."
+    "I step off the chair and I check my watch. [currentTime]."
     mc "..."
 
     menu:
@@ -62,8 +67,12 @@ label .shot1:
 label .shot2a:
     $ StartTask(task_BuyLightBulb)
 
-    mc "I think I still have time to go."
-    "The store is not too far, I should be back in no time."
+    mc "I think I can go there once more before it closes, but I need to go now."
+    # TODO ANIM: MC turns back to look at meal
+    "The meal is cold already, it cannot get colder."
+    # TODO ANIM: MC turns back toward door (right) again
+    pause 1.0
+    "And the store is not too far, I should be back in no time."
     play sound door_open_close
     $ quick_menu = False
     show overlay black with dissolve
@@ -74,11 +83,12 @@ label .shot2b:
     "No, I don't want to."
 
     $ FailTask(task_BuyLightBulb)
-    $ FailTask(task_LightBulbRevealed)  # important to identify light bulb with new name
+    $ FailTask(task_LightBulb)
+    $ CompleteTask(task_HaveLunch)
 
     $ quick_menu = False
     show overlay black with dissolve
     $ quick_menu = True
-    "After that, I made myself a soup, went in my bed and read a novel for two hours straight before sleeping."
+    "After that, I finished my cold meal, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
     jump ending1
