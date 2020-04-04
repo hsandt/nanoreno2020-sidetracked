@@ -1906,7 +1906,7 @@ screen tasktree():
     tag menu
     
     #Reset newTask indicator
-    on "show" action ToggleVariable('indicator_newTask')
+    on "show" action SetVariable('indicator_newTask', False)
 
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
