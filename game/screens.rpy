@@ -283,7 +283,7 @@ screen quick_menu():
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
         if indicator_newTask:
-            add "gui/button/indicator_new.png" 
+            add "gui/button/indicator_new.png"
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -375,7 +375,7 @@ screen navigation():
         hbox:
             imagebutton auto "gui/button/button_%s.png"  action ShowMenu("about")
 
-            text _("About") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            text _("Credits") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
         #textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
@@ -399,7 +399,7 @@ screen navigation():
     if not main_menu:
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
-            add "gui/button/indicator_new.png" 
+            add "gui/button/indicator_new.png"
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -624,7 +624,7 @@ screen about():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_("Credits"), scroll="viewport"):
 
         style_prefix "about"
 
@@ -1757,7 +1757,7 @@ screen smartphone(app_name):
 
 #-----------------------------------------------
 init python:
-    
+
     #Task Status
     status_Hidden = "Hidden"  # you should not see this at all!
     status_NotStarted = "Not Started"
@@ -1904,7 +1904,7 @@ init python:
 #-----------------------------------------------
 screen tasktree():
     tag menu
-    
+
     #Reset newTask indicator
     on "show" action SetVariable('indicator_newTask', False)
 
@@ -1918,7 +1918,7 @@ screen tasktree():
         # optional safety check (should be init on start)
         # note that "store." is mandatory for task_list to avoid NoneType error,
         # although we are not in Python code
-        if store.task_list:    
+        if store.task_list:
             vbox:
                 for task in store.task_list:
                     $taskLevel = task[1]
