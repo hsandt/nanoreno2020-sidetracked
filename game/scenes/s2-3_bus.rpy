@@ -108,9 +108,9 @@ label .shot4:
     "To do so, I scan another QR code on another sticker. It takes a moment..."
     $ change_free_space(-50)
 
-    # play sound stop_button
+    queue sound ["<silence 0.5>", bus_stop_button]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: stop button")
+    $ renpy.notify("SFX: bus stop button")
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
@@ -144,9 +144,9 @@ label .shot7:
     "I continue waiting, but nothing happens. Am I gonna miss the stop?"
     "As I'm expecting the worst, I nervously tap my foot."
 
-    # play sound stop_button
+    queue sound ["<silence 0.5>", bus_stop_button]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: stop button")
+    $ renpy.notify("SFX: bus stop button")
 
     "Somebody finally calls for the stop."
     $ CompleteTask(task_WaitStop)
