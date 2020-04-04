@@ -2,6 +2,7 @@ label s1_1:
     $ store.has_wifi = True
     $ store.currentTime = "13:30"
     $ store.wrapping_scene = "broken_chair"
+    stop music fadeout 2.0
 
 label .shot1:
     show overlay black
