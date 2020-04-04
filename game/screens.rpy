@@ -115,7 +115,7 @@ screen say(who, what):
                 text who id "who"
 
         text what id "what"
-        if is_showing_smartphone:
+        if is_showing_smartphone or is_character_sitting:
             yalign 0.01
         else:
             yalign 0.85
@@ -1103,6 +1103,14 @@ screen keyboard_help():
         text _("Accesses the game menu.")
 
     hbox:
+        label _("O / P")
+        text _("Opens the Preferences.")
+
+    hbox:
+        label _("T")
+        text _("Opens the Task Tree (in-game only).")
+
+    hbox:
         label _("Ctrl")
         text _("Skips dialogue while held down.")
 
@@ -1657,8 +1665,6 @@ screen screen_item(itemName, displaySide="left"):
     $ newxpos = 0
     $ newypos = 0
 
-    $ print(displaySide)
-
     if displaySide == "left":
         $ newxpos = 400
         $ newypos = 200
@@ -1762,8 +1768,7 @@ init python:
     status_Failed = "Failed"
 
     #Task Names
-    task_LightBulb = "???"
-    task_LightBulbRevealed = "Change the light bulb"
+    task_HaveLunch = "Have Lunch"
     task_Chair = "Fix the chair"
     task_HexKeyApartment = "Find hex key in apartment"
     task_HexKeyStore = "Buy new hex key"
@@ -1794,6 +1799,7 @@ init python:
     task_CreateAccount = "Create account"
     task_InventPassword = "Invent complex password"
     task_UpdateApps = "Update apps"
+    task_LightBulb = "Change the light bulb"
     task_BuyLightBulb = "Buy new light bulb"
 
     # to ditinguish freeing space to get ID (sub-tree) or just like that,
@@ -1806,7 +1812,10 @@ init python:
     # initial task list has everything not hidden just to test GUI when
     # commenting out the initial ResetAllTasks
     initial_task_list = [
+        # light bulb at top just so player can see it immediately near game end
         [task_LightBulb, 0, status_InProgress],
+        [task_BuyLightBulb, 1, status_InProgress],
+        [task_HaveLunch, 0, status_InProgress],
         [task_Chair, 1, status_InProgress],
         [task_HexKeyApartment, 2, status_InProgress],
         [task_HexKeyStore, 2, status_InProgress],
@@ -1837,7 +1846,6 @@ init python:
         [task_UpdateApps + access_id_suffix, 9, status_NotStarted],
         [task_CreateAccount + access_id_suffix, 9, status_InProgress],
         [task_InventPassword + access_id_suffix, 10, status_InProgress],
-        [task_BuyLightBulb, 1, status_InProgress],
         [task_FreeSpace, 0, status_InProgress],
         [task_DeleteDict, 1, status_NotStarted],
         [task_DeleteGame, 1, status_NotStarted],
@@ -1851,6 +1859,8 @@ init python:
     def ResetAllTasks():
         for task in store.task_list:
             task[2] = status_Hidden
+
+        active_tasks_stack.clear()
         return
 
     def SetTaskStatus(_taskName, _status):
@@ -1867,15 +1877,31 @@ init python:
         global indicator_newTask
         SetTaskStatus(_taskName, status_InProgress)
         indicator_newTask = True
+
+        # push to stack, the last task is the active one
+        if _taskName not in store.active_tasks_stack:
+            store.active_tasks_stack.append(_taskName)
+        else:
+            print("WARNING in StartTask: %s already added to active_tasks_stack" % _taskName)
         return
 
     def CompleteTask(_taskName):
         SetTaskStatus(_taskName, status_Complete)
+        RemoveFromActiveTasks(_taskName)
         return
 
     def FailTask(_taskName):
         SetTaskStatus(_taskName, status_Failed)
+        RemoveFromActiveTasks(_taskName)
         return
+
+    def RemoveFromActiveTasks(_taskName):
+        for i, active_task_name in enumerate(store.active_tasks_stack):
+            if active_task_name == _taskName:
+                del store.active_tasks_stack[i]
+                return
+
+        print("WARNING in RemoveFromActiveTasks: %s not found in active_tasks_stack" % _taskName)
 
 #-----------------------------------------------
 screen tasktree():
@@ -1891,8 +1917,10 @@ screen tasktree():
 
         style_prefix "about"
 
-        # optional safety check, since task_list should be initialized on game start
-        if task_list is not None:
+        # optional safety check (should be init on start)
+        # note that "store." is mandatory for task_list to avoid NoneType error,
+        # although we are not in Python code
+        if store.task_list:
             vbox:
                 for task in store.task_list:
                     $taskLevel = task[1]
@@ -1902,8 +1930,12 @@ screen tasktree():
                         $taskName = "|_ " + str(task[0])
                     if task[2] == status_NotStarted:
                         text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3b3b3b"
-                    if task[2] == status_InProgress:
-                        text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel
+                    elif task[2] == status_InProgress:
+                        # the current task (last of active ones) has a brighter color and "current" hint
+                        if len(store.active_tasks_stack) > 0 and task[0] == store.active_tasks_stack[-1]:
+                            text taskName + ": {size=-5}" + task[2] + " (Current){/size}" xpos 50*taskLevel color "#cb78e4"
+                        else:
+                            text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel
                     elif  task[2] == status_Complete:
                         text taskName + ": {size=-5}" + task[2] + "{/size}" xpos 50*taskLevel color "#3c9c21"
                     elif  task[2] == status_Failed:

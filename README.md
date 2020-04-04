@@ -11,6 +11,7 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 * Original Background Art: JW Jones
 * Character Sprites: Maxenau
 * Item Sprites: komehara
+* BGM: Fabian Fabro (FirahFabe)
 * Ambient BGM: komehara
 * SFX: Fabian Fabro (FirahFabe), komehara
 
@@ -18,7 +19,8 @@ An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* i
 
 * Background: Uncle Mugen, Pymouss, うにょ＠, Andre.o.mob, Wpcpey
 * UI: Lynda Mc Donald
-* BGM: 柔らかな嘘
+* Font: Sven Pels
+* BGM: MusMus
 
 # License
 
@@ -33,6 +35,8 @@ Free backgrounds:
 
 Free UI sprites: [Dating Sim UI Pack](https://loudeyes.itch.io/dating-sim-ui-pack) by Lynda Mc Donald, distributed under [custom license](License%20Dating%20Sim%20UI%20Pack.jpg) (allows free usage with appropriate credit)
 
+Fonts: The Bold Font by [Sven Pels](http://svenpels.com/), distributed for free usage on [dafont.com](https://www.dafont.com/the-bold-font.font)
+
 Character sprites: copyright Maxenau
 
 Item sprites: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) komehara
@@ -43,7 +47,6 @@ Ambient BGM:
 
 Free BGM:
 
-* 緑茶でも一杯 (Ryokucha demo Ippai) from [SLOS V 7.1](http://slos.biz/) by [background](http://back-ground.biz/) under [custom license](http://slos.biz/#x:_rule) (allows free usage with appropriate credit and notification)
 * 柔らかな嘘 (Yawarakana Uso) by [MusMus](http://musmus.main.jp) under [custom license](http://musmus.main.jp/info.html) (allows free usage as BGM with appropriate credit)
 * Game BGM (bgm_maoudamashii_fantasy03_short.ogg) cropped from ファンタジー03 (Fantasy 03) by [魔王魂 (Maoudamashii)](https://maoudamashii.jokersounds.com) distributed on [this page](https://maoudamashii.jokersounds.com/list/bgm10.html) under [custom license](https://maoudamashii.jokersounds.com/music_rule.html) (allows free usage with appropriate credit whenever possible)
 

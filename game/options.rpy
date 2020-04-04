@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "3.0"
+define config.version = "3.1"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -44,6 +44,8 @@ This game was developed for the {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 20
 - Character Sprites: Maxenau
 
 - Item Sprites: komehara
+
+- BGM: Fabian Fabro (FirahFabe)
 
 - Ambient BGM: komehara
 
@@ -68,17 +70,19 @@ Other backgrounds:
 
 Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
 
+Fonts: The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
+
 Character sprites: copyright Maxenau
 
 Item sprites: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
+
+BGM: copyright Fabian Fabro (FirahFabe)
 
 Ambient BGM:
 
 - ambient_street.ogg: {a=https://creativecommons.org/licenses/by-sa/4.0/}CC BY-SA 4.0{/a} komehara
 
 Free BGM:
-
-- Ryokucha demo Ippai from {a=http://slos.biz/}SLOS V 7.1{/a} by {a=http://back-ground.biz/}background{/a} under {a=http://slos.biz/#x:_rule}custom license{/a} (allows free usage with appropriate credit and notification)
 
 - Yawarakana Uso by {a=http://musmus.main.jp}MusMus{/a} under {a=http://musmus.main.jp/info.html}custom license{/a} (allows free usage as BGM with appropriate credit)
 

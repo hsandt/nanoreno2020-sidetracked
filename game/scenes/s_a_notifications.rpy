@@ -44,22 +44,22 @@ label s_a:
     menu:
         "What should I handle?"
         "Update apps" if not has_updated_apps:
-            call s_b
+            call s_b from _call_s_b_1
         "Free storage space" if not has_freed_space:
             $ free_space_context = "notifications"
-            call s_c
+            call s_c from _call_s_c_1
             $ free_space_context = None
         "Check sister message" if sister_request_phase == 1:
-            call s_e
+            call s_e from _call_s_e
         "Check sister reply" if sister_request_phase == 2:
-            call s_e
+            call s_e from _call_s_e_1
         "Ignore notifications":
             "I ignore the notifications and put my phone back in my pocket."
-            call .exit
+            call .exit from _call_s_a_exit_1
             return
 
     "I check if there are any other notifications."
-    call s_a
+    call s_a from _call_s_a_1
     return
 
 label .exit:
