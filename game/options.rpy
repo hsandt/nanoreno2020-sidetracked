@@ -1,4 +1,4 @@
-﻿## This file contains options that can be changed to customize your game.
+## This file contains options that can be changed to customize your game.
 ##
 ## Lines beginning with two '#' marks are comments, and you shouldn't uncomment
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
@@ -212,24 +212,23 @@ define config.has_voice = True
 ## transition should be used.
 
 ## Entering or exiting the game menu.
-
-define config.enter_transition = dissolve
-define config.exit_transition = dissolve
-
+define config.enter_transition = Dissolve(0.2)
+define config.exit_transition = Dissolve(0.2)
 
 ## Between screens of the game menu.
+define config.intra_transition = Dissolve(0.2)
 
-define config.intra_transition = dissolve
-
+# Used when returning to the main menu from the game.
+define config.game_main_transition = Dissolve(0.2)
 
 ## A transition that is used after a game has been loaded.
+define config.after_load_transition = Dissolve(0.5)
 
-define config.after_load_transition = None
-
+# Used when entering the main menu from the splashscreen.
+define config.end_splash_transition = Dissolve(0.5)
 
 ## Used when entering the main menu after the game has ended.
-
-define config.end_game_transition = None
+define config.end_game_transition = Dissolve(0.5)
 
 
 ## A variable to set the transition used when the game starts does not exist.
