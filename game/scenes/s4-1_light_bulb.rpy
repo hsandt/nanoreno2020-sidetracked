@@ -40,6 +40,12 @@ label .shot1:
     "I take a mouthful of zucchini. It's cold."
     "I look around me and realize it's pretty dark. I glance at my watch, which shows 7pm."
     "Looks like my lunch has turned into a dinner. A cold dinner."
+
+    play sound step_on_chair
+    show mc at character_stand_up
+    $ store.is_character_sitting = False
+    pause 0.5
+
     "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
@@ -52,13 +58,7 @@ label .shot1:
 
     $ RevealTask(task_BuyLightBulb)
 
-    play sound step_on_chair
-    show mc at character_stand_up
-    $ store.is_character_sitting = False
-
-    pause 0.5
-
-    "I step off the chair and I check my watch. [currentTime]."
+    "I check my watch. [currentTime]."
     mc "..."
 
     menu:
