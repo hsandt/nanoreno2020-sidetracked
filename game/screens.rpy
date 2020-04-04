@@ -282,6 +282,8 @@ screen quick_menu():
         imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
+        if indicator_newTask:
+            add "gui/button/indicator_new.png" 
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -396,6 +398,8 @@ screen navigation():
     imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
     if not main_menu:
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
+        if indicator_newTask:
+            add "gui/button/indicator_new.png" 
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -1747,6 +1751,9 @@ screen smartphone(app_name):
 
 #-----------------------------------------------
 init python:
+    #New Task Indicator
+    indicator_newTask = True
+    
     #Task Status
     status_Hidden = "Hidden"  # you should not see this at all!
     status_NotStarted = "Not Started"
@@ -1857,7 +1864,9 @@ init python:
         return
 
     def StartTask(_taskName):
+        global indicator_newTask
         SetTaskStatus(_taskName, status_InProgress)
+        indicator_newTask = True
         return
 
     def CompleteTask(_taskName):
@@ -1871,6 +1880,9 @@ init python:
 #-----------------------------------------------
 screen tasktree():
     tag menu
+    
+    #Reset newTask indicator
+    $indicator_newTask = False
 
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
