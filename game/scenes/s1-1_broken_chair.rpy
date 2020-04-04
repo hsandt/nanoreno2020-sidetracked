@@ -2,6 +2,8 @@ label s1_1:
     $ store.has_wifi = True
     $ store.currentTime = "13:30"
     $ store.wrapping_scene = "broken_chair"
+
+    # Renpy needs to be told to stop Main Menu BGM (Title Theme)
     stop music fadeout 2.0
 
 label .shot1:

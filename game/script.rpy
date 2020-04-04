@@ -119,3 +119,18 @@ label start:
 
 label lbl_realstart:
     jump s1_1
+
+# Restore BGM from context. Useful after using smartphone.
+label restore_bgm:
+    if wrapping_scene == "broken_chair":
+        play music apartment
+    elif wrapping_scene == "bus_stop":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "bakery":
+        play music store
+    elif wrapping_scene == "bus":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "store":
+        play music store
+    elif wrapping_scene == "light_bulb":
+        pass

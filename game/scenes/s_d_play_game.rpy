@@ -123,20 +123,6 @@ label .shot4:
 
     $ store.has_tried_game = True
 
-    call .restore_bgm from _call_s_d_restore_bgm
+    call restore_bgm from _call_s_d_restore_bgm
 
     return
-
-label .restore_bgm:
-    if wrapping_scene == "broken_chair":
-        play music apartment
-    elif wrapping_scene == "bus_stop":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
-    elif wrapping_scene == "bakery":
-        play music store
-    elif wrapping_scene == "bus":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
-    elif wrapping_scene == "store":
-        play music store
-    elif wrapping_scene == "light_bulb":
-        pass
