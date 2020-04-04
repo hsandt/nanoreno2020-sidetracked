@@ -26,7 +26,6 @@ label .shot1:
 # Screwdrivers & Nut Drivers
 label .shot2a:
     "I walk along the shelves in the \"Screwdrivers & Nut Drivers\" area. They are full of interesting labels like Slot, Cross, Frearson and Torx... But I see no hex."
-    "Except for those drivers that remove hexagonal nuts, but they are not what I need."
     $ store.has_explored_screwdrivers = True
 
     if has_explored_screwdrivers and has_explored_power_screwdrivers:
