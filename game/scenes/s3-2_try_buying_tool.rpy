@@ -18,6 +18,11 @@ label .shot1:
     "The cashier points at a huge device in the corner. Four people are queuing in front of it."
     mc "I see."
 
+    pause 0.3
+    show mc regular left
+    pause 0.2
+    "I start wondering if this will ever end."
+
     pause 0.2
     $ StartTask(task_Permit, notify=True)
     pause 0.5

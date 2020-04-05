@@ -3,6 +3,10 @@ init:
         xalign 0.2
         yalign 1.0
 
+    transform character_move_left_exit:
+        easeout 0.8 xpos -0.5
+        yalign 1.0
+
     transform character_stand_up:
         easein 0.5 yalign 1.0
 

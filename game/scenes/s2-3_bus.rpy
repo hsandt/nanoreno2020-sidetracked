@@ -65,7 +65,10 @@ label .shot2:
     "As the bus approaches the store, I push the stop button on my left. It does nothing, though. Probably broken."
     $ FailTask(task_PushClosestStop)
 
-    "I guess I’ll have to use another one, or let somebody else do it for me."
+    pause 0.5
+
+    "Another hurdle... Another problem I will solve."
+    "I can try another button, or let somebody else do it for me."
     "Oh, there’s also that new app, “Stop, Please!” that allow people to send a “stop” signal to the bus they are in."
     "If I scan the QR code on the ad stuck in the bus, I should be able to install it."
 

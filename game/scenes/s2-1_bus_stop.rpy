@@ -53,7 +53,12 @@ label .shot2:
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: bus doors close")
 
-    "I apologize, quickly get off and decide to turn my bill into coins in some local store."
+    "I apologize and quickly get off."
+
+    pause 0.5
+
+    "Granted, things are not going as smooth as I expected, but there is nothing to worry about yet."
+    "I can just turn my bill into coins in some local store."
     $ StartTask(task_BuyFood)
 
     window show None

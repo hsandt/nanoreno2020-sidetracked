@@ -6,6 +6,12 @@ label .shot1:
     $ store.currentTime = "19:00"
     $ store.wrapping_scene = "light_bulb"
 
+    pause 2.0
+    play sound door_open_close
+    pause 1.0
+
+    $ quick_menu = True
+
     scene bg apartment with Dissolve(1.0)
     play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
 
@@ -69,7 +75,7 @@ label .shot1:
 label .shot2a:
     $ StartTask(task_BuyLightBulb)
 
-    mc "I think I can go there once more before it closes, but I need to go now."
+    mc "...{w=1.0} Yes, logically I should be able to go there once more before it closes.{w=1.0} But I need to go now."
 
     show mc regular at character_move_right_farther
     pause 1.0
@@ -101,7 +107,7 @@ label .shot2a:
 
 label .shot2b:
     window show None
-    "No, I don't want to."
+    "...{w=1.0} No way, I'm not going back.{w=1.0} I had my fix of problems for today. For the month, actually."
     window hide
 
     $ FailTask(task_BuyLightBulb)

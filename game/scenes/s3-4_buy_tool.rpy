@@ -23,19 +23,29 @@ label .shot1:
     hide screen screen_item
 
     mc "OK."
-    show screen screen_item("coins", "right") with dissolve
     play sound coins_drop
-    pause 0.5
-    hide screen screen_item with dissolve
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: coins dropped on counter")
     pause 0.5
 
     cashier "Thank you."
     $ CompleteTask(task_BuyHexKey)
     $ CompleteTask(task_HexKeyStore)
 
+    pause 0.5
+
+    show mc regular left
+    "Ha! I knew I could make it! And it took me only...{w=1.0} Four hours."
+
+    pause 0.2
+    show mc regular
+    pause 0.5
+
     window show None
-    mc "Goodbye! {i}(Finally.){/i}"
+    "Time to go home."
     window hide
+
+    show mc regular left at character_move_left_exit
 
     $ quick_menu = False
 
@@ -47,12 +57,5 @@ label .shot1:
     $ renpy.notify("SFX: automatic door opens")
 
     pause 3.0
-    play sound store_door_close
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: automatic door closes")
-
-    pause 2.5
-
-    $ quick_menu = True
 
     jump s4_1
