@@ -6,12 +6,13 @@ label .shot1:
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
     $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
+
+    window show
+    "The bus is the most convenient way to go to the DIY store, so I wait at the stop with a few other people."
     $ StartTask(task_Bus, notify=True)
     $ RevealTask(task_Ticket)
     $ RevealTask(task_Stop)
-
-    window show
-    "Let's sum-up: I go to the DIY store by bus, find a hex screwdriver or key, buy it and come back to fix the chair."
+    "The street is rather quiet, as few cars are passing by."
     window hide None
 
     pause 1.0
