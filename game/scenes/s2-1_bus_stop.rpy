@@ -12,8 +12,6 @@ label .shot1:
 
     window show
     "Let's sum-up: I go to the DIY store by bus, find a hex screwdriver or key, buy it and come back to fix the chair."
-    "I write this on my {i}to do list{/i}, also detailing sub-tasks required for each task as I go. I call it a {i}task tree{/i}."
-    "I can access it at any time by clicking on the notepad icon at the bottom-right, or by pressing the T key."
     window hide None
 
     pause 1.0
