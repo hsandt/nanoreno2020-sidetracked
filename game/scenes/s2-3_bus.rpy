@@ -105,7 +105,8 @@ label .shot4:
     $ StartTask(task_InstallStopApp)
     "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
     "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
-    "To do so, I scan another QR code on another sticker. It takes a moment..."
+    "I follow a convoluted process to sync my phone with the bus. Cry out with joy as you witness the magic of the {i}Internet of Things{/i}!"
+    "...{w=1.0} In just a moment..."
     $ change_free_space(-50)
 
     queue sound ["<silence 0.5>", bus_stop_button]
