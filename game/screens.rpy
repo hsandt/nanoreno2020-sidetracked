@@ -161,7 +161,8 @@ style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
     yalign 0.5
-    outlines [ (absolute(2), "#744675", absolute(0), absolute(0)) ]
+    # darker purple than usual so NPC with different name colors do not clash with outline
+    outlines [ (absolute(2), "#3b233c", absolute(0), absolute(0)) ]
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
@@ -285,7 +286,7 @@ screen quick_menu():
         if indicator_newTask:
             add "gui/button/indicator_new.png"
         text "T" xpos 1475 ypos 975
-        text "P"xpos 1700 ypos 975
+        text "P" xpos 1700 ypos 975
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
