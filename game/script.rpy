@@ -62,9 +62,11 @@ init:
     define has_updated_apps = False
     define has_deleted_small_apps = False
     define has_tried_dict = False
-    define has_tried_game = False
+    define has_tried_game_count = 0
     define has_deleted_game = False
     define has_freed_space = False
+    define has_navigated_slowly = False
+    define has_navigated_very_slowly = False
     define has_explored_screwdrivers = False
     define has_explored_power_screwdrivers = False
     define free_space = 400

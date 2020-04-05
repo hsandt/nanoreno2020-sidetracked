@@ -5,6 +5,7 @@ label s_a:
 
     if not has_seen_base_notifications:
         $ store.has_seen_base_notifications = True
+        $ store.has_seen_space_left_since_last_change = True
 
         "New album released today, professional translators meetup tomorrow..."
         "But my main concern is that bunch of app updates I have been delaying for two weeks."

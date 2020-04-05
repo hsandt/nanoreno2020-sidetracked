@@ -1,6 +1,6 @@
 # call, not jump to this label, so you can come back
 label s_b:
-    "On the update screen, I see 14 pending."
+    "I see 14 updates pending."
     "I carefully select which apps to update based on how much I use them."
     if has_wifi:
         "Hopefully that will help download faster while also saving some space."
@@ -16,7 +16,7 @@ label s_b:
         if not has_freed_space:
             "It takes a lot of space though. I now have only [free_space] MB left."
     else:
-        "I download on 4G, hoping it won't blow up my data consumption. Apparently, there are around 100 MB of update."
+        "I'm on 4G, so I hope it won't blow up my data consumption. Apparently, there are around 100 MB of update."
         if update_context == "play game":
             "It's very slow, but I take on myself and wait. When the update is over, I finally run the game again."
         else:

@@ -38,7 +38,7 @@ label .shot1:
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: smartphone notification")
 
-    "While I'm paying, my phone vibrates and notifies my of a new message. I'll check this later."
+    "While I'm paying, my phone vibrates and notifies me of a new message. I'll check this later."
 
     # Sister has sent request, it will affect Scene F: Kill time > Scene A: Notifications
     $ sister_request_phase = 1

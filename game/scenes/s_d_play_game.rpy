@@ -24,11 +24,12 @@ label .shot1:
 
         if play_context == "free space":
             $ CompleteTask(task_UpdateApps + task_suffix)
-    else:
-         "I've already updated all the apps earlier, so I can play the latest patch of the game."
+    elif has_tried_game_count == 0:
+        "I've already updated all the apps earlier, so I can play the latest patch of the game."
 
-    if not has_tried_game:
-        "I'm welcomed by a login window, which asks me to create an account, with password and all. I guess it's because it's fundamentally an online game."
+    if has_tried_game_count == 0:
+        "I'm welcomed by a login window, which asks me to create an account, with password and all."
+        "I guess it's because it's fundamentally an online game."
 
         # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
         if play_context == "free space":
@@ -91,39 +92,53 @@ label .shot4:
     show screen smartphone("game") with dissolve
     $ store.is_showing_smartphone = True
 
-    play music game fadein 0.5
-    pause 2.0
+    play music game fadeout 0.8 fadein 0.8
+    pause 1.5
 
-    if play_context == "free space":
-        "The game is... actually quite interesting. But there is a lot to do, so it's hard for me to tell if it's worth going on or not."
-        "If I try to see more of it, I may never be able to delete it. Maybe I should delete it now, and re-install it later."
+    if has_tried_game_count > 0:
+        "I resume my session where I left it, and go over a few missions."
+
+        if has_tried_game_count == 1:
+            "The setting is funny. The remorses of dead people come from the future, shaped as monsters."
+            "They attack people in the present to prevent them from the doing the same kind of mistakes."
+            "But there are really, many, many characters. I'm glad I don't have to name every of them."
+        elif has_tried_game_count == 2:
+            "How many times have I played this game today? I almost feel guilty it's a free-to-play."
+            "Maybe I should drop some money on it... But I don't have a sense of {i}money versus time{/i} good enough to know what's worth what."
+            "Some may say that I don't have a good sense of time, period. But that's not it, I simply do as much as I can in the allocated time."
+
+        if play_context == "free space":
+            pause 0.5
+            "OK, I think I've played enough to have a good idea of what the game is about."
+            "I don't think I'll play much more, so I can delete when I'm done."
+
+        pause 1.5
+        stop music fadeout 1.5
+        "After a few missions, I end my session."
+    elif play_context == "free space":
+        "It's a tactical role-playing game, and actually quite interesting. But there is a lot to do, so it's hard for me to tell if it's worth going on or not."
+        "I think I can delete it now, and if I change my mind, re-install it later."
         "My account should preserve my save until next time I play..."
         "Assuming that in the meantime, servers are not shut down, with some competitor making all of it obsolete -_-'"
         stop music fadeout 1.5
         "After a few more minutes, I end my session."
-
-        # we were just freeing space, so come back to notifications instead of hiding smartphone altogether
-        show screen smartphone("notifications") with dissolve
-    elif not has_tried_game:
-        "The game is... actually quite interesting. Placing your characters the right way helps you finish the fights much more quickly."
+    else:
+        "It's a tactical role-playing game, and actually quite interesting. Placing your characters the right way helps you finish the fights much more quickly."
         "But I don't feel in danger enough, so I don't feel the need to improve. Even after many mistakes I still have plenty of health."
         "Also, numbers are a bit mind blowing. Is it normal that I'm still at level 3 and yet dealing 6,187 damage in one attack?"
         "Well, I guess it's all relative..."
         pause 1.0
         stop music fadeout 1.5
         "After a few more fights, I end my session."
-        hide screen smartphone with dissolve
-        $ store.is_showing_smartphone = False
+
+    if play_context == "free space":
+        # we were just freeing space, so come back to notifications instead of hiding smartphone altogether
+        show screen smartphone("notifications") with dissolve
     else:
-        "I resume my session where I left it, and go over a few missions."
-        "Hmm... There are really, many, many characters. I'm glad I don't have to name every of them."
-        pause 2.0
-        stop music fadeout 1.5
-        "After a few missions, I end my session."
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
 
-    $ store.has_tried_game = True
+    $ store.has_tried_game_count += 1
 
     call restore_bgm from _call_s_d_restore_bgm
 

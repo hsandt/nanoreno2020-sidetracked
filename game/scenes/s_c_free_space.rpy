@@ -5,10 +5,10 @@ label s_c:
     $ StartTask(task_FreeSpace + task_suffix)
 
     if not has_deleted_small_apps:
-        $ change_free_space(+60)
+        $ change_free_space(+40)
         $ store.has_deleted_small_apps = True
 
-        "I start fiddling with my phone, trying to find which apps I can safely delete. I delete a few small apps and games, but I only free 60 MB. I now have [free_space] MB…"
+        "I start fiddling with my phone, trying to find which apps I can safely delete. I delete a few small apps and games, but I only free 40 MB. I now have [free_space] MB…"
         "I check the bigger apps I could get rid of."
     else:
         "I've already deleted small apps, so I immediately check the big ones left."
@@ -17,31 +17,38 @@ label s_c:
         "There is a dictionary app I've barely touched. I'd like to test it first, see if it's worth keeping."
 
     if not has_deleted_game:
-        if not has_tried_game:
+        if has_tried_game_count == 0:
             "There is a game that takes quite a lot of memory, and I've never tried it. I should before I delete it."
         else:
-            "There is that game I was playing earlier. It takes quite a lot of memory, so even if I didn't go far, I think it's worth deleting."
-            "I can always redownload it and take my time to play it later (if some competitor hasn't showed up in the meantime)."
+            "There is that game I was playing earlier. I could delete it and re-download it later, or try it one more time first."
+
+    # allow trying once more
 
     menu try_choice:
         "What do I try or delete?"
         "Try the dictionary app" if not has_tried_dict:
             call s_c.shot2 from _call_s_c_shot2
-        "Try the game" if not has_tried_game:
-            $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
-            $ StartTask(task_DeleteGame + task_suffix)
-            $ StartTask(task_PlayGame + task_suffix)
-
-            $ store.play_context = "free space"
-            call s_d from _call_s_d  # Play game
-
-            $ CompleteTask(task_PlayGame + task_suffix)
-
-            $ store.play_context = None
-            call s_c.shot3 from _call_s_c_shot3
-        "Delete the game" if has_tried_game and not has_deleted_game:
+        "Try the game" if has_tried_game_count == 0:
+            call s_c.try_game
+        "Try the game once more" if has_tried_game_count > 0 and not has_deleted_game:
+            call s_c.try_game
+        "Delete the game" if has_tried_game_count > 0 and not has_deleted_game:
             call s_c.shot3 from _call_s_c_shot3_1
 
+    return
+
+label .try_game:
+    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+    $ StartTask(task_DeleteGame + task_suffix)
+    $ StartTask(task_PlayGame + task_suffix)
+
+    $ store.play_context = "free space"
+    call s_d from _call_s_d  # Play game
+
+    $ CompleteTask(task_PlayGame + task_suffix)
+
+    $ store.play_context = None
+    call s_c.shot3 from _call_s_c_shot3
     return
 
 # Dictionary app
@@ -57,6 +64,8 @@ label .shot2:
     $ FailTask(task_DeleteDict + task_suffix)
 
     $ store.has_tried_dict = True
+
+    show screen smartphone("notifications") with dissolve
 
     "What else can I do?"
     call try_choice from _call_try_choice
@@ -81,26 +90,51 @@ label .shot3:
 # a wrapper for the free space scene, that will only trigger free space if smartphone is too slow
 # if a bit slow, it will only mention it
 label check_file(file_name):
-    if free_space <= 300:
+    if free_space <= 340:
         show screen smartphone("notifications") with dissolve
         $ store.is_showing_smartphone = True
 
-        # has_updated_apps should be True at this point, hence the thought
-        "I navigate through my files, but it’s very slow. Probably because I only have [free_space] MB left."
-        "I guess updating all my apps while running out of storage space was not a good idea. I need to free some now."
+        if not has_navigated_very_slowly:
+            $ store.has_navigated_very_slowly = True
+            # has_updated_apps should be True at this point, hence the thought
+            "I navigate through my files, but it’s very slow. Probably because I only have [free_space] MB left."
+            "I guess updating all my apps while running out of storage space was not a good idea."
 
-        $ free_space_context = "check " + file_name
-        call s_c
-        $ free_space_context = None
-
-        "With space being freed, I resume searching for the file I want."
+            # the first time (for photo), you can push through one more time without freeing space
+            menu:
+                "Should I go on like that or free space?"
+                "Go on":
+                    "I take on myself and spend a good minute browsing files very slowly."
+                "Free space":
+                    call .free_space_to_check(file_name)
+        else:
+            "Navigating among files is still very slow. This time it won't cut, I need to free some space!"
+            call .free_space_to_check(file_name)
 
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
 
         return
     elif free_space <= 400:
-        "I navigate through my files, but it's a bit slow. Maybe freeing some space would help. It's not critical though, so I go on."
+        if not has_navigated_slowly:
+            "I navigate through my files, but it's a bit slow. Maybe freeing some space would help. It's not critical though, so I go on."
+            $ store.has_navigated_slowly = True
+        else:
+            "I navigate through my files, but it's a bit slow again."
         return
     else:
         return
+
+label .free_space_to_check(file_name):
+    $ free_space_context = "check " + file_name
+    call s_c
+    $ free_space_context = None
+
+    pause 0.5
+
+    if file_name == "id":
+        "I notice the dissatisfaction of the other customers waiting behind me in the queue."
+        "Aha, sorry. I'm really grateful for your patience, guys."
+
+    "With space being freed, I resume searching for the file I want. It's much faster!"
+    return
