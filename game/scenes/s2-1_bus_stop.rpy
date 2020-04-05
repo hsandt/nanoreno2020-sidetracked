@@ -6,7 +6,7 @@ label .shot1:
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
     $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
-    $ StartTask(task_Bus)
+    $ StartTask(task_Bus, notify=True)
     $ RevealTask(task_Ticket)
     $ RevealTask(task_Stop)
 

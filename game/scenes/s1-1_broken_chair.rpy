@@ -27,6 +27,7 @@ label .shot2:
     play music apartment
 
     # Call to start HaveLunch task so it shows up in the task tree
+    # Don't notify this one though; it's unnatural for MC to write that now!
     $ StartTask(task_HaveLunch)
 
     mc "Hmm... Nothing like the smell of roasted vegetables.{w} That are not burnt."
@@ -89,7 +90,7 @@ label .shot2:
     $ FailTask(task_HexKeyApartment)
 
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
-    $ StartTask(task_HexKeyStore)
+    $ StartTask(task_HexKeyStore, notify=True)
 
     show mc casual regular at character_move_right_farther
     pause 1.0
@@ -123,6 +124,8 @@ label .shot3a:
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
     play sound smartphone_camera
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: taking photo")
     pause 1.0
     hide screen screen_item with dissolve
 
@@ -143,6 +146,10 @@ label .shot3b:
     pause 0.5
     show mc at character_right_sit_down
     $ store.is_character_sitting = True
+
+    queue sound ["<silence 1.5>", write_on_paper]
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: writing on paper")
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     $ CompleteTask(task_ScrewMeter)

@@ -81,7 +81,7 @@ init:
     define is_character_sitting = False
     define is_showing_smartphone = False
     define currentTime = "17:00"
-    #New Task Indicator
+    # New Task Indicator
     define indicator_newTask = False
 
     # Defining persistent variables

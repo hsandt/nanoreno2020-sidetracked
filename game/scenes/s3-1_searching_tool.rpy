@@ -20,12 +20,14 @@ label .shot1:
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: automatic door closes")
 
-    $ StartTask(task_FindHexKey)
-
     window show
+    "I start searching for a hexagonal key or screwdriver."
+    window hide None
+
+    $ StartTask(task_FindHexKey, notify=True)
+
     "As I walk past the aisles, I glance at the signs: \"Hammers & Mallets\", \"Keys & Locks\", \"Painting\"..."
     "Eventually, I see two categories that seem fit: \"Screwdrivers & Nut Drivers\", and \"Power Screwdrivers\". Where should I go first?"
-    window hide None
 
     $ StartTask(task_CheckScrewdrivers)
 

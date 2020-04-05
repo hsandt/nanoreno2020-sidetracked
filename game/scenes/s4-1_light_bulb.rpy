@@ -49,7 +49,7 @@ label .shot1:
     "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
-    $ StartTask(task_LightBulb)
+    $ StartTask(task_LightBulb, notify=True)
 
     # TODO Animation: MC searches for light bulb as in first scene with screwdriver
 

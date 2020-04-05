@@ -1874,10 +1874,13 @@ init python:
         SetTaskStatus(_taskName, status_NotStarted)
         return
 
-    def StartTask(_taskName):
-        global indicator_newTask
+    def StartTask(_taskName, notify=False):
         SetTaskStatus(_taskName, status_InProgress)
-        indicator_newTask = True
+        store.indicator_newTask = True
+
+        if notify:
+            renpy.notify("Starting new task: " + _taskName)
+            renpy.play(audio.task_update)
 
         # push to stack, the last task is the active one
         if _taskName not in store.active_tasks_stack:
