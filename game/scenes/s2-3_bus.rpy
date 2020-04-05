@@ -77,7 +77,9 @@ label .shot2:
     menu stop_button:
         "What do I do?"
         "Stand up and push the next closest stop button" if not has_stood_up:
-            jump s2_3.shot3
+            jump s2_3.shot3a
+        "Stand up and try again!" if has_stood_up:
+            jump s2_3.shot3b
         "Install “Stop, Please!”" if not has_installed_app:
             jump s2_3.shot4
         "Ask another passenger to push a working button" if not has_asked_passenger:
@@ -88,15 +90,34 @@ label .shot2:
             jump s2_3.shot7
 
 # Stand up
-label .shot3:
+label .shot3a:
     $ has_stood_up = True
 
     $ StartTask(task_StandUp)
     "I stand up and walk toward another stop button in the central alley."
+
+    # SFX reuse for another purpose
+    queue sound [inspect_chair, step_on_chair]
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: losing balance")
+
     "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
-    "I fall back to my seat, unwilling to try again."
-    $ FailTask(task_StandUp)
+    "I fall back to my seat without having been able to reach the button."
     jump stop_button
+
+# Stand up 2nd time
+label .shot3b:
+    "I stand up once more, this time clinging to bars, seats, whatever."
+    "This bothers the other passengers, but I don't care anymore."
+    "After an epic march, I reach the damn thing and press it."
+
+    queue sound ["<silence 0.5>", bus_stop_button]
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: bus stop button")
+
+    "It's working."
+    $ CompleteTask(task_StandUp)
+    jump .shot8
 
 # App
 label .shot4:
