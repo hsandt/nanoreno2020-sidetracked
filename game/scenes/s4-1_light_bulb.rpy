@@ -15,7 +15,7 @@ label .shot1:
     scene bg apartment with Dissolve(1.0)
     play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
 
-    show mc regular left at character_right with dissolve
+    show mc casual regular left at character_right with dissolve
 
     window show
     "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
@@ -33,7 +33,7 @@ label .shot1:
     mc "So... Is it stable now?"
     hide screen screen_item
 
-    show mc at character_right_sit_down
+    show mc casual regular left at character_right_sit_down
     pause 0.5
     play sound step_on_chair
     $ store.is_character_sitting = True
@@ -43,27 +43,135 @@ label .shot1:
     $ CompleteTask(task_Chair)
 
     "I decide to finally enjoy my lunch, or rather, what turned into dinner."
-    "I take a mouthful of zucchini. It's cold. The room is pretty dark, too."
+    "I take a mouthful of zucchini. It's cold.{w=1.0} Obviously."
+
+    pause 0.5
+    mc "..."
+    pause 0.5
+
+    "Thinking about it, maybe I could have just taken lunch on that other chair other there."
+    "...{w=1.0} No, there is no need to regret."
+    "Because I decided to take over all these issues, I have been able to improve many things that will make my daily life easier in the future. For instance..."
+
+    # this is mandatory, so doesn't count as extra
+    "I tasted some nice viennoiseries."
+
+    $ extra_actions_count = 0
+
+    if has_updated_apps:
+        "I've finally updated my mobile apps."
+        $ extra_actions_count += 1
+    if has_freed_space:
+        "I released a bunch of space on my phone."
+        $ extra_actions_count += 1
+    if has_tried_dict:
+        "I could try that nice Japanese dictionary application."
+        $ extra_actions_count += 1
+
+    if has_tried_game_count == 1:
+        "I played that tactical RPG."
+        $ extra_actions_count += 1
+        if has_deleted_game:
+            "Although I had to delete it."
+    elif has_tried_game_count == 2:
+        "I played that tactical RPG. Twice. But eh, it was fun."
+        $ extra_actions_count += 1.5
+        if has_deleted_game:
+            "Too bad I had to delete it, I guess."
+    elif has_tried_game_count > 2:
+        "I played that tactical RPG. Too many times for a single day, maybe."
+        $ extra_actions_count += 2
+        if has_deleted_game:
+            "Good thing for my health I deleted it, I guess."
+
+    if queuer_dissatisfaction == 1:
+        "I annoyed a few ladies and gentlemen diligently filling administrative needs, like me."
+        $ extra_actions_count += 1
+    if queuer_dissatisfaction > 1:
+        "I massively annoyed a row of ladies and gentlemen diligently filling administrative needs, like me."
+        $ extra_actions_count += 1.5
+
+    if sister_request_reply == "ask context":
+        if sister_request_phase == 2:
+            "I helped my sister... Er... Actually, I asked her for more context but didn't read her reply. I'll check that tomorrow."
+        else:
+            "I helped my sister with a translation. Well, I did all the job, actually. And properly, with context and all."
+            $ extra_actions_count += 1.5
+    elif sister_request_reply == "quick translation":
+        "I translated a sentence for my sister. Barebone, but did the job."
+        $ extra_actions_count += 1
+    elif sister_request_reply == "fake translation":
+        "I translated, er... I enlightened my sister with deep principles."
+    elif sister_request_reply == "silence":
+        "I... turned a deaf ear to my sister's plea."
+    elif sister_request_reply == "silence2":
+        "I... turned a deaf ear to my sister's pleas. Twice."
+    else:
+        "And my sister, er... Oh, right. I didn't check her message at all."
+
+    # Max of 6 unique extra actions, but 9 if you get bonus points by doing things properly / multiple times
+    if extra_actions_count == 0:
+        "...{w=1.0} And that's it...{w=1.0} I didn't do much besides fixing the chair. But! It's an investment in real estate, isn't it?"
+    elif extra_actions_count < 4:
+        "And, er...{w=1.0} That's all. But that's a lot done in the middle of a lunch. Aha..."
+    elif extra_actions_count < 7:
+        "That's quite a record. For good or bad..."
+    else:
+        "That's incredible! Especially in four hours flat."
+
+    if extra_actions_count >= 4:
+        # Max of ~25 clearing notifications (checking task tree after start task notification, including minor ones)
+        if new_task_clear_count == 0:
+            "And all of this without checking my TODO list a single time! I know what I must do, right?"
+        elif new_task_clear_count < 6:
+            "And I barely checked my TODO list. It was all pretty straightforward, I think."
+        elif new_task_clear_count < 13:
+            "By the way, the TODO list was quite useful. I didn't think things would go that far with that chair!"
+        elif new_task_clear_count < 18:
+            "By the way, the TODO list was very useful. It's incredible how things went complicated."
+        else:
+            "I regularly checked my TODO list! Otherwise, I would have been lost!"
+
+    pause 2.0
+
+    "Anyway, that room is pretty dark."
 
     play sound step_on_chair
-    show mc at character_stand_up
+    show mc casual regular left at character_stand_up
     $ store.is_character_sitting = False
     pause 0.5
 
-    "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
+    "Eating cold food in the dark makes me look like a vampire. It's cool, but I push the light switch nevertheless."
+    "Nothing happens."
+
+    show mc casual regular left at character_move_left(0.5)
+    pause 0.5
+
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
     $ StartTask(task_LightBulb)
 
-    # TODO Animation: MC searches for light bulb as in first scene with screwdriver
+    show mc casual regular at character_move_right
+    pause 1.0
 
-    "I start removing the dead bulb, but realize I don’t have any replacement."
+    play sound searching_drawer
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: searching drawer")
+    pause 4.0
+    # in case player skips sound, stop it now to avoid sound leaking
+    stop sound
+
+    show mc casual regular left at character_right
+    mc "Of course. No light bulb to replace with."
+
+    pause 0.5
+
     "Wait, do I need to go back to the DIY store?"
+    mc "..."
 
     $ RevealTask(task_BuyLightBulb)
 
     "I check my watch. [currentTime]."
-    mc "..."
 
     menu:
         "Should I go back to the store to get a replacement bulb?"
@@ -118,8 +226,10 @@ label .shot2b:
     pause 0.5
 
     window show
-    "After that, I finished my cold meal, went in my bed and read a novel for two hours straight before sleeping."
-    "I’ll see what I can do for the light tomorrow..."
+    "After that, I finished my cold roasted vegetables, went in my bed and read a novel for two hours or so, before sleeping."
+    # "I don't care, and nobody cares that I don't care.{w=1.0} And it's perfect."
+    "I don't care, and nobody cares that I don't care."
+    "And it's perfect."
     window hide
 
     stop music fadeout 2.0

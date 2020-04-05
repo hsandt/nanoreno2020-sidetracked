@@ -1945,8 +1945,8 @@ init python:
 screen tasktree():
     tag menu
 
-    #Reset newTask indicator
-    on "show" action SetVariable('indicator_newTask', False)
+    # Reset newTask indicator in callback
+    on "show" action Function(on_show_tasktree)
 
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu

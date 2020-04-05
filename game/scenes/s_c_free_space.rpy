@@ -14,7 +14,7 @@ label s_c:
         "I've already deleted small apps, so I immediately check the big ones left."
 
     if not has_tried_dict:
-        "There is a dictionary app I've barely touched. I'd like to test it first, see if it's worth keeping."
+        "There is a Japanese dictionary app I've barely touched. I'd like to test it first, see if it's worth keeping."
 
     if not has_deleted_game:
         if has_tried_game_count == 0:
@@ -59,7 +59,7 @@ label .shot2:
     $ StartTask(task_DeleteDict + task_suffix)
 
     "I open the dictionary app and try a few words. Example sentences are incredible."
-    "I already have 4 dictionary apps, but good examples are a killer feature, so I'll keep this one as well."
+    "I already have 4 dictionaries for Japanese, but good examples are a killer feature, so I'll keep this one as well."
 
     $ FailTask(task_DeleteDict + task_suffix)
 

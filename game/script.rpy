@@ -3,6 +3,10 @@ init:
         xalign 0.2
         yalign 1.0
 
+    transform character_move_left(duration=1.0):
+        ease duration xalign 0.2
+        yalign 1.0
+
     transform character_move_left_exit:
         easeout 0.8 xpos -0.5
         yalign 1.0
@@ -75,6 +79,7 @@ init:
     define has_explored_power_screwdrivers = False
     define free_space = 400
     define sister_request_phase = 0
+    define sister_request_reply = None
     define queuer_dissatisfaction = 0  # how much customers behind you are impatient in Permit scene
     define wrapping_scene = None  # high context scene, used to restore correct BGM
     define notifications_context = None
@@ -91,6 +96,7 @@ init:
     define currentTime = "17:00"
     # New Task Indicator
     define indicator_newTask = False
+    define new_task_clear_count = 0  # how many times the player checked for a new task
 
     # Defining persistent variables
 

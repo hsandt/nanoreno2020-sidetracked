@@ -27,3 +27,8 @@ init -1 python:
     def change_free_space(delta):
         store.free_space += delta
         store.has_seen_space_left_since_last_change = False  # "dirty" free space
+
+    def on_show_tasktree():
+        if store.indicator_newTask:
+            store.indicator_newTask = False
+            store.new_task_clear_count += 1

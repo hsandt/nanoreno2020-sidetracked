@@ -56,7 +56,7 @@ label .shot3:
         return
     if sister_request_reply == "quick translation":
         "She just says: \"Thanks!\""
-        "Looks like she was satisfied with my translation... Maybe going simple is the good choice, sometimes. If you don't mind dropping the details..."
+        "Looks like she was satisfied with my translation... Maybe going simple is the good choice, sometimes. Maybe..."
         $ store.sister_request_phase = 3  # end of request
         return
     if sister_request_reply == "fake translation":
