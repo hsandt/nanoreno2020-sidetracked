@@ -266,7 +266,7 @@ screen quick_menu():
     if quick_menu:
 
         #hbox:
-        #    style_prefix "quick"
+        style_prefix "quick"
         #
         #    xalign 0.5
         #    yalign 1.0
@@ -284,6 +284,8 @@ screen quick_menu():
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
         if indicator_newTask:
             add "gui/button/indicator_new.png" 
+        text "T" xpos 1470 ypos 975
+        text "P"xpos 1700 ypos 975
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -295,12 +297,17 @@ default quick_menu = True
 
 style quick_button is default
 style quick_button_text is button_text
+style quick_text is button_text
 
 style quick_button:
     properties gui.button_properties("quick_button")
 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
+    
+style quick_text:
+    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+
 
 
 ################################################################################
@@ -400,6 +407,8 @@ screen navigation():
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
             add "gui/button/indicator_new.png" 
+        text "T" xpos 1470 ypos 975 style_prefix "quick"
+        text "P"xpos 1700 ypos 975 style_prefix "quick"
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -781,6 +790,8 @@ style slot_button:
 
 style slot_button_text:
     properties gui.button_text_properties("slot_button")
+    hover_outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
 
 
 ## Preferences screen ##########################################################
@@ -1276,12 +1287,18 @@ style confirm_frame:
 style confirm_prompt_text:
     text_align 0.5
     layout "subtitle"
+    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    color "#f4cfe5"
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
 
 style confirm_button_text:
     properties gui.button_text_properties("confirm_button")
+    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
+    idle_color "#f4cfe5"
+    hover_color "#9e649f"
 
 
 ## Skip indicator screen #######################################################
