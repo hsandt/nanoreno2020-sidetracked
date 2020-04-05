@@ -133,8 +133,7 @@ label .free_space_to_check(file_name):
     pause 0.5
 
     if file_name == "id":
-        "I notice the dissatisfaction of the other customers waiting behind me in the queue."
-        "Aha, sorry. I'm really grateful for your patience, guys."
+        call increase_queuer_dissatisfaction
 
     "With space being freed, I resume searching for the file I want. It's much faster!"
     return

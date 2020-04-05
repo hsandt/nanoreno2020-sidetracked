@@ -23,10 +23,12 @@ label .shot1:
             "Should I check them out?"
             "Yes, check notifications":
                 "Let's have a look."
+                $ notifications_context = "id"
                 call s_a from _call_s_a_4
-                "Now that's done, let's get back on track."
+                $ notifications_context = None
+                "So, what was it? Right, the ID."
             "No, ignore them":
-                "Yeah, I should focus on my current task."
+                "People are waiting behind me, I should focus on getting that permit printed."
 
     call check_file("id")
 
@@ -61,3 +63,14 @@ label .shot2:
     hide mc with dissolve
 
     jump s3_4
+
+label increase_queuer_dissatisfaction:
+    pause 0.5
+
+    $ store.queuer_dissatisfaction += 1
+    if queuer_dissatisfaction == 1:
+        "I feel growing dissatisfaction in the queue behind me."
+        "Aha, sorry. I'm really grateful for your patience, guys."
+    else:  # == 2
+        "Now customers queuing behind me are really getting impatient."
+        "Oops, I think it's time I print that permit."

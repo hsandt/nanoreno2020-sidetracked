@@ -54,8 +54,8 @@ label s_a:
             call s_e from _call_s_e
         "Check sister reply" if sister_request_phase == 2:
             call s_e from _call_s_e_1
-        "Ignore notifications":
-            "I ignore the notifications and put my phone back in my pocket."
+        "Nothing":
+            "I don't see anything urgent and put the phone back in my pocket."
             call .exit from _call_s_a_exit_1
             return
 
@@ -67,6 +67,11 @@ label s_a:
         "Anyway, let's go on with what we were doing."
         "That's one thing done. Time to get back on my main task."
         "With this done, I put my phone back in my pocket."
+
+    # if checking notifications in the queue, customers behind get more impatient
+    if notifications_context == "id":
+        call increase_queuer_dissatisfaction
+
     call .exit
     return
 

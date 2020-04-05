@@ -71,7 +71,9 @@ init:
     define has_explored_power_screwdrivers = False
     define free_space = 400
     define sister_request_phase = 0
+    define queuer_dissatisfaction = 0  # how much customers behind you are impatient in Permit scene
     define wrapping_scene = None  # high context scene, used to restore correct BGM
+    define notifications_context = None
     define update_context = None
     define free_space_context = None
     define play_context = None

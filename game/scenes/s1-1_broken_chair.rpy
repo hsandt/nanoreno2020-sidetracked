@@ -135,10 +135,20 @@ label .shot3a:
     $ store.is_character_sitting = False
 
     "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
-    call s_a from _call_s_a_2
+    menu:
+        "Should I check them out?"
+        "Yes, check notifications":
+            "We never know if there's not something important."
+            $ notifications_context = "photo"
+            call s_a
+            $ notifications_context = None
+            "So, where was I? Oh yeah, I got the measurement for the screw."
+        "No, ignore them":
+            "I have what I need already."
+
     $ CompleteTask(task_ScrewPhoto)
 
-    "OK, I’d better hurry now and go to the store while it’s open."
+    "I’d better hurry now and go to the store while it’s open."
     jump .shot4
 
 label .shot3b:
