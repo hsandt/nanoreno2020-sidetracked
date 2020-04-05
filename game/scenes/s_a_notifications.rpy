@@ -70,9 +70,9 @@ label s_a:
 
     # if checking notifications in the queue, customers behind get more impatient
     if notifications_context == "health no":
-        call increase_queuer_dissatisfaction
+        call increase_queuer_dissatisfaction from _call_increase_queuer_dissatisfaction
 
-    call .exit
+    call .exit from _call_s_a_exit_2
     return
 
 label .exit:

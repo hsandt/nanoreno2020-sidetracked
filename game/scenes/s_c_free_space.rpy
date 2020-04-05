@@ -29,9 +29,9 @@ label s_c:
         "Try the dictionary app" if not has_tried_dict:
             call s_c.shot2 from _call_s_c_shot2
         "Try the game" if has_tried_game_count == 0:
-            call s_c.try_game
+            call s_c.try_game from _call_s_c_try_game
         "Try the game once more" if has_tried_game_count > 0 and not has_deleted_game:
-            call s_c.try_game
+            call s_c.try_game from _call_s_c_try_game_1
         "Delete the game" if has_tried_game_count > 0 and not has_deleted_game:
             call s_c.shot3 from _call_s_c_shot3_1
 
@@ -104,12 +104,12 @@ label check_file(file_name):
             menu:
                 "Should I free space now or go on like that?"
                 "Free space":
-                    call .free_space_to_check(file_name)
+                    call .free_space_to_check(file_name) from _call_check_file_free_space_to_check
                 "Go on":
                     "I take on myself and spend a good minute browsing files very slowly."
         else:
             "Navigating among files is still very slow. This time it won't cut, I need to free some space!"
-            call .free_space_to_check(file_name)
+            call .free_space_to_check(file_name) from _call_check_file_free_space_to_check_1
 
         hide screen smartphone with dissolve
         $ store.is_showing_smartphone = False
@@ -127,13 +127,13 @@ label check_file(file_name):
 
 label .free_space_to_check(file_name):
     $ free_space_context = "check " + file_name
-    call s_c
+    call s_c from _call_s_c
     $ free_space_context = None
 
     pause 0.5
 
     if file_name == "health no":
-        call increase_queuer_dissatisfaction
+        call increase_queuer_dissatisfaction from _call_increase_queuer_dissatisfaction_1
 
     "With space being freed, I resume searching for the file I want. It's much faster!"
     return

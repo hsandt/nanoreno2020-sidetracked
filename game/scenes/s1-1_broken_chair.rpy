@@ -140,7 +140,7 @@ label .shot3a:
         "Yes, check notifications":
             "We never know if there's not something important."
             $ notifications_context = "photo"
-            call s_a
+            call s_a from _call_s_a
             $ notifications_context = None
             "So, where was I? Oh yeah, I got the measurement for the screw."
         "No, ignore them":

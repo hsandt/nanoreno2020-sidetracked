@@ -32,7 +32,7 @@ label .shot1:
             "No, ignore them":
                 "People are waiting behind me, I should focus on getting that permit printed."
 
-    call check_file("health no")
+    call check_file("health no") from _call_check_file_1
 
     # fallthrough to .shot2
 
