@@ -1,7 +1,7 @@
 # call, not jump to this label, so you can come back
 label s_c:
     # are we freeing space to get ID or just like that? show sub-tree / separate tree accordingly
-    $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
     $ StartTask(task_FreeSpace + task_suffix)
 
     if not has_deleted_small_apps:
@@ -28,7 +28,7 @@ label s_c:
         "Try the dictionary app" if not has_tried_dict:
             call s_c.shot2 from _call_s_c_shot2
         "Try the game" if not has_tried_game:
-            $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+            $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
             $ StartTask(task_DeleteGame + task_suffix)
             $ StartTask(task_PlayGame + task_suffix)
 
@@ -48,7 +48,7 @@ label s_c:
 label .shot2:
     show screen smartphone("dictionary") with dissolve
 
-    $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
     $ StartTask(task_DeleteDict + task_suffix)
 
     "I open the dictionary app and try a few words. Example sentences are incredible."
@@ -65,7 +65,7 @@ label .shot2:
 # Delete game
 label .shot3:
     # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
-    $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
+    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
 
     "I delete the game, which gives me 1.5 GB extra space. Wow, that should be enough!"
 
@@ -77,3 +77,30 @@ label .shot3:
     $ store.has_freed_space = True  # actually a synonym for has_deleted_game in this case, but clearer
 
     return
+
+# a wrapper for the free space scene, that will only trigger free space if smartphone is too slow
+# if a bit slow, it will only mention it
+label check_file(file_name):
+    if free_space <= 300:
+        show screen smartphone("notifications") with dissolve
+        $ store.is_showing_smartphone = True
+
+        # has_updated_apps should be True at this point, hence the thought
+        "I navigate through my files, but it’s very slow. Probably because I only have [free_space] MB left."
+        "I guess updating all my apps while running out of storage space was not a good idea. I need to free some now."
+
+        $ free_space_context = "check " + file_name
+        call s_c
+        $ free_space_context = None
+
+        "With space being freed, I resume searching for the file I want."
+
+        hide screen smartphone with dissolve
+        $ store.is_showing_smartphone = False
+
+        return
+    elif free_space <= 400:
+        "I navigate through my files, but it's a bit slow. Maybe freeing some space would help. It's not critical though, so I go on."
+        return
+    else:
+        return

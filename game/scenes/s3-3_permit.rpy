@@ -28,25 +28,11 @@ label .shot1:
             "No, ignore them":
                 "Yeah, I should focus on my current task."
 
-    if not has_freed_space:
-        jump .shot2
-    else:
-        jump .shot3
+    call check_file("id")
+
+    # fallthrough to .shot2
 
 label .shot2:
-    "I try to navigate to the ID scan, but it’s very slow."
-    if has_seen_base_notifications:
-        "I guess shouldn't have ignored that notification about running out of storage space. I'll take care of this now."
-    else:
-        "A quick look at the notification panel, and I understand the smartphone is running out of storage space. I need to free some now."
-
-    $ free_space_context = "access ID"
-    call s_c from _call_s_c
-    $ free_space_context = None
-
-    "With space being freed, I resume searching for my ID scan."
-
-label .shot3:
     "I find the scan of my ID card, and show it to the scanner. Hopefully it doesn’t care about watermark or whatever."
     printer "...{w=1.0} ...{w=1.0} ...{w=1.0} Thank you."
 

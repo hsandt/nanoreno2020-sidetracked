@@ -71,13 +71,8 @@ label .shot3:
 
     if screw_measurement_method == "photo":
         "I check the photo of the loose screw on my phone to make sure I pick the right key."
-        if not has_freed_space:
-            "I notice that navigating in my pictures is a bit slow."
-            if has_seen_base_notifications:
-                "I guess it's because I'm lacking free space."
-        "While I'm at it, I glance at the notifications on my phone."
-        call s_a from _call_s_a
-        "Where was I? Oh yeah, the screw."
+        call check_file("photo")
+        "Once I find it, I search the matching key in the shelf using my finger as reference scale."
     else:
         "I check the loose screw’s dimensions in my notepad to make sure I pick the right key."
 
