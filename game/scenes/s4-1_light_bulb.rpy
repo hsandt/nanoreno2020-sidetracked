@@ -6,13 +6,13 @@ label .shot1:
     $ store.currentTime = "19:00"
     $ store.wrapping_scene = "light_bulb"
 
-    # should be bg apartment_night, but we only have one
-    scene bg apartment with dissolve
+    scene bg apartment with Dissolve(1.0)
+    play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
 
-    show mc regular left at character_right
+    show mc regular left at character_right with dissolve
 
     window show
-    "By the time I get back in my apartment, night has already fallen. I hastily remove my shoes and open the tool’s package."
+    "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
     window hide None
 
     show screen screen_item("hex_key", "left") with dissolve
@@ -24,7 +24,7 @@ label .shot1:
     pause 0.5
     show screen screen_item("screw_tight", "left") with dissolve
     pause 0.5
-    mc "A-ha! Is it stable now?"
+    mc "So... Is it stable now?"
     hide screen screen_item
 
     show mc at character_right_sit_down
@@ -36,10 +36,14 @@ label .shot1:
 
     $ CompleteTask(task_Chair)
 
-    mc "Time for lunch!"
-    "I take a mouthful of zucchini. It's cold."
-    "I look around me and realize it's pretty dark. I glance at my watch, which shows 7pm."
-    "Looks like my lunch has turned into a dinner. A cold dinner."
+    "I decide to finally enjoy my lunch, or rather, what turned into a dinner."
+    "I take a mouthful of zucchini. It's cold. The room is pretty dark, too."
+
+    play sound step_on_chair
+    show mc at character_stand_up
+    $ store.is_character_sitting = False
+    pause 0.5
+
     "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
@@ -52,13 +56,7 @@ label .shot1:
 
     $ RevealTask(task_BuyLightBulb)
 
-    play sound step_on_chair
-    show mc at character_stand_up
-    $ store.is_character_sitting = False
-
-    pause 0.5
-
-    "I step off the chair and I check my watch. [currentTime]."
+    "I check my watch. [currentTime]."
     mc "..."
 
     menu:
@@ -72,27 +70,57 @@ label .shot2a:
     $ StartTask(task_BuyLightBulb)
 
     mc "I think I can go there once more before it closes, but I need to go now."
-    # TODO ANIM: MC turns back to look at meal
-    "The meal is cold already, it cannot get colder."
-    # TODO ANIM: MC turns back toward door (right) again
+
+    show mc regular at character_move_right_farther
     pause 1.0
+    show mc regular left
+    pause 0.5
+
+    "... Nah, it's fine. The meal is cold already, it cannot get colder."
+
+    show mc regular
+    pause 0.5
+
+    window show None
     "And the store is not too far, I should be back in no time."
-    play sound door_open_close
+    window hide
+
+    show mc regular at character_move_right_exit
+    pause 0.2
+
+    stop music fadeout 2.0
+
     $ quick_menu = False
     show overlay black with dissolve
-    $ quick_menu = True
-    jump ending2
+    pause 0.3
+
+    play sound door_open_close
+    pause 2.4
+
+    jump credits
 
 label .shot2b:
+    window show None
     "No, I don't want to."
+    window hide
 
     $ FailTask(task_BuyLightBulb)
     $ FailTask(task_LightBulb)
     $ CompleteTask(task_HaveLunch)
 
-    $ quick_menu = False
-    show overlay black with dissolve
-    $ quick_menu = True
+    scene overlay black with dissolve
+    pause 0.5
+
+    window show
     "After that, I finished my cold meal, went in my bed and read a novel for two hours straight before sleeping."
     "I’ll see what I can do for the light tomorrow..."
-    jump ending1
+    window hide
+
+    stop music fadeout 2.0
+
+    pause 0.5
+    $ quick_menu = False
+    show overlay black with dissolve
+    pause 1.3
+
+    jump credits

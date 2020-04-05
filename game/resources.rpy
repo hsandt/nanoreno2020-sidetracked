@@ -41,12 +41,14 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 
 ## BGM
 
-# define audio.title_screen = "audio/bgm/title_screen.ogg"
+define audio.title_theme = "audio/bgm/title_theme.ogg"
 define audio.apartment = "audio/bgm/apartment_theme.ogg"
 define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
 define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
 # for memo, but never used directly as we must loop with full file path
 # define audio.street = "audio/bgm/ambient_street.ogg"
+# define audio.apartment_night = "audio/bgm/apartment_theme_night.ogg"
+# define audio.apartment_night_sad = "audio/bgm/apartment_theme_night_sad.ogg"
 
 ## SFX
 define audio.coins_drop = "audio/sfx/coins_drop.ogg"
@@ -56,5 +58,13 @@ define audio.printer = "audio/sfx/printer.ogg"
 define audio.screw_tighten = "audio/sfx/screw_tighten.ogg"
 define audio.searching_drawer = "audio/sfx/searching_drawer.ogg"
 define audio.smartphone_camera = "audio/sfx/smartphone_camera.ogg"
-define audio.smartphone_notification = "audio/sfx/notification_unconvinced.ogg"
+define audio.smartphone_notification = "audio/sfx/ringtone_notification_2.ogg"
 define audio.step_on_chair = "audio/sfx/step_on_chair.ogg"
+define audio.bus_stop_and_open = "audio/sfx/bus_stop_and_open.ogg"
+define audio.bus_close = "audio/sfx/bus_close.ogg"
+define audio.topping_bus_card = "audio/sfx/topping_bus_card.ogg"
+define audio.bus_stop_button = "audio/sfx/bus_stop_button.ogg"
+define audio.store_door_open = "audio/sfx/store_door_open.ogg"
+define audio.store_door_close = "audio/sfx/store_door_close.ogg"
+define audio.write_on_paper = "audio/sfx/write_on_paper.ogg"
+define audio.task_update = "audio/sfx/notification_unconvinced.ogg"

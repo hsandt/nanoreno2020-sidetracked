@@ -116,7 +116,7 @@ screen say(who, what):
 
         text what id "what"
         if is_showing_smartphone or is_character_sitting:
-            yalign 0.01
+            yalign 0.05
         else:
             yalign 0.85
 
@@ -382,7 +382,7 @@ screen navigation():
         hbox:
             imagebutton auto "gui/button/button_%s.png"  action ShowMenu("about")
 
-            text _("About") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            text _("Credits") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
         #textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
@@ -406,7 +406,6 @@ screen navigation():
     if not main_menu:
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
-            add "gui/button/indicator_new.png" 
         text "T" xpos 1470 ypos 975 style_prefix "quick"
         text "P"xpos 1700 ypos 975 style_prefix "quick"
 
@@ -633,7 +632,7 @@ screen about():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_("Credits"), scroll="viewport"):
 
         style_prefix "about"
 
@@ -1685,6 +1684,9 @@ screen screen_item(itemName, displaySide="left"):
     if displaySide == "left":
         $ newxpos = 400
         $ newypos = 200
+    elif displaySide == "bottom_left":
+        $ newxpos = 400
+        $ newypos = 400
     elif displaySide == "right":
         $ newxpos = 1100
         $ newypos = 200
@@ -1774,7 +1776,7 @@ screen smartphone(app_name):
 
 #-----------------------------------------------
 init python:
-    
+
     #Task Status
     status_Hidden = "Hidden"  # you should not see this at all!
     status_NotStarted = "Not Started"
@@ -1888,10 +1890,13 @@ init python:
         SetTaskStatus(_taskName, status_NotStarted)
         return
 
-    def StartTask(_taskName):
-        global indicator_newTask
+    def StartTask(_taskName, notify=False):
         SetTaskStatus(_taskName, status_InProgress)
-        indicator_newTask = True
+        store.indicator_newTask = True
+
+        if notify:
+            renpy.notify("Starting new major task: " + _taskName)
+            renpy.play(audio.task_update)
 
         # push to stack, the last task is the active one
         if _taskName not in store.active_tasks_stack:
@@ -1921,7 +1926,7 @@ init python:
 #-----------------------------------------------
 screen tasktree():
     tag menu
-    
+
     #Reset newTask indicator
     on "show" action SetVariable('indicator_newTask', False)
 
@@ -1935,7 +1940,7 @@ screen tasktree():
         # optional safety check (should be init on start)
         # note that "store." is mandatory for task_list to avoid NoneType error,
         # although we are not in Python code
-        if store.task_list:    
+        if store.task_list:
             vbox:
                 for task in store.task_list:
                     $taskLevel = task[1]

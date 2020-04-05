@@ -38,8 +38,21 @@ label .shot1:
     window hide
 
     $ quick_menu = False
-    show overlay black with dissolve
+
+    show overlay black with Dissolve(1.0)
     stop music fadeout 2.0
+
+    play sound store_door_open
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: automatic door opens")
+
+    pause 3.0
+    play sound store_door_close
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: automatic door closes")
+
+    pause 2.5
+
     $ quick_menu = True
 
     jump s4_1

@@ -5,9 +5,13 @@ label .shot1:
     $ store.currentTime = "14:30"
     $ store.wrapping_scene = "bakery"
 
+    play sound store_door_open
+    scene bakery with CropMove(1.5, "wipeleft")
     play music store fadeout 1.0
     pause 1.0
-    scene bakery with wipeup
+
+    play sound store_door_close
+    pause 0.5
 
     window show
     "My eyes agree with my nose, only problem is I don’t know what to choose."

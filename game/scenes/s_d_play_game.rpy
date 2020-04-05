@@ -35,7 +35,7 @@ label .shot1:
             $ task_suffix = access_id_suffix if free_space_context == "access ID" else ""
             $ StartTask(task_CreateAccount + task_suffix)
 
-        "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies and SNS..."
+        "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies..."
 
         menu:
             "How do I sign up?"
@@ -123,20 +123,6 @@ label .shot4:
 
     $ store.has_tried_game = True
 
-    call .restore_bgm from _call_s_d_restore_bgm
+    call restore_bgm from _call_s_d_restore_bgm
 
     return
-
-label .restore_bgm:
-    if wrapping_scene == "broken_chair":
-        play music apartment
-    elif wrapping_scene == "bus_stop":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
-    elif wrapping_scene == "bakery":
-        play music store
-    elif wrapping_scene == "bus":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
-    elif wrapping_scene == "store":
-        play music store
-    elif wrapping_scene == "light_bulb":
-        pass

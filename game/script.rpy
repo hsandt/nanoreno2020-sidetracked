@@ -10,8 +10,8 @@ init:
         xalign 0.8
         yalign 1.0
 
-    transform character_move_right:
-        ease 1.0 xalign 0.8
+    transform character_move_right(duration=1.0):
+        ease duration xalign 0.8
         yalign 1.0
 
     transform character_move_right_farther:
@@ -31,13 +31,6 @@ init:
         ease 0.2 xalign 0.81
         repeat
         ypos 1.2
-
-    transform character_crouch:
-        easein 0.5 ypos 1.5
-
-    transform character_left_crouch:
-        xalign 0.2
-        ypos 1.5
 
     # not used anymore, we use pixel placement in screen_item
     transform item_left:
@@ -88,7 +81,7 @@ init:
     define is_character_sitting = False
     define is_showing_smartphone = False
     define currentTime = "17:00"
-    #New Task Indicator
+    # New Task Indicator
     define indicator_newTask = False
 
     # Defining persistent variables
@@ -126,3 +119,18 @@ label start:
 
 label lbl_realstart:
     jump s1_1
+
+# Restore BGM from context. Useful after using smartphone.
+label restore_bgm:
+    if wrapping_scene == "broken_chair":
+        play music apartment
+    elif wrapping_scene == "bus_stop":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "bakery":
+        play music store
+    elif wrapping_scene == "bus":
+        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    elif wrapping_scene == "store":
+        play music store
+    elif wrapping_scene == "light_bulb":
+        pass

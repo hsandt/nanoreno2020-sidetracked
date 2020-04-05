@@ -52,7 +52,7 @@ label .shot2:
     $ StartTask(task_DeleteDict + task_suffix)
 
     "I open the dictionary app and try a few words. Example sentences are incredible."
-    "I already have 4 dictionary apps, but good examples are killer feature, so I'll keep this one as well."
+    "I already have 4 dictionary apps, but good examples are a killer feature, so I'll keep this one as well."
 
     $ FailTask(task_DeleteDict + task_suffix)
 

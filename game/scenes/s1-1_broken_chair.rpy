@@ -3,6 +3,9 @@ label s1_1:
     $ store.currentTime = "13:30"
     $ store.wrapping_scene = "broken_chair"
 
+    # Renpy needs to be told to stop Main Menu BGM (Title Theme)
+    stop music fadeout 2.0
+
 label .shot1:
     show overlay black
     pause 1.0
@@ -24,6 +27,7 @@ label .shot2:
     play music apartment
 
     # Call to start HaveLunch task so it shows up in the task tree
+    # Don't notify this one though; it's unnatural for MC to write that now!
     $ StartTask(task_HaveLunch)
 
     mc "Hmm... Nothing like the smell of roasted vegetables.{w} That are not burnt."
@@ -43,11 +47,10 @@ label .shot2:
 
     show mc at character_right_sit_down
     pause 1.0
-    show mc casual regular at character_left_crouch with dissolve
 
     # Call to start Chair task
     $ StartTask(task_Chair)
-    pause 0.5
+    # pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
     play sound inspect_chair
@@ -57,7 +60,7 @@ label .shot2:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show screen screen_item("screw_loose", "left") with dissolve
+    show screen screen_item("screw_loose", "bottom_left") with dissolve
     pause 0.5
 
     mc "Looks like that screw is a bit loose."
@@ -66,9 +69,9 @@ label .shot2:
     hide screen screen_item
 
     show mc at character_stand_up
-    pause 1.0
-    show mc at character_move_right
-    pause 1.2
+    pause 0.5
+    show mc casual regular at character_right
+    pause 0.5
 
     $ store.is_character_sitting = False
 
@@ -86,7 +89,10 @@ label .shot2:
     $ FailTask(task_HexKeyApartment)
 
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
-    $ StartTask(task_HexKeyStore)
+
+    $ StartTask(task_HexKeyStore, notify=True)
+
+    "I write this on my TODO list. I'll check it later by clicking on the notepad icon at the bottom-right, or by pressing the T key."
 
     show mc casual regular at character_move_right_farther
     pause 1.0
@@ -94,6 +100,9 @@ label .shot2:
     pause 0.5
 
     mc "I should take a measurement of the screw hole before I leave."
+
+    show mc casual regular left at character_move_right(0.2)
+    pause 0.5
 
     $ StartTask(task_ScrewSize)
     $ RevealTask(task_Store)
@@ -111,12 +120,14 @@ label .shot3a:
     $ StartTask(task_ScrewPhoto)
 
     pause 0.5
-    show mc at character_crouch
+    show mc at character_right_sit_down
     $ store.is_character_sitting = True
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
     play sound smartphone_camera
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: taking photo")
     pause 1.0
     hide screen screen_item with dissolve
 
@@ -135,8 +146,12 @@ label .shot3b:
     $ StartTask(task_ScrewMeter)
 
     pause 0.5
-    show mc at character_crouch
+    show mc at character_right_sit_down
     $ store.is_character_sitting = True
+
+    queue sound ["<silence 1.5>", write_on_paper]
+    # SFX accessibility (inspired by Renpy Accessibility Add-On)
+    $ renpy.notify("SFX: writing on paper")
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     $ CompleteTask(task_ScrewMeter)

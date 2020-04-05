@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "3.1"
+define config.version = "3.2"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -202,7 +202,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = audio.title_theme
 
 
 ## Transitions #################################################################
@@ -212,24 +212,23 @@ define config.has_voice = True
 ## transition should be used.
 
 ## Entering or exiting the game menu.
-
-define config.enter_transition = dissolve
-define config.exit_transition = dissolve
-
+define config.enter_transition = Dissolve(0.2)
+define config.exit_transition = Dissolve(0.2)
 
 ## Between screens of the game menu.
+define config.intra_transition = Dissolve(0.2)
 
-define config.intra_transition = dissolve
-
+# Used when returning to the main menu from the game.
+define config.game_main_transition = Dissolve(0.2)
 
 ## A transition that is used after a game has been loaded.
+define config.after_load_transition = Dissolve(0.5)
 
-define config.after_load_transition = None
-
+# Used when entering the main menu from the splashscreen.
+define config.end_splash_transition = Dissolve(0.5)
 
 ## Used when entering the main menu after the game has ended.
-
-define config.end_game_transition = None
+define config.end_game_transition = Dissolve(0.5)
 
 
 ## A variable to set the transition used when the game starts does not exist.

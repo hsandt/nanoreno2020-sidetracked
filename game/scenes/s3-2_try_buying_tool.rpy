@@ -18,7 +18,9 @@ label .shot1:
     "The cashier points at a huge device in the corner. Four people are queuing in front of it."
     mc "I see."
 
-    $ StartTask(task_Permit)
+    pause 0.2
+    $ StartTask(task_Permit, notify=True)
+    pause 0.5
 
     hide mc with dissolve
 
