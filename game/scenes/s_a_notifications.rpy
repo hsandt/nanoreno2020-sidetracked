@@ -59,8 +59,15 @@ label s_a:
             call .exit from _call_s_a_exit_1
             return
 
-    "I check if there are any other notifications."
-    call s_a from _call_s_a_1
+    pause 0.5
+
+    # Only one notification max per check
+    # Although you can have more if you chain actions (update to play to free space...)
+    random:
+        "Anyway, let's go on with what we were doing."
+        "That's one thing done. Time to get back on my main task."
+        "With this done, I put my phone back in my pocket."
+    call .exit
     return
 
 label .exit:
