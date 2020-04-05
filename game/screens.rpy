@@ -1811,24 +1811,28 @@ init python:
     task_CheckOthers = "In other shelves"
     task_BuyHexKey = "Buy hex key"
     task_Permit = "Get purchase permit"
-    task_ID = "Get ID card scan"
+    task_HealthNumber = "Get Health Insurance Number"
     task_FreeSpace = "Free space on smartphone"
     task_DeleteDict = "Delete dictionary app"
     task_DeleteGame = "Delete game"
     task_PlayGame = "Play game"
     task_CreateAccount = "Create account"
-    task_InventPassword = "Invent complex password"
+    task_InventPassword = "Invent password"
     task_UpdateApps = "Update apps"
     task_LightBulb = "Change the light bulb"
     task_BuyLightBulb = "Buy new light bulb"
 
     # to distinguish freeing space to get ID (sub-tree) or just like that,
     # after reading notifications (separate tree)
-    def make_task_suffix(file_name):
-        return " (%s)" % file_name
+    def make_task_suffix(free_space_context):
+        if free_space_context.startswith("check "):
+            checked_file = free_space_context[6:]
+            return " (%s)" % checked_file
+        else:
+            return ""
 
-    check_photo_suffix = make_task_suffix("photo")
-    check_id_suffix = make_task_suffix("id")
+    check_photo_suffix = make_task_suffix("check photo")           # " (photo)"
+    check_health_suffix = make_task_suffix("check health no")  # " (health number)"
 
     # [ TASKNAME, LEVEL, STATUS]
     task_unknown = ["Unknown", 0, status_InProgress]
@@ -1869,14 +1873,14 @@ init python:
         [task_InventPassword + check_photo_suffix, 9, status_InProgress],
         [task_BuyHexKey, 3, status_InProgress],
         [task_Permit, 4, status_Failed],
-        [task_ID, 5, status_InProgress],
-        [task_FreeSpace + check_id_suffix, 6, status_InProgress],
-        [task_DeleteDict + check_id_suffix, 7, status_NotStarted],
-        [task_DeleteGame + check_id_suffix, 7, status_NotStarted],
-        [task_PlayGame + check_id_suffix, 8, status_InProgress],
-        [task_UpdateApps + check_id_suffix, 9, status_NotStarted],
-        [task_CreateAccount + check_id_suffix, 9, status_InProgress],
-        [task_InventPassword + check_id_suffix, 10, status_InProgress],
+        [task_HealthNumber, 5, status_InProgress],
+        [task_FreeSpace + check_health_suffix, 6, status_InProgress],
+        [task_DeleteDict + check_health_suffix, 7, status_NotStarted],
+        [task_DeleteGame + check_health_suffix, 7, status_NotStarted],
+        [task_PlayGame + check_health_suffix, 8, status_InProgress],
+        [task_UpdateApps + check_health_suffix, 9, status_NotStarted],
+        [task_CreateAccount + check_health_suffix, 9, status_InProgress],
+        [task_InventPassword + check_health_suffix, 10, status_InProgress],
         [task_FreeSpace, 0, status_InProgress],
         [task_DeleteDict, 1, status_NotStarted],
         [task_DeleteGame, 1, status_NotStarted],

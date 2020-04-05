@@ -1,7 +1,7 @@
 # call, not jump to this label, so you can come back
 label s_c:
     # are we freeing space to get ID or just like that? show sub-tree / separate tree accordingly
-    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+    $ task_suffix = make_task_suffix(free_space_context)
     $ StartTask(task_FreeSpace + task_suffix)
 
     if not has_deleted_small_apps:
@@ -38,7 +38,7 @@ label s_c:
     return
 
 label .try_game:
-    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+    $ task_suffix = make_task_suffix(free_space_context)
     $ StartTask(task_DeleteGame + task_suffix)
     $ StartTask(task_PlayGame + task_suffix)
 
@@ -55,7 +55,7 @@ label .try_game:
 label .shot2:
     show screen smartphone("dictionary") with dissolve
 
-    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+    $ task_suffix = make_task_suffix(free_space_context)
     $ StartTask(task_DeleteDict + task_suffix)
 
     "I open the dictionary app and try a few words. Example sentences are incredible."
@@ -74,7 +74,7 @@ label .shot2:
 # Delete game
 label .shot3:
     # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
-    $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+    $ task_suffix = make_task_suffix(free_space_context)
 
     "I delete the game, which gives me 1.5 GB extra space. Wow, that should be enough!"
 
@@ -102,11 +102,11 @@ label check_file(file_name):
 
             # the first time (for photo), you can push through one more time without freeing space
             menu:
-                "Should I go on like that or free space?"
-                "Go on":
-                    "I take on myself and spend a good minute browsing files very slowly."
+                "Should I free space now or go on like that?"
                 "Free space":
                     call .free_space_to_check(file_name)
+                "Go on":
+                    "I take on myself and spend a good minute browsing files very slowly."
         else:
             "Navigating among files is still very slow. This time it won't cut, I need to free some space!"
             call .free_space_to_check(file_name)
@@ -132,7 +132,7 @@ label .free_space_to_check(file_name):
 
     pause 0.5
 
-    if file_name == "id":
+    if file_name == "health no":
         call increase_queuer_dissatisfaction
 
     "With space being freed, I resume searching for the file I want. It's much faster!"

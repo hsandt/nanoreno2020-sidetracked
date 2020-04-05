@@ -11,7 +11,7 @@ label .shot1:
     "Nah, it's not like I'm gonna lose myself while queuing in a shop or anything."
     call s_f from _call_s_f_2
     "As I finish my business with the phone, I realize I've reached the register."
-    "This time, I show the tool together with the permit."
+    "This time, I show the tool together with the purchase permit."
     show screen screen_item("purchase_permit", "right")
     pause 1.0
     hide screen screen_item

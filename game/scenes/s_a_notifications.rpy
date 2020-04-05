@@ -69,7 +69,7 @@ label s_a:
         "With this done, I put my phone back in my pocket."
 
     # if checking notifications in the queue, customers behind get more impatient
-    if notifications_context == "id":
+    if notifications_context == "health no":
         call increase_queuer_dissatisfaction
 
     call .exit

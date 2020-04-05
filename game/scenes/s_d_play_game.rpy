@@ -12,7 +12,7 @@ label .shot1:
         # only show task tree / sub task tree for UpdateApps if freeing space
         # else, when we really want to free space, just skip any task already done
         if play_context == "free space":
-            $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+            $ task_suffix = make_task_suffix(free_space_context)
             $ StartTask(task_UpdateApps + task_suffix)
 
         if play_context == "free space":
@@ -33,7 +33,7 @@ label .shot1:
 
         # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
         if play_context == "free space":
-            $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+            $ task_suffix = make_task_suffix(free_space_context)
             $ StartTask(task_CreateAccount + task_suffix)
 
         "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies..."
@@ -62,7 +62,7 @@ label .shot3:
 
     # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
     if play_context == "free space":
-        $ task_suffix = make_task_suffix(free_space_context) if free_space_context.startswith("check ") else ""
+        $ task_suffix = make_task_suffix(free_space_context)
         $ StartTask(task_InventPassword + task_suffix)
 
     "Username is no problem, but passwords are a bit more complex."
