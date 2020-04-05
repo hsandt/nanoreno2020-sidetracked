@@ -25,7 +25,7 @@ label credits:
     scene bg menuoverlay with Dissolve(1.0)  #replace this with a fancy background
 
     image cred_eng = Text(gui.credits, text_align=0.5, drop_shadow = (2, 2), drop_shadow_color = "#000000")
-    show cred_eng at Move((0.5, 3.7), (0.5, 0.0), credits_duration, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
+    show cred_eng at Move((0.5, 4.5), (0.5, 0.0), credits_duration, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
     with dissolve
 
     # wait for Credits to end, and do not allow user click (can still exit via pause menu)
