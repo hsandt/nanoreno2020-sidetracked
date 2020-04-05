@@ -18,9 +18,9 @@ label s_c:
 
     if not has_deleted_game:
         if has_tried_game_count == 0:
-            "There is a game that takes quite a lot of memory, and I've never tried it. I should before I delete it."
+            "There is a mobile game that takes quite a lot of memory, and I've never tried it. I should before I delete it."
         else:
-            "There is that game I was playing earlier. I could delete it and re-download it later, or try it one more time first."
+            "There is that mobile game I was playing earlier. I could delete it and re-download it later, or try it one more time first."
 
     # allow trying once more
 
