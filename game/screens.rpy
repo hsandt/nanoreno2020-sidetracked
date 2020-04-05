@@ -1879,7 +1879,7 @@ init python:
         store.indicator_newTask = True
 
         if notify:
-            renpy.notify("Starting new task: " + _taskName)
+            renpy.notify("Starting new major task: " + _taskName)
             renpy.play(audio.task_update)
 
         # push to stack, the last task is the active one
