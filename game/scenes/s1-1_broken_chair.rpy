@@ -69,10 +69,9 @@ label .shot2:
     hide screen screen_item
 
     show mc at character_stand_up
-    pause 1.0
-    # show mc casual regular at character_move_right
+    pause 0.5
     show mc casual regular at character_right
-    pause 1.2
+    pause 0.5
 
     $ store.is_character_sitting = False
 
