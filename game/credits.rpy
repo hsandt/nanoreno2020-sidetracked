@@ -1,5 +1,20 @@
 
 label credits:
+    # The code below works, but I found a bug where if you rollback or load,
+    # config gets stuck as it's not part of store, preventing skipping during the game.
+    # It's easy to add $ config.allow_skipping = True in previous scenes to fix the issue
+    # in case of rollback, but for general loading I don't see how.
+    # So for now, we count on player not trying to skip the dialogues just before
+    # the credits.
+
+    # Should we allow skipping at all? (credits roll itself cannot be skipped,
+    # but if user is holding Skip button or has toggled skip in previous seen,
+    # they may accidentally skip the whole credits)
+    # $ config.allow_skipping = False
+    # Clear any remaining skipping, or the "Skipping" notification will get stuck
+    # until you toggle it again
+    # $ config.skipping = False
+
     $ quick_menu = False
     play music apartment noloop
     $ renpy.pause(0.2, hard=True)
@@ -34,5 +49,8 @@ label credits:
     # but just in case we fadeout here
     stop music fadeout 2.0
     $ renpy.pause(2.0, hard=True)
+
+    # See comments at the top
+    # $ config.allow_skipping = True
 
     return

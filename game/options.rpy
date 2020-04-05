@@ -171,6 +171,18 @@ Notification Sounds
 
 
 
+{b}Playtesters{/b}
+
+♡Nagisa♡
+
+
+
+{b}Special Thanks{/b}
+
+cephalo
+
+
+
 Developed for NaNoRenO 2020 with Ren'Py
 """)
 
