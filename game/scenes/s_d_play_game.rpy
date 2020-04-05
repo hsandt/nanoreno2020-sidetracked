@@ -117,7 +117,7 @@ label .shot4:
         "After a few missions, I end my session."
     elif play_context == "free space":
         "It's a tactical role-playing game, and actually quite interesting. But there is a lot to do, so it's hard for me to tell if it's worth going on or not."
-        "I think I can delete it now, and if I change my mind, re-install it later."
+        "I think I can delete it now, and if I change my mind, reinstall it later."
         "My account should preserve my save until next time I play..."
         "Assuming that in the meantime, servers are not shut down, with some competitor making all of it obsolete -_-'"
         stop music fadeout 1.5

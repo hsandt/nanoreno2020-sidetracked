@@ -36,7 +36,7 @@ label .shot1:
 
     $ CompleteTask(task_Chair)
 
-    "I decide to finally enjoy my lunch, or rather, what turned into a dinner."
+    "I decide to finally enjoy my lunch, or rather, what turned into dinner."
     "I take a mouthful of zucchini. It's cold. The room is pretty dark, too."
 
     play sound step_on_chair

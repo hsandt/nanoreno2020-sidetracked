@@ -16,7 +16,7 @@ label s_b:
         if not has_freed_space:
             "It takes a lot of space though. I now have only [free_space] MB left."
     else:
-        "I'm on 4G, so I hope it won't blow up my data consumption. Apparently, there are around 100 MB of update."
+        "I'm on 4G, so I hope it won't blow up my data consumption. Apparently, there are around 100 MB of updates."
         if update_context == "play game":
             "It's very slow, but I take on myself and wait. When the update is over, I finally run the game again."
         else:

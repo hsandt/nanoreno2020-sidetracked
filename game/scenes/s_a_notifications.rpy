@@ -32,7 +32,7 @@ label s_a:
                 $ store.has_seen_sister_request = True
                 "It looks like my sister sent me a message. I hope it's not one of her shameless requests."
             else:
-                "I still haven't answered to my sister."
+                "I still haven't answered my sister."
         elif sister_request_phase == 2:
             $ store.found_interesting_notification = True
             "My sister has sent me another message."

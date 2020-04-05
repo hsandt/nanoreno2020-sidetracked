@@ -35,7 +35,7 @@ label .shot1:
     # fallthrough to .shot2
 
 label .shot2:
-    "I find the scan of my ID card, and show it to the scanner. Hopefully it doesn’t care about watermark or whatever."
+    "I find the scan of my ID card, and show it to the scanner. Hopefully it doesn’t care about watermarks or whatever."
     printer "...{w=1.0} ...{w=1.0} ...{w=1.0} Thank you."
 
     $ CompleteTask(task_ID)

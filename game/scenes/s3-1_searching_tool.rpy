@@ -72,7 +72,7 @@ label .shot3:
     if screw_measurement_method == "photo":
         "I check the photo of the loose screw on my phone to make sure I pick the right key."
         call check_file("photo")
-        "Once I find it, I search the matching key in the shelf using my finger as reference scale."
+        "Once I find it, I search the matching key on the shelf using my finger as reference scale."
     else:
         "I check the loose screw’s dimensions in my notepad to make sure I pick the right key."
 
