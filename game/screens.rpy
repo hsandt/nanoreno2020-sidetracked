@@ -406,6 +406,7 @@ screen navigation():
     if not main_menu:
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
+            add "gui/button/indicator_new.png" 
         text "T" xpos 1470 ypos 975 style_prefix "quick"
         text "P"xpos 1700 ypos 975 style_prefix "quick"
 
