@@ -57,7 +57,8 @@ label .shot2:
     $ StartTask(task_BuyFood)
 
     window show None
-    "My sense of smell finds a bakery nearby, so I walk in."
+    "My sense of smell finds a bakery nearby, so I'm heading toward it."
+    "Maybe it's not the right time, but I left my lunch at home anyway, so that will cover up."
     window hide
 
     jump s2_2
