@@ -283,8 +283,8 @@ screen quick_menu():
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
         if indicator_newTask:
-            add "gui/button/indicator_new.png" 
-        text "T" xpos 1470 ypos 975
+            add "gui/button/indicator_new.png"
+        text "T" xpos 1475 ypos 975
         text "P"xpos 1700 ypos 975
 
 
@@ -304,9 +304,10 @@ style quick_button:
 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
-    
+
 style quick_text:
-    outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    color "#ffffff"
+    outlines [ (absolute(1), "#0aa248", absolute(0), absolute(0)) ]
 
 
 
@@ -406,9 +407,9 @@ screen navigation():
     if not main_menu:
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
-            add "gui/button/indicator_new.png" 
-        text "T" xpos 1470 ypos 975 style_prefix "quick"
-        text "P"xpos 1700 ypos 975 style_prefix "quick"
+            add "gui/button/indicator_new.png"
+        text "T" xpos 1475 ypos 975 style_prefix "quick"
+        text "P" xpos 1700 ypos 975 style_prefix "quick"
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
