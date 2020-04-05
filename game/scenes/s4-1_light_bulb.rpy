@@ -12,7 +12,7 @@ label .shot1:
     show mc regular left at character_right with dissolve
 
     window show
-    "By the time I get back in my apartment, night has already fallen. I hastily remove my shoes and open the tool’s package."
+    "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
     window hide None
 
     show screen screen_item("hex_key", "left") with dissolve
@@ -24,7 +24,7 @@ label .shot1:
     pause 0.5
     show screen screen_item("screw_tight", "left") with dissolve
     pause 0.5
-    mc "A-ha! Is it stable now?"
+    mc "So... Is it stable now?"
     hide screen screen_item
 
     show mc at character_right_sit_down
@@ -36,10 +36,8 @@ label .shot1:
 
     $ CompleteTask(task_Chair)
 
-    mc "Time for lunch!"
-    "I take a mouthful of zucchini. It's cold."
-    "I look around me and realize it's pretty dark. I glance at my watch, which shows 7pm."
-    "Looks like my lunch has turned into a dinner. A cold dinner."
+    "I decide to finally enjoy my lunch, or rather, what turned into a dinner."
+    "I take a mouthful of zucchini. It's cold. The room is pretty dark, too."
 
     play sound step_on_chair
     show mc at character_stand_up
@@ -49,7 +47,7 @@ label .shot1:
     "Eating cold food in the dark makes me look like a vampire. I push the light switch, but nothing happens."
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
-    $ StartTask(task_LightBulb, notify=True)
+    $ StartTask(task_LightBulb)
 
     # TODO Animation: MC searches for light bulb as in first scene with screwdriver
 
