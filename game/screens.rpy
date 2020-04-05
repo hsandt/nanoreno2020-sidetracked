@@ -161,7 +161,7 @@ style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
     yalign 0.5
-    drop_shadow (2,2)
+    outlines [ (absolute(2), "#744675", absolute(0), absolute(0)) ]
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
