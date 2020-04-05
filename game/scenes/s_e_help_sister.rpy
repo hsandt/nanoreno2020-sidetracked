@@ -7,12 +7,13 @@ label .shot1:
 
     if sister_request_phase == 1:
         "I check my sister's message:"
-        "\"hey kat could you translate that for me? Thx\" followed by a short, ambiguous Japanese sentence."
+        sister "hey kat could you translate that for me? Thx"
+        sister "これ以上わかっても知らないよ (kore ijou wakatte mo shiranai yo)"
         # for me: the sentence is これ以上わかっても知らないよ
         # seems hard to read for the player, so keeping it for me for now:
         # It could mean "if he learns more about this, it's not my problem" or "if she understands, I won't take care of this anymore" or "I have no idea even if I know more about this"
-        "Another random request..."
-        "Where does it come from, anyway? I could translate it blindly, but a bit more context would help. My clients always provide me with it, I wish she could do the same."
+        "OK, this is pretty much quite a short and ambiguous Japanese sentence."
+        "Where does it come from, anyway? I could translate it blindly, but a bit more context would help."
         call .shot2 from _call_s_e_shot2
     else:
         call .shot3 from _call_s_e_shot3

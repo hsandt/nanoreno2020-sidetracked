@@ -56,6 +56,7 @@ init:
     # Declare characters used by this game. The color argument colorizes the
     # name of the character.
     define mc = Character("Katell", color="#BD8CBE")
+    define sister = Character("Sister", what_font=gui.jp_text_font, color="#b97d91")
     define driver = Character("Driver", color="#b87639")
     define cashier = Character("Cashier", color="#49b976")
     define printer = Character("Printer", color="#CCCCCC")

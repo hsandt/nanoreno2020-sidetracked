@@ -67,6 +67,9 @@ define gui.name_text_font = "gui/theboldfont.ttf"
 ## The font used for out-of-game text.
 define gui.interface_text_font = "gui/theboldfont.ttf"
 
+## A font compatible with Japanese characters.
+define gui.jp_text_font = "gui/fonts/NotoSansCJK/NotoSansCJKjp-Regular.otf"
+
 ## The size of normal dialogue text.
 define gui.text_size = 33
 
