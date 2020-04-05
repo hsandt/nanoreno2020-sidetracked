@@ -1820,9 +1820,13 @@ init python:
     task_LightBulb = "Change the light bulb"
     task_BuyLightBulb = "Buy new light bulb"
 
-    # to ditinguish freeing space to get ID (sub-tree) or just like that,
+    # to distinguish freeing space to get ID (sub-tree) or just like that,
     # after reading notifications (separate tree)
-    access_id_suffix = " (for ID)"
+    def make_task_suffix(file_name):
+        return " (%s)" % file_name
+
+    check_photo_suffix = make_task_suffix("photo")
+    check_id_suffix = make_task_suffix("id")
 
     # [ TASKNAME, LEVEL, STATUS]
     task_unknown = ["Unknown", 0, status_InProgress]
@@ -1854,16 +1858,23 @@ init python:
         [task_FindHexKey, 3, status_NotStarted],
         [task_CheckScrewdrivers, 4, status_NotStarted],
         [task_CheckOthers, 4, status_InProgress],
+        [task_FreeSpace + check_photo_suffix, 5, status_InProgress],
+        [task_DeleteDict + check_photo_suffix, 6, status_NotStarted],
+        [task_DeleteGame + check_photo_suffix, 6, status_NotStarted],
+        [task_PlayGame + check_photo_suffix, 7, status_InProgress],
+        [task_UpdateApps + check_photo_suffix, 8, status_NotStarted],
+        [task_CreateAccount + check_photo_suffix, 8, status_InProgress],
+        [task_InventPassword + check_photo_suffix, 9, status_InProgress],
         [task_BuyHexKey, 3, status_InProgress],
         [task_Permit, 4, status_Failed],
         [task_ID, 5, status_InProgress],
-        [task_FreeSpace + access_id_suffix, 6, status_InProgress],
-        [task_DeleteDict + access_id_suffix, 7, status_NotStarted],
-        [task_DeleteGame + access_id_suffix, 7, status_NotStarted],
-        [task_PlayGame + access_id_suffix, 8, status_InProgress],
-        [task_UpdateApps + access_id_suffix, 9, status_NotStarted],
-        [task_CreateAccount + access_id_suffix, 9, status_InProgress],
-        [task_InventPassword + access_id_suffix, 10, status_InProgress],
+        [task_FreeSpace + check_id_suffix, 6, status_InProgress],
+        [task_DeleteDict + check_id_suffix, 7, status_NotStarted],
+        [task_DeleteGame + check_id_suffix, 7, status_NotStarted],
+        [task_PlayGame + check_id_suffix, 8, status_InProgress],
+        [task_UpdateApps + check_id_suffix, 9, status_NotStarted],
+        [task_CreateAccount + check_id_suffix, 9, status_InProgress],
+        [task_InventPassword + check_id_suffix, 10, status_InProgress],
         [task_FreeSpace, 0, status_InProgress],
         [task_DeleteDict, 1, status_NotStarted],
         [task_DeleteGame, 1, status_NotStarted],
