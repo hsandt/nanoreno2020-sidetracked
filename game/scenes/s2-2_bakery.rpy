@@ -7,7 +7,7 @@ label .shot1:
 
     $ play_sfx("store_door_open")
     scene bakery with CropMove(1.5, "wipeleft")
-    $ play_music(audio.store, fadeout=1.0)
+    $ play_music("store", fadeout=1.0)
     pause 1.0
 
     $ play_sfx("store_door_close")

@@ -24,7 +24,7 @@ label .shot2:
     scene bg apartment
     show mc casual regular left at character_right
     with Dissolve(1.0)
-    $ play_music(audio.apartment)
+    $ play_music("apartment")
 
     # Call to start HaveLunch task so it shows up in the task tree
     # Don't notify this one though; it's unnatural for MC to write that now!

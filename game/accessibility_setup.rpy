@@ -30,15 +30,15 @@ init python:
     # sad_song = "filepath.mp3"
 
     # alias : "Song Title",
-    music_dictionary = {
-        audio.title_theme: "Title Theme - Upbeat Music",
-        audio.apartment: "Apartment Theme - Day - Upbeat Music",
-        audio.store: "Store - Chill Music",
-        audio.game: "Mobile Game - Battle Music",
-        audio.street: "Ambient Street Sounds",
-        audio.apartment_night: "Apartment Theme - Night - Relaxing Music",
-        audio.apartment_night_sad: "Apartment Theme - Night - Sad Music",
-    }
+    music_dictionary = dict(
+        title_theme = "Title Theme - Upbeat Music",
+        apartment = "Apartment Theme - Day - Upbeat Music",
+        store = "Store - Chill Music",
+        game = "Mobile Game - Battle Music",
+        street = "Ambient Street Sounds",
+        apartment_night = "Apartment Theme - Night - Relaxing Music",
+        apartment_night_sad = "Apartment Theme - Night - Sad Music"
+    )
 
     # Define every sound with an alias
     # door_close = "door closing sfx.wav"

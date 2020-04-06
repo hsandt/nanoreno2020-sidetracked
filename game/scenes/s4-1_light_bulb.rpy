@@ -13,7 +13,7 @@ label .shot1:
     $ quick_menu = True
 
     scene bg apartment with Dissolve(1.0)
-    $ play_music(audio.apartment_night, prefix="<loop 21.333>")
+    $ play_music("apartment_night")
 
     show mc casual regular left at character_right with dissolve
 

@@ -40,18 +40,28 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 
 # Audio
 
-## BGM
 # -1 so it's done just before music_dictionary definition in accessibility_setup.rpy
 init -1:
-    define audio.title_theme = "audio/bgm/title_theme.ogg"
+    ## BGM assets
+    define audio.title_theme = "<to 19.2>audio/bgm/title_theme.ogg"
     define audio.apartment = "audio/bgm/apartment_theme.ogg"
+    define audio.street = "<loop 19.287>audio/bgm/ambient_street.ogg"
     define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
+    define audio.apartment_night = "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
+    define audio.apartment_night_sad = "<loop 21.333>audio/bgm/apartment_theme_night_sad.ogg"  # unused
     define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
-    # BGM below require custom loops
-    define audio.street = "audio/bgm/ambient_street.ogg"
-    define audio.apartment_night = "audio/bgm/apartment_theme_night.ogg"
-    # currently unused
-    define audio.apartment_night_sad = "audio/bgm/apartment_theme_night_sad.ogg"
+
+    ## BGM mapping (so accessibility feature can get BGM notification text from core name
+    ## instead of filepath, which contains the <loop> pattern and is not very convenient)
+    define music_to_assets = dict(
+        title_theme = audio.title_theme,
+        apartment = audio.apartment,
+        street = audio.street,
+        store = audio.store,
+        apartment_night = audio.apartment_night,
+        apartment_night_sad = audio.apartment_night_sad,
+        game = audio.game
+    )
 
     ## SFX assets
     define audio.coins_drop = "audio/sfx/coins_drop.ogg"
@@ -72,7 +82,8 @@ init -1:
     define audio.write_on_paper = "audio/sfx/write_on_paper.ogg"
     define audio.task_update = "audio/sfx/notification_unconvinced.ogg"
 
-    ## SFX mapping (since we reuse audio assets for actions with different meanings)
+    ## SFX mapping (to allow to reuse audio assets for actions with different meanings,
+    ## and also so accessibility feature can use short name as dict key rather than filepath)
     define sfx_to_assets = dict(
         coins_drop = audio.coins_drop,
         door_open_close = audio.door_open_close,

@@ -11,7 +11,7 @@ label .shot1:
     pause 1.0
 
     scene bg store with Dissolve(1.0)
-    $ play_music(audio.store)
+    $ play_music("store")
     show mc regular at character_left with dissolve
 
     $ play_sfx("store_door_close")

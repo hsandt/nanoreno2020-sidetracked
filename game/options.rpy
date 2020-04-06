@@ -223,7 +223,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-define config.main_menu_music = "<from 0 to 19.2>" + audio.title_theme
+define config.main_menu_music = audio.title_theme
 
 
 ## Transitions #################################################################

@@ -3,7 +3,7 @@ label s2_1:
 # MC receives notification
 label .shot1:
     scene bus_stop with dissolve
-    $ play_music(audio.street, prefix="<loop 19.287>")
+    $ play_music("street")
     $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
 

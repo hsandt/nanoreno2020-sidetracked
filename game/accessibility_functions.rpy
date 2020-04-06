@@ -22,9 +22,8 @@ init python:
         if persistent.audio_cues:
             renpy.notify("SFX: " + sfx_dictionary[sound_name])
 
-    def play_music(music_alias, prefix="", **kwargs):
-        # prefix is useful to define loop, while having music_alias separated to notify
-        renpy.music.play(prefix + music_alias, **kwargs)
+    def play_music(music_name, **kwargs):
+        # same modification as in SFX
+        renpy.music.play(music_to_assets[music_name], **kwargs)
         if persistent.audio_cues:
-            # unlike SFX, we really pass the audio filename as key this time
-            renpy.notify("Now Playing: " + music_dictionary[music_alias])
+            renpy.notify("Now Playing: " + music_dictionary[music_name])
