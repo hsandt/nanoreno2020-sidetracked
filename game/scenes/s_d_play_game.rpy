@@ -108,7 +108,7 @@ label .shot4:
         if has_tried_game_count == 1:
             "The setting is funny. The remorses of dead people come from the future, shaped as monsters."
             "They attack people in the present to prevent them from the doing the same kind of mistakes."
-            "But there are really, many, many characters. I'm glad I don't have to name every of them."
+            "But there are really many, many characters. I'm glad I don't have to name every of them."
         elif has_tried_game_count == 2:
             "How many times have I played this game today? I almost feel guilty it's a free-to-play."
             "Maybe I should drop some money on it... But I don't have a sense of {i}money versus time{/i} good enough to know what's worth what."
@@ -117,7 +117,7 @@ label .shot4:
         if play_context == "free space":
             pause 0.5
             "OK, I think I've played enough to have a good idea of what the game is about."
-            "I don't think I'll play much more, so I can delete when I'm done."
+            "I don't think I'll play much more, so I can delete it when I'm done."
 
         pause 1.5
         stop music fadeout 1.5
