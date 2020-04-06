@@ -154,8 +154,7 @@ label .shot3b:
     $ store.is_character_sitting = True
 
     queue sound ["<silence 1.5>", write_on_paper]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: Write on paper")
+    $ notify_sfx("write_on_paper")
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     $ CompleteTask(task_ScrewMeter)

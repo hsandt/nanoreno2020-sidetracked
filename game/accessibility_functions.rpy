@@ -19,6 +19,9 @@ init python:
         # since only queued sounds with custom notification reuse sounds; but more flexible anyway)
         # also removed "{i}{/i}" which for some reason shows at "[i][/i]"
         renpy.sound.play(sfx_to_assets[sound_name], **kwargs)
+        notify_sfx(sound_name)
+
+    def notify_sfx(sound_name):
         if preferences.audio_cues:
             renpy.notify("SFX: " + sfx_dictionary[sound_name])
 

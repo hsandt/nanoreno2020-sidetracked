@@ -99,7 +99,10 @@ label .shot3a:
     # SFX reuse for another purpose
     queue sound [inspect_chair, step_on_chair]
     # custom SFX accessibility notification since it's a queue of 2 sounds
-    $ renpy.notify("SFX: Katell loses balance and falls back on seat")
+    # with a unique description
+    python:
+         if preferences.audio_cues:
+             renpy.notify("SFX: Katell loses balance and falls back on seat")
 
     "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
     "I fall back to my seat without having been able to reach the button."
@@ -112,8 +115,7 @@ label .shot3b:
     "After an epic march, I reach the damn thing and press it."
 
     queue sound ["<silence 0.5>", bus_stop_button]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
+    $ notify_sfx("bus_stop_button")
 
     "It's working."
     $ CompleteTask(task_StandUp)
@@ -131,8 +133,7 @@ label .shot4:
     $ change_free_space(-50)
 
     queue sound ["<silence 0.5>", bus_stop_button]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
+    $ notify_sfx("bus_stop_button")
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
@@ -167,8 +168,7 @@ label .shot7:
     "As I'm expecting the worst, I nervously tap my foot."
 
     queue sound ["<silence 0.5>", bus_stop_button]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
+    $ notify_sfx("bus_stop_button")
 
     "Somebody finally calls for the stop."
     $ CompleteTask(task_WaitStop)

@@ -44,8 +44,7 @@ label .shot2:
     pause 2.5
 
     queue sound ["<silence 0.8>", topping_bus_card, "<silence 1.8>", topping_bus_card, "<silence 1.5>", topping_bus_card]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: " + sfx_dictionary["topping_bus_card"])
+    $ notify_sfx("topping_bus_card")
 
     "The passengers before me top up their smart cards as they get on the bus."
     "I don't have one, so I try to buy a ticket."
