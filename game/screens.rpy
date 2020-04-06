@@ -869,13 +869,23 @@ screen preferences():
 
                     label _("Text Speed")
 
-                    bar value Preference("text speed")
+                    hbox:
+                        bar value Preference("text speed")
+
+                        # reset to default value of preferences.text_cps in options.rpy
+                        textbutton _("Reset"):
+                            action Preference("text speed", 0)
 
                     null height gui.pref_spacing
 
                     label _("Auto-Forward Time")
 
-                    bar value Preference("auto-forward time")
+                    hbox:
+                        bar value Preference("auto-forward time")
+
+                        # reset to default value of preferences.afm_time in options.rpy
+                        textbutton _("Reset"):
+                            action Preference("auto-forward time", 15)
 
                 vbox:
 
@@ -994,7 +1004,7 @@ style slider_button_text:
     hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
 
 style slider_vbox:
-    xsize 575
+    xsize 685
 
 
 ## Accessibility screen ##############################################################
