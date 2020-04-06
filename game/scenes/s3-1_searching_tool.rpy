@@ -70,9 +70,11 @@ label .shot3:
     "After some time I reach the \"Keys & Locks\" area, where they put digit padlocks, padlocks with keys... and of course, hex keys. Logical."
 
     if screw_measurement_method == "photo":
-        "I check the photo of the loose screw on my phone to make sure I pick the right key."
+        "I pick my phone to open the photo of the loose screw I took earlier."
         call check_file("photo") from _call_check_file
-        "Once I find it, I search the matching key on the shelf using my finger as reference scale."
+        show screen screen_item("screw_loose", "right")
+        "I find the photo and open it as reference to find a key with the right dimension."
+        hide screen screen_item
     else:
         "I check the loose screw’s dimensions in my notepad to make sure I pick the right key."
 
