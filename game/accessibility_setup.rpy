@@ -4,29 +4,32 @@
 # (which can handle text)
 
 ### Initial GUI preferences
-# Here, we'll keep all our gui preferences, along with our persistent variables regarding accessibility.
+# Here, we'll keep all our gui preferences
+# Unlike the original Add-On, we prefer Preferences to Persistent variables
+# as they will be stored separated and not deleted with the persistent file,
+# that we reserve for game unlockables and recording which events player has seen.
 
 # Show keyboard mapping on quick menu buttons. Disable to avoid self-voicing annoyingly read "T" and "P"
 # every time
-default persistent.show_quick_menu_keyboard_hints = True
+default preferences.show_quick_menu_keyboard_hints = True
 
 # Audio cues
-default persistent.audio_cues = True
+default preferences.audio_cues = True
 
 ## Default alpha of the say window. Append to your say screen.
 # Our window already has a slight alpha, no we start at 1.0 opacity
-default persistent.say_window_alpha = 1.0
+default preferences.say_window_alpha = 1.0
 
 # Default text color
-# Replace all instances of gui.text_color with persistent.pref_text_color. Append to your say screen.
+# Replace all instances of gui.text_color with preferences.pref_text_color. Append to your say screen.
 # Commented out define since we initialize from a variable, which must be done in init python (below)
-# default persistent.pref_text_color = "#333333"
+# default preferences.pref_text_color = "#333333"
 
 ###
 # This is all the functions for accessibility.
 
 init python:
-    persistent.pref_text_color = gui.text_color
+    preferences.pref_text_color = gui.text_color
 
     ###Initial Audio Cues Setup
     # Define every song with an alias

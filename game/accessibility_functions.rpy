@@ -4,7 +4,7 @@
 
 init python:
     def changeColor(newColor):
-        return SetField(persistent, "pref_text_color", newColor)
+        return SetField(preferences, "pref_text_color", newColor)
 
     ### Audio Cues
     # These are used in place of "play music" and "play sound". In your script:
@@ -19,11 +19,11 @@ init python:
         # since only queued sounds with custom notification reuse sounds; but more flexible anyway)
         # also removed "{i}{/i}" which for some reason shows at "[i][/i]"
         renpy.sound.play(sfx_to_assets[sound_name], **kwargs)
-        if persistent.audio_cues:
+        if preferences.audio_cues:
             renpy.notify("SFX: " + sfx_dictionary[sound_name])
 
     def play_music(music_name, **kwargs):
         # same modification as in SFX
         renpy.music.play(music_to_assets[music_name], **kwargs)
-        if persistent.audio_cues:
+        if preferences.audio_cues:
             renpy.notify("Now Playing: " + music_dictionary[music_name])

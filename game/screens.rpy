@@ -109,7 +109,7 @@ screen say(who, what):
     window:
         id "window"
 
-        background Transform(style.window.background, alpha=persistent.say_window_alpha)
+        background Transform(style.window.background, alpha=preferences.say_window_alpha)
 
         if who is not None:
 
@@ -118,7 +118,7 @@ screen say(who, what):
                 style "namebox"
                 text who id "who"
 
-        text what id "what" color persistent.pref_text_color
+        text what id "what" color preferences.pref_text_color
         if is_showing_smartphone or is_character_sitting:
             yalign 0.05
         else:
@@ -288,7 +288,7 @@ screen quick_menu():
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
         if indicator_newTask:
             add "gui/button/indicator_new.png"
-        if persistent.show_quick_menu_keyboard_hints:
+        if preferences.show_quick_menu_keyboard_hints:
             text "T" xpos 1475 ypos 975
             text "P" xpos 1700 ypos 975
 
@@ -418,7 +418,7 @@ screen navigation():
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
             add "gui/button/indicator_new.png"
-        if persistent.show_quick_menu_keyboard_hints:
+        if preferences.show_quick_menu_keyboard_hints:
             text "T" xpos 1475 ypos 975 style_prefix "quick"
             text "P" xpos 1700 ypos 975 style_prefix "quick"
 
@@ -1089,7 +1089,7 @@ screen accessibility():
                     null height 5
 
                     # Toggle Audio Cues
-                    textbutton _("Audio Cues") action ToggleField(persistent, "audio_cues")
+                    textbutton _("Audio Cues") action ToggleField(preferences, "audio_cues")
 
                 vbox:
                     style_prefix "check"
@@ -1101,7 +1101,7 @@ screen accessibility():
                     null height 5
 
                     # Toggle Quick Menu Key Hints
-                    textbutton _("Quick Menu Keys (unselect when using self-voicing)") action ToggleField(persistent, "show_quick_menu_keyboard_hints")
+                    textbutton _("Quick Menu Keys (unselect when using self-voicing)") action ToggleField(preferences, "show_quick_menu_keyboard_hints")
 
                 vbox:
                     style_prefix "slider"
@@ -1112,10 +1112,10 @@ screen accessibility():
                     null height 5
 
                     hbox:
-                        bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2)
+                        bar value FieldValue(preferences, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2)
 
                         textbutton _("Reset"):
-                            action SetField(persistent, "say_window_alpha", 1.0)
+                            action SetField(preferences, "say_window_alpha", 1.0)
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
