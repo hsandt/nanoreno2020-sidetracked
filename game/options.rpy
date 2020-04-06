@@ -1,4 +1,4 @@
-﻿## This file contains options that can be changed to customize your game.
+## This file contains options that can be changed to customize your game.
 ##
 ## Lines beginning with two '#' marks are comments, and you shouldn't uncomment
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
@@ -52,7 +52,7 @@ This game was developed for {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020{/
 - Sound Effects: Fabian Fabro (FirahFabe), komehara
 
 
-{u}Copyright{/u}
+{u}License{/u}
 
 Original backgrounds: copyright JW Jones 2020
 
@@ -93,6 +93,8 @@ Original SFX: inspect_chair.ogg is {a=https://creativecommons.org/licenses/by-sa
 Free SFX:
 
 - smartphone notification {a=https://notificationsounds.com/notification-sounds/unconvinced-569}notification_unconvinced.ogg{/a} by {a=https://notificationsounds.com}Notification Sounds{/a} under CC BY 4.0
+
+[Ren'Py Accessibility Add-On](https://minute.itch.io/renpy-accessibility) under MIT license
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
@@ -171,9 +173,10 @@ Notification Sounds
 
 
 
-{size=+10}{b}Public code snippets{/b}{/size}
+{size=+10}{b}Code snippets / Add-Ons{/b}{/size}
 
-Andykl
+jsfehler, Andykl (random statement)
+minute (Ren'Py Accessibility Add-On)
 
 
 

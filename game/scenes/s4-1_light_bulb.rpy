@@ -7,13 +7,13 @@ label .shot1:
     $ store.wrapping_scene = "light_bulb"
 
     pause 2.0
-    play sound door_open_close
+    $ play_sfx("door_open_close")
     pause 1.0
 
     $ quick_menu = True
 
     scene bg apartment with Dissolve(1.0)
-    play music "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
+    $ play_music(audio.apartment_night, prefix="<loop 21.333>")
 
     show mc casual regular left at character_right with dissolve
 
@@ -26,7 +26,7 @@ label .shot1:
     hide screen screen_item with dissolve
     show screen screen_item("screw_loose", "left") with dissolve
     "I use the key to tighten the screw on the chair in the living room."
-    play sound screw_tighten
+    $ play_sfx("screw_tighten")
     pause 0.5
     show screen screen_item("screw_tight", "left") with dissolve
     pause 0.5
@@ -35,7 +35,7 @@ label .shot1:
 
     show mc casual regular left at character_right_sit_down
     pause 0.5
-    play sound step_on_chair
+    $ play_sfx("step_on_chair")
     $ store.is_character_sitting = True
 
     "I sit down. The seat is not moving anymore."
@@ -136,7 +136,7 @@ label .shot1:
 
     "Anyway, that room is pretty dark."
 
-    play sound step_on_chair
+    $ play_sfx("step_on_chair")
     show mc casual regular left at character_stand_up
     $ store.is_character_sitting = False
     pause 0.5
@@ -154,9 +154,7 @@ label .shot1:
     show mc casual regular at character_move_right
     pause 1.0
 
-    play sound searching_drawer
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: searching drawer")
+    $ play_sfx("searching_drawer")
     pause 4.0
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
@@ -208,7 +206,7 @@ label .shot2a:
     show overlay black with dissolve
     pause 0.3
 
-    play sound door_open_close
+    $ play_sfx("door_open_close")
     pause 2.4
 
     jump credits

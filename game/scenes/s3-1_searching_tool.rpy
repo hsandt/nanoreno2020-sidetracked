@@ -6,19 +6,15 @@ label .shot1:
 
     scene overlay black with Dissolve(1.0)
 
-    play sound store_door_open
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: automatic door opens")
+    $ play_sfx("store_door_open")
 
     pause 1.0
 
     scene bg store with Dissolve(1.0)
-    play music store
+    $ play_music(audio.store)
     show mc regular at character_left with dissolve
 
-    play sound store_door_close
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: automatic door closes")
+    $ play_sfx("store_door_close")
 
     window show
     "I start searching for a hexagonal key or screwdriver."
@@ -78,7 +74,7 @@ label .shot3:
     else:
         "I check the loose screw’s dimensions in my notepad to make sure I pick the right key."
 
-    play sound searching_drawer
+    $ play_sfx("searching_drawer")
     pause 1.0
 
     show screen screen_item("hex_key", "right") with dissolve

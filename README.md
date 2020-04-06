@@ -56,4 +56,6 @@ Free SFX:
 
 * smartphone notification (notification_unconvinced.ogg)(https://notificationsounds.com/notification-sounds/unconvinced-569) by [Notification Sounds](https://notificationsounds.com) under CC BY 4.0
 
-For code, see [LICENSE](LICENSE).
+[Ren'Py Accessibility Add-On](https://minute.itch.io/renpy-accessibility) under MIT license
+
+For original code, see [LICENSE](LICENSE).

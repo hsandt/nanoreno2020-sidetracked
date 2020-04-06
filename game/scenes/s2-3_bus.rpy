@@ -5,10 +5,10 @@ label .shot1:
     $ store.currentTime = "15:00"
     $ store.wrapping_scene = "bus"
 
-    play sound store_door_open
+    $ play_sfx("store_door_open")
     scene bus_stop with CropMove(1.5, "wiperight")
     pause 1.0
-    play sound store_door_close
+    $ play_sfx("store_door_close")
     pause 0.5
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
 
@@ -23,23 +23,19 @@ label .shot1:
 
     show mc outside regular at character_left with dissolve
 
-    play sound bus_stop_and_open
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stops and opens doors with hissing")
+    $ play_sfx("bus_stop_and_open")
 
     "When the bus arrives, I get on and buy a return ticket."
 
     show screen screen_item("coins", "center") with dissolve
-    play sound coins_drop
+    $ play_sfx("coins_drop")
     pause 0.5
     hide screen screen_item with dissolve
     pause 0.5
 
     $ CompleteTask(task_Ticket)
 
-    play sound smartphone_notification
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: smartphone notification")
+    $ play_sfx("smartphone_notification")
 
     "While I'm paying, my phone vibrates and notifies me of a new message. I'll check this later."
 
@@ -48,16 +44,14 @@ label .shot1:
 
 # Inside bus
 label .shot2:
-    play sound bus_close
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus doors close")
+    $ play_sfx("bus_close")
 
     scene bus_inside with dissolve
     pause 0.5
 
     "The inside surprisingly looks Japanese."
     "I sit in the back, where I usually feel better to do my stuff without people looking."
-    play sound step_on_chair  # SFX reuse
+    $ play_sfx("step_on_chair")
     pause 1.0
 
     $ StartTask(task_PushClosestStop)
@@ -104,8 +98,8 @@ label .shot3a:
 
     # SFX reuse for another purpose
     queue sound [inspect_chair, step_on_chair]
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: losing balance")
+    # custom SFX accessibility notification since it's a queue of 2 sounds
+    $ renpy.notify("SFX: Katell loses balance and falls back on seat")
 
     "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
     "I fall back to my seat without having been able to reach the button."
@@ -119,7 +113,7 @@ label .shot3b:
 
     queue sound ["<silence 0.5>", bus_stop_button]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stop button")
+    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
 
     "It's working."
     $ CompleteTask(task_StandUp)
@@ -138,7 +132,7 @@ label .shot4:
 
     queue sound ["<silence 0.5>", bus_stop_button]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stop button")
+    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
@@ -174,7 +168,7 @@ label .shot7:
 
     queue sound ["<silence 0.5>", bus_stop_button]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stop button")
+    $ renpy.notify("SFX: " + sfx_dictionary["bus_stop_button"])
 
     "Somebody finally calls for the stop."
     $ CompleteTask(task_WaitStop)
@@ -184,9 +178,7 @@ label .shot7:
 label .shot8:
     pause 0.8
 
-    play sound bus_stop_and_open
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stops and opens doors with hissing")
+    $ play_sfx("bus_stop_and_open")
 
     window show None
     "The bus stops near the DIY store, I get off and walk in."

@@ -3,7 +3,7 @@ label s2_1:
 # MC receives notification
 label .shot1:
     scene bus_stop with dissolve
-    play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    $ play_music(audio.street, prefix="<loop 19.287>")
     $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
 
@@ -40,14 +40,12 @@ label .shot2:
 
     show mc outside regular at character_left with dissolve
 
-    play sound bus_stop_and_open
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus stops and opens doors with hissing")
+    $ play_sfx("bus_stop_and_open")
     pause 2.5
 
     queue sound ["<silence 0.8>", topping_bus_card, "<silence 1.8>", topping_bus_card, "<silence 1.5>", topping_bus_card]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus card top-up")
+    $ renpy.notify("SFX: " + sfx_dictionary["topping_bus_card"])
 
     "The passengers before me top up their smart cards as they get on the bus."
     "I don't have one, so I try to buy a ticket."
@@ -59,9 +57,7 @@ label .shot2:
 
     "I search in my wallet, but there are not enough to buy a ticket."
 
-    play sound bus_close
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: bus doors close")
+    $ play_sfx("bus_close")
 
     "I apologize and quickly get off."
 

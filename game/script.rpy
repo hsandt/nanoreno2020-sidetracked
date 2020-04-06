@@ -150,14 +150,14 @@ label lbl_realstart:
 # Restore BGM from context. Useful after using smartphone.
 label restore_bgm:
     if wrapping_scene == "broken_chair":
-        play music apartment
+        $ play_music(audio.apartment)
     elif wrapping_scene == "bus_stop":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+        $ play_music(audio.street, prefix="<loop 19.287>")
     elif wrapping_scene == "bakery":
-        play music store
+        $ play_music(audio.store)
     elif wrapping_scene == "bus":
-        play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+        $ play_music(audio.street, prefix="<loop 19.287>")
     elif wrapping_scene == "store":
-        play music store
+        $ play_music(audio.store)
     elif wrapping_scene == "light_bulb":
         pass

@@ -41,31 +41,54 @@ image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 # Audio
 
 ## BGM
+# -1 so it's done just before music_dictionary definition in accessibility_setup.rpy
+init -1:
+    define audio.title_theme = "audio/bgm/title_theme.ogg"
+    define audio.apartment = "audio/bgm/apartment_theme.ogg"
+    define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
+    define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
+    # BGM below require custom loops
+    define audio.street = "audio/bgm/ambient_street.ogg"
+    define audio.apartment_night = "audio/bgm/apartment_theme_night.ogg"
+    # currently unused
+    define audio.apartment_night_sad = "audio/bgm/apartment_theme_night_sad.ogg"
 
-define audio.title_theme = "audio/bgm/title_theme.ogg"
-define audio.apartment = "audio/bgm/apartment_theme.ogg"
-define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
-define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
-# for memo, but never used directly as we must loop with full file path
-# define audio.street = "audio/bgm/ambient_street.ogg"
-# define audio.apartment_night = "audio/bgm/apartment_theme_night.ogg"
-# define audio.apartment_night_sad = "audio/bgm/apartment_theme_night_sad.ogg"
+    ## SFX assets
+    define audio.coins_drop = "audio/sfx/coins_drop.ogg"
+    define audio.door_open_close = "audio/sfx/door_open_close.ogg"
+    define audio.inspect_chair = "audio/sfx/inspect_chair.ogg"
+    define audio.printer = "audio/sfx/printer.ogg"
+    define audio.screw_tighten = "audio/sfx/screw_tighten.ogg"
+    define audio.searching_drawer = "audio/sfx/searching_drawer.ogg"
+    define audio.smartphone_camera = "audio/sfx/smartphone_camera.ogg"
+    define audio.smartphone_notification = "audio/sfx/ringtone_notification_2.ogg"
+    define audio.step_on_chair = "audio/sfx/step_on_chair.ogg"
+    define audio.bus_stop_and_open = "audio/sfx/bus_stop_and_open.ogg"
+    define audio.bus_close = "audio/sfx/bus_close.ogg"
+    define audio.topping_bus_card = "audio/sfx/topping_bus_card.ogg"
+    define audio.bus_stop_button = "audio/sfx/bus_stop_button.ogg"
+    define audio.store_door_open = "audio/sfx/store_door_open.ogg"
+    define audio.store_door_close = "audio/sfx/store_door_close.ogg"
+    define audio.write_on_paper = "audio/sfx/write_on_paper.ogg"
+    define audio.task_update = "audio/sfx/notification_unconvinced.ogg"
 
-## SFX
-define audio.coins_drop = "audio/sfx/coins_drop.ogg"
-define audio.door_open_close = "audio/sfx/door_open_close.ogg"
-define audio.inspect_chair = "audio/sfx/inspect_chair.ogg"
-define audio.printer = "audio/sfx/printer.ogg"
-define audio.screw_tighten = "audio/sfx/screw_tighten.ogg"
-define audio.searching_drawer = "audio/sfx/searching_drawer.ogg"
-define audio.smartphone_camera = "audio/sfx/smartphone_camera.ogg"
-define audio.smartphone_notification = "audio/sfx/ringtone_notification_2.ogg"
-define audio.step_on_chair = "audio/sfx/step_on_chair.ogg"
-define audio.bus_stop_and_open = "audio/sfx/bus_stop_and_open.ogg"
-define audio.bus_close = "audio/sfx/bus_close.ogg"
-define audio.topping_bus_card = "audio/sfx/topping_bus_card.ogg"
-define audio.bus_stop_button = "audio/sfx/bus_stop_button.ogg"
-define audio.store_door_open = "audio/sfx/store_door_open.ogg"
-define audio.store_door_close = "audio/sfx/store_door_close.ogg"
-define audio.write_on_paper = "audio/sfx/write_on_paper.ogg"
-define audio.task_update = "audio/sfx/notification_unconvinced.ogg"
+    ## SFX mapping (since we reuse audio assets for actions with different meanings)
+    define sfx_to_assets = dict(
+        coins_drop = audio.coins_drop,
+        door_open_close = audio.door_open_close,
+        inspect_chair = audio.inspect_chair,
+        printer = audio.printer,
+        screw_tighten = audio.screw_tighten,
+        searching_drawer = audio.searching_drawer,
+        smartphone_camera = audio.smartphone_camera,
+        smartphone_notification = audio.smartphone_notification,
+        step_on_chair = audio.step_on_chair,
+        bus_stop_and_open = audio.bus_stop_and_open,
+        bus_close = audio.bus_close,
+        topping_bus_card = audio.topping_bus_card,
+        bus_stop_button = audio.bus_stop_button,
+        store_door_open = audio.store_door_open,
+        store_door_close = audio.store_door_close,
+        write_on_paper = audio.write_on_paper,
+        task_update = audio.task_update
+    )

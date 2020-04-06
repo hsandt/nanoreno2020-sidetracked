@@ -1,4 +1,4 @@
-# snippet from Andykl to define random statement
+# snippet from Andykl (inspired by jsfehler) to define random statement
 # https://github.com/renpy/renpy/issues/1786
 python early:
     def parse_random(lexer):

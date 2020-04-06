@@ -5,12 +5,12 @@ label .shot1:
     $ store.currentTime = "14:30"
     $ store.wrapping_scene = "bakery"
 
-    play sound store_door_open
+    $ play_sfx("store_door_open")
     scene bakery with CropMove(1.5, "wipeleft")
-    play music store fadeout 1.0
+    $ play_music(audio.store, fadeout=1.0)
     pause 1.0
 
-    play sound store_door_close
+    $ play_sfx("store_door_close")
     pause 0.5
 
     window show
@@ -32,7 +32,7 @@ label .shot1:
     mc "One croissant, one pain au chocolat and one cream puff, please."
 
     show screen screen_item("coins", "center") with dissolve
-    play sound coins_drop
+    $ play_sfx("coins_drop")
     pause 0.5
     hide screen screen_item with dissolve
     pause 0.5

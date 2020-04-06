@@ -95,7 +95,7 @@ label .shot4:
     show screen smartphone("game") with dissolve
     $ store.is_showing_smartphone = True
 
-    play music game fadeout 0.8 fadein 0.8
+    $ play_music(audio.game, fadeout=0.8, fadein=0.8)
     pause 1.5
 
     if has_tried_game_count > 0:

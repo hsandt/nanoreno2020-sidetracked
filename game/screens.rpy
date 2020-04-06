@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -41,6 +41,8 @@ style button_text is gui_text:
 style label_text is gui_text:
     properties gui.text_properties("label", accent=True)
     outlines [ (absolute(1), "#9e649f", absolute(0), absolute(0)) ]
+    # The Bold Font makes text with outline a bit dense, so extra kerning helps
+    kerning 2
 
 style prompt_text is gui_text:
     properties gui.text_properties("prompt")
@@ -107,6 +109,8 @@ screen say(who, what):
     window:
         id "window"
 
+        background Transform(style.window.background, alpha=persistent.say_window_alpha)
+
         if who is not None:
 
             window:
@@ -114,7 +118,7 @@ screen say(who, what):
                 style "namebox"
                 text who id "who"
 
-        text what id "what"
+        text what id "what" color persistent.pref_text_color
         if is_showing_smartphone or is_character_sitting:
             yalign 0.05
         else:
@@ -252,7 +256,6 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
-
 
 ## Quick Menu screen ###########################################################
 ##
@@ -819,19 +822,23 @@ screen preferences():
                     vbox:
                         style_prefix "radio"
                         label _("Display")
+                        null height 5
                         textbutton _("Window") action Preference("display", "window")
                         textbutton _("Fullscreen") action Preference("display", "fullscreen")
 
-                vbox:
-                    style_prefix "radio"
-                    label _("Rollback Side")
-                    textbutton _("Disable") action Preference("rollback side", "disable")
-                    textbutton _("Left") action Preference("rollback side", "left")
-                    textbutton _("Right") action Preference("rollback side", "right")
+                # Disabled as used for mobile only, where you can touch left/right to rollback
+                # vbox:
+                #     style_prefix "radio"
+                #     label _("Rollback Side")
+                #     null height 5
+                #     textbutton _("Disable") action Preference("rollback side", "disable")
+                #     textbutton _("Left") action Preference("rollback side", "left")
+                #     textbutton _("Right") action Preference("rollback side", "right")
 
                 vbox:
                     style_prefix "check"
                     label _("Skip")
+                    null height 5
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
@@ -839,15 +846,13 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("Authorization")
+                    null height 5
                     if persistent.unlocked:
                         textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked')]
                     else:
                         textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked'), ShowMenu('screen_captcha')]
 
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
+            null height (2 * gui.pref_spacing)
 
             hbox:
                 style_prefix "slider"
@@ -858,6 +863,8 @@ screen preferences():
                     label _("Text Speed")
 
                     bar value Preference("text speed")
+
+                    null height gui.pref_spacing
 
                     label _("Auto-Forward Time")
 
@@ -872,6 +879,7 @@ screen preferences():
                             bar value Preference("music volume")
 
                     if config.has_sound:
+                        null height gui.pref_spacing
 
                         label _("Sound Volume")
 
@@ -881,8 +889,9 @@ screen preferences():
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
-
                     if config.has_voice:
+                        null height gui.pref_spacing
+
                         label _("Voice Volume")
 
                         hbox:
@@ -898,6 +907,112 @@ screen preferences():
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
 
+            null height gui.pref_spacing
+
+            label _("* Accessibility *")
+
+            null height gui.pref_spacing
+
+            hbox:
+                box_wrap True
+
+                vbox:
+                    style_prefix "check"
+
+                    # Copied from renpy SDK: 00accessibility.rpy
+                    label _("Font Override")
+
+                    null height 5
+
+                    # almost good, but one caveat compared to Ren'Py Accessibility Add-On's approach of replacing font manually in screen say():
+                    # Ren'Py applies the transform globally, which is usefully to override even the name/interface font (The Bold Font),
+                    # but also overrides the label below as OpenDyslexic, whereas it should always be displayed with the target font
+                    textbutton "{font=[gui.text_font]}" + _("Default") + "{/font} / {font=[gui.interface_text_font]}" + _("Default") + "{/font}":
+                        action Preference("font transform", "None")
+                        style_suffix "radio_button"
+
+                    textbutton "{font=_OpenDyslexic3-Regular.ttf}" + _("Opendyslexic") + "{/font}":
+                        action Preference("font transform", "opendyslexic")
+                        style_suffix "radio_button"
+
+                    null height gui.pref_spacing
+
+                    label _("Font Color")
+
+                    null height 5
+
+                    textbutton _("Default (Purple)"):
+                        action changeColor(gui.text_color)
+                        style_suffix "radio_button"
+
+                    # I wanted to make that text black, but when selected, it adds a purple
+                    # outline and it's ugly. Better use a style to mimic default radio text becoming
+                    # white instead when selected, but didn't manage to inject specific style here
+                    textbutton _("Black"):
+                        action changeColor("#000000")
+                        style_suffix "radio_button"
+
+                vbox:
+                    style_prefix "check"
+
+                    # Copied from renpy SDK: 00accessibility.rpy
+                    label _("Self-Voicing")
+
+                    null height 5
+
+                    textbutton _("Off"):
+                        action Preference("self voicing", "disable")
+                        style_suffix "radio_button"
+
+                    textbutton _("Text-to-speech"):
+                        action Preference("self voicing", "enable")
+                        style_suffix "radio_button"
+
+                vbox:
+                    style_prefix "check"
+
+                    # Copied from Ren'Py Accessibility Add-On: screens replacements.rpy
+                    label _("Audio")
+
+                    null height 5
+
+                    # Toggle Audio Cues
+                    textbutton _("Audio Cues") action ToggleField(persistent, "audio_cues")
+
+                    # Set Textbox Opacity
+                    label _("Window Alpha")
+                    bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2)
+
+                ## Additional vboxes of type "radio_pref" or "check_pref" can be
+                ## added here, to add additional creator-defined preferences.
+
+            null height gui.pref_spacing
+
+            vbox:
+                style_prefix "slider"
+                box_wrap True
+
+                label _("Text Size Scaling")
+
+                null height 5
+
+                hbox:
+                    bar value Preference("font size")
+
+                    textbutton _("Reset"):
+                        action Preference("font size", 1.0)
+
+                null height gui.pref_spacing
+
+                label _("Line Spacing Scaling")
+
+                null height 5
+
+                hbox:
+                    bar value Preference("font line spacing")
+
+                    textbutton _("Reset"):
+                        action Preference("font line spacing", 1.0)
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -933,7 +1048,7 @@ style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 400
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -944,6 +1059,10 @@ style radio_button:
 
 style radio_button_text:
     properties gui.button_text_properties("radio_button")
+    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
+    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+    hover_color "#f4cfe5"
+    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
 
 style check_vbox:
     spacing gui.pref_button_spacing
@@ -954,6 +1073,10 @@ style check_button:
 
 style check_button_text:
     properties gui.button_text_properties("check_button")
+    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
+    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+    hover_color "#f4cfe5"
+    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
 
 style slider_slider:
     xsize 525
@@ -965,6 +1088,7 @@ style slider_button:
 
 style slider_button_text:
     properties gui.button_text_properties("slider_button")
+    hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
 
 style slider_vbox:
     xsize 675

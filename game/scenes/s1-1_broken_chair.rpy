@@ -24,7 +24,7 @@ label .shot2:
     scene bg apartment
     show mc casual regular left at character_right
     with Dissolve(1.0)
-    play music apartment
+    $ play_music(audio.apartment)
 
     # Call to start HaveLunch task so it shows up in the task tree
     # Don't notify this one though; it's unnatural for MC to write that now!
@@ -34,7 +34,7 @@ label .shot2:
 
     show mc at character_right_sit_down
     pause 0.5
-    play sound step_on_chair
+    $ play_sfx("step_on_chair")
     $ store.is_character_sitting = True
 
     "I sit at my table to taste the carefully crafted lunch. My palate is ready, but my bottom disagrees."
@@ -53,9 +53,7 @@ label .shot2:
     # pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
-    play sound inspect_chair
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: inspect chair")
+    $ play_sfx("inspect_chair")
     pause 1.5
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
@@ -77,9 +75,7 @@ label .shot2:
 
     $ StartTask(task_HexKeyApartment)
 
-    play sound searching_drawer
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: searching drawer")
+    $ play_sfx("searching_drawer")
     pause 4.0
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
@@ -125,9 +121,7 @@ label .shot3a:
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
     show screen screen_item("screw_loose", "left")
-    play sound smartphone_camera
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: taking photo")
+    $ play_sfx("smartphone_camera")
     pause 1.0
     hide screen screen_item with dissolve
 
@@ -161,7 +155,7 @@ label .shot3b:
 
     queue sound ["<silence 1.5>", write_on_paper]
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: writing on paper")
+    $ renpy.notify("SFX: Write on paper")
 
     "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
     $ CompleteTask(task_ScrewMeter)
@@ -193,7 +187,7 @@ label .shot4:
     $ quick_menu = False
     show overlay black with dissolve
     pause 0.5
-    play sound door_open_close
+    $ play_sfx("door_open_close")
     pause 2.0
 
     # No Wi-Fi outside

@@ -44,9 +44,7 @@ label .shot2:
 
     $ CompleteTask(task_HealthNumber)
 
-    play sound printer
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: printer")
+    $ play_sfx("printer")
     pause 3.0
 
     show screen screen_item("purchase_permit", "right") with dissolve

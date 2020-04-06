@@ -23,9 +23,7 @@ label .shot1:
     hide screen screen_item
 
     mc "OK."
-    play sound coins_drop
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: coins dropped on counter")
+    $ play_sfx("coins_drop")
     pause 0.5
 
     cashier "Thank you."
@@ -52,9 +50,7 @@ label .shot1:
     show overlay black with Dissolve(1.0)
     stop music fadeout 2.0
 
-    play sound store_door_open
-    # SFX accessibility (inspired by Renpy Accessibility Add-On)
-    $ renpy.notify("SFX: automatic door opens")
+    $ play_sfx("store_door_open")
 
     pause 3.0
 
