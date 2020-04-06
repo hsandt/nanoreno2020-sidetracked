@@ -192,21 +192,21 @@ label .shot2a:
 
     mc "...{w=1.0} Yes, logically I should be able to go there once more before it closes.{w=1.0} But I need to go now."
 
-    show mc regular at character_move_right_farther
+    show mc casual regular at character_move_right_farther
     pause 1.0
-    show mc regular left
+    show mc casual regular left
     pause 0.5
 
     "... Nah, it's fine. The meal is cold already, it cannot get colder."
 
-    show mc regular
+    show mc casual regular
     pause 0.5
 
     window show None
     "I just get to the store, pick a light bulb, come back, and done."
     window hide
 
-    show mc regular at character_move_right_exit
+    show mc casual regular at character_move_right_exit
     pause 0.2
 
     stop music fadeout 2.0
