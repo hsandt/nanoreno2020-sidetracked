@@ -1,4 +1,4 @@
-# Based on 00keymap.rpy in Ren'py SDK and:
+# Based on 00keymap.rpy in Ren'py SDK and this example config to get closer to JP VN UI behavior:
 # https://www.reddit.com/r/vndevs/comments/fi3jrt/renpy_custom_keymap_just_thought_id_share_in_case/
 # https://pastebin.com/t51iumWx
 
@@ -12,6 +12,9 @@ init -150 python:
     def open_task_tree_if_in_game():
         if not main_menu:
             renpy.run(ShowMenu("tasktree"))
+
+    ## Opening game menu goes to Preferences by default instead of Save Menu
+    _game_menu_screen = "preferences"
 
 init -130 python:
     ## Only affects modified keybindings, does not remove others.
