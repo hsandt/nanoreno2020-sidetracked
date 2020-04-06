@@ -53,6 +53,7 @@ label .shot1:
 
 # Link account
 label .shot2:
+    $ store.currentTime += 2
     "I use the easy sign up and start playing."
     return
 
@@ -87,6 +88,9 @@ label .shot3:
         $ CompleteTask(task_InventPassword + task_suffix)
 
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
+
+    $ store.currentTime += 15
+
     "I create my account using that password, and start playing."
 
     return
@@ -133,6 +137,8 @@ label .shot4:
         pause 1.0
         stop music fadeout 1.5
         "After a few more fights, I end my session."
+
+    $ store.currentTime += 22
 
     if play_context == "free space":
         # we were just freeing space, so come back to notifications instead of hiding smartphone altogether

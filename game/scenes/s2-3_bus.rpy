@@ -2,7 +2,8 @@ label s2_3:
 
 # Get on bus
 label .shot1:
-    $ store.currentTime = 15*60 + 00
+    # next bus exactly, so +30
+    $ store.currentTime += 30  # if doing nothing on smartphone: ~15h30
     $ store.wrapping_scene = "bus"
 
     $ play_sfx("store_door_open")
@@ -44,6 +45,12 @@ label .shot1:
 
 # Inside bus
 label .shot2:
+    # we have entered the bus, so from here lock the arrival time
+    # whatever we do on the smartphone, it won't change
+    # of course, choose a time that broadly covers the longest smartphone
+    # activity so it doesn't feel like we are going back in time
+    $ bus_arrival_time = store.currentTime + 29
+
     $ play_sfx("bus_close")
 
     scene bus_inside with dissolve
@@ -176,6 +183,9 @@ label .shot7:
 
 # Get off
 label .shot8:
+    # now apply the locked arrival time
+    $ store.currentTime = bus_arrival_time
+
     pause 0.8
 
     $ play_sfx("bus_stop_and_open")

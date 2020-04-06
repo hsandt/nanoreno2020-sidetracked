@@ -1,7 +1,7 @@
 label s3_1:
 
 label .shot1:
-    $ store.currentTime = 16*60 + 00
+    # if doing nothing on smartphone: ~16h00
     $ store.wrapping_scene = "store"
 
     scene overlay black with Dissolve(1.0)
@@ -58,6 +58,8 @@ label .shot2b:
 
 label .shot3:
     $ FailTask(task_CheckScrewdrivers)
+
+    $ store.currentTime += 46
 
     "Unable to find the right tool in the most meaningful places, I start wandering around."
 

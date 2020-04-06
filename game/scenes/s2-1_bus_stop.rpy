@@ -4,14 +4,14 @@ label s2_1:
 label .shot1:
     scene bus_stop with dissolve
     $ play_music("street")
-    $ store.currentTime = 14*60 + 00
+    $ store.currentTime += 15  # if doing nothing on smartphone: ~14h00
     $ store.wrapping_scene = "bus_stop"
 
     show mc outside regular at character_left with dissolve
     show mc at character_leg_beat
 
     window show
-    "The bus is the most convenient way to go to the DIY store, so I wait at the stop with a few other people."
+    "The bus is the most convenient way to go to the DIY store, so I go to the closest stop, where a few other people are waiting."
     $ StartTask(task_Bus, notify=True)
     $ RevealTask(task_Ticket)
     $ RevealTask(task_Stop)
@@ -20,18 +20,49 @@ label .shot1:
 
     pause 1.0
 
-    show mc at character_left
+    # depending on actions in the first scene, MC may arrive closer or farther to the next bus
+    # in addition, the next bus will "lock" the currentTime when it arrives
+    # same thing for the "real" bus Katell will take after the bakery
+    $ next_bus_time = get_next_bus_time(store.currentTime)
+    $ time_before_next_bus = next_bus_time - store.currentTime
+    $ next_bus_clock_time = minutes_to_clock_time(next_bus_time)
+    if time_before_next_bus < 5:
+        "I arrive just in time for the bus of [next_bus_clock_time]."
+        $ store.currentTime = next_bus_time
+        jump .shot2
+    else:
+        # we cheat here: 15mn is not enough for *any* smartphone activity,
+        # but we assume that if a bus is coming, Katell will just play,
+        # or do whatever she was doing, faster to finish her task.
+        # This is simpler that implementing an interruption mechanic and having
+        # uncomplete tasks.
+        show mc at character_left
 
-    "Right, I forgot buses only come every 20 minutes on Sunday."
-    "Looks like I have some time on my hands. But my smartphone can keep me busy."
+        if time_before_next_bus > 25:
+            "I just miss the bus who leaves without me."
+            if has_freed_space:
+                "Maybe I shouldn't have spend too much time on my phone."
 
-    call s_f from _call_s_f
+        "I just remember that buses only come every 30 minutes on Sunday. Next one will be in [time_before_next_bus] minutes..."
+        if time_before_next_bus > 9:
+            "Looks like I have some time on my hands. But my smartphone can keep me busy."
+        else:
+            "That's just enough time to do something on my phone."
 
-# MC enters bus, but doesn’t have coins
+        call s_f from _call_s_f
+
+        pause 0.5
+
+        # this is where we cheat and potentially, we are going back in time after a long activity
+        # this works because the player cannot see the smartphone until the bus after the bakery
+        # this way we don't have to clamp time after time update due to long activity when wrapping
+        # scene is bus_stop
+        $ store.currentTime = next_bus_time
+
+        "I raise my head from the phone as the bus finally arrives, and wave it down."
+        # fallthrough .shot2
+
 label .shot2:
-    pause 0.5
-
-    "I raise my head from the phone as the bus finally arrives, and wave it down."
     pause 0.3
 
     $ StartTask(task_Ticket)

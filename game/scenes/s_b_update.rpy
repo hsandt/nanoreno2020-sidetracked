@@ -15,11 +15,14 @@ label s_b:
         "Fortunately, it downloads pretty fast on Wi-Fi."
         if not has_freed_space:
             "It takes a lot of space though. I now have only [free_space] MB left."
+        $ store.currentTime += 7
     else:
         "I'm on 4G, so I hope it won't blow up my data consumption. Apparently, there are around 100 MB of updates."
         if update_context == "play game":
             "It's very slow, but I take on myself and wait. When the update is over, I finally run the game again."
+            $ store.currentTime += 17
         else:
-            "It's very slow… I'll let that happen in the background."
+            "It's very slow... I'll let that happen in the background."
+            $ store.currentTime += 8
 
     return

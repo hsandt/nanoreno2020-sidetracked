@@ -1,7 +1,7 @@
 label s3_3:
 
 label .shot1:
-    $ store.currentTime = 17*60 + 00
+    $ store.currentTime += 21  # if doing nothing on smartphone: ~17h30
 
     pause 1.0
 

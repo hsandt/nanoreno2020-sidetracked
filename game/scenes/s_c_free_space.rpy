@@ -8,7 +8,7 @@ label s_c:
         $ change_free_space(+40)
         $ store.has_deleted_small_apps = True
 
-        "I start fiddling with my phone, trying to find which apps I can safely delete. I delete a few small apps and games, but I only free 40 MB. I now have [free_space] MB…"
+        "I start fiddling with my phone, trying to find which apps I can safely delete. I delete a few small apps and games, but I only free 40 MB. I now have [free_space] MB..."
         "I check the bigger apps I could get rid of."
     else:
         "I've already deleted small apps, so I immediately check the big ones left."
@@ -65,6 +65,8 @@ label .shot2:
 
     $ store.has_tried_dict = True
 
+    $ store.currentTime += 9
+
     show screen smartphone("notifications") with dissolve
 
     "What else can I do?"
@@ -99,6 +101,7 @@ label check_file(file_name):
             # has_updated_apps should be True at this point, hence the thought
             "I navigate through my files, but it’s very slow. Probably because I only have [free_space] MB left."
             "I guess updating all my apps while running out of storage space was not a good idea."
+            $ store.currentTime += 8
 
             # the first time (for photo), you can push through one more time without freeing space
             menu:
@@ -106,9 +109,11 @@ label check_file(file_name):
                 "Free space":
                     call .free_space_to_check(file_name) from _call_check_file_free_space_to_check
                 "Go on":
-                    "I take on myself and spend a good minute browsing files very slowly."
+                    "I take on myself and spend a few minutes browsing files very slowly."
+                    $ store.currentTime += 8
         else:
             "Navigating among files is still very slow. This time it won't cut, I need to free some space!"
+            $ store.currentTime += 6
             call .free_space_to_check(file_name) from _call_check_file_free_space_to_check_1
 
         hide screen smartphone with dissolve
@@ -121,8 +126,10 @@ label check_file(file_name):
             $ store.has_navigated_slowly = True
         else:
             "I navigate through my files, but it's a bit slow again."
+        $ store.currentTime += 5
         return
     else:
+        $ store.currentTime += 2
         return
 
 label .free_space_to_check(file_name):

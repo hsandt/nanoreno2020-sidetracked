@@ -3,7 +3,12 @@ label s4_1:
     $ store.has_wifi = True
 
 label .shot1:
-    $ store.currentTime = 19*60 + 00
+    # assume Katell has taken the next bus since last scene,
+    # that she took 15mn buying the tool in last scene,
+    # that bus takes ~30mn to transit, and that buses arrive at the same time
+    # in both directions. Plus some time to come back home from bus stop.
+    $ store.currentTime = get_next_bus_time(store.currentTime + 48) + 17
+    # if doing nothing on smartphone: ~19h00
     $ store.wrapping_scene = "light_bulb"
 
     pause 2.0
@@ -169,6 +174,9 @@ label .shot1:
 
     $ RevealTask(task_BuyLightBulb)
 
+    # just to represent time spent since thinking about all of this
+    # if not doing anything, around 18h00
+    $ store.currentTime += 23 + extra_actions_count * 1
     $ clock_time = get_clock_time()
     "I check my watch. [clock_time]."
 
@@ -195,7 +203,7 @@ label .shot2a:
     pause 0.5
 
     window show None
-    "And the store is not too far, I should be back in no time."
+    "I just get to the store, pick a light bulb, come back, and done."
     window hide
 
     show mc regular at character_move_right_exit

@@ -1,6 +1,6 @@
 label s1_1:
     $ store.has_wifi = True
-    $ store.currentTime = 13*60 + 30
+    $ store.currentTime = 14*60 + 32  # game starts at ~14h30, then events will increment time
     $ store.wrapping_scene = "broken_chair"
 
     # Renpy needs to be told to stop Main Menu BGM (Title Theme)
@@ -175,7 +175,7 @@ label .shot4:
     # the window show None / hide at the end of each scene is just to have a clean
     # textbox dissolve at the end
     window show None
-    "The store is not too far, I should be back in no time."
+    "I just get to the store, pick a screwdriver, come back, and done."
     window hide
 
     stop music fadeout 2.0

@@ -1,4 +1,6 @@
 python early:
+    from math import ceil
+
     # Register random statement
     # snippet from Andykl (inspired by jsfehler) to define random statement
     # https://github.com/renpy/renpy/issues/1786
@@ -31,6 +33,53 @@ python early:
 
     def get_clock_time():
         return minutes_to_clock_time(store.currentTime)
+
+    def get_next_bus_time(time_minutes):
+        """
+        Return time of next bus, in minutes total.
+        If there is a bus exactly this minute, return current time.
+
+        """
+        # bus arrives every 30 minutes, from midnight
+        # (Python 2 requires the "." for float division)
+        # keep integer to avoid floating number display in dialogues
+        return int(ceil(time_minutes / 30.) * 30)
+
+    readable_numbers_en = {
+        1: "One",
+        2: "Two",
+        3: "Three",
+        4: "Four",
+        5: "Five",
+        6: "Six",
+        7: "Seven",
+        8: "Eight"
+        # should be enough as game is not so long
+    }
+
+    def get_half_hour_approx_duration(duration_minutes):
+        """
+        Return duration approximated to closest half hour
+        as a readable string
+
+        """
+        # approx per slice of half hour (Python 2 requires the "." for float division)
+        half_hours = int(round(duration_minutes / 30.))
+        hour, half_remaining = half_hours // 2, half_hours % 2
+
+        if hour == 0:
+            # probably impossible
+            return "Half an hour"
+        elif hour == 1:
+            readable_time = "One hour"
+        else:
+            readable_time = "%s hours" % readable_numbers_en[hour]
+
+        if half_remaining == 1:
+            readable_time += " and a half"
+
+        return readable_time
+
 
 init -1 python:
     def has_outstanding_notifications():

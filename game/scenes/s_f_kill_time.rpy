@@ -33,5 +33,6 @@ label s_f:
         $ renpy.say(adv, idle_choice)
         if is_character_sprite_displayed():
             show mc at character_stand_up
+        $ store.currentTime += 8
 
     return

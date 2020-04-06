@@ -1,7 +1,7 @@
 label s3_2:
 
 label .shot1:
-    $ store.currentTime = 16*60 + 30
+    $ store.currentTime += 16  # if doing nothing on smartphone: ~17h00
     $ store.wrapping_scene = "store"
 
     $ StartTask(task_BuyHexKey)
@@ -9,7 +9,7 @@ label .shot1:
     show mc regular at character_left with dissolve
     mc "Hi."
     show screen screen_item("hex_key", "right") with dissolve
-    "I show the hex key to the cashier. She scans it, then stop for a moment."
+    "After 15 minutes of queue, I show the hex key to the cashier. She scans it, then stop for a moment."
     hide screen screen_item with dissolve
 
     cashier "Thank you. Can I see your purchase permit?"
