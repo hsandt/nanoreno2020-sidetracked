@@ -7,6 +7,9 @@ label .shot1:
     $ store.currentTime = "14:00"
     $ store.wrapping_scene = "bus_stop"
 
+    show mc outside regular at character_left with dissolve
+    show mc at character_leg_beat
+
     window show
     "The bus is the most convenient way to go to the DIY store, so I wait at the stop with a few other people."
     $ StartTask(task_Bus, notify=True)
@@ -16,6 +19,8 @@ label .shot1:
     window hide None
 
     pause 1.0
+
+    show mc at character_left
 
     "Right, I forgot buses only come every 20 minutes on Sunday."
     "Looks like I have some time on my hands. But my smartphone can keep me busy."
@@ -33,6 +38,8 @@ label .shot2:
 
     scene bus_outside with dissolve
 
+    show mc outside regular at character_left with dissolve
+
     play sound bus_stop_and_open
     # SFX accessibility (inspired by Renpy Accessibility Add-On)
     $ renpy.notify("SFX: bus stops and opens doors with hissing")
@@ -47,6 +54,9 @@ label .shot2:
     "I give a bill to the driver, who says with a stoic face:"
     driver "Sorry, coins only."
     $ StartTask(task_Coins)
+
+    show mc at character_check_wallet
+
     "I search in my wallet, but there are not enough to buy a ticket."
 
     play sound bus_close
@@ -54,6 +64,8 @@ label .shot2:
     $ renpy.notify("SFX: bus doors close")
 
     "I apologize and quickly get off."
+
+    show mc outside regular left
 
     pause 0.5
 
@@ -65,5 +77,8 @@ label .shot2:
     "My sense of smell finds a bakery nearby, so I'm heading toward it."
     "Maybe it's not the right time, but I left my lunch at home anyway, so that will cover up."
     window hide
+
+    pause 0.5
+    show mc at character_move_left_exit
 
     jump s2_2

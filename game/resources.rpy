@@ -33,6 +33,7 @@ image item purchase_permit = "images/item/purchase_permit.png"
 image mc casual regular = "images/char/mc_cas_reg.png"
 image mc casual regular left = im.Flip("images/char/mc_cas_reg.png", horizontal=True)
 image mc outside regular = "images/char/mc_out_reg.png"
+image mc outside regular left = im.Flip("images/char/mc_out_reg.png", horizontal=True)
 image mc regular = "images/char/mc_reg.png"
 image mc regular left = im.Flip("images/char/mc_reg.png", horizontal=True)
 

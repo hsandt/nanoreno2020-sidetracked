@@ -101,7 +101,7 @@ label .shot2:
 
     mc "I should take a measurement of the screw hole before I leave."
 
-    show mc casual regular left at character_move_right(0.2)
+    show mc at character_move_right(0.2)
     pause 0.5
 
     $ StartTask(task_ScrewSize)

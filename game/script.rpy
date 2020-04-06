@@ -11,9 +11,6 @@ init:
         easeout 0.8 xpos -0.5
         yalign 1.0
 
-    transform character_stand_up:
-        easein 0.5 yalign 1.0
-
     transform character_right:
         xalign 0.8
         yalign 1.0
@@ -39,6 +36,21 @@ init:
         ease 0.2 xalign 0.81
         repeat
         ypos 1.2
+
+    transform character_stand_up:
+        easein 0.5 yalign 1.0
+
+    transform character_check_wallet:
+        pause 0.4
+        easein 0.4 yalign 1.1
+        pause 0.2
+        linear 0.2 yalign 1.0
+
+    transform character_leg_beat(pause_duration=1.0):
+        easein 0.5 yalign 1.1
+        linear 0.1 yalign 1.0
+        pause pause_duration
+        repeat
 
     # not used anymore, we use pixel placement in screen_item
     transform item_left:

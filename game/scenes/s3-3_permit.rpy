@@ -15,6 +15,8 @@ label .shot1:
     $ StartTask(task_HealthNumber)
     pause 1.0
 
+    show mc at character_check_wallet
+
     "I search for my Health Insurance card, and realize I left it at home. But there’s no way I come back empty-handed."
     "Fortunately, I have my Health Number somewhere on my phone. I grab it, trying to remember in which file it's written."
 

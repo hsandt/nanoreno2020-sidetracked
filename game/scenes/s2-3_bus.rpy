@@ -12,6 +12,7 @@ label .shot1:
     pause 0.5
     play music "<loop 19.287>audio/bgm/ambient_street.ogg"
 
+    show mc outside regular at character_left with dissolve
     pause 0.5
 
     window show
@@ -19,6 +20,8 @@ label .shot1:
     window hide None
 
     scene bus_outside with dissolve
+
+    show mc outside regular at character_left with dissolve
 
     play sound bus_stop_and_open
     # SFX accessibility (inspired by Renpy Accessibility Add-On)

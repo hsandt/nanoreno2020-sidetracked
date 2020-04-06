@@ -32,3 +32,6 @@ init -1 python:
         if store.indicator_newTask:
             store.indicator_newTask = False
             store.new_task_clear_count += 1
+
+    def is_character_sprite_displayed():
+        return store.wrapping_scene in ["broken_chair", "bus_stop", "store", "light_bulb"]
