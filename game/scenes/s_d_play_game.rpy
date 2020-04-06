@@ -71,14 +71,17 @@ label .shot3:
     menu:
         "What should I use this time?"
         "Capharnaum in the square marketplace":
-            "\"Capharnaum in the square marketplace\"
-            {p=1.0}OK, so that will make... \"K-far# >x< ZA \[_\]$<->$\""
+            "{i}Capharnaum in the square marketplace{/i}...
+            {p=1.0}OK, so that will make...
+            {p=1.0}\"K-far# >x< ZA \[_\]$<->$\""
         "Sixty-six zebras ate a watermelon salad":
-            "\"Sixty-six zebras ate a watermelon salad\"
-            {p=1.0}Fine, that should turn into... \"6T6//// *nom*nom* 1~~~mLnsLd\""
+            "{i}Sixty-six zebras ate a watermelon salad{/i}...
+            {p=1.0}Fine, that should turn into...
+            {p=1.0}\"6T6//// *nom*nom* 1~~~mLnsLd\""
         "The principal broke into the hair salon riding a motorbike":
-            "\"The principal broke into the hair salon riding a motorbike\"
-            {p=1.0}I can change it for... \"Ma1n NO$->//II\\\\ >8 o<o\""
+            "{i}The principal broke into the hair salon riding a motorbike{/i}...
+            {p=1.0}I can change it for...
+            {p=1.0}\"Ma1n NO$->//II\\\\ >8 o<o\""
 
     if play_context == "free space":
         $ CompleteTask(task_InventPassword + task_suffix)
