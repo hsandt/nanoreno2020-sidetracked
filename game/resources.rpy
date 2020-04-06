@@ -46,7 +46,7 @@ init -1:
     define audio.title_theme = "<to 19.2>audio/bgm/title_theme.ogg"
     define audio.apartment = "audio/bgm/apartment_theme.ogg"
     define audio.street = "<loop 19.287>audio/bgm/ambient_street.ogg"
-    define audio.store = "audio/bgm/MusMus-BGM-102.mp3"
+    define audio.store = "<from 0.240 to 199.92>audio/bgm/MusMus-BGM-102.mp3"
     define audio.apartment_night = "<loop 21.333>audio/bgm/apartment_theme_night.ogg"
     define audio.apartment_night_sad = "<loop 21.333>audio/bgm/apartment_theme_night_sad.ogg"  # unused
     define audio.game = "audio/bgm/bgm_maoudamashii_fantasy03_loop_only.ogg"
