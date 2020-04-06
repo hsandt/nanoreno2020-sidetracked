@@ -6,6 +6,10 @@
 ### Initial GUI preferences
 # Here, we'll keep all our gui preferences, along with our persistent variables regarding accessibility.
 
+# Show keyboard mapping on quick menu buttons. Disable to avoid self-voicing annoyingly read "T" and "P"
+# every time
+default persistent.show_quick_menu_keyboard_hints = True
+
 # Audio cues
 default persistent.audio_cues = True
 

@@ -288,8 +288,9 @@ screen quick_menu():
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
         if indicator_newTask:
             add "gui/button/indicator_new.png"
-        text "T" xpos 1475 ypos 975
-        text "P" xpos 1700 ypos 975
+        if persistent.show_quick_menu_keyboard_hints:
+            text "T" xpos 1475 ypos 975
+            text "P" xpos 1700 ypos 975
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -417,8 +418,9 @@ screen navigation():
         imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         if indicator_newTask:
             add "gui/button/indicator_new.png"
-        text "T" xpos 1475 ypos 975 style_prefix "quick"
-        text "P" xpos 1700 ypos 975 style_prefix "quick"
+        if persistent.show_quick_menu_keyboard_hints:
+            text "T" xpos 1475 ypos 975 style_prefix "quick"
+            text "P" xpos 1700 ypos 975 style_prefix "quick"
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -949,7 +951,7 @@ style pref_vbox:
     xsize 400
 
 style accessibility_hbox:
-    box_wrap_spacing 3 * gui.pref_spacing
+    box_wrap_spacing gui.pref_spacing
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -1080,6 +1082,18 @@ screen accessibility():
                     textbutton _("Audio Cues") action ToggleField(persistent, "audio_cues")
 
                 vbox:
+                    style_prefix "check"
+                    xsize 950
+
+                    # Copied from Ren'Py Accessibility Add-On: screens replacements.rpy
+                    label _("HUD")
+
+                    null height 5
+
+                    # Toggle Quick Menu Key Hints
+                    textbutton _("Quick Menu Keys (unselect when using self-voicing)") action ToggleField(persistent, "show_quick_menu_keyboard_hints")
+
+                vbox:
                     style_prefix "slider"
 
                     # Set Textbox Opacity
@@ -1096,7 +1110,7 @@ screen accessibility():
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
-            null height 3 * gui.pref_spacing
+            null height gui.pref_spacing
 
             vbox:
                 style_prefix "slider"
