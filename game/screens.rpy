@@ -370,6 +370,11 @@ screen navigation():
             #text _("Preferences") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
         #textbutton _("Preferences") action ShowMenu("preferences")
 
+        hbox:
+            imagebutton auto "gui/button/button_%s.png"  action ShowMenu("accessibility")
+
+            text _("Accessibility") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+
         if _in_replay:
 
             hbox:
@@ -907,14 +912,108 @@ screen preferences():
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
 
-            null height gui.pref_spacing
+style pref_label is gui_label
+style pref_label_text is gui_label_text
+style pref_vbox is vbox
 
-            label _("* Accessibility *")
+style radio_label is pref_label
+style radio_label_text is pref_label_text
+style radio_button is gui_button
+style radio_button_text is gui_button_text
+style radio_vbox is pref_vbox
 
-            null height gui.pref_spacing
+style check_label is pref_label
+style check_label_text is pref_label_text
+style check_button is gui_button
+style check_button_text is gui_button_text
+style check_vbox is pref_vbox
 
+style slider_label is pref_label
+style slider_label_text is pref_label_text
+style slider_slider is gui_slider
+style slider_button is gui_button
+style slider_button_text is gui_button_text
+style slider_pref_vbox is pref_vbox
+
+style mute_all_button is check_button
+style mute_all_button_text is check_button_text
+
+style pref_label:
+    top_margin gui.pref_spacing
+    bottom_margin 3
+
+style pref_label_text:
+    yalign 1.0
+
+style pref_vbox:
+    xsize 400
+
+style accessibility_hbox:
+    box_wrap_spacing 3 * gui.pref_spacing
+
+style radio_vbox:
+    spacing gui.pref_button_spacing
+
+style radio_button:
+    properties gui.button_properties("radio_button")
+    foreground "gui/button/radio_[prefix_]foreground.png"
+
+style radio_button_text:
+    properties gui.button_text_properties("radio_button")
+    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
+    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+    hover_color "#f4cfe5"
+    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+
+style check_vbox:
+    spacing gui.pref_button_spacing
+
+style check_button:
+    properties gui.button_properties("check_button")
+    foreground "gui/button/check_[prefix_]foreground.png"
+
+style check_button_text:
+    properties gui.button_text_properties("check_button")
+    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
+    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+    hover_color "#f4cfe5"
+    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+
+style slider_slider:
+    xsize 525
+
+style slider_button:
+    properties gui.button_properties("slider_button")
+    yalign 0.5
+    left_margin 15
+
+style slider_button_text:
+    properties gui.button_text_properties("slider_button")
+    hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
+
+style slider_vbox:
+    xsize 575
+
+
+## Accessibility screen ##############################################################
+##
+## Similar to Preferences screen, but only for accessibility options.
+## It contains a mix of native Accessibility features from Ren'Py
+## (found in the Accessibility panel toggled by A key)
+## and functions from the Ren'Py Accessibility Add-On
+
+screen accessibility():
+
+    tag menu
+
+    use game_menu(_("Accessibility"), scroll="viewport"):
+
+        style_prefix "accessibility"
+
+        vbox:
             hbox:
                 box_wrap True
+                # box_wrap_spacing in accessibility style
 
                 vbox:
                     style_prefix "check"
@@ -935,7 +1034,8 @@ screen preferences():
                         action Preference("font transform", "opendyslexic")
                         style_suffix "radio_button"
 
-                    null height gui.pref_spacing
+                vbox:
+                    style_prefix "check"
 
                     label _("Font Color")
 
@@ -979,18 +1079,27 @@ screen preferences():
                     # Toggle Audio Cues
                     textbutton _("Audio Cues") action ToggleField(persistent, "audio_cues")
 
+                vbox:
+                    style_prefix "slider"
+
                     # Set Textbox Opacity
                     label _("Window Alpha")
-                    bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2)
+
+                    null height 5
+
+                    hbox:
+                        bar value FieldValue(persistent, 'say_window_alpha', 1.0, max_is_zero=False, offset=0, step=.2)
+
+                        textbutton _("Reset"):
+                            action SetField(persistent, "say_window_alpha", 1.0)
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
-            null height gui.pref_spacing
+            null height 3 * gui.pref_spacing
 
             vbox:
                 style_prefix "slider"
-                box_wrap True
 
                 label _("Text Size Scaling")
 
@@ -1013,85 +1122,6 @@ screen preferences():
 
                     textbutton _("Reset"):
                         action Preference("font line spacing", 1.0)
-
-style pref_label is gui_label
-style pref_label_text is gui_label_text
-style pref_vbox is vbox
-
-style radio_label is pref_label
-style radio_label_text is pref_label_text
-style radio_button is gui_button
-style radio_button_text is gui_button_text
-style radio_vbox is pref_vbox
-
-style check_label is pref_label
-style check_label_text is pref_label_text
-style check_button is gui_button
-style check_button_text is gui_button_text
-style check_vbox is pref_vbox
-
-style slider_label is pref_label
-style slider_label_text is pref_label_text
-style slider_slider is gui_slider
-style slider_button is gui_button
-style slider_button_text is gui_button_text
-style slider_pref_vbox is pref_vbox
-
-style mute_all_button is check_button
-style mute_all_button_text is check_button_text
-
-style pref_label:
-    top_margin gui.pref_spacing
-    bottom_margin 3
-
-style pref_label_text:
-    yalign 1.0
-
-style pref_vbox:
-    xsize 400
-
-style radio_vbox:
-    spacing gui.pref_button_spacing
-
-style radio_button:
-    properties gui.button_properties("radio_button")
-    foreground "gui/button/radio_[prefix_]foreground.png"
-
-style radio_button_text:
-    properties gui.button_text_properties("radio_button")
-    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
-    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
-    hover_color "#f4cfe5"
-    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
-
-style check_vbox:
-    spacing gui.pref_button_spacing
-
-style check_button:
-    properties gui.button_properties("check_button")
-    foreground "gui/button/check_[prefix_]foreground.png"
-
-style check_button_text:
-    properties gui.button_text_properties("check_button")
-    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
-    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
-    hover_color "#f4cfe5"
-    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
-
-style slider_slider:
-    xsize 525
-
-style slider_button:
-    properties gui.button_properties("slider_button")
-    yalign 0.5
-    left_margin 15
-
-style slider_button_text:
-    properties gui.button_text_properties("slider_button")
-    hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
-
-style slider_vbox:
-    xsize 675
 
 
 ## History screen ##############################################################
@@ -1857,7 +1887,6 @@ screen smartphone(app_name):
         add "images/bg/sub/smartphone_home_notifications.png":
             xalign 0.5
             yalign 1.0
-        # FIXME: never refreshed!
         text currentTime style_prefix "smartphone_time"
         if has_wifi:
             add "images/bg/sub/wifi.png" xpos 1050 ypos 338
