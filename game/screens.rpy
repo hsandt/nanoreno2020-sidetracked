@@ -1904,7 +1904,7 @@ style smartphone_time_text is gui_text:
     outlines [ (absolute(0), "#9e649f", absolute(0), absolute(0)) ]
 
 screen smartphone(app_name):
-    $currentTime = store.currentTime
+    $ currentTime = get_clock_time()
 
     # semi-transparent underlay to make scene behind smartphone less noticeable
     add Solid("#ffffff80")

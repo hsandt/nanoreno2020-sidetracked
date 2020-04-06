@@ -40,7 +40,8 @@ init:
     # UI variables
     define is_character_sitting = False
     define is_showing_smartphone = False
-    define currentTime = "17:00"
+    # Current time in minutes. Convert to readable time with minutes_to_clock_time
+    define currentTime = 0
     # New Task Indicator
     define indicator_newTask = False
     define new_task_clear_count = 0  # how many times the player checked for a new task

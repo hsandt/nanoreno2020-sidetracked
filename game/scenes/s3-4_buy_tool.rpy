@@ -1,7 +1,7 @@
 label s3_4:
 
 label .shot1:
-    $ store.currentTime = "17:45"
+    $ store.currentTime = 17*60 + 45
 
     pause 2.0
     show mc regular at character_left with dissolve

@@ -3,7 +3,7 @@ label s4_1:
     $ store.has_wifi = True
 
 label .shot1:
-    $ store.currentTime = "19:00"
+    $ store.currentTime = 19*60 + 00
     $ store.wrapping_scene = "light_bulb"
 
     pause 2.0
@@ -169,7 +169,8 @@ label .shot1:
 
     $ RevealTask(task_BuyLightBulb)
 
-    "I check my watch. [currentTime]."
+    $ clock_time = get_clock_time()
+    "I check my watch. [clock_time]."
 
     menu:
         "Should I go back to the store to get a replacement bulb?"

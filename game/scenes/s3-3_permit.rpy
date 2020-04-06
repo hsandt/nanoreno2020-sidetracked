@@ -1,7 +1,7 @@
 label s3_3:
 
 label .shot1:
-    $ store.currentTime = "17:00"
+    $ store.currentTime = 17*60 + 00
 
     pause 1.0
 

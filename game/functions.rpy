@@ -1,6 +1,7 @@
-# snippet from Andykl (inspired by jsfehler) to define random statement
-# https://github.com/renpy/renpy/issues/1786
 python early:
+    # Register random statement
+    # snippet from Andykl (inspired by jsfehler) to define random statement
+    # https://github.com/renpy/renpy/issues/1786
     def parse_random(lexer):
         lexer = lexer.subblock_lexer()
         choices = []
@@ -18,6 +19,18 @@ python early:
         parse=parse_random,
         next=next_random,
     )
+
+    def minutes_to_clock_time(minutes):
+        """
+        Return readable time string in format HH:mm
+        from minutes total from midnight
+
+        """
+        hour, minutes_remainder = minutes // 60, minutes % 60
+        return "%02d:%02d" % (hour, minutes_remainder)
+
+    def get_clock_time():
+        return minutes_to_clock_time(store.currentTime)
 
 init -1 python:
     def has_outstanding_notifications():

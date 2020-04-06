@@ -2,7 +2,7 @@ label s2_3:
 
 # Get on bus
 label .shot1:
-    $ store.currentTime = "15:00"
+    $ store.currentTime = 15*60 + 00
     $ store.wrapping_scene = "bus"
 
     $ play_sfx("store_door_open")

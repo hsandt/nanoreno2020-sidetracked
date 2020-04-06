@@ -2,7 +2,7 @@ label s2_2:
 
 # MC enters bakery and buys everything
 label .shot1:
-    $ store.currentTime = "14:30"
+    $ store.currentTime = 14*60 + 30
     $ store.wrapping_scene = "bakery"
 
     $ play_sfx("store_door_open")
