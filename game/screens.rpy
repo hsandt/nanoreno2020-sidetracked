@@ -1989,6 +1989,8 @@ init python:
     task_BuyHexKey = "Buy hex key"
     task_Permit = "Get purchase permit"
     task_HealthNumber = "Get Health Insurance Number"
+
+    # Free space subtree
     task_FreeSpace = "Free space on smartphone"
     task_DeleteDict = "Delete dictionary app"
     task_DeleteGame = "Delete game"
@@ -1998,6 +2000,10 @@ init python:
     task_UpdateApps = "Update apps"
     task_LightBulb = "Change the light bulb"
     task_BuyLightBulb = "Buy new light bulb"
+
+    # Sister request tree
+    task_TranslateSentence = "Translate sentence for sis"
+    task_GetContext = "Get more info on context"
 
     # to distinguish freeing space to get ID (sub-tree) or just like that,
     # after reading notifications (separate tree)
@@ -2064,7 +2070,9 @@ init python:
         [task_PlayGame, 2, status_InProgress],
         [task_UpdateApps, 3, status_NotStarted],
         [task_CreateAccount, 3, status_InProgress],
-        [task_InventPassword, 4, status_InProgress]
+        [task_InventPassword, 4, status_InProgress],
+        [task_TranslateSentence, 0, status_InProgress],
+        [task_GetContext, 1, status_InProgress]
     ]
 
 #-----------------------------------------------
