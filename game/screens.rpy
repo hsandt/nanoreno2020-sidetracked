@@ -1905,6 +1905,8 @@ style smartphone_time_text is gui_text:
 
 screen smartphone(app_name):
     $currentTime = store.currentTime
+
+    # semi-transparent underlay to make scene behind smartphone less noticeable
     add Solid("#ffffff80")
 
     if app_name == "notifications":
@@ -1940,16 +1942,6 @@ screen smartphone(app_name):
     add "images/bg/sub/smartphone_body.png":
         xalign 0.5
         yalign 1.0
-
-
-    # $item = GetItemByName(itemName)
-    # frame:
-    #     background None
-    #     xpos newxpos
-    #     ypos newypos
-    #
-    #     add item[2] xpos 18 ypos 17
-    #     label item[1] xpos 50 ypos 355
 
 ## Task display screen #######################################################
 ##
