@@ -234,9 +234,7 @@ label .shot2b:
 
     window show
     "After that, I finished my cold roasted vegetables, went in my bed and read a novel for two hours or so, before sleeping."
-    # "I don't care, and nobody cares that I don't care.{w=1.0} And it's perfect."
-    "I don't care, and nobody cares that I don't care."
-    "And it's perfect."
+    "Not too bad to procrastinate once in a while."
     window hide
 
     stop music fadeout 2.0
