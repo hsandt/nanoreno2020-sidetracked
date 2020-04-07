@@ -88,7 +88,7 @@ label .shot3:
         $ CompleteTask(task_InventPassword + task_suffix)
 
     # independently of context, remember you created password for final assessment
-    $ has_invented_pwd = True
+    $ store.has_invented_pwd = True
 
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
 

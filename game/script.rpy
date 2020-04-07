@@ -14,6 +14,7 @@ init:
     define has_seen_sister_request = False
     define has_given_fake_translation = False
     define has_given_silence = False
+    define has_installed_bus_stop_app = False
     define has_updated_apps = False
     define has_deleted_small_apps = False
     define has_tried_dict = False

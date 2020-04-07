@@ -77,7 +77,7 @@ label .shot2:
     "If I scan the QR code on the ad stuck in the bus, I should be able to install it."
 
     $ has_stood_up = False
-    $ has_installed_app = False
+    $ store.has_installed_bus_stop_app = False
     $ has_asked_passenger = False
     $ wait_count = 0
 
@@ -87,7 +87,7 @@ label .shot2:
             jump s2_3.shot3a
         "Stand up and try again!" if has_stood_up:
             jump s2_3.shot3b
-        "Install “Stop, Please!”" if not has_installed_app:
+        "Install “Stop, Please!”" if not has_installed_bus_stop_app:
             jump s2_3.shot4
         "Ask another passenger to push a working button" if not has_asked_passenger:
             jump s2_3.shot5
@@ -130,12 +130,12 @@ label .shot3b:
 
 # App
 label .shot4:
-    $ has_installed_app = True
+    $ store.has_installed_bus_stop_app = True
 
     $ StartTask(task_InstallStopApp)
     "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
     "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
-    "I follow a convoluted process to sync my phone with the bus. Cry out with joy as you witness the magic of the {i}Internet of Things{/i}!"
+    "I follow a convoluted process to sync my phone with the bus. Hopefully this will provide extra awareness to the app and let it do smarter things."
     "...{w=1.0} In just a moment..."
     $ change_free_space(-50)
 

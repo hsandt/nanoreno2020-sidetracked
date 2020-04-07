@@ -63,12 +63,18 @@ label .shot1:
 
     $ extra_actions_count = 0
 
+    if has_installed_bus_stop_app:
+        "I installed an app that can do what buttons normally do, but smarter."
+        $ extra_actions_count += 1
+
     if has_updated_apps:
         "I've finally updated my mobile apps."
         $ extra_actions_count += 1
+
     if has_freed_space:
         "I released a bunch of space on my phone."
         $ extra_actions_count += 1
+
     if has_tried_dict:
         "I could try that nice Japanese dictionary application."
         $ extra_actions_count += 1
@@ -127,12 +133,12 @@ label .shot1:
     else:
         "And my sister, er... Oh, right. I didn't check her message at all."
 
-    # Max of 6 unique extra actions, but 10 if you get bonus points by doing things properly / multiple times (including inventing password)
+    # Max of 7 unique extra actions, but 11 if you get bonus points by doing things properly / multiple times (including inventing password)
     if extra_actions_count == 0:
         "...{w=1.0} And that's it...{w=1.0} I didn't do much besides fixing the chair. But! It's an investment in real estate, isn't it?"
     elif extra_actions_count < 4:
         "And, er...{w=1.0} That's all. But that's a lot done in the middle of a lunch. Aha..."
-    elif extra_actions_count < 7:
+    elif extra_actions_count < 8:
         "That's quite a record. For good or bad..."
     else:
         "That's incredible! Especially in four hours flat."
