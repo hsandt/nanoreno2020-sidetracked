@@ -4,15 +4,11 @@
 
 init -160 python:
     custom_keymap = dict(
-        preferences = [ 'o', 'p' ],
-        task_tree = ['t']
+        toggle_preferences = [ 'o', 'p' ],
+        toggle_tasktree = ['t']
     )
 
 init -150 python:
-    def open_task_tree_if_in_game():
-        if not main_menu:
-            renpy.run(ShowMenu("tasktree"))
-
     ## Opening game menu goes to Preferences by default instead of Save Menu
     _game_menu_screen = "preferences"
 
@@ -20,11 +16,5 @@ init -130 python:
     ## Only affects modified keybindings, does not remove others.
     config.keymap.update(custom_keymap)
 
-    # The default keymap. We might also want to put some of this into
-    # the launcher.
-    _custom_keymap = renpy.Keymap(
-        preferences = ShowMenu("preferences"),
-        task_tree = open_task_tree_if_in_game
-    )
-
-    config.underlay.append(_custom_keymap)
+    # don't set config.underlay here; we'll add key-action statements directly
+    # in screen definitions

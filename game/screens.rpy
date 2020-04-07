@@ -283,15 +283,9 @@ screen quick_menu():
         #    textbutton _("Q.Save") action QuickSave()
         #    textbutton _("Q.Load") action QuickLoad()
         #    textbutton _("Prefs") action ShowMenu('preferences')
-        imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
-        imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
         imagebutton auto "gui/button/backbutton_%s.png" focus_mask True action Rollback()
-        if indicator_newTask:
-            add "gui/button/indicator_new.png"
-        if preferences.show_quick_menu_keyboard_hints:
-            text "T" xpos 1475 ypos 975
-            text "P" xpos 1700 ypos 975
-
+        use preferences_button
+        use tasktree_button
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
@@ -413,15 +407,6 @@ screen navigation():
             ## Web.
             #textbutton _("Quit") action Quit(confirm=not main_menu)
 
-    imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
-    if not main_menu:
-        imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
-        if indicator_newTask:
-            add "gui/button/indicator_new.png"
-        if preferences.show_quick_menu_keyboard_hints:
-            text "T" xpos 1475 ypos 975 style_prefix "quick"
-            text "P" xpos 1700 ypos 975 style_prefix "quick"
-
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
@@ -464,6 +449,7 @@ screen main_menu():
     #        text "[config.version]":
     #            style "main_menu_version"
 
+    use preferences_button
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -577,7 +563,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
 
-
 style game_menu_outer_frame is empty
 style game_menu_navigation_frame is empty
 style game_menu_content_frame is empty
@@ -660,6 +645,8 @@ screen about():
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
+    use preferences_button
+    use tasktree_button
 
 ## This is redefined in options.rpy to add text to the about screen.
 define gui.about = ""
@@ -694,7 +681,6 @@ screen load():
     tag menu
 
     use file_slots(_("Load"))
-
 
 screen file_slots(title):
 
@@ -771,6 +757,8 @@ screen file_slots(title):
 
                 textbutton _(">") action FilePageNext()
 
+    use preferences_button
+    use tasktree_button
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -923,6 +911,9 @@ screen preferences():
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+
+    use preferences_close_button
+    use tasktree_button
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -1147,6 +1138,8 @@ screen accessibility():
                     textbutton _("Reset"):
                         action Preference("font line spacing", 1.0)
 
+    use preferences_button
+    use tasktree_button
 
 ## History screen ##############################################################
 ##
@@ -1193,6 +1186,8 @@ screen history():
         if not _history_list:
             label _("The dialogue history is empty.")
 
+    use preferences_button
+    use tasktree_button
 
 ## This determines what tags are allowed to be displayed on the history screen.
 
@@ -1274,6 +1269,8 @@ screen help():
             elif device == "gamepad":
                 use gamepad_help
 
+    use preferences_button
+    use tasktree_button
 
 screen keyboard_help():
 
@@ -2158,3 +2155,33 @@ screen tasktree():
                     elif  task[2] == status_Hidden:
                         #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
                         pass #Do not show unstarted tasks
+
+    use preferences_button
+    use tasktree_close_button
+
+screen preferences_button:
+    imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action ShowMenu("preferences")
+    if preferences.show_quick_menu_keyboard_hints:
+        text "P" xpos 1700 ypos 969 style_prefix "quick"
+    key "toggle_preferences" action ShowMenu("preferences")
+
+screen preferences_close_button:
+    imagebutton auto "gui/button/optionsbutton_%s.png" focus_mask True action Return()
+    if preferences.show_quick_menu_keyboard_hints:
+        text "P (close)" xpos 1700 ypos 969 style_prefix "quick"
+    key "toggle_preferences" action Return()
+
+screen tasktree_button:
+    if not main_menu:
+        imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action ShowMenu("tasktree")
+        if indicator_newTask:
+            add "gui/button/indicator_new.png"
+        if preferences.show_quick_menu_keyboard_hints:
+            text "T" xpos 1475 ypos 969 style_prefix "quick"
+        key "toggle_tasktree" action ShowMenu("tasktree")
+
+screen tasktree_close_button:
+    imagebutton auto "gui/button/taskbutton_%s.png" focus_mask True action Return()
+    if preferences.show_quick_menu_keyboard_hints:
+        text "T (close)" xpos 1475 ypos 969 style_prefix "quick"
+    key "toggle_tasktree" action Return()
