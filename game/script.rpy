@@ -20,6 +20,7 @@ init:
     define has_tried_game_count = 0
     define has_deleted_game = False
     define has_freed_space = False
+    define has_invented_pwd = False
     define has_navigated_slowly = False
     define has_navigated_very_slowly = False
     define has_explored_screwdrivers = False

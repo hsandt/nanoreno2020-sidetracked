@@ -87,6 +87,9 @@ label .shot3:
     if play_context == "free space":
         $ CompleteTask(task_InventPassword + task_suffix)
 
+    # independently of context, remember you created password for final assessment
+    $ has_invented_pwd = True
+
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
 
     $ store.currentTime += 15

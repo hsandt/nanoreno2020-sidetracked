@@ -2072,10 +2072,16 @@ init python:
         active_tasks_stack.clear()
         return
 
+    def GetTaskStatus(_taskName):
+        for task in store.task_list:
+            if task[0] == _taskName:
+                return task[2]
+        return None
+
     def SetTaskStatus(_taskName, _status):
         for task in store.task_list:
-          if task[0] == _taskName:
-            task[2] = _status
+            if task[0] == _taskName:
+                task[2] = _status
         return
 
     def RevealTask(_taskName):
@@ -2096,6 +2102,9 @@ init python:
         else:
             print("WARNING in StartTask: %s already added to active_tasks_stack" % _taskName)
         return
+
+    def HasCompletedTask(_taskName):
+        return GetTaskStatus(_taskName) == status_Complete
 
     def CompleteTask(_taskName):
         SetTaskStatus(_taskName, status_Complete)

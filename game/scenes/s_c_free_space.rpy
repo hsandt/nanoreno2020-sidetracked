@@ -80,12 +80,19 @@ label .shot3:
 
     "I delete the game, which gives me 1.5 GB extra space. Wow, that should be enough!"
 
+    # the following are equivalents for historical reasons:
+    # - HasCompletedTask(task_DeleteGame + task_suffix
+    # - HasCompletedTask(task_FreeSpace + task_suffix)
+    # - has_deleted_game
+    # - has_freed_space
+    # however, because there are many variants of the same tasks with different suffixes,
+    # it's worth keeping the simple variables for conditional checks
     $ CompleteTask(task_DeleteGame + task_suffix)
     $ CompleteTask(task_FreeSpace + task_suffix)
 
     $ change_free_space(+1500)
     $ store.has_deleted_game = True
-    $ store.has_freed_space = True  # actually a synonym for has_deleted_game in this case, but clearer
+    $ store.has_freed_space = True
 
     return
 

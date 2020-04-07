@@ -73,21 +73,34 @@ label .shot1:
         "I could try that nice Japanese dictionary application."
         $ extra_actions_count += 1
 
+    if has_invented_pwd:
+        "I created an account to play that tactical RPG, and devised an elegant password for it."
+        $ extra_actions_count += 1
+
     if has_tried_game_count == 1:
-        "I played that tactical RPG."
+        if not has_invented_pwd:
+            "I played that tactical RPG."
         $ extra_actions_count += 1
         if has_deleted_game:
-            "Although I had to delete it."
+            "... Although I had to delete the app."
     elif has_tried_game_count == 2:
-        "I played that tactical RPG. Twice. But eh, it was fun."
+        if not has_invented_pwd:
+            "I played that tactical RPG. Twice. But eh, it was fun."
+        else:
+            "I even tried it twice."
         $ extra_actions_count += 1.5
         if has_deleted_game:
             "Too bad I had to delete it, I guess."
     elif has_tried_game_count > 2:
-        "I played that tactical RPG. Too many times for a single day, maybe."
+        if not has_invented_pwd:
+            "I played that tactical RPG. Too many times for a single day, maybe."
+            if has_deleted_game:
+                "Good thing for my health I deleted it, I guess."
+        else:
+            "Then I played it several times. That made the account worth it!"
+            if has_deleted_game:
+                "... Except I had to delete the app in the end."
         $ extra_actions_count += 2
-        if has_deleted_game:
-            "Good thing for my health I deleted it, I guess."
 
     if queuer_dissatisfaction == 1:
         "I annoyed a few ladies and gentlemen diligently filling administrative needs, like me."
@@ -114,7 +127,7 @@ label .shot1:
     else:
         "And my sister, er... Oh, right. I didn't check her message at all."
 
-    # Max of 6 unique extra actions, but 9 if you get bonus points by doing things properly / multiple times
+    # Max of 6 unique extra actions, but 10 if you get bonus points by doing things properly / multiple times (including inventing password)
     if extra_actions_count == 0:
         "...{w=1.0} And that's it...{w=1.0} I didn't do much besides fixing the chair. But! It's an investment in real estate, isn't it?"
     elif extra_actions_count < 4:
