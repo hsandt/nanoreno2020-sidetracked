@@ -1813,8 +1813,13 @@ screen screen_captcha():
 
     add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.5
 
-    text "Select all squares with" xpos 745 ypos 275 color "#ffffff" size 22
-    text "{b}RUBBER DUCK{/b}" xpos 745 ypos 310 color "#ffffff" size 24
+    use captcha_button(835, "Verify", return_verify_captcha_action())
+    # as soon as we click on SafeMode, we disable it, so Cancel must re-enable it
+    # as we failed to pass the captcha
+    use captcha_button(1011, "Cancel", [SetField(persistent, "safe_mode", "False"), Return()])
+
+    text "Select all squares with" xpos 745 ypos 275 color "#ffffff" size 24
+    text "{b}RUBBER DUCK{/b}" xpos 745 ypos 312 color "#ffffff" size 26
     text "Click {b}Verify{/b} once they are all selected." xpos 745 ypos 358 color "#ffffff" size 22
 
     # Include the navigation.
@@ -1831,15 +1836,22 @@ screen screen_captcha():
         hotspot (570, 372, 140, 140)  action ToggleVariable("captcha_other4", "True") # daffy
         hotspot (721, 372, 140, 140)  action ToggleVariable("captcha_other5", "True") # swan
 
-        if captcha_rubber and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4 and not captcha_other5:
-            hotspot (700, 545, 156, 46)  action [Return()] #Verify - Success
-        else:
-            hotspot (700, 545, 156, 46)  action SetVariable("invalid_captcha", "True")  #Verify - Fail
-
     if invalid_captcha:
-        text "{size=24}Selection invalid.{/size}" xpos 765 ypos 735 color "#000000"
+        text "Selection invalid." xpos 745 ypos 745 color "#000000" size 24
 
+screen captcha_button(_xpos, _text, _action):
+        imagebutton:
+            auto "gui/captcha/captcha_button_%s.png"
+            xpos _xpos
+            ypos 698
+            action _action
 
+        text _text:
+            xanchor 0.5
+            xpos _xpos + 86
+            ypos 705
+            size 24
+            color "#ffffff"
 
 ## Item display screen #######################################################
 ##

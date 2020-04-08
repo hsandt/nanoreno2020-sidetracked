@@ -82,6 +82,12 @@ python early:
 
 
 init -1 python:
+    def return_verify_captcha_action():
+        if captcha_rubber and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4 and not captcha_other5:
+            return Return()
+        else:
+            return SetVariable("invalid_captcha", "True")
+
     def has_outstanding_notifications():
         return not store.has_updated_apps or not store.has_freed_space or \
             store.sister_request_phase >= 1 and store.sister_request_phase <= 2
