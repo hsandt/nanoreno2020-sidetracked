@@ -71,6 +71,7 @@ init -1:
     define audio.screw_tighten = "audio/sfx/screw_tighten.ogg"
     define audio.searching_drawer = "audio/sfx/searching_drawer.ogg"
     define audio.smartphone_camera = "audio/sfx/smartphone_camera.ogg"
+    define audio.smartphone_call = "audio/sfx/ringtone_notification_1.ogg"
     define audio.smartphone_notification = "audio/sfx/ringtone_notification_2.ogg"
     define audio.step_on_chair = "audio/sfx/step_on_chair.ogg"
     define audio.bus_stop_and_open = "audio/sfx/bus_stop_and_open.ogg"

@@ -1,6 +1,6 @@
 label s1_1:
     $ store.has_wifi = True
-    $ store.currentTime = 14*60 + 32  # game starts at ~14h30, then events will increment time
+    $ store.currentTime = 13*60 + 57  # game starts at ~14h, then events will increment time
     $ store.wrapping_scene = "broken_chair"
 
     # Renpy needs to be told to stop Main Menu BGM (Title Theme)
@@ -165,6 +165,7 @@ label .shot3b:
     mc "OK, let’s go!"
     jump .shot4
 
+# Sister call
 label .shot4:
     $ CompleteTask(task_ScrewSize)
 
@@ -172,6 +173,36 @@ label .shot4:
     $ RevealTask(task_FindHexKey)
     $ RevealTask(task_BuyHexKey)
 
+    pause 0.2
+    show mc casual regular
+    pause 0.2
+
+    # to avoid spamming notification in loop, add a pause (silence) between each
+    play sound [smartphone_call, "<silence 1.0>"] loop
+
+    "Just before I leave, my phone rings. It's my sister, Tifenn."
+    pause 1.0
+    "I make sure I leave the phone ring a few more times, then I answer:"
+    stop sound
+    mc "I'm busy now."
+    sister "...{w=1.0} A such nice intro.{w=1.0} Are you actually busy? Or yet again being sidetracked to something completely unrelated to what you were doing?"
+
+    # comical turningback thinking
+    pause 1.2
+    show mc casual regular left
+    pause 0.5
+
+    mc "No. And it's related."
+
+    pause 1.0
+
+    sister "Fine. I'll send you a message later."
+    mc "Please don't."
+    sister "Thanks, bye!"
+
+    "She hangs up. Where was I? Oh, yes, the chair."
+
+label .shot5:
     # the window show None / hide at the end of each scene is just to have a clean
     # textbox dissolve at the end
     window show None

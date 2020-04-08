@@ -13,7 +13,7 @@ label s_a:
 
         if sister_request_phase == 1:
             $ store.has_seen_sister_request = True
-            "Oh, and it looks like my sister sent me a message. I hope it's not one of her shameless requests."
+            "Oh, and it looks like Tifenn sent me a message as she said. I hope it's not one of her random requests."
     else:
         $ store.found_interesting_notification = False
         if not has_updated_apps:
@@ -30,7 +30,7 @@ label s_a:
             $ store.found_interesting_notification = True
             if not has_seen_sister_request:
                 $ store.has_seen_sister_request = True
-                "It looks like my sister sent me a message. I hope it's not one of her shameless requests."
+                "It looks like Tifenn sent me a message as she said. I hope it's not one of her random requests."
             else:
                 "I still haven't answered my sister."
         elif sister_request_phase == 2:

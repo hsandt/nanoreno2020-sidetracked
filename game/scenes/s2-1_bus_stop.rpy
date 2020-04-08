@@ -4,7 +4,7 @@ label s2_1:
 label .shot1:
     scene bus_stop with dissolve
     $ play_music("street")
-    $ store.currentTime += 15  # if doing nothing on smartphone: ~14h00
+    $ store.currentTime += 26  # if doing nothing on smartphone: ~14h30
     $ store.wrapping_scene = "bus_stop"
 
     show mc outside regular at character_left with dissolve
