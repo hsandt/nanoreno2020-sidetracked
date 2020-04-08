@@ -185,14 +185,16 @@ label .shot4:
     "I make sure I leave the phone ring a few more times, then I answer:"
     stop sound
     mc "I'm busy now."
-    sister "...{w=1.0} A such nice intro.{w=1.0} Are you actually busy? Or yet again being sidetracked to something completely unrelated to what you were doing?"
+    "She replies on the phone:"
+    sister "* ... Such a nice intro.*"
+    sister "* Are you actually busy? Or yet again distracted by something completely unrelated to what you were doing? *"
 
     # comical turningback thinking
     pause 1.2
     show mc casual regular left
     pause 0.5
 
-    mc "No. And it's related."
+    mc "I'm not distracted. And it's related."
 
     pause 1.0
 
