@@ -1808,9 +1808,15 @@ style slider_pref_slider:
 ##
 
 screen screen_captcha():
-    add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.5
     #modal True
     tag menu
+
+    add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.5
+
+    text "Select all squares with" xpos 745 ypos 275 color "#ffffff" size 22
+    text "{b}RUBBER DUCK{/b}" xpos 745 ypos 310 color "#ffffff" size 24
+    text "Click {b}Verify{/b} once they are all selected." xpos 745 ypos 358 color "#ffffff" size 22
+
     # Include the navigation.
     imagemap:
         xalign 0.5
