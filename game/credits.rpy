@@ -16,7 +16,7 @@ label credits:
     # $ config.skipping = False
 
     $ quick_menu = False
-    $ play_music("apartment", loop=None)
+    $ play_music("apartment", loop=False)
     $ renpy.pause(0.2, hard=True)
 
     image splash = "gui/Sidetracked_intrologo.png"
