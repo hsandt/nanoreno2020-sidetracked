@@ -838,14 +838,15 @@ screen preferences():
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
-                vbox:
-                    style_prefix "check"
-                    label _("Authorization")
-                    null height 5
-                    if persistent.unlocked:
-                        textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked')]
-                    else:
-                        textbutton _("Unlock Game") action [ToggleField(persistent,'unlocked'), ShowMenu('screen_captcha')]
+                if main_menu:
+                    vbox:
+                        style_prefix "check"
+                        label _("Security")
+                        null height 5
+                        if persistent.safe_mode:
+                            textbutton _("Safe Mode") action [ToggleField(persistent,'safe_mode'), ShowMenu('screen_captcha')]
+                        else:
+                            textbutton _("Safe Mode") action [ToggleField(persistent,'safe_mode')]
 
             null height (2 * gui.pref_spacing)
 

@@ -50,8 +50,8 @@ init:
 
     # Defining persistent variables
 
-    if persistent.unlocked is None:
-      $persistent.unlocked = False
+    if persistent.safe_mode is None:
+      $persistent.safe_mode = True
     if persistent.captcha  is None:
       $persistent.captcha = False
       # The script of the game goes in this file.
@@ -68,10 +68,14 @@ init:
 
 # The game starts here.
 label start:
-    if not persistent.unlocked:
+    $ quick_menu = False
+
+    if persistent.safe_mode:
         "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
-        "It cannot be started unless Safe mode is disabled in the options."
+        "It cannot be started unless Safe mode is disabled in the Preferences."
         return
+
+    $ quick_menu = True
 
     $ from copy import deepcopy
     $ store.task_list = deepcopy(initial_task_list)
