@@ -17,10 +17,10 @@ label .shot1:
 
     $ quick_menu = True
 
-    scene bg apartment with Dissolve(1.0)
+    scene bg apartment night with Dissolve(1.0)
     $ play_music("apartment_night")
 
-    show mc casual regular left at character_right with dissolve
+    show mc casual regular night left at character_right with dissolve
 
     window show
     "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
@@ -38,7 +38,7 @@ label .shot1:
     mc "So... Is it stable now?"
     hide screen screen_item
 
-    show mc casual regular left at character_right_sit_down
+    show mc casual regular night left at character_right_sit_down
     pause 0.5
     $ play_sfx("step_on_chair")
     $ store.is_character_sitting = True
@@ -161,21 +161,21 @@ label .shot1:
     "Anyway, that room is pretty dark."
 
     $ play_sfx("step_on_chair")
-    show mc casual regular left at character_stand_up
+    show mc casual regular night left at character_stand_up
     $ store.is_character_sitting = False
     pause 0.5
 
     "Eating cold food in the dark makes me look like a vampire. It's cool, but I push the light switch nevertheless."
     "Nothing happens."
 
-    show mc casual regular left at character_move_left(0.5)
+    show mc casual regular night left at character_move_left(0.5)
     pause 0.5
 
     "I inspect the light bulb and notice it's broken. Another thing I must fix, I guess."
 
     $ StartTask(task_LightBulb)
 
-    show mc casual regular at character_move_right
+    show mc casual regular night at character_move_right
     pause 1.0
 
     $ play_sfx("searching_drawer")
@@ -183,7 +183,7 @@ label .shot1:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show mc casual regular left at character_right
+    show mc casual regular night left at character_right
     mc "Of course. No light bulb to replace with."
 
     pause 0.5
@@ -211,21 +211,21 @@ label .shot2a:
 
     mc "...{w=1.0} Yes, logically I should be able to go there once more before it closes.{w=1.0} But I need to go now."
 
-    show mc casual regular at character_move_right_farther
+    show mc casual regular night at character_move_right_farther
     pause 1.0
-    show mc casual regular left
+    show mc casual regular night left
     pause 0.5
 
     "... Nah, it's fine. The meal is cold already, it cannot get colder."
 
-    show mc casual regular
+    show mc casual regular night
     pause 0.5
 
     window show None
     "I just get to the store, pick a light bulb, come back, and done."
     window hide
 
-    show mc casual regular at character_move_right_exit
+    show mc casual regular night at character_move_right_exit
     pause 0.2
 
     stop music fadeout 2.0

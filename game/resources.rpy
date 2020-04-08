@@ -7,7 +7,8 @@ image overlay smartphone_backlayer = Solid("#ffffff80")
 
 ## Backgrounds (1080p)
 
-image bg apartment = "images/bg/apartment.jpg"
+image bg apartment day = "images/bg/apartment_day.jpg"
+image bg apartment night = "images/bg/apartment_night.jpg"
 image bg bus_stop = "images/bg/bus_stop.jpg"
 image bg bus_outside = "images/bg/bus_outside.jpg"
 image bg bus_inside = "images/bg/bus_inside.jpg"
@@ -32,6 +33,8 @@ image item purchase_permit = "images/item/purchase_permit.png"
 
 image mc casual regular = "images/char/mc_cas_reg.png"
 image mc casual regular left = im.Flip("images/char/mc_cas_reg.png", horizontal=True)
+image mc casual regular night = "images/char/mc_cas_reg_night.png"
+image mc casual regular night left = im.Flip("images/char/mc_cas_reg_night.png", horizontal=True)
 image mc outside regular = "images/char/mc_out_reg.png"
 image mc outside regular left = im.Flip("images/char/mc_out_reg.png", horizontal=True)
 image mc regular = "images/char/mc_reg.png"

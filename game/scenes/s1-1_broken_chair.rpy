@@ -21,7 +21,7 @@ label .shot1:
     "Like that one time."
 
 label .shot2:
-    scene bg apartment
+    scene bg apartment day
     show mc casual regular left at character_right
     with Dissolve(1.0)
     $ play_music("apartment")
