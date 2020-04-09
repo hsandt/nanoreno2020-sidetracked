@@ -248,6 +248,9 @@ define config.main_menu_music = audio.title_theme
 ## Each variable should be set to a transition, or None to indicate that no
 ## transition should be used.
 
+# See renpy-7-sdk/.../00gamemenu.rpy for more transitions
+# except for yesno_transition which is in 00layout.rpy
+
 ## Entering or exiting the game menu.
 define config.enter_transition = Dissolve(0.2)
 define config.exit_transition = Dissolve(0.2)
@@ -267,6 +270,14 @@ define config.end_splash_transition = Dissolve(0.5)
 ## Used when entering the main menu after the game has ended.
 define config.end_game_transition = Dissolve(0.5)
 
+define config.enter_yesno_transition = Dissolve(0.2)
+define config.exit_yesno_transition = Dissolve(0.1)
+
+## Opening game menu goes to Preferences by default instead of Save Menu
+## CAUTION: this is saved in the player save data, so saves using old versions
+## may still open the Save screen by default
+## Consider letting player choose default menu in the Preferences
+define _game_menu_screen = "preferences"
 
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.

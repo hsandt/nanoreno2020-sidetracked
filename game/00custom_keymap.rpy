@@ -8,10 +8,6 @@ init -160 python:
         toggle_tasktree = ['t']
     )
 
-init -150 python:
-    ## Opening game menu goes to Preferences by default instead of Save Menu
-    _game_menu_screen = "preferences"
-
 init -130 python:
     ## Only affects modified keybindings, does not remove others.
     config.keymap.update(custom_keymap)
