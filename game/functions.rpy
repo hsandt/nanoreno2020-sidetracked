@@ -82,10 +82,23 @@ python early:
 
 
 init -1 python:
+    def clear_captcha():
+        store.captcha_rubber1 = False
+        store.captcha_rubber2 = False
+        store.captcha_other1 = False
+        store.captcha_other2 = False
+        store.captcha_other3 = False
+        store.captcha_other4 = False
+        store.invalid_captcha = False
+
     def return_verify_captcha_action():
-        if captcha_rubber1 and captcha_rubber2 and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4:
-            return Return()
+        if store.captcha_rubber1 and store.captcha_rubber2 and not store.captcha_other1 and not store.captcha_other2 and not store.captcha_other3 and not store.captcha_other4:
+            # correct answer, disable safe mode and return to Preferences
+            # it seems that on "show" Function() statement doesn't work consistently on screen_captcha
+            # so we prefer clearing captcha variables on success (for next time) rather than on show
+            return [Function(clear_captcha), SetField(persistent, "safe_mode", False), ShowMenu("preferences")]
         else:
+            # wrong answer
             return SetVariable("invalid_captcha", "True")
 
     def has_outstanding_notifications():

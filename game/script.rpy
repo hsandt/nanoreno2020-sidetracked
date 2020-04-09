@@ -51,14 +51,16 @@ init:
     # Defining persistent variables
     default persistent.safe_mode = True
 
-    # Captcha variables
-    $ captcha_rubber1 = False
-    $ captcha_rubber2 = False
-    $ captcha_other1 = False
-    $ captcha_other2 = False
-    $ captcha_other3 = False
-    $ captcha_other4 = False
-    $ invalid_captcha = False
+    # Captcha variables (in store to ensure reset on Captcha start and because Renpy
+    # sets variables them by default, but even if they are saved, we reset them
+    # on Captcha start anyway)
+    default captcha_rubber1 = False
+    default captcha_rubber2 = False
+    default captcha_other1 = False
+    default captcha_other2 = False
+    default captcha_other3 = False
+    default captcha_other4 = False
+    default invalid_captcha = False
 
 
 # The game starts here.

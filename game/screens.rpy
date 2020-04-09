@@ -840,13 +840,21 @@ screen preferences():
 
                 if main_menu:
                     vbox:
+                        # we'll show foreground check icon manually anyway
                         style_prefix "check"
+
                         label _("Security")
+
                         null height 5
+
                         if persistent.safe_mode:
-                            textbutton _("Safe Mode") action [ToggleField(persistent,'safe_mode'), ShowMenu('screen_captcha')]
+                            # we don't use ToggleField here to avoid changing the field before captcha confirmation,
+                            # but in counterpart we change Safe Mode and display the check icon manually
+                            textbutton _("Safe Mode"):
+                                action ShowMenu("screen_captcha")
+                                foreground "gui/button/check_selected_foreground.png"
                         else:
-                            textbutton _("Safe Mode") action [ToggleField(persistent,'safe_mode')]
+                            textbutton _("Safe Mode") action ToggleField(persistent, "safe_mode")
 
             null height (2 * gui.pref_spacing)
 
@@ -1814,6 +1822,8 @@ screen screen_captcha():
 
     tag menu
 
+    on "show" action Function(on_show_captcha)
+
     add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.46
 
     use captcha_button(834, "Verify", return_verify_captcha_action())
@@ -1838,7 +1848,7 @@ screen screen_captcha():
         use captcha_image("swan", "captcha_other4")
 
     if invalid_captcha:
-        text "Selection invalid." xpos 745 ypos 695 color "#000000" size 24
+        text "Selection is invalid." xpos 745 ypos 695 color "#000000" size 24
 
 screen captcha_image(image_name, variable_name):
     fixed:
