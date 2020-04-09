@@ -2,6 +2,8 @@
 
 An entry for [NaNoRenO 2020](https://itch.io/jam/nanoreno-2020). *Sidetracked* is a visual novel about getting *one* thing done in the course of a day.
 
+See [game page](https://komehara.itch.io/sidetracked) and [submission page](https://itch.io/jam/nanoreno-2020/rate/598802)
+
 # Credits
 
 ## Core team

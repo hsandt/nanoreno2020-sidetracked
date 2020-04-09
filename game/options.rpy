@@ -32,6 +32,8 @@ define config.version = "3.4"
 define gui.about = _p("""
 This game was developed for {a=https://itch.io/jam/nanoreno-2020}NaNoRenO 2020{/a}.
 
+See {a=https://komehara.itch.io/sidetracked}game page{/a} and {a=https://itch.io/jam/nanoreno-2020/rate/598802}submission page{/a}
+
 
 {u}Credits{/u}
 
