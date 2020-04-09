@@ -1808,48 +1808,63 @@ style slider_pref_slider:
 ##
 
 screen screen_captcha():
-    #modal True
+    # useful when showing game menu behind semi-transparent overlay to prevent
+    # interactions with other widgets, but currently Captcha is shown alone
+    # modal True
+
     tag menu
 
-    add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.5
+    add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.46
 
-    use captcha_button(835, "Verify", return_verify_captcha_action())
+    use captcha_button(834, "Verify", return_verify_captcha_action())
     # as soon as we click on SafeMode, we disable it, so Cancel must re-enable it
     # as we failed to pass the captcha
-    use captcha_button(1011, "Cancel", [SetField(persistent, "safe_mode", "False"), Return()])
+    use captcha_button(1010, "Cancel", [SetField(persistent, "safe_mode", "False"), Return()])
 
     text "Select all squares with" xpos 745 ypos 275 color "#ffffff" size 24
     text "{b}RUBBER DUCK{/b}" xpos 745 ypos 312 color "#ffffff" size 26
     text "Click {b}Verify{/b} once they are all selected." xpos 745 ypos 358 color "#ffffff" size 22
 
-    # Include the navigation.
-    imagemap:
-        xalign 0.5
-        yalign 0.5
-        auto "gui/captcha/captcha_menu_ducks_%s.png" alpha False
-        #145 - 255 \  315 - 490 \ 990 - 1140
-        #280 - 305 - 330 \ 340 - 360 - 380
-        hotspot (418, 227, 140, 140)  action ToggleVariable("captcha_other1", "True") # baby
-        hotspot (570, 227, 140, 140)  action ToggleVariable("captcha_other2", "True") # mallard
-        hotspot (721, 227, 140, 140)  action ToggleVariable("captcha_rubber", "True") # rubber
-        hotspot (418, 372, 140, 140)  action ToggleVariable("captcha_other3", "True") # white
-        hotspot (570, 372, 140, 140)  action ToggleVariable("captcha_other4", "True") # daffy
-        hotspot (721, 372, 140, 140)  action ToggleVariable("captcha_other5", "True") # swan
+    grid 3 2:
+        xpos 736
+        ypos 412
+        xspacing 25
+        yspacing 13
+        use captcha_image("butterfly", "captcha_other1")
+        use captcha_image("mallard", "captcha_other2")
+        use captcha_image("rubber_duck_toy", "captcha_rubber1")
+        use captcha_image("lamp_post", "captcha_other3")
+        use captcha_image("rubber_duck_baker", "captcha_rubber2")
+        use captcha_image("swan", "captcha_other4")
 
     if invalid_captcha:
-        text "Selection invalid." xpos 745 ypos 745 color "#000000" size 24
+        text "Selection invalid." xpos 745 ypos 695 color "#000000" size 24
+
+screen captcha_image(image_name, variable_name):
+    fixed:
+        xsize 132
+        ysize 132
+        add "gui/captcha/captcha_item_%s.jpg" % image_name:
+            xpos 2
+            ypos 2
+        # frame imagebutton must be above image to show hover color correctly
+        imagebutton:
+            auto "gui/captcha/captcha_image_frame_%s.png"
+            action ToggleVariable(variable_name, "True")
 
 screen captcha_button(_xpos, _text, _action):
+    fixed:
+        xpos _xpos
+        ypos 727
+
         imagebutton:
             auto "gui/captcha/captcha_button_%s.png"
-            xpos _xpos
-            ypos 698
             action _action
 
         text _text:
             xanchor 0.5
-            xpos _xpos + 86
-            ypos 705
+            xpos +86
+            ypos +7
             size 24
             color "#ffffff"
 

@@ -35,6 +35,15 @@ Free backgrounds:
 
 Free UI sprites: [Dating Sim UI Pack](https://loudeyes.itch.io/dating-sim-ui-pack) by Lynda Mc Donald, distributed under [custom license](License%20Dating%20Sim%20UI%20Pack.jpg) (allows free usage with appropriate credit)
 
+Captcha pictures:
+
+* Butterfly adapted from [photo](https://pixabay.com/photos/butterfly-large-fritillary-color-3559186/) by [Capri23auto](https://pixabay.com/users/Capri23auto-1767157/) on [Pixabay](https://pixabay.com/) ([Pixabay license](https://pixabay.com/service/license/))
+* Mallard adapted from [photo](https://commons.wikimedia.org/wiki/File:Birds_of_Sweden_2016_52.jpg) by Bengt Nyman under CC BY-SA 4.0 on Wikimedia Commons
+* Baby toy duck adapted from [photo](https://www.pexels.com/photo/baby-baby-toy-background-blur-590750/) by NEOSiAM 2020 on Pexels  ([Pexels license](https://www.pexels.com/license/))
+* Lamp post adapted from [photo](https://www.pexels.com/photo/black-lamp-post-with-mounted-cameras-1135453/) by Shane Aldendorff on Pexels ([Pexels license](https://www.pexels.com/license/))
+* Baker duck model adapted from [photo](https://commons.wikimedia.org/wiki/File:Rubber_duck_collection.jpg) by Weetjesman under CC BY-SA 4.0 on Wikimedia Commons
+* Swan adapted from [photo](https://commons.wikimedia.org/wiki/File:Trumpeter_Swan_%28Cygnus_buccinator%29_RWD2.jpg) by Dick Daniels under CC BY-SA 3.0 on Wikimedia Commons
+
 Fonts: The Bold Font by [Sven Pels](http://svenpels.com/), distributed for free usage on [dafont.com](https://www.dafont.com/the-bold-font.font)
 
 Character sprites: copyright Maxenau

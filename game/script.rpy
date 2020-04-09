@@ -52,12 +52,12 @@ init:
     default persistent.safe_mode = True
 
     # Captcha variables
-    $ captcha_rubber = False
+    $ captcha_rubber1 = False
+    $ captcha_rubber2 = False
     $ captcha_other1 = False
     $ captcha_other2 = False
     $ captcha_other3 = False
     $ captcha_other4 = False
-    $ captcha_other5 = False
     $ invalid_captcha = False
 
 

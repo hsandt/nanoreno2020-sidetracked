@@ -83,7 +83,7 @@ python early:
 
 init -1 python:
     def return_verify_captcha_action():
-        if captcha_rubber and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4 and not captcha_other5:
+        if captcha_rubber1 and captcha_rubber2 and not captcha_other1 and not captcha_other2 and not captcha_other3 and not captcha_other4:
             return Return()
         else:
             return SetVariable("invalid_captcha", "True")

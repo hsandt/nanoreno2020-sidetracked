@@ -70,6 +70,20 @@ Other backgrounds:
 
 Free UI sprites: {a=https://loudeyes.itch.io/dating-sim-ui-pack}Dating Sim UI Pack{/a} by Lynda Mc Donald, distributed under custom license (allows free usage with appropriate credit)
 
+Captcha pictures:
+
+- Butterfly adapted from {a=https://pixabay.com/photos/butterfly-large-fritillary-color-3559186/}photo{/a} by {a=https://pixabay.com/users/Capri23auto-1767157/}Capri23auto{/a} on {a=https://pixabay.com/}Pixabay{/a} ({a=https://pixabay.com/service/license/}Pixabay license{/a})
+
+- Mallard adapted from {a=https://commons.wikimedia.org/wiki/File:Birds_of_Sweden_2016_52.jpg}photo{/a} by Bengt Nyman under CC BY-SA 4.0 on Wikimedia Commons
+
+- Baby toy duck adapted from {a=https://www.pexels.com/photo/baby-baby-toy-background-blur-590750/}photo{/a} by NEOSiAM 2020 on Pexels  ({a=https://www.pexels.com/license/}Pexels license{/a})
+
+- Lamp post adapted from {a=https://www.pexels.com/photo/black-lamp-post-with-mounted-cameras-1135453/}photo{/a} by Shane Aldendorff on Pexels ({a=https://www.pexels.com/license/}Pexels license{/a})
+
+- Baker duck model adapted from {a=https://commons.wikimedia.org/wiki/File:Rubber_duck_collection.jpg}photo{/a} by Weetjesman under CC BY-SA 4.0 on Wikimedia Commons
+
+- Swan adapted from {a=https://commons.wikimedia.org/wiki/File:Trumpeter_Swan_(Cygnus_buccinator)_RWD2.jpg}photo{/a} by Dick Daniels under CC BY-SA 3.0 on Wikimedia Commons
+
 Fonts: The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
 
 Character sprites: copyright Maxenau 2020
@@ -94,7 +108,7 @@ Free SFX:
 
 - smartphone notification {a=https://notificationsounds.com/notification-sounds/unconvinced-569}notification_unconvinced.ogg{/a} by {a=https://notificationsounds.com}Notification Sounds{/a} under CC BY 4.0
 
-[Ren'Py Accessibility Add-On](https://minute.itch.io/renpy-accessibility) under MIT license
+{a=https://minute.itch.io/renpy-accessibility}Ren'Py Accessibility Add-On{/a} under MIT license
 
 Source code available on the {a=https://github.com/hsandt/nanoreno2020-sidetracked}GitHub repository{/a}
 """)
