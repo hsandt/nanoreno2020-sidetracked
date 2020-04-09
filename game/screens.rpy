@@ -287,6 +287,8 @@ screen quick_menu():
         use preferences_button
         use tasktree_button
 
+    key "game_menu" action ShowMenu(preferences.game_menu_screen)
+
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
 init python:
@@ -837,6 +839,13 @@ screen preferences():
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+
+                vbox:
+                    style_prefix "radio"
+                    label _("Default menu")
+                    null height 5
+                    textbutton _("Preferences") action SetField(preferences, "game_menu_screen", "preferences_screen")
+                    textbutton _("Save") action SetField(preferences, "game_menu_screen", "save_screen")
 
                 if main_menu:
                     vbox:

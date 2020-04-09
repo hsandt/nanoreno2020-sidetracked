@@ -274,10 +274,13 @@ define config.enter_yesno_transition = Dissolve(0.2)
 define config.exit_yesno_transition = Dissolve(0.1)
 
 ## Opening game menu goes to Preferences by default instead of Save Menu
-## CAUTION: this is saved in the player save data, so saves using old versions
-## may still open the Save screen by default
-## Consider letting player choose default menu in the Preferences
-define _game_menu_screen = "preferences"
+## This can be tweaked in the Preferences
+## Do not use the native _game_menu_screen though, as it reverts itself to
+## its previous value when going back to the game. So instead, we use
+## a custom preference variable and map Escape/right-click in screen quick_menu
+## to showing that screen.
+default _game_menu_screen = None
+default preferences.game_menu_screen = "preferences_screen"
 
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.
