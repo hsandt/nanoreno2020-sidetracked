@@ -24,6 +24,26 @@ label .shot1:
 
         if play_context == "free space":
             $ CompleteTask(task_UpdateApps + task_suffix)
+
+        if wrapping_scene == "bus_stop":
+            # in bus stop, updates + play game may reach 30+ minutes which is inconsistent
+            # with waiting time, so stop now
+            if currentTime >= next_bus_time:
+                # in some case (free space > try dict then try app)
+                # the update itself reached the time bus arrived, so we must connect
+                # the last sentence about this (in s_b_update) with a special sentence
+                # note time should be clamped to next_bus_time, comparison is for safety
+                "This also means I won't be able to play this time."
+            else:
+                "It takes so much time I don't have time to play before the bus arrives."
+            if play_context == "kill time":
+                "Anyway, it was just to kill time."
+            else:  # == "free space"
+                # to ensure good connection with notifications wrap-up text
+                "I'll try the game and maybe free some space another time. At least I got the updates."
+            return
+        else:
+            "When the update is over, I finally run the game again"
     elif has_tried_game_count == 0:
         "I've already updated all the apps earlier, so I can play the latest patch of the game."
 
@@ -92,7 +112,7 @@ label .shot3:
 
     "Hey, it's not too complicated this time. I even kept it under 30 characters."
 
-    $ store.currentTime += 15
+    $ store.currentTime += 6
 
     "I create my account using that password, and start playing."
 
@@ -142,6 +162,9 @@ label .shot4:
         "After a few more fights, I end my session."
 
     $ store.currentTime += 22
+    if wrapping_scene == "bus_stop" and currentTime > next_bus_time:
+        $ store.currentTime = store.next_bus_time
+        "A bit earlier than I would like, but I need to get ready for the bus."
 
     if play_context == "free space":
         # we were just freeing space, so come back to notifications instead of hiding smartphone altogether

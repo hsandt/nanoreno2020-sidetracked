@@ -22,8 +22,6 @@ label s_c:
         else:
             "There is that mobile game I was playing earlier. I could delete it and re-download it later, or try it one more time first."
 
-    # allow trying once more
-
     menu try_choice:
         "What do I try or delete?"
         "Try the dictionary app" if not has_tried_dict:
@@ -44,10 +42,15 @@ label .try_game:
 
     $ store.play_context = "free space"
     call s_d from _call_s_d  # Play game
+    $ store.play_context = None
+
+    if has_tried_game_count == 0:
+        # Play Game has failed, only explanation is that we are at bus stop,
+        # needed to download updates for the game, but didn't have time to do more
+        return
 
     $ CompleteTask(task_PlayGame + task_suffix)
 
-    $ store.play_context = None
     call s_c.shot3 from _call_s_c_shot3
     return
 
@@ -65,12 +68,26 @@ label .shot2:
 
     $ store.has_tried_dict = True
 
-    $ store.currentTime += 9
+    $ store.currentTime += 10
 
     show screen smartphone("notifications") with dissolve
 
-    "What else can I do?"
-    call try_choice from _call_try_choice
+    python:
+        cannot_play_game = False
+        if wrapping_scene == "bus_stop":
+            adjusted_time_before_next_bus = store.next_bus_time - store.currentTime
+            cannot_play_game = adjusted_time_before_next_bus < 15
+
+    if cannot_play_game:
+        # not worth playing, or even the password making make go beyond bus time
+        # now playing itself is longer, but can be interrupted with the time clamp system
+        # Note that it's impossible to try the dict without the game earlier, so "also" will make sense
+        # last sentence is just for connection with random exit sentence
+        "Looks like I won't have time for the game anymore, so let's stop here. At least I could test the dictionary."
+    else:
+        "What else can I do?"
+        call try_choice from _call_try_choice
+
     return
 
 # Delete game

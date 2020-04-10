@@ -211,18 +211,9 @@ label .shot5:
     "I just get to the store, pick a screwdriver, come back, and done."
     window hide
 
-    stop music fadeout 2.0
-    pause 0.5
-    show mc casual regular at character_move_right_exit
-
-    # hide Back, Task tree and Preferences button so they don't show above the overlay
-    $ quick_menu = False
-    show overlay black with dissolve
-    pause 0.5
-    $ play_sfx("door_open_close")
-    pause 2.0
+    pause 1.2
 
     # No Wi-Fi outside
     $ store.has_wifi = False
-    $ quick_menu = True
+
     jump s2_1

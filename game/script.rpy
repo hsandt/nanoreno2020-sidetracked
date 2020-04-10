@@ -44,6 +44,7 @@ init:
     default is_showing_smartphone = False
     # Current time in minutes. Convert to readable time with minutes_to_clock_time
     default currentTime = 0
+    default next_bus_time = None
     # New Task Indicator
     default indicator_newTask = False
     default new_task_clear_count = 0  # how many times the player checked for a new task

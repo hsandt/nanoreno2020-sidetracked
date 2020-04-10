@@ -11,9 +11,13 @@ label s_f:
     menu:
         "To kill the time, I..."
         "launch that mobile game I haven't tried yet." if has_tried_game_count == 0:
+            $ store.play_context = "kill time"
             call s_d from _call_s_d_1
+            $ store.play_context = None
         "continue playing the mobile game from earlier." if has_tried_game_count > 0 and not has_deleted_game:
+            $ store.play_context = "kill time"
             call s_d from _call_s_d_2
+            $ store.play_context = None
         "check my notifications.":
             "I check my notifications."
             $ notifications_context = "kill time"
