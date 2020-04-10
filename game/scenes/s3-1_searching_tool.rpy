@@ -59,7 +59,7 @@ label .shot2b:
 label .shot3:
     $ FailTask(task_CheckScrewdrivers)
 
-    $ store.currentTime += 46
+    $ store.currentTime += 19
 
     "Unable to find the right tool in the most meaningful places, I start wandering around."
 

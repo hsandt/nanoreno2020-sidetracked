@@ -66,7 +66,19 @@ label .shot2:
     "I pull out my phone, see what I can do until I arrive."
     call s_f from _call_s_f_1  # Kill time
 
-    "As the bus approaches the store, I push the stop button on my left. It does nothing, though. Probably broken."
+    # technically, there is a margin during which the MC finishes the activity
+    # just before the stop, does not miss the stop,
+    # but doesn't do the stop button challenge either since another passenger would
+    # have pressed the button in the meantime... but for simplicity and providing
+    # more events to the player, we ignore that
+    $ missed_bus_stop = currentTime > bus_arrival_time
+    if missed_bus_stop:
+        "As I emerge from my phone, I realize I missed the stop for the store."
+        "Urg, I need to get off and walk back to the store now. To avoid making things worse, I push the stop button immediately."
+    else:
+        "As the bus approaches the store, I push the stop button on my left."
+
+    "It does nothing, though. Probably broken."
     $ FailTask(task_PushClosestStop)
 
     pause 0.5
@@ -183,15 +195,24 @@ label .shot7:
 
 # Get off
 label .shot8:
-    # now apply the locked arrival time
-    $ store.currentTime = bus_arrival_time
-
     pause 0.8
 
     $ play_sfx("bus_stop_and_open")
 
     window show None
-    "The bus stops near the DIY store, I get off and walk in."
+    if missed_bus_stop:
+        "The bus stops a few yards from the store. But I don't want to wait for the next returning bus, so I just walk back to the store."
+        "It takes me an extra quarter hour."
+        # instead of computing the time to the exact next stop + coming back,
+        # we just add the average time of coming back from one of the stops ahead
+        # this way, even if MC spent far too much time and misses two stops,
+        # we still have a meaningful time based on the current time + some extra to stop and come back
+        # and it's always higher than bus_arrival_time
+        $ store.currentTime += 16
+    else:
+        "The bus stops near the DIY store, I get off and walk in."
+        # now apply the locked arrival time
+        $ store.currentTime = bus_arrival_time
     window hide
 
     $ CompleteTask(task_Stop)
