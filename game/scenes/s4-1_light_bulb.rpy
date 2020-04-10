@@ -56,7 +56,8 @@ label .shot1:
 
     "Thinking about it, maybe I could have just taken lunch on that other chair other there."
     "...{w=1.0} No, there is no need to regret."
-    "Because I decided to take over all these issues, I have been able to improve many things that will make my daily life easier in the future. For instance..."
+    "Because I decided to take over all these issues, my day was pretty fun."
+    "I have even been able to improve many things that will make my daily life easier in the future. For instance..."
 
     # this is mandatory, so doesn't count as extra
     "I tasted some nice viennoiseries."
