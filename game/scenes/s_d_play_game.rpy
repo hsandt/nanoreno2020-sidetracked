@@ -3,10 +3,10 @@ label s_d:
 
 # Start
 label .shot1:
-    show screen smartphone("notifications") with dissolve
-    $ store.is_showing_smartphone = True
-
     if not has_updated_apps:
+        show screen smartphone("notifications") with dissolve
+        $ store.is_showing_smartphone = True
+
         "As soon as I launch the game, an update pop-up requests me to download the latest patch."
 
         # only show task tree / sub task tree for UpdateApps if freeing space
@@ -41,6 +41,10 @@ label .shot1:
             else:  # == "free space"
                 # to ensure good connection with notifications wrap-up text
                 "I'll try the game and maybe free some space another time. At least I got the updates."
+
+            hide screen smartphone with dissolve
+            $ store.is_showing_smartphone = False
+
             return
         else:
             "When the update is over, I finally run the game again"
@@ -48,6 +52,11 @@ label .shot1:
         "I've already updated all the apps earlier, so I can play the latest patch of the game."
 
     if has_tried_game_count == 0:
+        # if we have updated the app above, notifications is already shown
+        # and the 2 lines below do nothing
+        show screen smartphone("notifications") with dissolve
+        $ store.is_showing_smartphone = True
+
         "I'm welcomed by a login window, which asks me to create an account, with password and all."
         "I guess it's because it's fundamentally an online game."
 
