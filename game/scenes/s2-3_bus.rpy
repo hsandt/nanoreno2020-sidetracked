@@ -81,7 +81,9 @@ label .shot2:
     "It does nothing, though. Probably broken."
     $ FailTask(task_PushClosestStop)
 
-    pause 0.5
+    stop music fadeout 1.0
+    pause 1.0
+    play music mission
 
     "Another hurdle... Another problem I will solve."
     "I can try another button, or let somebody else do it for me."
@@ -136,7 +138,12 @@ label .shot3b:
     queue sound ["<silence 0.5>", bus_stop_button]
     $ notify_sfx("bus_stop_button")
 
+    pause 1.0
+
     "It's working."
+
+    stop music fadeout 1.5
+
     $ CompleteTask(task_StandUp)
     jump .shot8
 
@@ -151,8 +158,13 @@ label .shot4:
     "...{w=1.0} In just a moment..."
     $ change_free_space(-50)
 
+    pause 0.5
+
     queue sound ["<silence 0.5>", bus_stop_button]
     $ notify_sfx("bus_stop_button")
+
+    pause 0.5
+    stop music
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
@@ -186,8 +198,13 @@ label .shot7:
     "I continue waiting, but nothing happens. Am I gonna miss the stop?"
     "As I'm expecting the worst, I nervously tap my foot."
 
+    pause 0.5
+
     queue sound ["<silence 0.5>", bus_stop_button]
     $ notify_sfx("bus_stop_button")
+
+    pause 0.5
+    stop music
 
     "Somebody finally calls for the stop."
     $ CompleteTask(task_WaitStop)
