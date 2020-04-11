@@ -1831,8 +1831,6 @@ screen screen_captcha():
 
     tag menu
 
-    on "show" action Function(on_show_captcha)
-
     add "gui/captcha/captcha_menu_base.png" xalign 0.5 yalign 0.46
 
     use captcha_button(834, "Verify", return_verify_captcha_action())
