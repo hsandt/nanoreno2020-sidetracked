@@ -349,6 +349,7 @@ define config.window_icon = "gui/window_icon.png"
 ## This section controls how Ren'Py turns your project into distribution files.
 
 init python:
+    build.destination = "Sidetracked-Builds/{directory_name}-dists"
 
     ## The following functions take file patterns. File patterns are case-
     ## insensitive, and matched against the path relative to the base directory,
@@ -377,8 +378,22 @@ init python:
 
     ## To archive files, classify them as 'archive'.
 
-    # build.classify('game/**.png', 'archive')
-    # build.classify('game/**.jpg', 'archive')
+    # Declare two archives.
+    build.archive("scripts", "all")
+    build.archive("images", "all")
+    build.archive("sounds", "all")
+
+    # Put bytecode script files into the scripts archive
+    # Exclude sources to gain a little space (source code still available on GitHub)
+    build.classify("game/**.rpy", None)
+    build.classify("game/**.rpyc", "scripts")
+
+    # Put images into the images archive.
+    build.classify("game/**.jpg", "images")
+    build.classify("game/**.png", "images")
+
+    # Put sounds into the sounds archive.
+    build.classify("game/**.ogg", "sounds")
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.

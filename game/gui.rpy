@@ -62,10 +62,10 @@ define gui.interface_text_color = '#9e649f'
 define gui.text_font = "DejaVuSans.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "gui/theboldfont.ttf"
+define gui.name_text_font = "gui/fonts/theboldfont.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "gui/theboldfont.ttf"
+define gui.interface_text_font = "gui/fonts/theboldfont.ttf"
 
 ## A font compatible with Japanese characters.
 define gui.jp_text_font = "gui/fonts/NotoSansCJK/NotoSansCJKjp-Regular.otf"
