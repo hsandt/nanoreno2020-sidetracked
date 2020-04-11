@@ -279,7 +279,8 @@ define config.exit_yesno_transition = Dissolve(0.1)
 ## its previous value when going back to the game. So instead, we use
 ## a custom preference variable and map Escape/right-click in screen quick_menu
 ## to showing that screen.
-default _game_menu_screen = None
+init -110 python:
+    _game_menu_screen = None
 default preferences.game_menu_screen = "preferences_screen"
 
 ## A variable to set the transition used when the game starts does not exist.
