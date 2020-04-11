@@ -86,7 +86,11 @@ Captcha pictures:
 
 - Swan adapted from {a=https://commons.wikimedia.org/wiki/File:Trumpeter_Swan_(Cygnus_buccinator)_RWD2.jpg}photo{/a} by Dick Daniels under CC BY-SA 3.0 on Wikimedia Commons
 
-Fonts: The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
+Fonts:
+
+- The Bold Font by {a=http://svenpels.com}Sven Pels{/a}, distributed for free usage on {a=https://www.dafont.com/the-bold-font.font}dafont.com{/a}
+
+- M+ Fonts by M+ FONTS PROJECT, distributed for free usage on {a=http://mplus-fonts.osdn.jp}http://mplus-fonts.osdn.jp{/a}
 
 Character sprites: copyright Maxenau 2020
 

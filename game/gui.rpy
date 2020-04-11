@@ -68,7 +68,7 @@ define gui.name_text_font = "gui/fonts/theboldfont.ttf"
 define gui.interface_text_font = "gui/fonts/theboldfont.ttf"
 
 ## A font compatible with Japanese characters.
-define gui.jp_text_font = "gui/fonts/NotoSansCJK/NotoSansCJKjp-Regular.otf"
+define gui.jp_text_font = "gui/fonts/mplus/mplus-1mn-regular.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 33

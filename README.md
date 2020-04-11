@@ -20,8 +20,8 @@ See [game page](https://komehara.itch.io/sidetracked) and [submission page](http
 ## Free assets
 
 * Background: Uncle Mugen, Pymouss, うにょ＠, Andre.o.mob, Wpcpey
-* UI: Lynda Mc Donald
-* Font: Sven Pels
+* UI: Lynda Mc Donald, Capri23auto, Bengt Nyman, NEOSiAM 2020, Shane Aldendorff, Weetjesman, Dick Daniels
+* Font: Sven Pels, M+ FONTS PROJECT
 * BGM: MusMus
 
 # License
@@ -46,7 +46,9 @@ Captcha pictures:
 * Baker duck model adapted from [photo](https://commons.wikimedia.org/wiki/File:Rubber_duck_collection.jpg) by Weetjesman under CC BY-SA 4.0 on Wikimedia Commons
 * Swan adapted from [photo](https://commons.wikimedia.org/wiki/File:Trumpeter_Swan_%28Cygnus_buccinator%29_RWD2.jpg) by Dick Daniels under CC BY-SA 3.0 on Wikimedia Commons
 
-Fonts: The Bold Font by [Sven Pels](http://svenpels.com/), distributed for free usage on [dafont.com](https://www.dafont.com/the-bold-font.font)
+Fonts:
+* The Bold Font by [Sven Pels](http://svenpels.com/), distributed for free usage on [dafont.com](https://www.dafont.com/the-bold-font.font)
+* M+ Fonts by [M+ FONTS PROJECT](http://mplus-fonts.osdn.jp), see [license](game/gui/fonts/mplus/LICENSE_E)
 
 Character sprites: copyright Maxenau
 
