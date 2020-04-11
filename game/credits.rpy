@@ -41,7 +41,7 @@ label credits:
     with dissolve
     $ renpy.pause(2.0, hard=True)
     hide thanks with dissolve
-    $ renpy.pause(2.0, hard=True)
+    $ renpy.pause(1.0, hard=True)
 
     show overlay black with dissolve
 
