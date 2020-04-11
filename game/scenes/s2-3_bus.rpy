@@ -11,7 +11,7 @@ label .shot1:
     pause 1.0
     $ play_sfx("store_door_close")
     pause 0.5
-    play music "<loop 19.287>audio/bgm/ambient_street.ogg"
+    play music street
 
     show mc outside regular at character_left with dissolve
     pause 0.5
@@ -83,12 +83,18 @@ label .shot2:
 
     stop music fadeout 1.0
     pause 1.0
-    play music mission
+
+    # start synchronized tracks for dynamic music
+    $ renpy.audio.music.play(audio.mission, synchro_start=True)
+    $ renpy.audio.music.play(audio.mission_a, channel="mission_a", synchro_start=True)
+    $ renpy.audio.music.play(audio.mission_b, channel="mission_b", synchro_start=True)
+    $ solo_mission_full()
 
     "Another hurdle... Another problem I will solve."
     "I can try another button, or let somebody else do it for me."
     "Oh, there’s also that new app, “Stop, Please!” that allow people to send a “stop” signal to the bus they are in."
     "If I scan the QR code on the ad stuck in the bus, I should be able to install it."
+    $ solo_mission_a(delay=1.0)
 
     $ has_stood_up = False
     $ store.has_installed_bus_stop_app = False
@@ -112,25 +118,22 @@ label .shot2:
 
 # Stand up
 label .shot3a:
-    $ has_stood_up = True
+    $ solo_mission_full(delay=1.0)
 
+    $ has_stood_up = True
     $ StartTask(task_StandUp)
     "I stand up and walk toward another stop button in the central alley."
-
-    # SFX reuse for another purpose
-    queue sound [inspect_chair, step_on_chair]
-    # custom SFX accessibility notification since it's a queue of 2 sounds
-    # with a unique description
-    python:
-         if preferences.audio_cues:
-             renpy.notify("SFX: Katell loses balance and falls back on seat")
-
     "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
     "I fall back to my seat without having been able to reach the button."
+
+    $ solo_mission_a(delay=1.0)
+
     jump stop_button
 
 # Stand up 2nd time
 label .shot3b:
+    $ solo_mission_full(delay=1.0)
+
     "I stand up once more, this time clinging to bars, seats, whatever."
     "This bothers the other passengers, but I don't care anymore."
     "After an epic march, I reach the damn thing and press it."
@@ -143,6 +146,9 @@ label .shot3b:
     "It's working."
 
     stop music fadeout 1.5
+    stop mission_a
+    stop mission_b
+    pause 1.0
 
     $ CompleteTask(task_StandUp)
     jump .shot8
@@ -150,21 +156,27 @@ label .shot3b:
 # App
 label .shot4:
     $ store.has_installed_bus_stop_app = True
+    $ duo_mission_ab(delay=1.0)
 
     $ StartTask(task_InstallStopApp)
     "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
     "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
     "I follow a convoluted process to sync my phone with the bus. Hopefully this will provide extra awareness to the app and let it do smarter things."
-    "...{w=1.0} In just a moment..."
+
+    $ solo_mission_b(delay=1.0)
+
+    "...{w=2.0} In just a moment..."
     $ change_free_space(-50)
 
-    pause 0.5
+    pause 1.0
 
     queue sound ["<silence 0.5>", bus_stop_button]
     $ notify_sfx("bus_stop_button")
 
     pause 0.5
     stop music
+    stop mission_a
+    stop mission_b
 
     "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
@@ -174,26 +186,35 @@ label .shot4:
 # Ask
 label .shot5:
     $ has_asked_passenger = True
+    $ solo_mission_full(delay=1.0)
 
     $ StartTask(task_AskPassenger)
     "I call the passenger sitting in front of me, but he doesn't answer."
     "He's wearing headphones, so maybe they are just too good at insulating sound. I think I need the same, but for notifications."
     $ FailTask(task_AskPassenger)
+
+    $ solo_mission_a(delay=1.0)
+
     jump stop_button
 
 # Wait 1
 label .shot6:
     $ wait_count += 1
+    $ solo_mission_b(delay=1.0)
 
     $ StartTask(task_WaitStop)
     "I wait, hoping somebody else will push a working stop button."
     "It doesn't happen."
     "We're getting closer to the store."
+
+    $ solo_mission_a(delay=1.0)
+
     jump stop_button
 
 # Wait 2
 label .shot7:
     $ wait_count += 1
+    $ solo_mission_b(delay=1.0)
 
     "I continue waiting, but nothing happens. Am I gonna miss the stop?"
     "As I'm expecting the worst, I nervously tap my foot."
@@ -205,6 +226,8 @@ label .shot7:
 
     pause 0.5
     stop music
+    stop mission_a
+    stop mission_b
 
     "Somebody finally calls for the stop."
     $ CompleteTask(task_WaitStop)
@@ -214,6 +237,7 @@ label .shot7:
 label .shot8:
     pause 0.8
 
+    play music street
     $ play_sfx("bus_stop_and_open")
 
     window show None

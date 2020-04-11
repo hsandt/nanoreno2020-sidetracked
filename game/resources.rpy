@@ -56,7 +56,6 @@ init -1:
     define audio.mission = "<from 0.0 to 52.0>audio/bgm/mission_theme.ogg"
     define audio.mission_a = "audio/bgm/mission_theme_ver_a.ogg"
     define audio.mission_b = "audio/bgm/mission_theme_ver_b.ogg"
-    define audio.mission_ab = "audio/bgm/mission_theme_ver_ab.ogg"
 
     ## BGM mapping (so accessibility feature can get BGM notification text from core name
     ## instead of filepath, which contains the <loop> pattern and is not very convenient)
