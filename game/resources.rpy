@@ -14,7 +14,6 @@ image bg bus_outside = "images/bg/bus_outside.jpg"
 image bg bus_inside = "images/bg/bus_inside.jpg"
 image bg bakery = "images/bg/bus_outside.jpg"
 image bg store = "images/bg/store.jpg"
-image bg menuoverlay = "gui/overlay/game_menu.png"
 
 ## Sub-backgrounds (smartphone)
 

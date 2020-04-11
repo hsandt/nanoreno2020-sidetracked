@@ -464,7 +464,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    background "gui/overlay/main_menu.jpg"
 
 style main_menu_vbox:
     xalign 1.0
@@ -583,7 +583,7 @@ style game_menu_outer_frame:
     bottom_padding 145
     top_padding 220
 
-    background "gui/overlay/game_menu.png"
+    background "gui/overlay/game_menu.jpg"
 
 style game_menu_navigation_frame:
     xsize 420
