@@ -6,7 +6,7 @@ label s_b:
         "Hopefully that will help download faster while also saving some space."
     else:
         "Hopefully that will help reduce my data usage while also saving some space."
-    "After the fourth manual update, I get impatient and just touch \"Update all\"."
+    "After the fourth manual update, I get impatient and just touch “Update all”."
 
     $ store.has_updated_apps = True
     $ change_free_space(-100)

@@ -7,7 +7,7 @@ label .shot1:
 
     show mc regular at character_left with dissolve
     "After spending 20 minutes in the queue, I finally reach the permit printing machine."
-    "It has a touch screen where you can select various types of documents. I touch \"Purchase Permit: Category C\"."
+    "It has a touch screen where you can select various types of documents. I touch “Purchase Permit: Category C”."
     printer "Please enter your date of birth."
     "Entered."
     printer "Please provide your Health Insurance Number."

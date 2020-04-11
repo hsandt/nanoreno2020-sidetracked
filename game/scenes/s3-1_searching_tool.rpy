@@ -22,8 +22,8 @@ label .shot1:
 
     $ StartTask(task_FindHexKey, notify=True)
 
-    "As I walk past the aisles, I glance at the signs: \"Hammers & Mallets\", \"Keys & Locks\", \"Painting\"..."
-    "Eventually, I see two categories that seem fit: \"Screwdrivers & Nut Drivers\", and \"Power Screwdrivers\". Where should I go first?"
+    "As I walk past the aisles, I glance at the signs: “Hammers & Mallets”, “Keys & Locks”, “Painting”..."
+    "Eventually, I see two categories that seem fit: “Screwdrivers & Nut Drivers”, and “Power Screwdrivers”. Where should I go first?"
 
     $ StartTask(task_CheckScrewdrivers)
 
@@ -35,7 +35,7 @@ label .shot1:
 
 # Screwdrivers & Nut Drivers
 label .shot2a:
-    "I walk along the shelves in the \"Screwdrivers & Nut Drivers\" area. They are full of interesting labels like Slot, Cross, Frearson and Torx... But I see no hex."
+    "I walk along the shelves in the “Screwdrivers & Nut Drivers” area. They are full of interesting labels like Slot, Cross, Frearson and Torx... But I see no hex."
     $ store.has_explored_screwdrivers = True
 
     if has_explored_screwdrivers and has_explored_power_screwdrivers:
@@ -46,7 +46,7 @@ label .shot2a:
 
 # Power Screwdrivers
 label .shot2b:
-    "The \"Power Screwdrivers\" area is full of electric screwdrivers. And also drills. Curious."
+    "The “Power Screwdrivers” area is full of electric screwdrivers. And also drills. Curious."
     "I realize those tools may be a bit too much for what I want to do. I’ll let grease elbow do the job this time."
     $ store.has_explored_power_screwdrivers = True
 
@@ -65,7 +65,7 @@ label .shot3:
 
     $ StartTask(task_CheckOthers)
 
-    "After some time I reach the \"Keys & Locks\" area, where they put digit padlocks, padlocks with keys... and of course, hex keys. Logical."
+    "After some time I reach the “Keys & Locks” area, where they put digit padlocks, padlocks with keys... and of course, hex keys. Logical."
 
     if screw_measurement_method == "photo":
         "I pick my phone to open the photo of the loose screw I took earlier."

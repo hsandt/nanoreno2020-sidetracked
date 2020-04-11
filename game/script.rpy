@@ -68,7 +68,7 @@ label start:
     $ quick_menu = False
 
     if persistent.safe_mode:
-        "\"Sidetracked\" is an application downloaded from the Internet, and has been made by unrecognized author \"komehara\"."
+        "“Sidetracked” is an application downloaded from the Internet, and has been made by unrecognized author “komehara”."
         "It cannot be started unless Safe mode is disabled in the Preferences."
         return
 

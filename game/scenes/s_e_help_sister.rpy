@@ -40,7 +40,7 @@ label .shot2:
         "I give a fake translation to remind her I'm busy." if not has_given_fake_translation:
             $ store.has_given_fake_translation = True
             $ store.sister_request_reply = "fake translation"
-            "I tell her the sentence means something like \"She shouldn't ask random stuff around to people.\""
+            "I tell her the sentence means something like “She shouldn't ask random stuff around to people.”"
             $ store.currentTime += 3
         "I don't." if not has_given_silence:
             $ store.has_given_silence = True
@@ -60,7 +60,7 @@ label .shot3:
     "I check my sister's new message."
     if sister_request_reply == "ask context":
         "I remember, I asked her for more context. She says:
-        {p}\"it's about a man hired to prevent a detective from investigating on embezzlement\""
+        {p}“it's about a man hired to prevent a detective from investigating on embezzlement”"
         $ CompleteTask(task_GetContext)
         "Okay, that doesn't make things too clear but at least she made the effort to explain."
         "I try to come up with a better translation and send it to her. She thanks me, saying the translation makes all sense."
@@ -69,25 +69,25 @@ label .shot3:
         $ store.currentTime += 11
         $ store.sister_request_phase = 3  # end of request
     elif sister_request_reply == "quick translation":
-        "She just says: \"Thanks!\""
+        "She just says: “Thanks!”"
         "Looks like she was satisfied with my translation... Maybe going simple is the good choice, sometimes. Maybe..."
         $ store.currentTime += 2
         $ store.sister_request_phase = 3  # end of request
     elif sister_request_reply == "fake translation":
         "I wonder how she reacted to my joke translation... Ah, here it is:
-        {p}\"ahaha... no seriously what does that mean??\""
+        {p}“ahaha... no seriously what does that mean??”"
         "Hmpf."
         $ store.currentTime += 2
         call .shot2 from _call_s_e_shot2_1
     elif sister_request_reply == "silence":
         "I didn't answer last time, but it looks like she's not giving up:
-        {p}\"I know you've read my msg it's showing on the app!\""
+        {p}“I know you've read my msg it's showing on the app!”"
         "Urg..."
         $ store.currentTime += 2
         call .shot2 from _call_s_e_shot2_2
     elif sister_request_reply == "silence2":
         "This time she's more understanding, I guess:
-        {p}\"ok maybe you're busy but answer me before the end of the day!\""
+        {p}“ok maybe you're busy but answer me before the end of the day!”"
         "I'll try."
         $ store.currentTime += 2
         $ store.sister_request_phase = 3  # end of request
