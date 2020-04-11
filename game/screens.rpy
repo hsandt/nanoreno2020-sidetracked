@@ -2199,7 +2199,7 @@ screen tasktree():
                         #text taskName + " : " + task[2] xpos 50*taskLevel color "#6b7867"
                         pass #Do not show unstarted tasks
 
-screen preferences_button:
+screen preferences_button():
     python:
         button_action = None
         hint_text = None
@@ -2217,7 +2217,7 @@ screen preferences_button:
         text hint_text xpos 1700 ypos 969 style_prefix "quick"
     key "toggle_preferences" action button_action
 
-screen tasktree_button:
+screen tasktree_button():
     if not main_menu:
         python:
             button_action = None
