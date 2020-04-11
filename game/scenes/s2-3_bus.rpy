@@ -235,6 +235,11 @@ label .shot7:
 
 # Get off
 label .shot8:
+    # reset all channel volumes, esp. the music which will be used from now on
+    $ renpy.audio.music.set_volume(1.0, delay=0, channel="music")
+    $ renpy.audio.music.set_volume(1.0, delay=0, channel="mission_a")
+    $ renpy.audio.music.set_volume(1.0, delay=0, channel="mission_b")
+
     pause 0.8
 
     play music street
