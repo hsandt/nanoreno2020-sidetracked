@@ -38,7 +38,7 @@ label .shot1:
 
     $ play_sfx("smartphone_notification")
 
-    "While I'm paying, my phone vibrates and notifies me of a new message. I'll check this later."
+    "While I'm paying, my phone vibrates and notifies me of a new message. I'll check it later."
 
     # Sister has sent request, it will affect Scene F: Kill time > Scene A: Notifications
     $ sister_request_phase = 1
@@ -56,8 +56,8 @@ label .shot2:
     scene bus_inside with dissolve
     pause 0.5
 
-    "The inside surprisingly looks Japanese."
-    "I sit in the back, where I usually feel better to do my stuff without people looking."
+    "The inside of the bus surprisingly looks Japanese. Maybe the designer was a passionate."
+    "I sit in the back, where I usually feel better. Or at least free to do my things without people looking."
     $ play_sfx("step_on_chair")
     pause 1.0
 
@@ -92,8 +92,7 @@ label .shot2:
 
     "Another hurdle... Another problem I will solve."
     "I can try another button, or let somebody else do it for me."
-    "Oh, there’s also that new app, “Stop, Please!” that allow people to send a “stop” signal to the bus they are in."
-    "If I scan the QR code on the ad stuck in the bus, I should be able to install it."
+    "There’s also this new app, “Stop, Please!” that allow people to send a “stop” signal to the bus they are in."
     $ solo_mission_a(delay=1.0)
 
     $ has_stood_up = False
@@ -103,15 +102,15 @@ label .shot2:
 
     menu stop_button:
         "What do I do?"
-        "Stand up and push the next closest stop button" if not has_stood_up:
+        "Push the next closest button" if not has_stood_up:
             jump s2_3.shot3a
         "Stand up and try again!" if has_stood_up:
             jump s2_3.shot3b
         "Install “Stop, Please!”" if not has_installed_bus_stop_app:
             jump s2_3.shot4
-        "Ask another passenger to push a working button" if not has_asked_passenger:
+        "Ask a passenger to push another button" if not has_asked_passenger:
             jump s2_3.shot5
-        "Wait for someone else to push the stop button" if wait_count == 0:
+        "Wait for somebody else to call for stop" if wait_count == 0:
             jump s2_3.shot6
         "Wait a bit more" if wait_count == 1:
             jump s2_3.shot7
@@ -123,11 +122,12 @@ label .shot3a:
     $ has_stood_up = True
     $ StartTask(task_StandUp)
     "I stand up and walk toward another stop button in the central alley."
-    "The bus suddenly shakes and I lose my balance. Right, they like cobblestones in this city."
-    "I fall back to my seat without having been able to reach the button."
+    "The bus suddenly shakes and I lose my balance. They sure like cobblestones in this city."
+    "I fall back to my seat without having reached the button."
 
     $ solo_mission_a(delay=1.0)
 
+    pause 0.5
     jump stop_button
 
 # Stand up 2nd time
@@ -135,20 +135,18 @@ label .shot3b:
     $ solo_mission_full(delay=1.0)
 
     "I stand up once more, this time clinging to bars, seats, whatever."
-    "This bothers the other passengers, but I don't care anymore."
-    "After an epic march, I reach the damn thing and press it."
+    "The other passengers look bothered. I don't."
+    "After an epic march, I reach the item of interest and press it."
 
-    queue sound ["<silence 0.5>", bus_stop_button]
-    $ notify_sfx("bus_stop_button")
-
-    pause 1.0
-
-    "It's working."
+    pause 0.5
+    $ play_sfx("bus_stop_button")
 
     stop music fadeout 1.5
     stop mission_a
     stop mission_b
     pause 1.0
+
+    "It's working."
 
     $ CompleteTask(task_StandUp)
     jump .shot8
@@ -159,9 +157,11 @@ label .shot4:
     $ duo_mission_ab(delay=1.0)
 
     $ StartTask(task_InstallStopApp)
-    "I scan the QR code on the sticker, and wait for the app to install. We'll arrive at the store in a few minutes, so I hope it will work in time."
-    "I launch the app and follow the instructions. Apparently, I must connect to the bus first."
-    "I follow a convoluted process to sync my phone with the bus. Hopefully this will provide extra awareness to the app and let it do smarter things."
+    "I scan the QR code on a nearby sticker advertising the app, and wait for the install."
+    "We'll arrive at the store in a few minutes, so I hope it will be fast."
+    "After a minute or so, the app is ready. I launch it and follow the instructions. Apparently, I must connect to the bus first."
+    "I follow a convoluted process involving blinking lights and touching wood to sync my phone with the bus."
+    "Hopefully, this will provide extra awareness to the app and let it do smarter things."
 
     $ solo_mission_b(delay=1.0)
 
@@ -178,7 +178,8 @@ label .shot4:
     stop mission_a
     stop mission_b
 
-    "In the meantime, another passenger pressed the stop button. Fine, the app will be useful next time..."
+    "In the meantime, another passenger pressed the stop button."
+    "No waste, though. The app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
     $ CompleteTask(task_WaitStop)
     jump .shot8
@@ -189,12 +190,14 @@ label .shot5:
     $ solo_mission_full(delay=1.0)
 
     $ StartTask(task_AskPassenger)
-    "I call the passenger sitting in front of me, but he doesn't answer. As I said, don't rely on others too much."
-    "He's wearing headphones, so maybe they are just too good at insulating sound. I think I need the same, but for notifications."
+    "I call the passenger sitting in front of me, but he doesn't answer."
+    "He's wearing headphones that are probably a little too good at insulation."
+    "If only there were headphones that could insulate me from my sister's requests..."
     $ FailTask(task_AskPassenger)
 
     $ solo_mission_a(delay=1.0)
 
+    pause 0.5
     jump stop_button
 
 # Wait 1
@@ -205,10 +208,12 @@ label .shot6:
     $ StartTask(task_WaitStop)
     "I wait, hoping somebody else will push a working stop button."
     "It doesn't happen. I knew it, I shouldn't rely on others like that."
+    pause 0.5
     "We're getting closer to the store."
 
     $ solo_mission_a(delay=1.0)
 
+    pause 0.5
     jump stop_button
 
 # Wait 2
@@ -230,7 +235,8 @@ label .shot7:
     stop mission_b
 
     "Somebody finally calls for the stop."
-    "I guess sometimes other people actually do the job."
+    pause 0.5
+    "Well, that was part of the plan, wasn't it?"
     $ CompleteTask(task_WaitStop)
     jump .shot8
 
@@ -257,7 +263,7 @@ label .shot8:
         # and it's always higher than bus_arrival_time
         $ store.currentTime += 16
     else:
-        "The bus stops near the DIY store, I get off and walk in."
+        "The bus stops near the DIY store. I get off and walk in."
         # now apply the locked arrival time
         $ store.currentTime = bus_arrival_time
     window hide

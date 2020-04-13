@@ -235,6 +235,7 @@ label .shot4:
     $ notify_sfx("smartphone_call")
 
     "My phone rings just before I leave. It's my sister, Tifenn."
+    "She tends to only call me to ask me for random favors, so I'm not too keen on answering."
     pause 1.0
     "I make sure to let the phone ring a few more times, then answer."
     stop sound fadeout 0.1  # very short, just to avoid pop

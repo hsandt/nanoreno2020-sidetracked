@@ -49,7 +49,7 @@ label .shot1:
         else:
             "When the update is over, I finally run the game again"
     elif has_tried_game_count == 0:
-        "I've already updated all the apps earlier, so I can play the latest patch of the game."
+        "I've already updated all my apps earlier, so I can play the latest patch of the game."
 
     if has_tried_game_count == 0:
         # if we have updated the app above, notifications is already shown
@@ -57,15 +57,14 @@ label .shot1:
         show screen smartphone("notifications") with dissolve
         $ store.is_showing_smartphone = True
 
-        "I'm welcomed by a login window, which asks me to create an account, with password and all."
-        "I guess it's because it's fundamentally an online game."
+        "I'm welcomed by a login window. Looks like I must create an account."
 
         # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
         if play_context == "free space":
             $ task_suffix = make_task_suffix(free_space_context)
             $ StartTask(task_CreateAccount + task_suffix)
 
-        "Fortunately, I can also sign up with a Google or Twitter account. Ah, but maybe I should avoid linking my stuff to big companies..."
+        "Fortunately, I can also sign up with a Google or Twitter account. But maybe I should avoid linking all my accounts to big companies..."
 
         menu:
             "How do I sign up?"
@@ -83,35 +82,37 @@ label .shot1:
 # Link account
 label .shot2:
     $ store.currentTime += 2
-    "I use the easy sign up and start playing."
+    "I sign up by linking my account and start playing."
     return
 
 # From scratch
 label .shot3:
-    "I go to the form to create an account from scratch. I need to find a cool username and a tricky password."
+    "I go to the new account form. I need to find a cool username and a tricky password."
 
     # complete either Free Space sub-tree under Get ID node, or separate tree depending on context
     if play_context == "free space":
         $ task_suffix = make_task_suffix(free_space_context)
         $ StartTask(task_InventPassword + task_suffix)
 
-    "Username is no problem, but passwords are a bit more complex."
-    "In general, I build them from funny sentences that are easy to remember, that I turn into a series of related words or emojis."
+    "Usernames are no problems for me, but passwords are a bit more complex."
+    "In general, I construct them like this:
+    \n1. I pick a funny sentence that is easy to remember
+    \n2. I turn it into a series of related words or emojis"
 
     menu:
         "What should I use this time?"
         "Capharnaum in the square marketplace":
             "{i}Capharnaum in the square marketplace{/i}...
-            {p=1.0}OK, so that will make...
-            {p=1.0}“K-far# >x< ZA \[_\]$<->$”"
+            {p=1.5}OK, so that will make...
+            {p=1.5}“K-far# >x< ZA \[_\]$<->$”"
         "Sixty-six zebras ate a watermelon salad":
             "{i}Sixty-six zebras ate a watermelon salad{/i}...
-            {p=1.0}Fine, that should turn into...
-            {p=1.0}“6T6//// *nom*nom* 1~~~mLnsLd”"
+            {p=1.5}Fine, that should turn into...
+            {p=1.5}“6T6//// *nom*nom* 1~~~mLnsLd”"
         "The principal broke into the hair salon riding a motorbike":
             "{i}The principal broke into the hair salon riding a motorbike{/i}...
-            {p=1.0}I can change it for...
-            {p=1.0}“Ma1n NO$->//II\\\\ >8 o<o”"
+            {p=1.5}I can change it for...
+            {p=1.5}“Ma1n NO$->//II\\\\ >8 o<o”"
 
     if play_context == "free space":
         $ CompleteTask(task_InventPassword + task_suffix)
