@@ -34,6 +34,7 @@ image mc casual regular = "images/char/mc_cas_reg.png"
 image mc casual regular left = im.Flip("images/char/mc_cas_reg.png", horizontal=True)
 image mc casual regular night = "images/char/mc_cas_reg_night.png"
 image mc casual regular night left = im.Flip("images/char/mc_cas_reg_night.png", horizontal=True)
+image mc casual regular silhouette left = im.Flip("images/char/mc_cas_reg_silhouette.png", horizontal=True)
 image mc outside regular = "images/char/mc_out_reg.png"
 image mc outside regular left = im.Flip("images/char/mc_out_reg.png", horizontal=True)
 image mc regular = "images/char/mc_reg.png"

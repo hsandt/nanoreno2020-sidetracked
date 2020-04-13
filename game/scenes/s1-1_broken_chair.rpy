@@ -7,18 +7,23 @@ label s1_1:
     stop music fadeout 2.0
 
 label .shot1:
-    show overlay black
+    scene overlay black
     pause 1.0
+
+    show mc casual regular silhouette left at character_right with dissolve
+
     # the show/hide at the beginning of each scene is only to show textbox with quick dissolve
     # then hide it when no text is shown (without having to manually "window hide" every time)
     window show
-    "They say I'm easily distracted."
-    "That's not true."
-    "I'm not jumping from topic to topic without reason. It's just that problems keep popping up in my face."
+    "Some say I'm easily distracted.{w} That's not true."
+    "I'm not randomly jumping from a topic to another. Rather, problems keep popping up, and I have to solve them."
     window hide None # no transition except on scene start/end
     pause 0.5
 
-    "Like that one time."
+    "Exactly what happened today."
+
+    hide mc with dissolve
+    pause 0.5
 
 label .shot2:
     scene bg apartment day

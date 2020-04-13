@@ -56,6 +56,7 @@ label .shot1:
 
     "Thinking about it, maybe I could have just taken lunch on that other chair other there."
     "...{w=1.0} No, there is no need to regret."
+    "I was not randomly jumping from a topic to another. Problems just kept popping up, and I had to solve them."
     "Because I decided to take over all these issues, my day was pretty fun."
     "I have even been able to improve many things that will make my daily life easier in the future. For instance..."
 
