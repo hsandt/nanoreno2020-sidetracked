@@ -26,7 +26,7 @@ label .shot1:
     "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
     window hide None
 
-    show screen screen_item("hex_key", "left") with dissolve
+    show screen screen_item("screwdriver", "left") with dissolve
     mc "OK, let’s try this now."
     hide screen screen_item with dissolve
     show screen screen_item("screw_loose", "left") with dissolve

@@ -3,7 +3,7 @@ label s3_1:
 label .shot1:
     # if doing nothing on smartphone: ~16h00
     $ store.wrapping_scene = "store"
-
+    $ quick_menu = False
     scene overlay black with Dissolve(1.0)
 
     $ play_sfx("store_door_open")
@@ -11,6 +11,7 @@ label .shot1:
     pause 1.0
 
     scene bg store with Dissolve(1.0)
+    $ quick_menu = True
     $ play_music("store")
     show mc regular at character_left with dissolve
 
@@ -22,7 +23,28 @@ label .shot1:
 
     $ StartTask(task_FindHexKey, notify=True)
 
-    "As I walk past the aisles, I glance at the signs: “Hammers & Mallets”, “Keys & Locks”, “Painting”..."
+    $ clock_time = get_clock_time()
+    "There are... far too many shelves to check. And it's already [clock_time]."
+    "There is no time to waste. I start running across the aisles, looking at the different categories."
+    show mc at character_move_right_exit
+    # display_menu docstring in renpy/exports.py suggests to use narrator to reproduce
+    # the menu question (as opposed to having the first item with a value of None,
+    # which would show the label inside a choice button)
+    $ narrator("Which category should I check?", interact=False)
+    $ items = [
+        ("Which category should I check?", None),
+        ("Screwdrivers & Nut Drivers", [Jump(".shot2a"), ui.ChoiceReturn("test", ".shot2a")]),
+        ("Power Screwdrivers", Jump("test")),
+        ("Hammers & Mallets", Jump("test")),
+        ("Keys & Locks", Jump("test")),
+        ("Painting", Jump("test"))
+    ]
+    # when using screen, display_menu passes the equivalent of scope
+    # the the choice screen as keyword arguments, not the kwargs for display_menu
+    $ renpy.display_menu(items, scope={"column_count": 3}, screen="choice_grid")
+
+    show mc at character_move_left_enter
+
     "Eventually, I see two categories that seem fit: “Screwdrivers & Nut Drivers”, and “Power Screwdrivers”. Where should I go first?"
 
     $ StartTask(task_CheckScrewdrivers)

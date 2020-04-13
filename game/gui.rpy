@@ -220,6 +220,18 @@ define gui.choice_button_text_idle_color = "#744675"
 define gui.choice_button_text_hover_color = "#744675"
 define gui.choice_button_text_insensitive_color = "#444444"
 
+## Choice Grid Buttons
+
+define gui.choice_grid_button_width = 420
+define gui.choice_grid_button_height = None
+define gui.choice_grid_button_tile = False
+define gui.choice_grid_button_borders = Borders(60, 60, 60, 60)
+define gui.choice_grid_button_text_font = gui.text_font
+define gui.choice_grid_button_text_size = gui.text_size
+define gui.choice_grid_button_text_xalign = 0.5
+define gui.choice_grid_button_text_idle_color = "#000000"
+define gui.choice_grid_button_text_hover_color = "#545454"
+define gui.choice_grid_button_text_insensitive_color = "#444444"
 
 ## File Slot Buttons ###########################################################
 ##

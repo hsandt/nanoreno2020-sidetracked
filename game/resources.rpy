@@ -22,7 +22,9 @@ image sub smartphone = "images/bg/sub/smartphone_body.png"
 ## Items
 
 # for memo, but never used directly as we use the screen_item with item identifier
-image item hex_key = "images/item/hex_key.png"
+image item screwdriver = "images/item/screwdriver.png"
+image item screwdriver_handle = "images/item/screwdriver_handle.png"
+image item screwdriver_shaft = "images/item/screwdriver_shaft.png"
 image item screw_loose = "images/item/screw_loose.png"
 image item screw_tight = "images/item/screw_tight.png"
 image item coins = "images/item/coins.png"

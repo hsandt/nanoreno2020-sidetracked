@@ -257,6 +257,43 @@ style choice_button is default:
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
 
+## Grid Choice screen ###########################################################
+##
+## A variant of the choice screen that shows choices as buttons on a grid
+style choice_grid_grid is grid
+style choice_grid_button is button
+style choice_grid_button_text is button_text
+
+style choice_grid_grid:
+    xalign 0.7
+    # ypos 405
+    # yanchor 0.5
+    yalign 0.5
+
+    spacing gui.choice_spacing
+
+style choice_grid_button is default:
+    properties gui.button_properties("choice_grid_button")
+
+style choice_grid_button_text is default:
+    properties gui.button_text_properties("choice_grid_button")
+
+screen choice_grid(items, column_count=1):
+    style_prefix "choice_grid"
+
+    # ceil is imported in functions.rpy
+    # mind Python 2, force float conversion to get float division
+    $ row_count = int(ceil(len(items) / float(column_count)))
+    $ print(column_count)
+    $ print(row_count)
+    grid column_count row_count:
+        for i in items:
+            textbutton i.caption action i.action at choice_transform
+        # pad the grid to fill blanks, as it needs to be exactly filled with
+        # column_count * row_count in Ren'Py Screen Language
+        for _i in range(column_count * row_count - len(items)):
+            null
+
 ## Quick Menu screen ###########################################################
 ##
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
@@ -1876,7 +1913,9 @@ init python:
     # [ NAME, DESCRIPTION, IMAGE_PATH ]
     item_unknown = ["unknown", "unknown", "images/item/unknown.png"]
     itemList = [["coins", "Coins", "images/item/coins.png"],
-                ["hex_key", "Hex Key", "images/item/hex_key.png"],
+                ["screwdriver", "Screwdriver", "images/item/screwdriver.png"],
+                ["screwdriver_handle", "Handle", "images/item/screwdriver_handle.png"],
+                ["screwdriver_shaft", "Shaft", "images/item/screwdriver_shaft.png"],
                 ["purchase_permit", "Purchase Permit", "images/item/purchase_permit.png"],
                 ["screw_loose", "Screw", "images/item/screw_loose.png"],
                 ["screw_tight", "Screw", "images/item/screw_tight.png"]]

@@ -8,7 +8,7 @@ label .shot1:
 
     show mc regular at character_left with dissolve
     mc "Hi."
-    show screen screen_item("hex_key", "right") with dissolve
+    show screen screen_item("screwdriver", "right") with dissolve
     "After 15 minutes of queue, I show the hex key to the cashier. She scans it, then stop for a moment."
     hide screen screen_item with dissolve
 
