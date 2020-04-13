@@ -3,6 +3,7 @@
 define mc = Character("Katell", color="#BD8CBE")
 define sister = Character("Tifenn", what_font=gui.jp_text_font, color="#b97d91")
 define driver = Character("Bus driver", color="#b87639")
+define baker = Character("Baker", color="#dfa637")
 define cashier = Character("Cashier", color="#49b976")
 define printer = Character("Printer", color="#CCCCCC")
 

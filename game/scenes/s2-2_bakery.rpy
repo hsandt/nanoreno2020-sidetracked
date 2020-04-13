@@ -13,22 +13,25 @@ label .shot1:
     pause 0.5
 
     window show
-    "My eyes agree with my nose, only problem is I don’t know what to choose."
-    "The shining buttery croissant has a decent volume, but there is a chance it's empty inside."
-    "The pain au chocolat would ensure a substantial snack, but so would the cream puff."
+    "My eyes agree with my nose, only problem is to decide what to choose."
+    "The buttery croissant (pleonasm) has a decent volume, but there is a also slight chance it's just empty."
+    "In this regard, the pain au chocolat seems a safer option..."
+    "Wait, what about the profiterole? It looks pretty substantial. But I run the risk of spilling pastry cream on the street...{w} Big deal."
     window hide None
 
     menu:
-        "Hmm... What do I take?"
+        "Hmm... What should I take?"
         "Croissant":
             pass
         "Pain au chocolat":
             pass
-        "Cream puff":
+        "Profiterole":
             pass
 
-    "I check the items' prices, and all are quite cheap. I'm sure I could get a few with a single bill and still have coins left for the bus."
-    mc "One croissant, one pain au chocolat and one cream puff, please."
+    "Bah, let's just take all of them. The bill will cover it."
+    mc "One croissant, one pain au chocolat and one profiterole, please."
+    "I give the bill."
+    baker "Here you go."
 
     show screen screen_item("coins", "center") with dissolve
     $ play_sfx("coins_drop")
@@ -37,7 +40,7 @@ label .shot1:
     pause 0.5
 
     window show None
-    "I get the food and the coins from the difference, then go back to the bus stop."
+    "I pick the food and the coins, and go back to the bus stop."
     window hide
 
     $ CompleteTask(task_BuyFood)

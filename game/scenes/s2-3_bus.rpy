@@ -17,7 +17,7 @@ label .shot1:
     pause 0.5
 
     window show
-    "There, I wait for the next bus while tasting some viennoiseries."
+    "There, I wait for the next bus while tasting the viennoiseries."
     window hide None
 
     scene bus_outside with dissolve
