@@ -12,7 +12,7 @@ label .shot1:
     pause 1.5
 
     window show
-    "Of course. Buses come every 30 minutes on Sunday."
+    "Now, I remember. Buses come every 30 minutes on Sunday."
     window hide None
 
     # depending on actions in the first scene, MC may arrive closer or farther to the next bus
@@ -32,18 +32,21 @@ label .shot1:
 
     show mc at character_leg_beat
 
-    "A few other people are waiting at the bus stop with me."
+    pause 0.5
+
     $ StartTask(task_Bus, notify=True)
     $ RevealTask(task_Ticket)
     $ RevealTask(task_Stop)
-    "The street is rather quiet, as few cars are passing by."
+
+    "A few other people are waiting at the bus stop with me."
+    "The street is rather quiet, with few cars passing by."
 
     pause 1.0
 
     show mc at character_right
 
     "Next bus will be at [next_bus_clock_time], that's in [time_before_next_bus] minutes..."
-    "Looks like I have some time on my hands. But my smartphone can keep me busy."
+    "Looks like I have some time on my hands."
 
     call s_f from _call_s_f
 
@@ -54,7 +57,8 @@ label .shot1:
     # for safety
     $ store.currentTime = store.next_bus_time
 
-    "The bus finally arrives, and I wave it down, as if the two other people doing the same did not exist."
+    "I see the bus coming and wave it down, pretending not to see the two other people doing exactly the same."
+    "I'd rather avoid relying on others if I can."
     # fallthrough .shot2
 
 label .shot2:
@@ -73,30 +77,32 @@ label .shot2:
     $ notify_sfx("topping_bus_card")
 
     "The passengers before me top up their smart cards as they get on the bus."
-    "I don't have one, so I try to buy a ticket."
-    "I give a bill to the driver, who says with a stoic face:"
+    "I don't have one, so I naively try to buy a ticket."
+    "I give a bill to the driver, who replies with a stoic face."
     driver "Sorry, coins only."
     $ StartTask(task_Coins)
 
     show mc at character_check_wallet
 
-    "I search in my wallet, but there are not enough to buy a ticket."
+    "I search for coins in my wallet, but there aren't enough to buy a ticket."
+    "Passenger candidates waiting behind me put an invisible pressure on my back. I don't like stress, so I apologize and quickly get off."
 
     $ play_sfx("bus_close")
-
-    "I apologize and quickly get off."
 
     show mc outside regular left
 
     pause 0.5
 
-    "Granted, things are not going as smooth as I expected, but there is nothing to worry about yet."
-    "I can just turn my bill into coins in some local store."
+    "Granted, things are not going as smooth as I expected. But there is nothing to worry about — yet."
+    "I can just turn my bill into coins at some local store."
     $ StartTask(task_BuyFood)
 
+    show mc at character_smell
+
     window show None
-    "My sense of smell finds a bakery nearby, so I'm heading toward it."
-    "Maybe it's not the right time, but I left my lunch at home anyway, so that will cover up."
+    "My sense of smell finds a bakery nearby, so I'm heading toward."
+    $ clock_time = get_clock_time()
+    "[clock_time]? Maybe it's not the right time, but I left my lunch at home, so that will make up for it."
     window hide
 
     pause 0.5

@@ -67,6 +67,14 @@ init:
         pause 0.2
         linear 0.2 yalign 1.0
 
+    transform character_smell:
+        pause 0.2
+        easein 0.2 xalign 0.22
+        pause 0.1
+        linear 0.2 xalign 0.19
+        pause 0.1
+        linear 0.2 xalign 0.2
+
     transform character_leg_beat(pause_duration=1.0):
         easein 0.5 yalign 1.1
         linear 0.1 yalign 1.0

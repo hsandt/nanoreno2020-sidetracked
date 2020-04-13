@@ -17,7 +17,7 @@ label .shot1:
 
         if play_context == "free space":
             "That's 100 MB. So I must lose space in order to free space? Neat."
-        "Anyway, I can't do that from the game though, so let's go to the update screen."
+        "I can't do that from the game though, so I move to the update screen."
         $ store.update_context = "play game"
         call s_b from _call_s_b  # Update
         $ store.update_context = None
@@ -35,9 +35,9 @@ label .shot1:
                 # note time should be clamped to next_bus_time, comparison is for safety
                 "This also means I won't be able to play this time."
             else:
-                "It takes so much time I don't have time to play before the bus arrives."
+                "However, it takes so much time that when it's over, I don't have enough time left to play before the bus arrives."
             if play_context == "kill time":
-                "Anyway, it was just to kill time."
+                "Never mind. It was just to kill time."
             else:  # == "free space"
                 # to ensure good connection with notifications wrap-up text
                 "I'll try the game and maybe free some space another time. At least I got the updates."

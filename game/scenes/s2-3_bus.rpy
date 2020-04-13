@@ -189,7 +189,7 @@ label .shot5:
     $ solo_mission_full(delay=1.0)
 
     $ StartTask(task_AskPassenger)
-    "I call the passenger sitting in front of me, but he doesn't answer."
+    "I call the passenger sitting in front of me, but he doesn't answer. As I said, don't rely on others too much."
     "He's wearing headphones, so maybe they are just too good at insulating sound. I think I need the same, but for notifications."
     $ FailTask(task_AskPassenger)
 
@@ -204,7 +204,7 @@ label .shot6:
 
     $ StartTask(task_WaitStop)
     "I wait, hoping somebody else will push a working stop button."
-    "It doesn't happen."
+    "It doesn't happen. I knew it, I shouldn't rely on others like that."
     "We're getting closer to the store."
 
     $ solo_mission_a(delay=1.0)
@@ -230,6 +230,7 @@ label .shot7:
     stop mission_b
 
     "Somebody finally calls for the stop."
+    "I guess sometimes other people actually do the job."
     $ CompleteTask(task_WaitStop)
     jump .shot8
 
