@@ -10,7 +10,7 @@ label .shot1:
     scene overlay black
     pause 1.0
 
-    show mc casual regular silhouette left at character_right with dissolve
+    show mc casual regular silhouette left at character_center with dissolve
 
     # the show/hide at the beginning of each scene is only to show textbox with quick dissolve
     # then hide it when no text is shown (without having to manually "window hide" every time)
@@ -27,7 +27,7 @@ label .shot1:
 
 label .shot2:
     scene bg apartment day
-    show mc casual regular left at character_right
+    show mc casual regular left at character_center
     with Dissolve(1.0)
     $ play_music("apartment")
 
@@ -35,29 +35,31 @@ label .shot2:
     # Don't notify this one though; it's unnatural for MC to write that now!
     $ StartTask(task_HaveLunch)
 
-    mc "Hmm... Nothing like the smell of roasted vegetables.{w} That are not burnt."
+    mc "Hmm!\nNothing like the smell of roasted vegetables — that are not burnt."
 
-    show mc at character_right_sit_down
+    show mc at character_chair_sit_down
     pause 0.5
     $ play_sfx("step_on_chair")
     $ store.is_character_sitting = True
 
-    "I sit at my table to taste the carefully crafted lunch. My palate is ready, but my bottom disagrees."
+    "I sit down to enjoy the carefully crafted lunch.\nMy palate is ready — my bottom disagrees."
 
     pause 0.2
-    show mc at character_right_sit_shake
+    show mc at character_chair_sit_shake
     pause 1.0
 
     mc "This chair is not stable at all!"
 
-    show mc at character_right_sit_down
+    show mc at character_move_chair_x(0.2)
     pause 1.0
 
     # Call to start Chair task
     $ StartTask(task_Chair)
-    # pause 0.5
 
     "I crouch and inspect the chair to see where the issue comes from."
+
+    show mc at character_move_behind_chair_x(0.5)
+
     $ play_sfx("inspect_chair")
     pause 1.5
     # in case player skips sound, stop it now to avoid sound leaking
@@ -73,8 +75,8 @@ label .shot2:
 
     show mc at character_stand_up
     pause 0.5
-    show mc casual regular at character_right
-    pause 0.5
+    show mc casual regular at character_move_right(1.0)
+    pause 1.0
 
     $ store.is_character_sitting = False
 
@@ -102,7 +104,7 @@ label .shot2:
 
     mc "I should take a measurement of the screw hole before I leave."
 
-    show mc at character_move_right(0.2)
+    show mc at character_move_behind_chair_x(0.5)
     pause 0.5
 
     $ StartTask(task_ScrewSize)
@@ -121,7 +123,7 @@ label .shot3a:
     $ StartTask(task_ScrewPhoto)
 
     pause 0.5
-    show mc at character_right_sit_down
+    show mc at character_sit_down
     $ store.is_character_sitting = True
 
     "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
@@ -155,7 +157,7 @@ label .shot3b:
     $ StartTask(task_ScrewMeter)
 
     pause 0.5
-    show mc at character_right_sit_down
+    show mc at character_sit_down
     $ store.is_character_sitting = True
 
     queue sound ["<silence 1.5>", write_on_paper]
@@ -179,8 +181,8 @@ label .shot4:
     $ RevealTask(task_BuyHexKey)
 
     pause 0.2
-    show mc casual regular
-    pause 0.2
+    show mc casual regular at character_move_right(0.8)
+    pause 0.4
 
     # to avoid spamming notification in loop, add a pause (silence) between each
     play sound [smartphone_call, "<silence 1.0>"] loop
