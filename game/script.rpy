@@ -45,6 +45,7 @@ default is_showing_smartphone = False
 default currentTime = 0
 default next_bus_time = None
 # New Task Indicator
+default unlocked_tasktree = False
 default indicator_newTask = False
 default new_task_clear_count = 0  # how many times the player checked for a new task
 

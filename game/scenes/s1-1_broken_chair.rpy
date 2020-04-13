@@ -91,8 +91,8 @@ label .shot2:
 
     mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
 
+    $ store.unlocked_tasktree = True
     $ StartTask(task_HexKeyStore, notify=True)
-
     "I write this on my TODO list. I'll check it later by clicking on the notepad icon at the bottom-right, or by pressing the T key."
 
     show mc casual regular at character_move_right_farther

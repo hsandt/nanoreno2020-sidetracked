@@ -2218,7 +2218,7 @@ screen preferences_button():
     key "toggle_preferences" action button_action
 
 screen tasktree_button():
-    if not main_menu:
+    if not main_menu and unlocked_tasktree:
         python:
             button_action = None
             hint_text = None
