@@ -355,7 +355,7 @@ screen navigation():
             #hbox:
             #    imagebutton auto "gui/button/button_%s.png"  action ShowMenu("tasktree")
             #
-            #    text _("Task Tree") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
+            #    text _("TODO List") style "navigation_button_text" color gui.idle_color  xpos -124 yalign 0.5 xalign 0.5
 
         hbox:
             imagebutton auto "gui/button/button_%s.png"  action ShowMenu("load")
@@ -1938,7 +1938,7 @@ screen smartphone(app_name):
     $ currentTime = get_clock_time()
 
     # semi-transparent underlay to make scene behind smartphone less noticeable
-    add Solid("#ffffff80")
+    add "underlay white_half_alpha"
 
     if app_name == "notifications":
         add "images/bg/sub/smartphone_home_notifications.png":
@@ -2168,7 +2168,7 @@ screen tasktree():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("Task Tree"), scroll="viewport"):
+    use game_menu(_("TODO List"), scroll="viewport"):
 
         style_prefix "about"
 

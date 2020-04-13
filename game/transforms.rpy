@@ -4,18 +4,22 @@ init:
         yalign 1.0
 
     transform character_move_left(duration=1.0):
-        ease duration xalign 0.2
         yalign 1.0
+        ease duration xalign 0.2
 
     transform character_move_left_exit:
-        easeout 0.8 xpos -0.5
         yalign 1.0
+        easeout 0.8 xpos -0.5
 
     transform character_move_chair_x(duration):
         ease duration xalign 0.4
 
     transform character_center:
         xalign 0.5
+        yalign 1.0
+
+    transform character_stand_behind_chair_x:
+        xalign 0.6
         yalign 1.0
 
     transform character_move_behind_chair_x(duration):
@@ -26,16 +30,16 @@ init:
         yalign 1.0
 
     transform character_move_right(duration=1.0):
+        yalign 1.0
         ease duration xalign 0.8
-        yalign 1.0
 
-    transform character_move_right_farther:
-        easeout 0.2 xalign 0.85
+    transform character_move_right_farther(duration=1.0):
         yalign 1.0
+        easeout duration xalign 0.85
 
     transform character_move_right_exit:
-        easeout 0.8 xpos 1.5
         yalign 1.0
+        easeout 0.8 xpos 1.5
 
     transform character_sit_down:
         easein 0.5 ypos 1.2
@@ -47,10 +51,12 @@ init:
             ease 0.5 ypos 1.2
 
     transform character_chair_sit_shake:
-        ease 0.2 xalign 0.39
-        ease 0.2 xalign 0.41
-        repeat
-        ypos 1.2
+        parallel:
+            ease 0.2 xalign 0.39
+            ease 0.2 xalign 0.41
+            repeat
+        parallel:
+            ypos 1.2
 
     transform character_stand_up:
         easein 0.5 yalign 1.0

@@ -224,7 +224,7 @@ label .shot2a:
     pause 0.5
 
     window show None
-    "I just get to the store, pick a light bulb, come back, and done."
+    "I just get to the store, pick a light bulb, come back, and I'm done."
     window hide
 
     show mc casual regular night at character_move_right_exit

@@ -59,6 +59,7 @@ init python:
         screw_tighten = "Tighten screw",
         searching_drawer = "Rummage container full of items",
         smartphone_camera = "Take photo",
+        smartphone_call = "Smartphone ringtone",
         smartphone_notification = "Smartphone notification",
         step_on_chair = "Sit down",
         bus_stop_and_open = "Bus stops and door opens with hissing",

@@ -3,7 +3,7 @@
 ## Overlay
 
 image overlay black = Solid("#000000")
-image overlay smartphone_backlayer = Solid("#ffffff80")
+image underlay white_half_alpha = Solid("#ffffff80")
 
 ## Backgrounds (1080p)
 

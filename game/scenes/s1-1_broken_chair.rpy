@@ -56,7 +56,7 @@ label .shot2:
     # Call to start Chair task
     $ StartTask(task_Chair)
 
-    "I crouch and inspect the chair to see where the issue comes from."
+    "I crouch and inspect the chair."
 
     show mc at character_move_behind_chair_x(0.5)
 
@@ -69,7 +69,7 @@ label .shot2:
     pause 0.5
 
     mc "Looks like that screw is a bit loose."
-    mc "Hex type, uh? Let’s see if I got a matching screwdriver."
+    mc "Hexagonal type, uh? Let’s see if I got a matching screwdriver."
 
     hide screen screen_item
 
@@ -87,46 +87,76 @@ label .shot2:
     # in case player skips sound, stop it now to avoid sound leaking
     stop sound
 
-    show mc casual regular left at character_right
-    mc "Nope. No such thing."
+    mc "Nope. Nothing such."
+    show mc casual regular left at character_move_behind_chair_x(1.0)
+    pause 0.2
     $ FailTask(task_HexKeyApartment)
 
-    mc "Guess I need to go to the DIY store to get one. Screwdriver or key."
+    "I need to find a way to fix this.\nIt's not my style to leave things unsorted."
+
+    pause 0.6
+    # `at` is just to warp character and avoid moonwalk if player clicks to skip anim
+    show mc casual regular at character_move_behind_chair_x(0.0)
+    pause 0.2
+    "I know, the pile of dishes.\nBut look how they are perfectly stacked!"
+
+    pause 0.7
+    show mc casual regular left
+    pause 0.3
+
+    "Anyway, I guess I need to go to the DIY store to get some hexagonal screwdriver or key."
 
     $ store.unlocked_tasktree = True
     $ StartTask(task_HexKeyStore, notify=True)
-    "I write this on my TODO list. I'll check it later by clicking on the notepad icon at the bottom-right, or by pressing the T key."
+    "Very organized as always, I write this on my TODO list."
+    "I'll check it later by clicking on the notepad icon at the bottom-right, or by pressing the T key."
 
-    show mc casual regular at character_move_right_farther
+    show mc casual regular at character_move_right_farther(0.5)
     pause 1.0
-    show mc casual regular left
+    # `at` is just to warp character and avoid moonwalk if player clicks to skip anim
+    show mc casual regular left at character_move_right_farther(0.0)
     pause 0.5
 
-    mc "I should take a measurement of the screw hole before I leave."
+    mc "Oh, I should take the diameter of the screw hole before I leave."
+    "I'll need that to buy the correct tool model.\nI don't want it to end like last time —"
+    "I picked the wrong batteries, and the store wouldn't take them back because the package was opened."
+    show mc at character_move_behind_chair_x(4.0)
+    "How was I supposed to know they were not compatible without opening the package?"
+    pause 0.8
+    "Okay, enough digressing. The diameter."
 
+    # MC should be at the right position with normal reading speed, but if player
+    # was skipping text, go quickly to target position now
     show mc at character_move_behind_chair_x(0.5)
-    pause 0.5
 
     $ StartTask(task_ScrewSize)
     $ RevealTask(task_Store)
     $ RevealTask(task_FindHexKey)
     $ RevealTask(task_BuyHexKey)
 
+    # hide just to avoid displaying choices on the MC's face
+    hide mc with Dissolve(0.3)
+    pause 0.2
+
     menu:
-        "Take a photo of the screw with a scale reference":
+        "How should I get the diameter of the screw hole?"
+        "Take a photo":
             jump .shot3a
-        "Measure screw with a meter and write result in notepad":
+        "Measure it with a meter":
             jump .shot3b
 
 label .shot3a:
     $ store.screw_measurement_method = "photo"
     $ StartTask(task_ScrewPhoto)
 
-    pause 0.5
+    pause 0.2
+    # must show again at correct position after hiding for menu
+    show mc casual regular left at character_stand_behind_chair_x with Dissolve(0.3)
+    pause 0.3
     show mc at character_sit_down
     $ store.is_character_sitting = True
 
-    "I draw my smartphone and take a picture of the screw. I put my finger on it as a scale reference."
+    "I pick my smartphone and take a picture of the screw. I put my finger besides as a scale reference."
     show screen screen_item("screw_loose", "left")
     $ play_sfx("smartphone_camera")
     pause 1.0
@@ -135,41 +165,57 @@ label .shot3a:
     show mc at character_stand_up
     $ store.is_character_sitting = False
 
-    "As I’m checking that the photo is good enough, I notice a few notifications on the phone."
+    "As I check the photo, I notice a few notifications on the phone."
+
+    # hide just to avoid displaying choices on the MC's face
+    hide mc with Dissolve(0.3)
+    pause 0.2
+
     menu:
         "Should I check them out?"
         "Yes, check notifications":
-            "We never know if there's not something important."
+            "We never know when something important will show up."
             $ notifications_context = "photo"
             call s_a from _call_s_a
             $ notifications_context = None
-            "So, where was I? Oh yeah, I got the measurement for the screw."
+            # must show again at correct position after hiding for menu
+            show mc casual regular left at character_stand_behind_chair_x with Dissolve(0.3)
+            pause 0.3
+            "So, what was I doing? Ah, right, I got a picture of the screw."
         "No, ignore them":
+            # must show again at correct position after hiding for menu
+            show mc casual regular left at character_stand_behind_chair_x with Dissolve(0.3)
+            pause 0.3
             "I have what I need already."
 
     $ CompleteTask(task_ScrewPhoto)
 
-    "I’d better hurry now and go to the store while it’s open."
+    "I’d better go to the store now."
     jump .shot4
 
 label .shot3b:
     $ store.screw_measurement_method = "meter"
     $ StartTask(task_ScrewMeter)
 
-    pause 0.5
+    pause 0.2
+    # must show again at correct position after hiding for menu
+    show mc casual regular left at character_stand_behind_chair_x with Dissolve(0.3)
+    pause 0.3
     show mc at character_sit_down
     $ store.is_character_sitting = True
 
     queue sound ["<silence 1.5>", write_on_paper]
     $ notify_sfx("write_on_paper")
 
-    "I grab a meter, measure the screw external diameter, internal diameter and write them on my notepad."
+    "I grab a meter, measure the internal diameter of the screw and write it on my notepad."
+    "Nothing as reliable as good old paper. Plus, I don't trust batteries."
     $ CompleteTask(task_ScrewMeter)
 
     show mc at character_stand_up
     $ store.is_character_sitting = False
+    pause 0.5
 
-    mc "OK, let’s go!"
+    mc "Time to go."
     jump .shot4
 
 # Sister call
@@ -182,40 +228,48 @@ label .shot4:
 
     pause 0.2
     show mc casual regular at character_move_right(0.8)
-    pause 0.4
+    pause 0.3
 
     # to avoid spamming notification in loop, add a pause (silence) between each
     play sound [smartphone_call, "<silence 1.0>"] loop
+    $ notify_sfx("smartphone_call")
 
-    "Just before I leave, my phone rings. It's my sister, Tifenn."
+    "My phone rings just before I leave. It's my sister, Tifenn."
     pause 1.0
-    "I make sure I leave the phone ring a few more times, then I answer:"
-    stop sound
-    mc "I'm busy now."
-    "She replies on the phone:"
-    sister "* ... Such a nice intro.*"
-    sister "* Are you actually busy? Or yet again distracted by something completely unrelated to what you were doing? *"
+    "I make sure to let the phone ring a few more times, then answer."
+    stop sound fadeout 0.1  # very short, just to avoid pop
+    pause 0.5
+    mc "Hi. I'm busy right now."
+    pause 0.5
+    sister "...
+    {p=1.0}Hey, Kat, how are you? Can I ask you something?"
+    pause 0.5
+    "Wait, did she ignore what I've just said on purpose?"
+    mc "I said I'm busy."
+    sister "Busy doing... what you're totally supposed to do, as always?"
 
-    # comical turningback thinking
-    pause 1.2
+    # comical turning back thinking
+    pause 1.1
     show mc casual regular left
     pause 0.5
 
-    mc "I'm not distracted. And it's related."
+    mc "Yes."
 
     pause 1.0
 
     sister "Fine. I'll send you a message later."
     mc "Please don't."
-    sister "Thanks, bye!"
+    sister "Thanks, I knew I could count on you. Bye!"
 
-    "She hangs up. Where was I? Oh, yes, the chair."
+    "She hangs up."
+    pause 0.5
+    "Where was I again? Oh, yeah. The store."
 
 label .shot5:
     # the window show None / hide at the end of each scene is just to have a clean
     # textbox dissolve at the end
     window show None
-    "I just get to the store, pick a screwdriver, come back, and done."
+    "I just get there, pick a screwdriver, come back, and I'm done."
     window hide
 
     pause 1.2
