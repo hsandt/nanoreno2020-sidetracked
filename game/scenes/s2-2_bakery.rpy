@@ -13,7 +13,7 @@ label .shot1:
     pause 0.5
 
     window show
-    "My eyes agree with my nose, only problem is to decide what to choose."
+    "Everything looks tasty in the bakery. The only problem is to decide what to choose."
     "The buttery croissant (pleonasm) has a decent volume, but there is a also slight chance it's just empty."
     "In this regard, the pain au chocolat seems a safer option..."
     "Wait, what about the profiterole? It looks pretty substantial. But I run the risk of spilling pastry cream on the street...{w} Big deal."

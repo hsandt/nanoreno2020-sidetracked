@@ -100,7 +100,7 @@ label .shot2:
     show mc at character_smell
 
     window show None
-    "My sense of smell finds a bakery nearby, so I'm heading toward."
+    "My sense of smell finds a bakery nearby, so I'm heading there."
     $ clock_time = get_clock_time()
     "[clock_time]? Maybe it's not the right time, but I left my lunch at home, so that will make up for it."
     window hide

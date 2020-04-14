@@ -7,6 +7,7 @@ label .shot1:
     # that she took 15mn buying the tool in last scene,
     # that bus takes ~30mn to transit, and that buses arrive at the same time
     # in both directions. Plus some time to come back home from bus stop.
+    # consider changing times to arrive a bit earlier... stores still open at 21h are rare!
     $ store.currentTime = get_next_bus_time(store.currentTime + 48) + 17
     # if doing nothing on smartphone: ~19h00
     $ store.wrapping_scene = "light_bulb"
@@ -54,7 +55,7 @@ label .shot1:
     mc "..."
     pause 0.5
 
-    "Thinking about it, maybe I could have just taken lunch on that other chair other there."
+    "Thinking about it, maybe I could have just taken lunch on that other chair over there."
     "...{w=1.0} No, there is no need to regret."
     "I was not randomly jumping from a topic to another. Problems just kept popping up, and I had to solve them."
     "Because I decided to take over all these issues, my day was pretty fun."
@@ -143,6 +144,7 @@ label .shot1:
     elif extra_actions_count < 8:
         "That's quite a record. For good or bad..."
     else:
+        # consider reusing calculation from store, as it may be four to five hours
         "That's incredible! Especially in four hours flat."
 
     if extra_actions_count >= 4:
@@ -211,7 +213,7 @@ label .shot1:
 label .shot2a:
     $ StartTask(task_BuyLightBulb)
 
-    mc "...{w=1.0} Yes, logically I should be able to go there once more before it closes.{w=1.0} But I need to go now."
+    mc "...{w=1.0} This store closes late, around 10pm. I should be able to go there once more today.{w=1.0} But I need to go now."
 
     show mc casual regular night at character_move_right_farther
     pause 1.0

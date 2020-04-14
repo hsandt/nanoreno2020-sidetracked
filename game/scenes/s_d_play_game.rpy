@@ -16,7 +16,7 @@ label .shot1:
             $ StartTask(task_UpdateApps + task_suffix)
 
         if play_context == "free space":
-            "That's 100 MB. So I must lose space in order to free space? Neat."
+            "There are 80 MB of patch. So I must lose space in order to free space? Neat."
         "I can't do that from the game though, so I move to the update screen."
         $ store.update_context = "play game"
         call s_b from _call_s_b  # Update
@@ -94,7 +94,7 @@ label .shot3:
         $ task_suffix = make_task_suffix(free_space_context)
         $ StartTask(task_InventPassword + task_suffix)
 
-    "Usernames are no problems for me, but passwords are a bit more complex."
+    "I always reuse that weird username no one else wants to have, so it's a no-brainer for me; but passwords are a bit more complex."
     "In general, I construct them like this:
     \n1. I pick a funny sentence that is easy to remember
     \n2. I turn it into a series of related words or emojis"
