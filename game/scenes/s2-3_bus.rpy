@@ -122,6 +122,7 @@ label .shot3a:
     $ has_stood_up = True
     $ StartTask(task_StandUp)
     "I stand up and walk toward another stop button in the central alley."
+    show bus_inside at vpunch
     "The bus suddenly shakes and I lose my balance. They sure like cobblestones in this city."
     "I fall back to my seat without having reached the button."
 
@@ -134,6 +135,8 @@ label .shot3a:
 label .shot3b:
     $ solo_mission_full(delay=1.0)
 
+    pause 0.5
+    show bus_inside at vpunch
     "I stand up once more, this time clinging to bars, seats, whatever."
     "The other passengers look bothered. I don't."
     "After an epic march, I reach the item of interest and press it."
@@ -179,7 +182,8 @@ label .shot4:
     stop mission_b
 
     "In the meantime, another passenger pressed the stop button."
-    "No waste, though. The app will be useful next time..."
+    pause 0.5
+    "Okay... The app will be useful next time..."
     $ CompleteTask(task_InstallStopApp)
     $ CompleteTask(task_WaitStop)
     jump .shot8
