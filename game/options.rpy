@@ -324,6 +324,14 @@ default preferences.text_cps = 0
 default preferences.afm_time = 15
 
 
+## Rollback side allows to rollback by clicking on a region on the screen
+## but on desktop, we already have the mouse wheel and the back button
+## in the top-left corner, so we just disable it and comment the option
+## out from the Preferences.
+
+default preferences.desktop_rollback_side = "disable"
+
+
 ## Save directory ##############################################################
 ##
 ## Controls the platform-specific place Ren'Py will place the save files for
