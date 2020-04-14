@@ -1293,11 +1293,11 @@ screen keyboard_help():
 
     hbox:
         label _("O / P")
-        text _("Opens the Preferences.")
+        text _("Toggles the Preferences screen.")
 
     hbox:
         label _("T")
-        text _("Opens the Task Tree (in-game only).")
+        text _("Toggles the TODO list (in-game only).")
 
     hbox:
         label _("Ctrl")
