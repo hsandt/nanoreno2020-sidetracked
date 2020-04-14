@@ -22,7 +22,7 @@ label credits:
     image splash = "gui/Sidetracked_intrologo.png"
     image thanks eng = Text("{color=[gui.idle_color]}{size=80}Thanks for Playing!{/color}", text_align=0.5, drop_shadow = (2, 2), drop_shadow_color = "#000000")
     $ credits_duration = 55 # credits duration in seconds
-    scene bg menuoverlay with Dissolve(1.0)  #replace this with a fancy background
+    scene bg game_menu_overlay with Dissolve(1.0)  #replace this with a fancy background
 
     image cred_eng = Text(gui.credits, text_align=0.5, drop_shadow = (2, 2), drop_shadow_color = "#000000")
     show cred_eng at Move((0.5, 4.5), (0.5, 0.0), credits_duration, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
