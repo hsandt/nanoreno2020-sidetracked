@@ -21,7 +21,7 @@ label .shot1:
     scene bg apartment night with Dissolve(1.0)
     $ play_music("apartment_night")
 
-    show mc casual regular night left at character_right with dissolve
+    show mc casual regular night left at character_stand_behind_chair_x with dissolve
 
     window show
     "By the time I get back in my apartment, it's already the evening. Exhausted, I remove my shoes and open the tool’s package."
@@ -39,7 +39,7 @@ label .shot1:
     mc "So... Is it stable now?"
     hide screen screen_item
 
-    show mc casual regular night left at character_right_sit_down
+    show mc casual regular night left at character_chair_sit_down
     pause 0.5
     $ play_sfx("step_on_chair")
     $ store.is_character_sitting = True
