@@ -287,8 +287,6 @@ screen quick_menu():
         use preferences_button
         use tasktree_button
 
-    key "game_menu" action ShowMenu(preferences.game_menu_screen)
-
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
 init python:

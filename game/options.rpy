@@ -277,15 +277,20 @@ define config.end_game_transition = Dissolve(0.5)
 define config.enter_yesno_transition = Dissolve(0.2)
 define config.exit_yesno_transition = Dissolve(0.1)
 
-## Opening game menu goes to Preferences by default instead of Save Menu
-## This can be tweaked in the Preferences
-## Do not use the native _game_menu_screen though, as it reverts itself to
-## its previous value when going back to the game. So instead, we use
-## a custom preference variable and map Escape/right-click in screen quick_menu
-## to showing that screen.
-init -110 python:
-    _game_menu_screen = None
+## Define a custom preference to decide which screen to show first in game menu,
+## as _game_menu_screen cannot be reliably changed in the menu,
+## This can be tweaked in the Preferences screen.
 default preferences.game_menu_screen = "preferences_screen"
+
+## Define a custom action to open game menu set in Preferences.
+## To make sure we evaluate preferences.game_menu_screen at runtime, we use a function
+## instead of creating an action on init. We still use ShowMenu's __call__
+## for convenience (but we don't need predict, get_selected, get_sensitive for this quick action)
+init -110 python:
+    def show_pref_game_menu():
+        ShowMenu(preferences.game_menu_screen)()
+
+define config.game_menu_action = show_pref_game_menu
 
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.
