@@ -809,14 +809,34 @@ screen preferences():
 
                 if renpy.variant("pc") or renpy.variant("web"):
 
+                    # see renpy7-sdk/renpy/common/00preferences.rpy for display values
+
                     vbox:
                         style_prefix "radio"
                         label _("Display")
                         null height 5
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
+
+                        textbutton _("Fullscreen") action Preference("display", "toggle")
+
+                    vbox:
+                        style_prefix "radio"
+                        label _("Resolution")
+                        null height 5
+                        # pass ratio of native resolution, which is 1080p
+                        python:
+                            # for monitors of 1080p and less (actually checking width of 1920),
+                            # the default size is clamped to max_window_size, so we label "Default" slightly differently
+                            if renpy.get_renderer_info().get("max_window_size", (9999, 9999))[0] > 1920:
+                                # e.g. on hi-dpi
+                                default_res_text = _("Default (1080p)")
+                            else:
+                                # e.g. on 1080p
+                                default_res_text = _("Default")
+                        textbutton default_res_text action Preference("display", 1.0) # or "window", it also uses __DisplayAction(1.0)
+                        textbutton _("720p") action Preference("display", 2. / 3.)    # 0.666... because 2/3*1080 = 720
 
                 # Disabled as used for mobile only, where you can touch left/right to rollback
+                # Note we also had to disable preferences.desktop_rollback_side in options.rpy
                 # vbox:
                 #     style_prefix "radio"
                 #     label _("Rollback Side")
@@ -971,6 +991,9 @@ style radio_button:
 
 style radio_button_text:
     properties gui.button_text_properties("radio_button")
+    # Outlines slightly increase text height, so the layout is slightly offset
+    # when the user hovers text and outlines suddenly appear.
+    # To prevent this, we add an invisible outline when text is not selected and idle
     outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
     selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
     hover_color "#f4cfe5"
@@ -1000,7 +1023,12 @@ style slider_button:
 
 style slider_button_text:
     properties gui.button_text_properties("slider_button")
-    hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
+    outlines [ (absolute(1), "#ffffff00", absolute(0), absolute(0)) ]
+    selected_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
+    selected_hover_outlines [ (absolute(1), "#f4cfe5", absolute(0), absolute(0)) ]
+    selected_hover_color "#ffffff"
+    hover_color "#f4cfe5"
+    hover_outlines [ (absolute(1), "#744675", absolute(0), absolute(0)) ]
 
 style slider_vbox:
     xsize 685
