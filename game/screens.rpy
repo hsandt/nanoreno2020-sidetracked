@@ -828,10 +828,10 @@ screen preferences():
                             # the default size is clamped to max_window_size, so we label "Default" slightly differently
                             if renpy.get_renderer_info().get("max_window_size", (9999, 9999))[0] > 1920:
                                 # e.g. on hi-dpi
-                                default_res_text = _("Default (1080p)")
+                                default_res_text = _("1080p")
                             else:
                                 # e.g. on 1080p
-                                default_res_text = _("Default")
+                                default_res_text = _("1080p (clamped)")
                         textbutton default_res_text action Preference("display", 1.0) # or "window", it also uses __DisplayAction(1.0)
                         textbutton _("720p") action Preference("display", 2. / 3.)    # 0.666... because 2/3*1080 = 720
 
