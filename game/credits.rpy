@@ -20,7 +20,7 @@ label credits:
     $ renpy.pause(0.2, hard=True)
 
     image splash = "gui/Sidetracked_intrologo.png"
-    image thanks eng = Text("{color=[gui.idle_color]}{size=80}Thanks for Playing!{/color}", text_align=0.5, drop_shadow = (2, 2), drop_shadow_color = "#000000")
+    image thanks eng = Text("{color=[gui.idle_color]}{size=80}Thanks for Playing!{/size}{/color}", text_align=0.5, drop_shadow = (2, 2), drop_shadow_color = "#000000")
     $ credits_duration = 55 # credits duration in seconds
     scene bg game_menu_overlay with Dissolve(1.0)  #replace this with a fancy background
 
